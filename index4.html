@@ -2294,7 +2294,7 @@ const StorageGuard = {
     if (StorageGuard.warned) return;
     StorageGuard.warned = true;
     try {
-      App.toast("⚠ <b>Sauvegarde impossible</b> — stockage du navigateur plein ou bloqué. Exporte tes données pour ne rien perdre.", 7000);
+      UI.toast("⚠ <b>Sauvegarde impossible</b> — stockage du navigateur plein ou bloqué. Exporte tes données pour ne rien perdre.", 7000);
     } catch (_) { /* App pas encore initialisé : le console.warn suffit */ }
   }
 };
@@ -2617,7 +2617,7 @@ Preflop: UTG raise 2.5bb, HJ raise 10bb, hero to act`,
 
   loadText(text) {
     if (SessionCtl.session && !SessionCtl.sessionReport) {
-      App.toast("Termine (ou quitte) ta session de carrière avant d'utiliser le Studio.");
+      UI.toast("Termine (ou quitte) ta session de carrière avant d'utiliser le Studio.");
       return false;
     }
     const spec = this.parse(text);
@@ -2635,9 +2635,9 @@ Preflop: UTG raise 2.5bb, HJ raise 10bb, hero to act`,
   },
 
   reload() {
-    if (!this.lastText) { App.toast("Aucun spot Studio à recharger."); return; }
-    try { this.loadText(this.lastText); App.toast("Spot rechargé — même configuration, nouvelles cartes cachées si non forcées."); }
-    catch (e) { App.toast("Rechargement impossible : " + e.message); }
+    if (!this.lastText) { UI.toast("Aucun spot Studio à recharger."); return; }
+    try { this.loadText(this.lastText); UI.toast("Spot rechargé — même configuration, nouvelles cartes cachées si non forcées."); }
+    catch (e) { UI.toast("Rechargement impossible : " + e.message); }
   },
 
   /* ---------- UI ---------- */
@@ -5913,6 +5913,21 @@ const Career = {
    ========================================================================== */
 const UI = {
 
+  /** Notification éphémère. Primitive générique : elle vivait dans App, ce qui
+   *  obligeait six modules extraits à rappeler le routeur pour une simple
+   *  notification (15 des 49 rappels vers App). Rendu et CSS inchangés. */
+  toast(msg, ms = 2600) {
+    const el = document.createElement("div");
+    el.className = "toast";
+    const stack = document.querySelectorAll(".toast").length;
+    if (stack) el.style.bottom = (26 + stack * 52) + "px";
+    el.setAttribute("role", "status");
+    el.setAttribute("aria-live", "polite");
+    el.innerHTML = msg;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), ms);
+  },
+
   /** Petit graphe SVG d'une courbe 0-100. Primitive générique : elle vivait
    *  dans HRUI alors que PRUI et BLUI l'utilisaient aussi — c'était le seul
    *  couplage inter-labs du fichier. Rendu et classes CSS inchangés. */
@@ -6462,7 +6477,7 @@ const Onboarding = {
     document.getElementById("onboard").classList.remove("on");
     App.go("home");
     const m = MENTORS[Player.data.mentorId];
-    App.toast(`Profil créé — ${m.name} t'accompagne, ${UI.esc(Player.data.name)} !`);
+    UI.toast(`Profil créé — ${m.name} t'accompagne, ${UI.esc(Player.data.name)} !`);
   }
 };
 
@@ -6653,9 +6668,9 @@ const App = {
     leaks: "Mes leaks", profiles: "Profils adverses", theory: "Notions", profile: "Mon profil", journey: "Mon évolution", tracker: "Tracker"
   },
 
-  // --- État de carrière (null hors session)
-  session: null,
-  sessionReport: null,
+  // L'état de session (session, sessionReport, sessionComplete, drillRun,
+  // focusLeak, focusNote) appartient à SessionCtl depuis l'extraction ; la
+  // boucle de décision d'App le lit là-bas.
 
   /* ---------------------------------------------------------- Navigation */
   go(v) {
@@ -7038,7 +7053,7 @@ const App = {
         if (!dt.finished && Spot.options(dt).length) break;
         dt = null;
       }
-      if (!dt) { App.toast("Génération impossible, réessayez"); return; }
+      if (!dt) { UI.toast("Génération impossible, réessayez"); return; }
       App.t = dt;
       App.analysis = null; App.result = null; App.lastDecision = null;
       App.phase = "decide";
@@ -7075,7 +7090,7 @@ const App = {
         if (!tt.finished && Spot.options(tt).length) break;
         tt = null;
       }
-      if (!tt) { App.toast("Génération impossible, réessayez"); return; }
+      if (!tt) { UI.toast("Génération impossible, réessayez"); return; }
       App.t = tt;
       App.analysis = null; App.result = null; App.lastDecision = null;
       App.phase = "decide";
@@ -7102,7 +7117,7 @@ const App = {
       if (!t.finished && Spot.options(t).length) break;
       t = null;
     }
-    if (!t) { App.toast("Génération impossible, réessayez"); return; }
+    if (!t) { UI.toast("Génération impossible, réessayez"); return; }
 
     App.t = t;
     App.analysis = null;
@@ -7988,18 +8003,6 @@ const App = {
 
 
 
-  /* ------------------------------------------------------------- Utilitaires */
-  toast(msg, ms = 2600) {
-    const el = document.createElement("div");
-    el.className = "toast";
-    const stack = document.querySelectorAll(".toast").length;
-    if (stack) el.style.bottom = (26 + stack * 52) + "px";
-    el.setAttribute("role", "status");
-    el.setAttribute("aria-live", "polite");
-    el.innerHTML = msg;
-    document.body.appendChild(el);
-    setTimeout(() => el.remove(), ms);
-  },
 
 
 
@@ -8121,14 +8124,14 @@ const ProfileUI = {
     Player.save();
     ProfileUI.renderProfile();
     const m = MENTORS[id];
-    App.toast(`${m.name} est désormais ton mentor.`);
+    UI.toast(`${m.name} est désormais ton mentor.`);
   },
 
   saveProfile() {
     const name = (document.getElementById("profName").value || "").trim();
     Player.setProfile(name, ProfileUI._profAvatar || Player.data.avatar);
     App.renderXP();
-    App.toast("Profil enregistré");
+    UI.toast("Profil enregistré");
   }
 };
 
@@ -8427,7 +8430,7 @@ const SessionCtl = {
     SessionCtl.session = Session.create(tier, lengthKey, roster);
     SessionCtl.sessionReport = null;
     SessionCtl.sessionComplete = false;
-    App.toast(`Session ${tier.name} lancée — <b>${SessionCtl.session.target} mains</b>`);
+    UI.toast(`Session ${tier.name} lancée — <b>${SessionCtl.session.target} mains</b>`);
     App.go("play");
     App.newHand();
   },
@@ -8436,7 +8439,7 @@ const SessionCtl = {
    *  puis un score. Appelé depuis le bouton d'une carte de diagnostic. */
   drillLeak(leakId) {
     const cfg = (window.Feutre && window.Feutre.drillConfig) ? window.Feutre.drillConfig(leakId) : null;
-    if (!cfg) { App.toast("Entraînement indisponible pour cette fuite"); return; }
+    if (!cfg) { UI.toast("Entraînement indisponible pour cette fuite"); return; }
     const title = (window.Feutre && window.Feutre.leakTitle) ? window.Feutre.leakTitle(leakId) : leakId;
     SessionCtl.drillRun = {
       leak: leakId, title,
@@ -8445,7 +8448,7 @@ const SessionCtl = {
       i: 0, total: 10, correct: 0, acceptable: 0, finishing: false
     };
     SessionCtl.session = null; SessionCtl.sessionReport = null; DailyUI.dailyRun = null;
-    App.toast(`Entraînement : <b>10 spots</b> sur cette fuite`);
+    UI.toast(`Entraînement : <b>10 spots</b> sur cette fuite`);
     App.go("play");
     App.newHand();
   },
@@ -8481,8 +8484,8 @@ const SessionCtl = {
 
   promote() {
     const next = Career.nextTier();
-    if (!Career.promote()) { App.toast("Les conditions ne sont pas réunies"); return; }
-    App.toast(`Bienvenue en <b>${Career.tier().name}</b>`);
+    if (!Career.promote()) { UI.toast("Les conditions ne sont pas réunies"); return; }
+    UI.toast(`Bienvenue en <b>${Career.tier().name}</b>`);
     App.render();
   }
 };
@@ -8542,7 +8545,7 @@ const DataPort = {
     const stamp = new Date().toISOString().slice(0, 10);
     a.download = `pivot-sauvegarde-${stamp}.json`;
     a.click();
-    App.toast("Progression exportée");
+    UI.toast("Progression exportée");
   },
 
   triggerImport() {
@@ -8567,9 +8570,9 @@ const DataPort = {
       if (res.ok) {
         document.getElementById("onboard").classList.remove("on");
         App.go("home");
-        App.toast("Progression restaurée");
+        UI.toast("Progression restaurée");
       } else {
-        App.toast(res.error || "Import impossible");
+        UI.toast(res.error || "Import impossible");
       }
     };
     reader.readAsText(file);
@@ -8595,7 +8598,7 @@ const DataPort = {
     a.href = URL.createObjectURL(blob);
     a.download = "pivot-carriere.json";
     a.click();
-    App.toast("Carrière exportée");
+    UI.toast("Carrière exportée");
   },
 
   async resetCareer() {
@@ -8610,7 +8613,7 @@ const DataPort = {
     SessionCtl.session = null;
     SessionCtl.sessionReport = null;
     App.render();
-    App.toast("Nouvelle carrière lancée");
+    UI.toast("Nouvelle carrière lancée");
   },
 
   exportData() {
@@ -8619,7 +8622,7 @@ const DataPort = {
     a.href = URL.createObjectURL(blob);
     a.download = "pivot-progression.json";
     a.click();
-    App.toast("Données exportées");
+    UI.toast("Données exportées");
   },
 
   async resetData() {
@@ -8631,7 +8634,7 @@ const DataPort = {
     if (!ok) return;
     Progress.reset();
     App.render();
-    App.toast("Progression effacée");
+    UI.toast("Progression effacée");
   }
 };
 

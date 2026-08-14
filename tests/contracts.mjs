@@ -184,6 +184,31 @@ export function contractSuite() {
     return leaks.length ? { pass: false, detail: leaks.join(" | ") }
       : { pass: true, detail: "5 modules, 26 membres déplacés" };
   });
+  t("refactor:aucun champ d'état orphelin laissé sur App", () => {
+    // Une extraction déplace les méthodes ET l'état. Si une DÉCLARATION reste
+    // sur l'ancien propriétaire alors que toutes les lectures ont été
+    // renommées, elle devient un champ mort qui ment sur qui possède quoi.
+    // Le test des membres fantômes ne le voit pas : il n'inspecte que les
+    // sites d'appel.
+    const MOVED = {
+      SessionCtl: ["session", "sessionReport", "sessionComplete", "drillRun", "focusLeak", "focusNote"],
+      DailyUI: ["dailyRun"],
+      Onboarding: ["_obAvatar", "_obMentor"],
+      ProfileUI: ["_profAvatar"],
+    };
+    const orphans = [];
+    for (const [owner, fields] of Object.entries(MOVED)) {
+      const target = G(owner);
+      for (const f of fields) {
+        if (Object.prototype.hasOwnProperty.call(App, f)) orphans.push(`App.${f} (appartient à ${owner})`);
+        if (target && !Object.prototype.hasOwnProperty.call(target, f)) {
+          orphans.push(`${owner}.${f} non déclaré`);
+        }
+      }
+    }
+    return orphans.length ? { pass: false, detail: orphans.join(" | ") }
+      : { pass: true, detail: "10 champs, propriétaire unique" };
+  });
   t("refactor:l'onboarding reste fonctionnel après extraction", () => {
     const savedName = Player.data && Player.data.name;
     try {
