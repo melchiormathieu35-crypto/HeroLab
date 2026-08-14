@@ -211,32 +211,48 @@ sens, aucune structure n'est commune. Le bon libellé serait `calls` ou `reads`.
 À noter : la relation n'est pas propre à `BLStats`. `Rating` lit identiquement `Progress`, `HRStats`
 et `PRStats`. Isoler `BLStats` est un artefact d'échantillonnage, pas une propriété du code.
 
-### 3.3 `Journey → Leaks` — **RÉFUTÉE (FALSE POSITIVE)** — et c'est le vrai signal
+### 3.3 `Journey → Leaks` — **RÉFUTÉE (FALSE POSITIVE)**, mais sans la portée que je lui prêtais
 
-`Journey` occupe 5533–5684. Recherche de `Leaks` : **zéro occurrence.**
-
-Ce que `Journey` utilise réellement :
+L'arête elle-même est bien fausse. `Journey` occupe 5533–5684 ; recherche de `Leaks` : **zéro
+occurrence.** Ce que `Journey` utilise réellement :
 - `Progress.summary()` @5550 et @5584 → lit le champ `.leaks` de l'objet retourné ;
 - `LEAK_INFO[leakKey]` @5619 pour les libellés.
 
-Le module `Leaks` (@14082) est le détecteur du tracker Feutre. Ses seuls appelants sont **lui-même**
-(14435–14452) et **`V`**, la vue Feutre (14962–14967). `Journey` ne le touche jamais.
+> **Correction.** Une première version de cet audit concluait ici que les deux systèmes de leaks
+> étaient « entièrement disjoints, sans aucun pont ». **C'est faux, et le pont est explicite.**
+> L'erreur venait de la méthode : ma détection de modules ne reconnaissait que les déclarations
+> `^const X =` en colonne 0. Or le tracker Feutre n'est pas un `const` — c'est une IIFE
+> `window.Feutre = (function () {` @12866. Tout le sous-système a donc été mal attribué, et surtout
+> sa **surface d'export**, en fin de fichier, n'a jamais été vue.
 
-**Le faux positif révèle un vrai problème.** Il existe deux systèmes de détection de leaks
-entièrement disjoints :
+Le pont réel, vérifié dans les deux versions du fichier :
 
-| | Système simulateur | Système tracker |
-|---|---|---|
-| Producteur | `Progress` (@3832) | `Leaks` (@14082) |
-| Source | décisions du simulateur | mains réelles importées |
-| Taxonomie | `LEAK_INFO` (@4035) | `LEAK_PLAIN` (@13847), `LEAK_DRILL` (@14003), `LEAK_COST` (@14045) |
-| Consommateurs | `Journey`, `App`, `Career` | `V` uniquement |
-| Persistance | `pivot.v1` | `feutre.v1` |
+```
+Feutre détecte un leak sur les mains réelles importées
+   └─ V rend une carte de diagnostic avec un bouton  onclick="App.drillLeak('<id>')"   @15830 (v18)
+        └─ App.drillLeak(leakId)                                        @7404 (v17) · @8210 (v18)
+             ├─ window.Feutre.drillConfig(leakId) → LEAK_DRILL[id]      @15424 (v17) · @16279 (v18)
+             └─ window.Feutre.leakTitle(leakId)   → LEAK_PLAIN[id].title @15425 (v17) · @16280 (v18)
+                  └─ 10 spots de simulateur ciblés sur cette fuite
+```
 
-Ils décrivent des concepts qui se recouvrent largement, sans aucun pont. Un joueur peut avoir un leak
-diagnostiqué par le tracker sur ses mains réelles sans que `Journey` ne le propose jamais en mission.
-C'est un couplage latent manquant — **la seule vraie découverte architecturale des trois arêtes
-ambiguës**, et Graphify l'a signalée par accident, en se trompant de module.
+Feutre expose délibérément **deux fonctions** de pont (`drillConfig`, `leakTitle`) sur `window.Feutre`,
+et `App` les consomme derrière des gardes défensives (`window.Feutre && window.Feutre.drillConfig`).
+Un leak diagnostiqué sur les mains réelles **devient donc bien** un entraînement ciblé dans le
+simulateur. Ce n'est pas un couplage manquant : c'est un couplage conçu, étroit et intentionnel.
+
+**Ce qui reste vrai après correction :**
+
+1. **Les deux taxonomies sont réellement dupliquées.** `LEAK_INFO` (@4035, simulateur) et
+   `LEAK_PLAIN`/`LEAK_DRILL`/`LEAK_COST` (@13847+, tracker) décrivent des concepts recouvrants dans
+   deux vocabulaires séparés. Le pont traduit entre les deux (`leakTitle`) au lieu de les unifier.
+2. **`Journey` reste hors du pont.** Ses missions sont construites uniquement depuis
+   `Progress.summary().leaks` + `LEAK_INFO` (@6281, @6315, @6350, @6384 en v18). Un leak détecté par
+   le tracker peut déclencher un drill, mais **n'apparaîtra jamais comme mission dans la frise
+   `Journey`**. C'est la version exacte — et beaucoup plus étroite — de ce que j'avançais.
+3. **Le sens du pont est unidirectionnel** : tracker → simulateur. Le résultat du drill est écrit
+   dans `Progress` (`pivot.v1`), jamais renvoyé au diagnostic Feutre (`feutre.v1`). Le tracker ne
+   sait pas que sa fuite a été travaillée.
 
 ---
 
@@ -381,12 +397,18 @@ Aucun module de persistance. `localStorage` est appelé **directement depuis 14 
 
 - **Responsabilités** : application autonome de suivi de mains réelles, embarquée dans Pivot —
   parsing d'historiques Winamax/PokerStars → stockage → calcul → détection de leaks → vues.
-- **Entrantes depuis Pivot** : **une seule** — `V`→`App` (1 réf). Sous-système remarquablement étanche.
-- **Couplage** : **interne fort, externe quasi nul.** Sa propre clé (`feutre.v1`), son propre routeur
-  (`FT`), ses propres utilitaires (`U`), sa propre taxonomie de leaks.
-- **Risque** : **FAIBLE en isolation, ÉLEVÉ en intégration.** Le sous-système est sain, mais il
-  duplique tout le vocabulaire de leaks de PROGRESSION sans aucun pont (§3.3). `V` fait 758 lignes
-  avec 117 références sortantes — c'est le second God Object du fichier, plus petit qu'`App`.
+- **Forme réelle** : ce n'est pas une série de `const` mais une **IIFE** — `window.Feutre = (function
+  () { … })()` @12866 — qui n'expose qu'une poignée de fonctions. Les modules listés ci-dessus sont
+  internes à cette closure, donc réellement encapsulés (contrairement au reste du fichier, en portée
+  globale).
+- **Surface de contact avec Pivot** : **trois points, tous explicites** — `Feutre.open()` (@5743,
+  @7425 en v17), `Feutre.drillConfig(id)` et `Feutre.leakTitle(id)` (@15424–15425 v17,
+  @16279–16280 v18), consommés par `App.drillLeak` derrière des gardes défensives. Voir §3.3.
+- **Couplage** : **interne fort, externe étroit et intentionnel.** Sa propre clé (`feutre.v1`), son
+  propre routeur (`FT`), ses propres utilitaires (`U`), sa propre taxonomie de leaks.
+- **Risque** : **FAIBLE.** C'est le sous-système le mieux encapsulé du fichier — le seul à avoir une
+  frontière mécanique plutôt que conventionnelle. Réserve : `V` fait 758 lignes avec 117 références
+  sortantes, c'est le second God Object du fichier, plus petit qu'`App`.
 
 ### 5.9 ANALYTICS
 
@@ -448,9 +470,11 @@ primitive correctement dimensionnée.
    toucher à la boucle de jeu. Le patron existe déjà : `CareerUI`.
 2. **Aucune couche de persistance** — 14 modules appellent `localStorage` directement sur 9 clés.
    Toute migration de schéma est une modification en 14 points.
-3. **Deux systèmes de leaks disjoints** — simulateur (`Progress` + `LEAK_INFO`) et tracker
-   (`Leaks` + `LEAK_PLAIN`/`DRILL`/`COST`) décrivent des concepts recouvrants sans aucun pont. Un
-   leak détecté sur les mains réelles ne deviendra jamais une mission dans `Journey`.
+3. **Deux taxonomies de leaks dupliquées** — simulateur (`Progress` + `LEAK_INFO`) et tracker
+   (`Leaks` + `LEAK_PLAIN`/`DRILL`/`COST`) décrivent des concepts recouvrants dans deux vocabulaires
+   séparés. Un pont explicite existe bien (`App.drillLeak` → `window.Feutre.drillConfig`, §3.3) et
+   traduit entre les deux au lieu de les unifier ; il est unidirectionnel (tracker → simulateur) et
+   ne couvre pas `Journey`, dont les missions ignorent les leaks du tracker.
 4. **`V` est un second God Object** (758 lignes, 117 références sortantes), à surveiller.
 5. **Triple duplication** de `HRStats`/`PRStats`/`BLStats`, et duplication de l'algorithme bayésien
    entre `RangeModel` et `ProfileModel`.
