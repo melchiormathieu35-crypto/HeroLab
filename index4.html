@@ -5845,6 +5845,31 @@ const Career = {
    n'est décidée ici — l'interface ne fait qu'afficher ce que le moteur calcule.
    ========================================================================== */
 const UI = {
+
+  /** Petit graphe SVG d'une courbe 0-100. Primitive générique : elle vivait
+   *  dans HRUI alors que PRUI et BLUI l'utilisaient aussi — c'était le seul
+   *  couplage inter-labs du fichier. Rendu et classes CSS inchangés. */
+  sparkline(vals) {
+    const w = 640, h = 120, pad = 8;
+    const min = 0, max = 100;
+    const n = vals.length;
+    const x = i => pad + (i / (n - 1)) * (w - 2 * pad);
+    const y = v => h - pad - ((v - min) / (max - min)) * (h - 2 * pad);
+    const pts = vals.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+    const area = `${pad},${h - pad} ${pts} ${(w - pad)},${h - pad}`;
+    const last = vals[vals.length - 1];
+    return `<svg class="hr-spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+      <defs><linearGradient id="hrsparkg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="var(--brass)" stop-opacity=".28"/>
+        <stop offset="1" stop-color="var(--brass)" stop-opacity="0"/>
+      </linearGradient></defs>
+      <line x1="${pad}" y1="${y(50)}" x2="${w - pad}" y2="${y(50)}" stroke="var(--line)" stroke-dasharray="3 4"/>
+      <polygon points="${area}" fill="url(#hrsparkg)"/>
+      <polyline points="${pts}" fill="none" stroke="var(--brass)" stroke-width="2" stroke-linejoin="round"/>
+      <circle cx="${x(n - 1)}" cy="${y(last)}" r="3.5" fill="var(--brass)"/>
+    </svg>
+    <div class="hr-spark-scale"><span>0 %</span><span>50 %</span><span>100 %</span></div>`;
+  },
   /* -------------------------------------------------------------- Cartes */
   card(c, size = "") {
     if (c == null) return "";
@@ -10786,7 +10811,7 @@ const HRUI = {
     ${curve.length >= 3 ? `
     <div class="card mt">
       <div class="card-h"><h3>Courbe de progression</h3><span class="note">précision glissante (10 spots)</span></div>
-      ${HRUI.sparkline(curve)}
+      ${UI.sparkline(curve)}
     </div>` : ""}
 
     <div class="grid c2 mt" style="align-items:start">
@@ -10835,28 +10860,6 @@ const HRUI = {
     </div>`;
   },
 
-  /** Petit graphe SVG de la courbe de progression. */
-  sparkline(vals) {
-    const w = 640, h = 120, pad = 8;
-    const min = 0, max = 100;
-    const n = vals.length;
-    const x = i => pad + (i / (n - 1)) * (w - 2 * pad);
-    const y = v => h - pad - ((v - min) / (max - min)) * (h - 2 * pad);
-    const pts = vals.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
-    const area = `${pad},${h - pad} ${pts} ${(w - pad)},${h - pad}`;
-    const last = vals[vals.length - 1];
-    return `<svg class="hr-spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
-      <defs><linearGradient id="hrsparkg" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="var(--brass)" stop-opacity=".28"/>
-        <stop offset="1" stop-color="var(--brass)" stop-opacity="0"/>
-      </linearGradient></defs>
-      <line x1="${pad}" y1="${y(50)}" x2="${w - pad}" y2="${y(50)}" stroke="var(--line)" stroke-dasharray="3 4"/>
-      <polygon points="${area}" fill="url(#hrsparkg)"/>
-      <polyline points="${pts}" fill="none" stroke="var(--brass)" stroke-width="2" stroke-linejoin="round"/>
-      <circle cx="${x(n - 1)}" cy="${y(last)}" r="3.5" fill="var(--brass)"/>
-    </svg>
-    <div class="hr-spark-scale"><span>0 %</span><span>50 %</span><span>100 %</span></div>`;
-  },
 
   async confirmReset() {
     const ok = await Modal.confirm({
@@ -12481,7 +12484,7 @@ const PRUI = {
     ${curve.length >= 3 ? `
     <div class="card mt">
       <div class="card-h"><h3>Courbe de progression</h3><span class="note">précision glissante</span></div>
-      ${HRUI.sparkline(curve)}
+      ${UI.sparkline(curve)}
     </div>` : ""}
 
     <div class="grid c2 mt" style="align-items:start">
@@ -13835,7 +13838,7 @@ const BLUI = {
     </div>
 
     ${curve.length >= 3 ? `<div class="card mt">
-      <div class="card-h"><h3>Courbe de progression</h3></div>${HRUI.sparkline(curve)}</div>` : ""}
+      <div class="card-h"><h3>Courbe de progression</h3></div>${UI.sparkline(curve)}</div>` : ""}
 
     <div class="grid c2 mt" style="align-items:start">
       <div class="card">
