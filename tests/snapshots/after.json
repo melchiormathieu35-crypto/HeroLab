@@ -1,21 +1,21 @@
 {
   "file": "index4.html",
-  "totalLines": 16534,
-  "appJsLines": 14326,
+  "totalLines": 16537,
+  "appJsLines": 14329,
   "modules": 99,
   "App": {
-    "lines": 1428,
-    "methods": 30,
-    "stateDeclared": 10,
+    "lines": 1416,
+    "methods": 29,
+    "stateDeclared": 8,
     "stateDynamic": 2,
     "dynamicFields": [
       "_homeChart",
       "_mentorRewarded"
     ],
     "fanOut": 31,
-    "fanIn": 14,
-    "domWrites": 39,
-    "selfRefs": 174
+    "fanIn": 13,
+    "domWrites": 36,
+    "selfRefs": 171
   },
   "storage": {
     "directModules": 1,
@@ -26,10 +26,11 @@
     "hasStorageLayer": true
   },
   "dom": {
-    "modules": 17,
+    "modules": 18,
     "list": [
       "Modal",
       "Studio",
+      "UI",
       "Onboarding",
       "App",
       "ProfileUI",
@@ -59,20 +60,20 @@
   "topFanOut": [
     {
       "n": "App",
-      "loc": 1428,
+      "loc": 1416,
       "out": 31,
-      "in": 14
+      "in": 13
     },
     {
       "n": "DataPort",
       "loc": 144,
-      "out": 13,
+      "out": 14,
       "in": 4
     },
     {
       "n": "Studio",
       "loc": 349,
-      "out": 12,
+      "out": 13,
       "in": 1
     },
     {

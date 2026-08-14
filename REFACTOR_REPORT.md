@@ -1,10 +1,10 @@
 # Hero Lab — Rapport de refactorisation architecturale
 
-Cible : `index4.html` (fichier monolithique courant, 16 288 lignes avant, 16 534 après).
+Cible : `index4.html` (fichier monolithique courant, 16 288 lignes avant, 16 537 après).
 Passe **architecture / maintenabilité / sûreté uniquement**. Aucune fonctionnalité ajoutée,
 retirée ou modifiée.
 
-Branche `claude/graphifyy-cli-install-vv16zy` · 8 commits · **65/65 tests au vert**.
+Branche `claude/graphifyy-cli-install-vv16zy` · 11 commits · **66/66 tests au vert**.
 
 ---
 
@@ -22,7 +22,8 @@ Sept modules ont été créés, tous par extraction de code existant — aucun c
 | `JourneyUI` | `App` | frise, missions, maîtrise |
 | `SessionCtl` | `App` | cycle de vie session / drill / rapport |
 
-Plus un déplacement : `HRUI.sparkline` → `UI.sparkline`.
+Plus deux déplacements de primitives génériques : `HRUI.sparkline` → `UI.sparkline` et
+`App.toast` → `UI.toast`.
 
 **Ordre de travail.** La couche `Storage` a été faite *avant* les extractions : les modules à
 sortir manipulaient `localStorage`, les extraire ensuite aurait imposé de déplacer deux fois le
@@ -36,20 +37,20 @@ moteur a été figée **avant** la première ligne modifiée.
 
 | métrique | avant | après | delta |
 |---|---:|---:|---:|
-| lignes totales | 16 288 | 16 534 | +246 |
+| lignes totales | 16 288 | 16 537 | +249 |
 | modules top-level | 92 | 99 | +7 |
-| **App — lignes** | **1 957** | **1 428** | **−529 (−27 %)** |
-| **App — méthodes** | **61** | **30** | **−31 (−51 %)** |
-| App — état déclaré | 10 | 10 | = |
+| **App — lignes** | **1 957** | **1 414** | **−543 (−28 %)** |
+| **App — méthodes** | **61** | **29** | **−32 (−52 %)** |
+| App — état déclaré | 10 | 8 | −2 |
 | **App — état greffé à l'exécution** | **13** | **2** | **−11 (−85 %)** |
 | App — fan-out (modules appelés) | 27 | 31 | +4 |
-| App — écritures DOM | 64 | 39 | −25 |
+| App — écritures DOM | 64 | 36 | −28 |
 | **modules accédant à `localStorage`** | **10** | **1** | **−9** |
 | accès `localStorage` directs | 28 | 5 | −23 |
 | **dépendances inter-labs** | **2** | **0** | **−2** |
 | moteur gelé pur | oui | oui | = |
 
-Les +246 lignes sont de la documentation de contrat et des en-têtes de module ; le code
+Les +249 lignes sont de la documentation de contrat et des en-têtes de module ; le code
 exécutable n'a pas grossi.
 
 ---
@@ -62,20 +63,24 @@ sortants pour 7 entrants, et **13 champs d'état greffés à l'exécution** — 
 n'était lisible nulle part, il fallait exécuter le programme pour la connaître.
 
 ### Après
-1 428 lignes, 30 méthodes, **2 champs greffés** (`_homeChart`, `_mentorRewarded`).
+1 416 lignes, 29 méthodes, **2 champs greffés** (`_homeChart`, `_mentorRewarded`).
+
+Deux champs déclarés (`session`, `sessionReport`) subsistaient après l'extraction de
+`SessionCtl` alors que plus rien ne les lisait — résidus morts, repérés par le second passage
+Graphify et supprimés.
 
 Composition de ce qui reste :
 
 | bloc | lignes | statut |
 |---|---:|---|
-| routage / coordination | 110 | cœur légitime |
+| routage / coordination | 96 | cœur légitime |
 | boucle de décision (`newHand`, `choose`, `continueHand`) | 186 | cœur légitime |
 | rendu de table (`renderPlay`, `renderReview`, `renderActions`…) | 459 | lié à la boucle |
 | écrans restants (`renderHome`, `renderSetup`, `renderStats`, `renderLeaks`, `renderTheory`…) | 642 | **extractible — phase suivante** |
 
 ### Le fan-out a augmenté, et c'est assumé
 27 → 31. `App.render()` doit désormais aiguiller vers six modules de vue supplémentaires, et le
-fan-in est passé de 7 à 14 puisque ces modules rappellent `App.go` / `App.toast`. C'est la forme
+fan-in est passé de 7 à 14 puisque ces modules rappellent `App.go` / `App.newHand`. C'est la forme
 attendue d'un routeur : **plus de relations, mais chacune beaucoup plus fine**. Les réductions
 qui comptent sont les lignes, les méthodes, l'état et les écritures DOM. Présenter cette hausse
 comme un progrès serait malhonnête ; la masquer aussi.
@@ -233,6 +238,7 @@ puis 65 tests dans Chromium via Playwright.
 |---|---:|---|
 | moteur — empreinte | 14 | `Deck`, `HandEval`, `Ranges`, `BoardTex`, `Equity`, `Odds`, `CAT`, `RANKS` |
 | moteur — pureté | 6 | absence de DOM / stockage / couche supérieure |
+| intégrité de l'état | 1 | aucun champ orphelin sur `App` (10 champs, propriétaire unique) |
 | contrat `Progress.summary` | 3 | 16 champs typés, forme des leaks, stabilité inter-appels |
 | stockage | 15 | API, clés historiques, non-renommage, JSON corrompu, clé absente, sémantique historique, quota refusé, stockage indisponible, accès direct interdit |
 | intégrité du refactor | 3 | membres fantômes (10 modules croisés), membres déplacés, onboarding fonctionnel |
@@ -244,7 +250,7 @@ puis 65 tests dans Chromium via Playwright.
 | export / import | 4 | payload versionné, round-trip sans perte, rejet fichier étranger, rejet illisible |
 | santé runtime | 1 | aucune erreur JS en console |
 
-**Résultat : 65/65.** Baseline reproductible sur trois exécutions consécutives avant démarrage.
+**Résultat : 66/66.** Baseline reproductible sur trois exécutions consécutives avant démarrage.
 
 ### Régressions réellement attrapées par le harnais
 
@@ -270,7 +276,58 @@ taille implausible.
 
 ## 8. Graphify — comparaison avant / après
 
-*(section complétée après le second passage — voir plus bas)*
+Deux extractions indépendantes, avant et après. **Précaution de lecture** : ce sont deux passes
+LLM distinctes (100 nœuds / 215 arêtes avant, 89 / 188 après), donc les valeurs absolues ne sont
+pas strictement comparables. Le graphe sert d'instrument de comparaison, pas de vérité — les
+métriques statiques du §1 restent la mesure de référence.
+
+### Hubs
+
+| avant (degré) | après (degré) |
+|---|---|
+| App — 23 | App — 26 |
+| Studio — 22 | **SessionCtl — 14** |
+| Deck — 13 | **Storage — 11** |
+| Ranges — 13 | **DataPort — 11** |
+| StorageGuard — 11 | LEAK_INFO — 9 |
+| BoardTex — 10 | Spot / Progress / Player / ProfileUI / HRUI — 8 |
+
+Lecture favorable : `Storage`, `SessionCtl` et `DataPort` apparaissent comme des hubs **nommés**
+là où il n'y avait rien — la responsabilité qu'ils portent était auparavant diffuse dans `App`.
+`StorageGuard`, qui figurait en 5ᵉ hub avant, quitte le classement : il n'est plus sur le chemin
+de persistance. Communautés : 7 → 9, décomposition plus fine.
+
+### Ce que Graphify a trouvé et que j'avais manqué
+
+L'extraction a signalé que `App` déclarait encore `session` et `sessionReport` après l'extraction
+de `SessionCtl`, alors que toutes les lectures avaient été renommées : **deux champs morts,
+résidus de ma propre extraction**. Vérifié, confirmé, corrigé. Mon test de membres fantômes ne
+pouvait pas le voir — il n'inspecte que les sites d'appel. Un test dédié aux champs d'état a été
+ajouté.
+
+### Le résultat défavorable
+
+**La centralité d'intermédiarité d'`App` a augmenté : 0,325 → 0,554.**
+
+C'est l'inverse du critère §22 « réduire le couplage de App ». Ce n'est pas un artefact
+d'échantillonnage : la métrique statique le confirme indépendamment — fan-out 27 → 31, fan-in
+7 → 14.
+
+Mécanisme mesuré : les six modules extraits rappellent `App` 49 fois, dominées par trois
+primitives — `App.toast` ×15, `App.go` ×12, `App.newHand` ×6. Chaque écran passe désormais par
+`App` pour naviguer et notifier, ce qui place `App` sur davantage de plus courts chemins.
+
+**Correctif appliqué immédiatement** : `App.toast` → `UI.toast`. C'est une primitive de
+notification générique, exactement le même cas que `HRUI.sparkline` — la laisser dans le routeur
+obligeait six modules à le rappeler pour afficher un message. Rappels vers `App` : **49 → 34
+(−31 %)**, corps et CSS inchangés.
+
+**Diagnostic honnête.** Par *responsabilité*, `App` n'est plus un God Object : 1 428 lignes,
+30 méthodes, 2 champs greffés, un métier cohérent. Par *connectivité*, il est plus central
+qu'avant : c'est le point de passage obligé de toutes les vues. C'est le compromis réel d'une
+extraction de vues hors d'un monolithe sans introduire de médiateur ou de bus d'événements — et
+introduire l'un des deux aurait été précisément l'abstraction artificielle que le §22 interdit.
+Le critère §22 est donc **partiellement atteint**, et la voie de réduction est identifiée (§10).
 
 ---
 
@@ -284,6 +341,7 @@ taille implausible.
 | 4 | **`HRStats` / `PRStats` / `BLStats` triplés** | Analysés (§12 de la mission) : API quasi identique, mais `summary()` retourne des formes **réellement divergentes** — HR `{avg,avgTime,perfect,spots,streak}`, PR ajoute `avgHands,exact`, BL ajoute `bestStreak,exact,exactRate` ; BL a en plus `diagnostics`/`hasFlushBoard` et n'a pas `last30`/`strengths`. Une primitive commune devrait abstraire trois payloads différents : **gain non démontrable, abstraction artificielle refusée.** |
 | 5 | **`RangeModel` / `ProfileModel` — même algorithme bayésien** | Même raisonnement. Duplication simple et lisible préférée à une abstraction couplée. |
 | 6 | **2 champs encore greffés sur `App`** (`_homeChart`, `_mentorRewarded`) | Liés respectivement au graphe d'accueil et à la boucle de décision, tous deux restés dans `App`. À déclarer lors de l'extraction de `HomeUI`. |
+| 8 | **Centralité d'`App` en hausse** (betweenness 0,325 → 0,554) | Seul critère §22 non atteint. Mécanisme identifié et partiellement corrigé (§8) ; la suite est le point 1 du §10. |
 | 7 | **Portée globale** | Non convertie en modules ES, conformément à la mission. Aucun global inutile ajouté : les 7 nouveaux sont tous des propriétaires de responsabilité. |
 
 ---
@@ -292,16 +350,21 @@ taille implausible.
 
 Par valeur décroissante, et uniquement ce qui reste réellement pertinent :
 
-1. **Extraire `HomeUI` et `StatsUI`** — ~640 lignes, même patron que les six extractions
+1. **Réduire la centralité d'`App`** — c'est le point faible restant (§8). Les 34 rappels sont
+   maintenant dominés par `App.go` (navigation) et `App.newHand` (entrée de boucle). Un objet
+   `Router` minimal portant `go`/`view`/`TITLES` retirerait la navigation d'`App` sans médiateur
+   ni bus d'événements. À faire **avant** toute nouvelle extraction, sinon chaque module ajouté
+   aggrave la centralité.
+2. **Extraire `HomeUI` et `StatsUI`** — ~640 lignes, même patron que les six extractions
    réussies. Ramènerait `App` sous les 800 lignes, essentiellement routage + boucle + rendu de
    table. Les deux derniers champs greffés disparaîtraient avec.
-2. **Trancher la table canonique des identifiants de fuites** (§4). C'est une décision produit,
+3. **Trancher la table canonique des identifiants de fuites** (§4). C'est une décision produit,
    pas technique. Une fois prise, le câblage est trivial : le pont existe déjà et le test de
    recouvrement signalera le changement.
-3. **Réduire la surface publique de Feutre** en retirant `controller: FT` si rien ne le consomme
+4. **Réduire la surface publique de Feutre** en retirant `controller: FT` si rien ne le consomme
    côté Pivot — à vérifier avant.
-4. **Étendre le harnais aux parcours utilisateur complets** (session entière, drill de bout en
+5. **Étendre le harnais aux parcours utilisateur complets** (session entière, drill de bout en
    bout, import Winamax réel). Les tests actuels couvrent les contrats et les points d'entrée,
    pas des scénarios longs.
-5. **Ne pas** fusionner les trois `*Stats` ni les deux modèles bayésiens tant qu'un besoin réel
+6. **Ne pas** fusionner les trois `*Stats` ni les deux modèles bayésiens tant qu'un besoin réel
    ne l'impose pas.
