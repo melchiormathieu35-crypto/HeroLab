@@ -6147,41 +6147,9 @@ const Player = {
     if (m.seen < 30 || rate < 0.65) return { tier: 2, name: "Familier", rate, seen: m.seen, next: 30 };
     if (m.seen < 60 || rate < 0.78) return { tier: 3, name: "Solide", rate, seen: m.seen, next: 60 };
     return { tier: 4, name: "Maîtrisé", rate, seen: m.seen, next: null };
-  },
-
-  /* ----- Export / import de TOUTE la progression ----- */
-  exportAll() {
-    const safeParse = s => { try { return s ? JSON.parse(s) : null; } catch { return null; } };
-    const dump = {
-      _format: "pivot-save", _appVersion: APP_VERSION, _version: 1, _exported: new Date().toISOString(),
-      player: Player.data,
-      progress: Storage.get(Progress.KEY, null),
-      career: Storage.get(Career.KEY, null),
-      hr: Storage.get(HRStats.KEY, null),
-      pr: Storage.get(PRStats.KEY, null),
-      bl: Storage.get(BLStats.KEY, null),
-      rating: Storage.get(Rating.KEY, null),
-      journey: Storage.get(Journey.KEY, null)
-    };
-    return JSON.stringify(dump, null, 2);
-  },
-
-  importAll(json) {
-    let dump;
-    try { dump = JSON.parse(json); } catch { return { ok: false, error: "Fichier illisible : ce n'est pas une sauvegarde Pivot valide." }; }
-    if (!dump || dump._format !== "pivot-save") return { ok: false, error: "Ce fichier n'est pas une sauvegarde Pivot." };
-    const put = (key, val) => { if (val) Storage.set(key, val); };
-    if (dump.player) { Player.data = dump.player; Player.save(); }
-    put(Progress.KEY, dump.progress);
-    put(Career.KEY, dump.career);
-    put(HRStats.KEY, dump.hr);
-    put(PRStats.KEY, dump.pr);
-    put(BLStats.KEY, dump.bl);
-    put(Rating.KEY, dump.rating);
-    put(Journey.KEY, dump.journey);
-    Progress.load(); Career.load(); HRStats.load(); PRStats.load(); BLStats.load(); Player.load(); Rating.load(); Journey.load();
-    return { ok: true };
   }
+
+
 };
 
 /* ==========================================================================
@@ -6368,7 +6336,7 @@ const Onboarding = {
       <button id="obStart" class="btn pri lg ob-start" onclick="Onboarding.finishOnboarding()" disabled>Créer mon profil</button>
 
       <div class="ob-import">
-        Déjà une sauvegarde ? <button class="ob-link" onclick="App.triggerImport()">Importer ma progression</button>
+        Déjà une sauvegarde ? <button class="ob-link" onclick="DataPort.triggerImport()">Importer ma progression</button>
       </div>
     </div>`;
     Onboarding._obAvatar = AVATARS[0];
@@ -6997,9 +6965,9 @@ const App = {
       <p class="prof-save-desc">Ta progression est stockée sur cet appareil, dans ce navigateur. Pour la
         transférer sur un autre appareil, la mettre à l'abri, ou repartir de zéro, utilise les boutons ci-dessous.</p>
       <div class="prof-save-actions">
-        <button class="btn pri" onclick="App.doExport()">Exporter ma progression</button>
-        <button class="btn" onclick="App.triggerImport()">Importer une sauvegarde</button>
-        <button class="btn gh" onclick="App.confirmWipe()">Tout effacer</button>
+        <button class="btn pri" onclick="DataPort.doExport()">Exporter ma progression</button>
+        <button class="btn" onclick="DataPort.triggerImport()">Importer une sauvegarde</button>
+        <button class="btn gh" onclick="DataPort.confirmWipe()">Tout effacer</button>
       </div>
       <div class="prof-save-note">L'export génère un fichier <b>.json</b> qui contient tout : profil, statistiques,
         carrière, et progression des trois modes. L'import le restaure à l'identique.</div>
@@ -7025,57 +6993,6 @@ const App = {
     App.toast("Profil enregistré");
   },
 
-  doExport() {
-    const data = Player.exportAll();
-    const blob = new Blob([data], { type: "application/json" });
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    const stamp = new Date().toISOString().slice(0, 10);
-    a.download = `pivot-sauvegarde-${stamp}.json`;
-    a.click();
-    App.toast("Progression exportée");
-  },
-  triggerImport() {
-    let inp = document.getElementById("importFile");
-    if (!inp) {
-      inp = document.createElement("input");
-      inp.type = "file"; inp.accept = "application/json,.json"; inp.id = "importFile";
-      inp.style.display = "none";
-      inp.onchange = App.handleImport;
-      document.body.appendChild(inp);
-    }
-    inp.value = "";
-    inp.click();
-  },
-  handleImport(e) {
-    const file = e.target.files && e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      const res = Player.importAll(reader.result);
-      if (res.ok) {
-        document.getElementById("onboard").classList.remove("on");
-        App.go("home");
-        App.toast("Progression restaurée");
-      } else {
-        App.toast(res.error || "Import impossible");
-      }
-    };
-    reader.readAsText(file);
-  },
-  async confirmWipe() {
-    const ok = await Modal.confirm({
-      title: "Effacer toute ta progression ?",
-      message: "Profil, statistiques, carrière et modes seront définitivement supprimés. Pense à exporter d'abord si tu veux garder une trace.",
-      confirmLabel: "Tout effacer", danger: true
-    });
-    if (!ok) return;
-    try {
-      Storage.removeAll([Player.KEY, Progress.KEY, Career.KEY, HRStats.KEY, PRStats.KEY, BLStats.KEY, Rating.KEY, Journey.KEY]);
-    } catch (e) { }
-    Player.load(); Progress.load(); Career.load(); HRStats.load(); PRStats.load(); BLStats.load(); Rating.load();
-    Onboarding.renderOnboarding();
-  },
 
   /* ============================================================ DÉFI DU JOUR */
   renderDaily() {
@@ -7851,8 +7768,8 @@ const App = {
       <div class="card-h"><h3>Données</h3></div>
       <div style="display:flex;gap:9px;flex-wrap:wrap">
         <button class="btn pri" onclick="App.go('play');App.newHand()">Lancer une main</button>
-        <button class="btn" onclick="App.exportData()">Exporter mes données</button>
-        <button class="btn gh" style="color:var(--bad)" onclick="App.resetData()">Effacer ma progression</button>
+        <button class="btn" onclick="DataPort.exportData()">Exporter mes données</button>
+        <button class="btn gh" style="color:var(--bad)" onclick="DataPort.resetData()">Effacer ma progression</button>
       </div>
       <div style="margin-top:11px;font-size:12.5px;color:var(--faint);line-height:1.55">
         Tout est stocké dans ton navigateur. Rien n'est envoyé sur un serveur.
@@ -8345,29 +8262,7 @@ const App = {
     App.render();
   },
 
-  exportCareer() {
-    const blob = new Blob([JSON.stringify(Career.data, null, 2)], { type: "application/json" });
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "pivot-carriere.json";
-    a.click();
-    App.toast("Carrière exportée");
-  },
 
-  async resetCareer() {
-    const ok = await Modal.confirm({
-      title: "Recommencer une carrière ?",
-      message: "Ta progression actuelle (niveau, bankroll, historique) sera réinitialisée depuis NL2. Cette action est irréversible.",
-      confirmLabel: "Recommencer", danger: true
-    });
-    if (!ok) return;
-    Career.data = Career.blank();
-    Career.save();
-    App.session = null;
-    App.sessionReport = null;
-    App.render();
-    App.toast("Nouvelle carrière lancée");
-  },
 
   /* ------------------------------------------------------------- Utilitaires */
   toast(msg, ms = 2600) {
@@ -8382,26 +8277,7 @@ const App = {
     setTimeout(() => el.remove(), ms);
   },
 
-  exportData() {
-    const blob = new Blob([JSON.stringify(Progress.data, null, 2)], { type: "application/json" });
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "pivot-progression.json";
-    a.click();
-    App.toast("Données exportées");
-  },
 
-  async resetData() {
-    const ok = await Modal.confirm({
-      title: "Effacer toute ta progression ?",
-      message: "Cette action est définitive.",
-      confirmLabel: "Tout effacer", danger: true
-    });
-    if (!ok) return;
-    Progress.reset();
-    App.render();
-    App.toast("Progression effacée");
-  },
 
   init() {
     Player.load();
@@ -8448,6 +8324,154 @@ const App = {
 };
 
 document.addEventListener("DOMContentLoaded", App.init);
+
+/* ============================================================================
+   DATAPORT — export / import / réinitialisation de la progression.
+
+   Extrait d'App et de Player : c'est de l'I/O de sérialisation, pas de la
+   logique de jeu ni de l'état joueur. Player reste propriétaire de SES données ;
+   DataPort ne fait que les transporter (fichier <-> stockage).
+
+   Compatibilité : le format de fichier est inchangé (_format "pivot-save",
+   _version 1) et aucune clé n'est renommée. Une sauvegarde produite par une
+   version antérieure reste importable, et réciproquement.
+   ========================================================================== */
+const DataPort = {
+
+  /* ----- Export / import de TOUTE la progression ----- */
+  exportAll() {
+    const safeParse = s => { try { return s ? JSON.parse(s) : null; } catch { return null; } };
+    const dump = {
+      _format: "pivot-save", _appVersion: APP_VERSION, _version: 1, _exported: new Date().toISOString(),
+      player: Player.data,
+      progress: Storage.get(Progress.KEY, null),
+      career: Storage.get(Career.KEY, null),
+      hr: Storage.get(HRStats.KEY, null),
+      pr: Storage.get(PRStats.KEY, null),
+      bl: Storage.get(BLStats.KEY, null),
+      rating: Storage.get(Rating.KEY, null),
+      journey: Storage.get(Journey.KEY, null)
+    };
+    return JSON.stringify(dump, null, 2);
+  },
+
+  importAll(json) {
+    let dump;
+    try { dump = JSON.parse(json); } catch { return { ok: false, error: "Fichier illisible : ce n'est pas une sauvegarde Pivot valide." }; }
+    if (!dump || dump._format !== "pivot-save") return { ok: false, error: "Ce fichier n'est pas une sauvegarde Pivot." };
+    const put = (key, val) => { if (val) Storage.set(key, val); };
+    if (dump.player) { Player.data = dump.player; Player.save(); }
+    put(Progress.KEY, dump.progress);
+    put(Career.KEY, dump.career);
+    put(HRStats.KEY, dump.hr);
+    put(PRStats.KEY, dump.pr);
+    put(BLStats.KEY, dump.bl);
+    put(Rating.KEY, dump.rating);
+    put(Journey.KEY, dump.journey);
+    Progress.load(); Career.load(); HRStats.load(); PRStats.load(); BLStats.load(); Player.load(); Rating.load(); Journey.load();
+    return { ok: true };
+  },
+
+  doExport() {
+    const data = DataPort.exportAll();
+    const blob = new Blob([data], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    const stamp = new Date().toISOString().slice(0, 10);
+    a.download = `pivot-sauvegarde-${stamp}.json`;
+    a.click();
+    App.toast("Progression exportée");
+  },
+
+  triggerImport() {
+    let inp = document.getElementById("importFile");
+    if (!inp) {
+      inp = document.createElement("input");
+      inp.type = "file"; inp.accept = "application/json,.json"; inp.id = "importFile";
+      inp.style.display = "none";
+      inp.onchange = DataPort.handleImport;
+      document.body.appendChild(inp);
+    }
+    inp.value = "";
+    inp.click();
+  },
+
+  handleImport(e) {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const res = DataPort.importAll(reader.result);
+      if (res.ok) {
+        document.getElementById("onboard").classList.remove("on");
+        App.go("home");
+        App.toast("Progression restaurée");
+      } else {
+        App.toast(res.error || "Import impossible");
+      }
+    };
+    reader.readAsText(file);
+  },
+
+  async confirmWipe() {
+    const ok = await Modal.confirm({
+      title: "Effacer toute ta progression ?",
+      message: "Profil, statistiques, carrière et modes seront définitivement supprimés. Pense à exporter d'abord si tu veux garder une trace.",
+      confirmLabel: "Tout effacer", danger: true
+    });
+    if (!ok) return;
+    try {
+      Storage.removeAll([Player.KEY, Progress.KEY, Career.KEY, HRStats.KEY, PRStats.KEY, BLStats.KEY, Rating.KEY, Journey.KEY]);
+    } catch (e) { }
+    Player.load(); Progress.load(); Career.load(); HRStats.load(); PRStats.load(); BLStats.load(); Rating.load();
+    Onboarding.renderOnboarding();
+  },
+
+  exportCareer() {
+    const blob = new Blob([JSON.stringify(Career.data, null, 2)], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "pivot-carriere.json";
+    a.click();
+    App.toast("Carrière exportée");
+  },
+
+  async resetCareer() {
+    const ok = await Modal.confirm({
+      title: "Recommencer une carrière ?",
+      message: "Ta progression actuelle (niveau, bankroll, historique) sera réinitialisée depuis NL2. Cette action est irréversible.",
+      confirmLabel: "Recommencer", danger: true
+    });
+    if (!ok) return;
+    Career.data = Career.blank();
+    Career.save();
+    App.session = null;
+    App.sessionReport = null;
+    App.render();
+    App.toast("Nouvelle carrière lancée");
+  },
+
+  exportData() {
+    const blob = new Blob([JSON.stringify(Progress.data, null, 2)], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "pivot-progression.json";
+    a.click();
+    App.toast("Données exportées");
+  },
+
+  async resetData() {
+    const ok = await Modal.confirm({
+      title: "Effacer toute ta progression ?",
+      message: "Cette action est définitive.",
+      confirmLabel: "Tout effacer", danger: true
+    });
+    if (!ok) return;
+    Progress.reset();
+    App.render();
+    App.toast("Progression effacée");
+  }
+};
 
 /* ==========================================================================
    MODULE 9 : L'INTERFACE CARRIÈRE
@@ -8670,8 +8694,8 @@ const CareerUI = {
     <div class="card mt">
       <div class="card-h"><h3>Données de carrière</h3></div>
       <div style="display:flex;gap:9px;flex-wrap:wrap">
-        <button class="btn" onclick="App.exportCareer()">Exporter ma carrière</button>
-        <button class="btn gh" style="color:var(--bad)" onclick="App.resetCareer()">Recommencer une carrière</button>
+        <button class="btn" onclick="DataPort.exportCareer()">Exporter ma carrière</button>
+        <button class="btn gh" style="color:var(--bad)" onclick="DataPort.resetCareer()">Recommencer une carrière</button>
       </div>
     </div>`;
   },

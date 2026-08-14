@@ -3,8 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node tests/run.mjs",
-    "metrics": "node tests/metrics.mjs"
+    "test": "node tests/syntax-check.mjs && node tests/run.mjs",
+    "metrics": "node tests/metrics.mjs",
+    "syntax": "node tests/syntax-check.mjs"
   },
   "devDependencies": {
     "playwright": "^1.49.1"
