@@ -23,8 +23,14 @@ export function contractSuite() {
   const G = (n) => { try { return eval(n); } catch (e) { return undefined; } };
 
   // ------------------------------------------------ CONTRAT Progress.summary
+  // Contrat complet documenté au-dessus de Progress.summary(). Treize
+  // consommateurs en dépendent ; toute évolution doit être additive.
   const SUMMARY_CONTRACT = {
-    n: "number", correctRate: "number", leaks: "object",
+    n: "number", correct: "number", acceptable: "number", errors: "number",
+    evLoss: "number", rate: "number", correctRate: "number",
+    byStreet: "object", byPos: "object", leaks: "object", chunks: "object",
+    byDay: "object", xp: "number", level: "number", streak: "number",
+    nextLevelXp: "number",
   };
   t("contract:Progress.summary shape", () => {
     const s = Progress.summary();
@@ -387,6 +393,30 @@ export function contractSuite() {
     const stale = /\bApp\.drillLeak\b/.test(src) && owner !== "App";
     return stale ? { pass: false, detail: "onclick pointe encore vers App.drillLeak" }
       : { pass: true, detail: "handlers alignés sur " + owner };
+  });
+
+  // ------------------------------------------------------------------ LEAKS
+  t("leaks:recouvrement des deux taxonomies (fige l'état documenté)", () => {
+    // Verrouille la mesure décrite dans le bloc au-dessus de LEAK_INFO. Si une
+    // table de correspondance est ajoutée un jour, ce test échoue pour rappeler
+    // de mettre la documentation à jour — il ne juge pas la valeur du mapping.
+    const sim = Object.keys(G("LEAK_INFO") || {});
+    if (!sim.length) return { pass: false, detail: "LEAK_INFO vide" };
+    const shared = sim.filter(id => window.Feutre.drillConfig(id) !== null);
+    const expected = ["bb-underdefend", "bb-overdefend"];
+    const same = shared.length === expected.length && expected.every(e => shared.includes(e));
+    return same
+      ? { pass: true, detail: `${shared.length}/${sim.length} ids partagés — conforme au bloc documenté` }
+      : { pass: false, detail: `recouvrement changé: ${shared.join(",")} — mettre à jour la note sur les taxonomies` };
+  });
+  t("leaks:chaque id LEAK_INFO reste résoluble en libellé", () => {
+    const sim = Object.keys(G("LEAK_INFO") || {});
+    const bad = sim.filter(id => {
+      const t1 = (LEAK_INFO[id] || {}).name;
+      return !t1 || typeof t1 !== "string";
+    });
+    return bad.length ? { pass: false, detail: "sans nom: " + bad.join(",") }
+      : { pass: true, detail: sim.length + " fuites nommées" };
   });
 
   // ----------------------------------------------------------------- MOTEUR

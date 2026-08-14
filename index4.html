@@ -4631,6 +4631,43 @@ const Play = {
   }
 };
 
+/* ============================================================================
+   TAXONOMIES DE FUITES — ÉTAT DES LIEUX (à lire avant d'unifier)
+
+   Il existe DEUX vocabulaires de fuites, volontairement laissés distincts par
+   cette passe de refactor :
+
+     SIMULATEUR   LEAK_INFO (ici)  — 10 identifiants, produits par Progress à
+                  partir des décisions jouées. Consommés par Journey, Goals,
+                  Session, JourneyUI.
+     TRACKER      LEAK_PLAIN / LEAK_DRILL / LEAK_COST (dans l'IIFE Feutre) —
+                  produits par Leaks à partir des mains réelles importées.
+                  Consommés par les vues Feutre.
+
+   Un pont existe déjà et fonctionne : une carte de diagnostic du tracker
+   appelle SessionCtl.drillLeak(id), qui lit la config d'entraînement via
+   window.Feutre.drillConfig(id) et le libellé via window.Feutre.leakTitle(id).
+
+   MESURE : sur les 10 identifiants LEAK_INFO, SEULS 2 existent aussi côté
+   tracker — "bb-underdefend" et "bb-overdefend". Les 8 autres (river-call,
+   river-fold, overbluff, underbluff, missed-value, thin-value, fold-to-3bet,
+   too-passive) n'ont pas d'équivalent d'identifiant.
+
+   TODO (décision PRODUIT, pas technique) — définir la table canonique.
+   Établir une correspondance demanderait de trancher des équivalences
+   métier : "river-call" et "river-callstation" désignent-ils la même fuite ?
+   "too-passive" recouvre-t-il "call-station" ? Ces réponses engagent la
+   pédagogie du produit, pas l'architecture. Tant qu'elles ne sont pas prises,
+   inventer la table reviendrait à inventer des règles de progression.
+
+   Conséquence connue et assumée en l'état : une fuite détectée par le tracker
+   déclenche bien un entraînement ciblé, mais n'apparaît pas comme mission dans
+   Journey — les missions ne se construisent que depuis LEAK_INFO. Le test
+   « leaks:recouvrement des deux taxonomies » fige la mesure ci-dessus : il
+   échouera dès qu'une correspondance sera ajoutée, signalant qu'il faut
+   mettre ce bloc à jour.
+   ========================================================================== */
+
 /* ==========================================================================
    MODULE 5 : LE SUIVI DE PROGRESSION
    --------------------------------------------------------------------------
@@ -4747,7 +4784,37 @@ const Progress = {
     return entry;
   },
 
-  /** Statistiques agrégées pour le tableau de bord. */
+  /**
+   * CONTRAT INTERNE STABLE — statistiques agrégées.
+   *
+   * Treize consommateurs dépendent de la forme de ce retour : Rating.skills,
+   * Journey (snapshot / story / missions), CareerUI, JourneyUI, DailyUI,
+   * ProfileUI, SessionCtl et les écrans stats/leaks/home d'App. Modifier ou
+   * retirer un champ casse silencieusement des écrans très éloignés d'ici.
+   *
+   * Toute évolution doit être ADDITIVE. Le test
+   * « contract:Progress.summary shape » échoue immédiatement si un champ du
+   * socle disparaît ou change de type.
+   *
+   * @returns {{
+   *   n: number,             // décisions enregistrées
+   *   correct: number,       // décisions justes
+   *   acceptable: number,    // décisions acceptables (non optimales, non fautives)
+   *   errors: number,        // fautes
+   *   evLoss: number,        // EV perdue cumulée, en bb
+   *   rate: number,          // (correct + acceptable) / n
+   *   correctRate: number,   // correct / n — consommé par Rating.skills
+   *   byStreet: Object,      // agrégats par street
+   *   byPos: Object,         // agrégats par position
+   *   leaks: Array,          // fuites triées ; éléments { key, n, err, loss }
+   *   chunks: Array,         // tranches pour les courbes de progression
+   *   byDay: Object,         // agrégats journaliers — consommé par Journey
+   *   xp: number,
+   *   level: number,
+   *   streak: number,
+   *   nextLevelXp: number
+   * }}
+   */
   summary() {
     if (!Progress.data) Progress.load();
     const d = Progress.data;
