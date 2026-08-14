@@ -348,23 +348,45 @@ export function contractSuite() {
   t("bridge:leakTitle retombe sur l'id si inconnu", () =>
     window.Feutre.leakTitle("__inexistant__") === "__inexistant__" ? true
       : { pass: false, detail: "fallback cassé" });
-  t("bridge:App.drillLeak arme un drillRun (workflow tracker→simulateur)", () => {
-    const savedView = App.view, savedDrill = App.drillRun,
-      savedSession = App.session, savedDaily = App.dailyRun;
+  t("bridge:drillLeak arme un drillRun (workflow tracker→simulateur)", () => {
+    // drillLeak a été déplacé d'App vers SessionCtl ; le pont doit rester intact
+    // quel que soit son propriétaire.
+    const owner = (G("SessionCtl") && typeof SessionCtl.drillLeak === "function")
+      ? SessionCtl : App;
+    const savedView = App.view, savedDrill = owner.drillRun,
+      savedSession = owner.session, savedDaily = (G("DailyUI") || App).dailyRun;
     try {
-      App.drillLeak("utg-loose");
-      const d = App.drillRun;
+      owner.drillLeak("utg-loose");
+      const d = owner.drillRun;
       if (!d) return { pass: false, detail: "drillRun non armé" };
       const need = ["leak", "title", "cfg", "total"];
       const miss = need.filter(k => !has(d, k));
       if (miss.length) return { pass: false, detail: "manque " + miss.join(",") };
       if (d.cfg.mode !== "preflop") return { pass: false, detail: "mode non propagé: " + d.cfg.mode };
       if (d.cfg.forcePos !== "UTG") return { pass: false, detail: "forcePos non propagé" };
-      return { pass: true, detail: `leak=${d.leak} total=${d.total} mode=${d.cfg.mode}` };
+      return { pass: true, detail: `leak=${d.leak} total=${d.total} mode=${d.cfg.mode} via ${owner === App ? "App" : "SessionCtl"}` };
     } finally {
-      App.drillRun = savedDrill; App.view = savedView;
-      App.session = savedSession; App.dailyRun = savedDaily;
+      owner.drillRun = savedDrill; App.view = savedView;
+      owner.session = savedSession;
+      (G("DailyUI") || App).dailyRun = savedDaily;
     }
+  });
+  t("bridge:le handler du tracker pointe vers le bon propriétaire", () => {
+    // Le bouton « Refaire 10 spots » est généré dans une chaîne onclick ; si le
+    // renommage l'avait manqué, le pont serait cassé à l'exécution seulement.
+    const owner = (G("SessionCtl") && typeof SessionCtl.drillLeak === "function")
+      ? "SessionCtl" : "App";
+    let src = "";
+    for (const mod of [G("V"), G("FT")]) {
+      if (!mod) continue;
+      for (const k of Object.keys(mod)) {
+        if (typeof mod[k] === "function") src += mod[k].toString() + "\n";
+      }
+    }
+    if (!src) return { pass: true, detail: "vues Feutre non inspectables (IIFE) — couvert par le test d'appel" };
+    const stale = /\bApp\.drillLeak\b/.test(src) && owner !== "App";
+    return stale ? { pass: false, detail: "onclick pointe encore vers App.drillLeak" }
+      : { pass: true, detail: "handlers alignés sur " + owner };
   });
 
   // ----------------------------------------------------------------- MOTEUR

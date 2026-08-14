@@ -2616,15 +2616,15 @@ Preflop: UTG raise 2.5bb, HJ raise 10bb, hero to act`,
   },
 
   loadText(text) {
-    if (App.session && !App.sessionReport) {
+    if (SessionCtl.session && !SessionCtl.sessionReport) {
       App.toast("Termine (ou quitte) ta session de carrière avant d'utiliser le Studio.");
       return false;
     }
     const spec = this.parse(text);
     const t = this.build(spec);
     this.lastText = text;
-    App.drillRun = null; DailyUI.dailyRun = null;
-    App.focusNote = "SPOT STUDIO";
+    SessionCtl.drillRun = null; DailyUI.dailyRun = null;
+    SessionCtl.focusNote = "SPOT STUDIO";
     App.t = t;
     App.analysis = null; App.result = null; App.lastDecision = null;
     App.phase = "decide";
@@ -6934,12 +6934,12 @@ const App = {
 
     // --- Entraînement ciblé sur un leak (10 spots) : on impose le contexte
     // de la fuite (mode + position) pour recréer la situation à travailler.
-    if (App.drillRun) {
-      const d = App.drillRun.cfg || {};
+    if (SessionCtl.drillRun) {
+      const d = SessionCtl.drillRun.cfg || {};
       cfg.mode = d.mode || "libre";
       if (d.forcePos) cfg.forcePos = d.forcePos;
       if (d.facing) cfg.facing = true;
-      App.focusNote = App.drillRun.label || null;
+      SessionCtl.focusNote = SessionCtl.drillRun.label || null;
       let dtr = 0, dt = null;
       while (dtr++ < 30) {
         dt = Spot.generate(cfg);
@@ -6957,9 +6957,9 @@ const App = {
     // --- Session de carrière en cours : elle impose la limite, le roster et
     // les stacks. Le coaching y injecte aussi des spots ciblés sur le leak
     // dominant, une main sur trois environ.
-    const S = App.session;
-    if (S && !App.sessionReport) {
-      if (S.hands >= S.target) { App.endSession(); return; }
+    const S = SessionCtl.session;
+    if (S && !SessionCtl.sessionReport) {
+      if (S.hands >= S.target) { SessionCtl.endSession(); return; }
       const tier = TIERS.find(x => x.key === S.tier) || TIERS[0];
       cfg.stake = tier.stake;
       cfg.roster = S.roster;
@@ -6971,10 +6971,10 @@ const App = {
       if (leak && Math.random() < 0.34) {
         const f = Progress.focusFor(leak);
         cfg.mode = f.mode;
-        App.focusNote = (LEAK_INFO[leak] || {}).name || leak;
+        SessionCtl.focusNote = (LEAK_INFO[leak] || {}).name || leak;
       } else {
         cfg.mode = "libre";
-        App.focusNote = null;
+        SessionCtl.focusNote = null;
       }
       let tr = 0, tt = null;
       if (S.roster) S.roster.newHand();
@@ -6997,12 +6997,12 @@ const App = {
       if (leak) {
         const f = Progress.focusFor(leak.key);
         cfg.mode = f.mode;
-        App.focusNote = LEAK_INFO[leak.key] ? LEAK_INFO[leak.key].name : leak.key;
+        SessionCtl.focusNote = LEAK_INFO[leak.key] ? LEAK_INFO[leak.key].name : leak.key;
       } else {
         cfg.mode = "libre";
-        App.focusNote = null;
+        SessionCtl.focusNote = null;
       }
-    } else App.focusNote = null;
+    } else SessionCtl.focusNote = null;
 
     let tries = 0, t = null;
     while (tries++ < 25) {
@@ -7031,12 +7031,12 @@ const App = {
     const a = Judge.evaluate(t, decision);
     const entry = ghost ? { tags: [] } : Progress.record(t, a, decision);
     // La session de carrière consomme la même décision : rien n'est recalculé
-    if (!ghost && App.session && !App.sessionReport) {
-      Session.recordDecision(App.session, t, a, decision);
+    if (!ghost && SessionCtl.session && !SessionCtl.sessionReport) {
+      Session.recordDecision(SessionCtl.session, t, a, decision);
       for (const tag of (entry.tags || [])) {
         if (!tag.startsWith("leak:")) continue;
         const k = tag.slice(5);
-        App.session.leakCounts[k] = (App.session.leakCounts[k] || 0) + 1;
+        SessionCtl.session.leakCounts[k] = (SessionCtl.session.leakCounts[k] || 0) + 1;
       }
     }
     App.analysis = a;
@@ -7057,11 +7057,11 @@ const App = {
     }
 
     // Entraînement ciblé sur un leak : même logique, 10 spots comptés
-    if (!ghost && App.drillRun) {
-      App.drillRun.i++;
-      if (a.verdict === "correct") App.drillRun.correct++;
-      else if (a.verdict === "acceptable") App.drillRun.acceptable++;
-      if (App.drillRun.i >= App.drillRun.total) App.drillRun.finishing = true;
+    if (!ghost && SessionCtl.drillRun) {
+      SessionCtl.drillRun.i++;
+      if (a.verdict === "correct") SessionCtl.drillRun.correct++;
+      else if (a.verdict === "acceptable") SessionCtl.drillRun.acceptable++;
+      if (SessionCtl.drillRun.i >= SessionCtl.drillRun.total) SessionCtl.drillRun.finishing = true;
     }
 
     App.renderPlay();
@@ -7071,14 +7071,14 @@ const App = {
   /** Poursuivre la main après avoir lu l'analyse. */
   continueHand() {
     // Entraînement ciblé bouclé : on affiche le bilan du drill
-    if (App.drillRun && App.drillRun.finishing) {
+    if (SessionCtl.drillRun && SessionCtl.drillRun.finishing) {
       App.phase = "drill";
       App.t = null; App.analysis = null; App.lastDecision = null;
       App.render();
       return;
     }
     // En entraînement ciblé, on enchaîne : nouveau spot ciblé à chaque fois
-    if (App.drillRun) {
+    if (SessionCtl.drillRun) {
       App.analysis = null; App.lastDecision = null;
       App.newHand();
       return;
@@ -7103,9 +7103,9 @@ const App = {
     if (r.done) {
       App.result = r.result;
       App.phase = "result";
-      if (!t._studio && App.session && !App.sessionReport) {
-        Session.recordHand(App.session, t, r.result);
-        if (App.session.hands >= App.session.target) App.sessionComplete = true;
+      if (!t._studio && SessionCtl.session && !SessionCtl.sessionReport) {
+        Session.recordHand(SessionCtl.session, t, r.result);
+        if (SessionCtl.session.hands >= SessionCtl.session.target) SessionCtl.sessionComplete = true;
       }
     } else {
       App.analysis = null;
@@ -7149,8 +7149,8 @@ const App = {
     }
 
     // --- Bilan d'un entraînement ciblé (10 spots sur une fuite)
-    if (App.phase === "drill" && App.drillRun) {
-      const d = App.drillRun;
+    if (App.phase === "drill" && SessionCtl.drillRun) {
+      const d = SessionCtl.drillRun;
       const score = d.correct + d.acceptable * 0.5;
       const pct = Math.round(score / d.total * 100);
       const grade = pct >= 80 ? { t: "Excellent", c: "var(--good, #3fbf87)" }
@@ -7171,8 +7171,8 @@ const App = {
           <div style="font-size:12.5px;color:var(--faint);margin-bottom:16px">${d.correct} optimales · ${d.acceptable} acceptables · ${d.total - d.correct - d.acceptable} à revoir</div>
           <p style="color:var(--dim);font-size:13.5px;line-height:1.6;margin-bottom:22px">${msg}</p>
           <div style="display:flex;gap:9px;justify-content:center;flex-wrap:wrap">
-            <button class="btn pri" onclick="App.drillLeak('${d.leak}')" style="padding:11px 22px">Refaire 10 spots</button>
-            <button class="btn" onclick="App.endDrill()" style="padding:11px 22px">Retour au diagnostic</button>
+            <button class="btn pri" onclick="SessionCtl.drillLeak('${d.leak}')" style="padding:11px 22px">Refaire 10 spots</button>
+            <button class="btn" onclick="SessionCtl.endDrill()" style="padding:11px 22px">Retour au diagnostic</button>
           </div>
         </div>
       </div>`;
@@ -7201,8 +7201,8 @@ const App = {
     }
 
     // Bandeau de session : progression et résultat courant, toujours visible
-    const S = App.session;
-    if (S && !App.sessionReport) {
+    const S = SessionCtl.session;
+    if (S && !SessionCtl.sessionReport) {
       const pct = Math.min(100, S.hands / S.target * 100);
       const acc = S.decisions ? S.accurate / S.decisions * 100 : null;
       html += `<div class="sess-hud">
@@ -7212,7 +7212,7 @@ const App = {
         <span class="sh-m ${UI.cls(S.netBB)}">${UI.sign(S.netBB, 1)} bb</span>
         ${acc !== null ? `<span class="sh-m">${acc.toFixed(0)} % correctes</span>` : ""}
         <button class="btn sm" onclick="App.go('career')">Tableau de bord</button>
-        ${App.sessionComplete ? `<button class="btn sm pri" onclick="App.endSession()">Voir le rapport</button>` : ""}
+        ${SessionCtl.sessionComplete ? `<button class="btn sm pri" onclick="SessionCtl.endSession()">Voir le rapport</button>` : ""}
       </div>`;
     }
 
@@ -7564,11 +7564,11 @@ const App = {
     </div>` : ""}
 
     <div style="display:flex;gap:9px;flex-wrap:wrap;margin-bottom:13px">
-      ${App.sessionComplete
-        ? `<button class="btn pri" onclick="App.endSession()">Terminer et voir le rapport</button>`
+      ${SessionCtl.sessionComplete
+        ? `<button class="btn pri" onclick="SessionCtl.endSession()">Terminer et voir le rapport</button>`
         : `<button class="btn pri" onclick="App.newHand()">Main suivante</button>`}
-      <button class="btn" onclick="App.go('${App.session ? "career" : "stats"}')">
-        ${App.session ? "Tableau de bord" : "Voir mes statistiques"}
+      <button class="btn" onclick="App.go('${SessionCtl.session ? "career" : "stats"}')">
+        ${SessionCtl.session ? "Tableau de bord" : "Voir mes statistiques"}
       </button>
     </div>`;
   },
@@ -7888,71 +7888,11 @@ const App = {
      Orchestration des sessions. Toute la logique métier vit dans career.js ;
      ici on ne fait que piloter l'état de l'interface.                        */
 
-  startSession(lengthKey) {
-    DailyUI.dailyRun = null; App.drillRun = null;   // une session remplace tout run en cours
-    const tier = Career.tier();
-    const roster = new Roster(tier, 8);
-    App.session = Session.create(tier, lengthKey, roster);
-    App.sessionReport = null;
-    App.sessionComplete = false;
-    App.toast(`Session ${tier.name} lancée — <b>${App.session.target} mains</b>`);
-    App.go("play");
-    App.newHand();
-  },
 
-  /** Entraînement ciblé sur une fuite : 10 spots dans le contexte de la fuite,
-   *  puis un score. Appelé depuis le bouton d'une carte de diagnostic. */
-  drillLeak(leakId) {
-    const cfg = (window.Feutre && window.Feutre.drillConfig) ? window.Feutre.drillConfig(leakId) : null;
-    if (!cfg) { App.toast("Entraînement indisponible pour cette fuite"); return; }
-    const title = (window.Feutre && window.Feutre.leakTitle) ? window.Feutre.leakTitle(leakId) : leakId;
-    App.drillRun = {
-      leak: leakId, title,
-      cfg: { mode: cfg.mode, forcePos: cfg.forcePos, facing: cfg.facing },
-      label: cfg.label || "Entraînement ciblé",
-      i: 0, total: 10, correct: 0, acceptable: 0, finishing: false
-    };
-    App.session = null; App.sessionReport = null; DailyUI.dailyRun = null;
-    App.toast(`Entraînement : <b>10 spots</b> sur cette fuite`);
-    App.go("play");
-    App.newHand();
-  },
 
-  /** Quitte l'entraînement ciblé et revient au diagnostic. */
-  endDrill() {
-    App.drillRun = null;
-    App.t = null; App.phase = "idle"; App.analysis = null; App.lastDecision = null;
-    App.go("tracker");
-    if (window.Feutre) window.Feutre.open();
-  },
 
-  /** Termine la session, produit le rapport et l'intègre à la carrière. */
-  endSession() {
-    const S = App.session;
-    if (!S) return;
-    const report = Session.report(S, Career.data);
-    Career.newBadges = [];
-    Career.closeSession(report, S.leakCounts);
-    App.sessionReport = report;
-    App.t = null;
-    App.phase = "idle";
-    App.go("career");
-  },
 
-  closeReport() {
-    App.sessionReport = null;
-    App.session = null;
-    App.sessionComplete = false;
-    Career.newBadges = [];
-    App.render();
-  },
 
-  promote() {
-    const next = Career.nextTier();
-    if (!Career.promote()) { App.toast("Les conditions ne sont pas réunies"); return; }
-    App.toast(`Bienvenue en <b>${Career.tier().name}</b>`);
-    App.render();
-  },
 
 
 
@@ -8352,7 +8292,7 @@ const JourneyUI = {
     if (leakKey && Progress.focusFor) {
       const f = Progress.focusFor(leakKey);
       App.cfg.mode = f.mode || "cible";
-      App.focusLeak = leakKey;
+      SessionCtl.focusLeak = leakKey;
     } else {
       App.cfg.mode = "cible";
     }
@@ -8363,9 +8303,95 @@ const JourneyUI = {
   trainSpecificLeak(leakKey) {
     const f = Progress.focusFor(leakKey);
     App.cfg.mode = f.mode || "cible";
-    App.focusLeak = leakKey;
+    SessionCtl.focusLeak = leakKey;
     App.go("play");
     App.newHand();
+  }
+};
+
+/* ============================================================================
+   SESSION CTL — cycle de vie d'une session, d'un drill et du rapport de fin.
+
+   Extrait d'App : démarrage/arrêt de session, entraînement ciblé sur une fuite
+   (point d'arrivée du pont Feutre -> simulateur), rapport de fin et promotion.
+
+   La boucle de décision (newHand / choose / continueHand) reste volontairement
+   dans App : la sortir aurait augmenté le couplage au lieu de le réduire, elle
+   orchestre le rendu à chaque étape. SessionCtl porte l'ÉTAT de session, la
+   boucle le lit — l'interface entre les deux est explicite.
+   ========================================================================== */
+const SessionCtl = {
+  session: null,          // session de carrière en cours
+  sessionReport: null,    // rapport affiché en fin de session
+  sessionComplete: false, // objectif de session atteint
+  drillRun: null,         // entraînement ciblé en cours
+  focusLeak: null,        // fuite travaillée (sélection de spots)
+  focusNote: null,        // libellé affiché pendant un entraînement ciblé
+
+  startSession(lengthKey) {
+    DailyUI.dailyRun = null; SessionCtl.drillRun = null;   // une session remplace tout run en cours
+    const tier = Career.tier();
+    const roster = new Roster(tier, 8);
+    SessionCtl.session = Session.create(tier, lengthKey, roster);
+    SessionCtl.sessionReport = null;
+    SessionCtl.sessionComplete = false;
+    App.toast(`Session ${tier.name} lancée — <b>${SessionCtl.session.target} mains</b>`);
+    App.go("play");
+    App.newHand();
+  },
+
+  /** Entraînement ciblé sur une fuite : 10 spots dans le contexte de la fuite,
+   *  puis un score. Appelé depuis le bouton d'une carte de diagnostic. */
+  drillLeak(leakId) {
+    const cfg = (window.Feutre && window.Feutre.drillConfig) ? window.Feutre.drillConfig(leakId) : null;
+    if (!cfg) { App.toast("Entraînement indisponible pour cette fuite"); return; }
+    const title = (window.Feutre && window.Feutre.leakTitle) ? window.Feutre.leakTitle(leakId) : leakId;
+    SessionCtl.drillRun = {
+      leak: leakId, title,
+      cfg: { mode: cfg.mode, forcePos: cfg.forcePos, facing: cfg.facing },
+      label: cfg.label || "Entraînement ciblé",
+      i: 0, total: 10, correct: 0, acceptable: 0, finishing: false
+    };
+    SessionCtl.session = null; SessionCtl.sessionReport = null; DailyUI.dailyRun = null;
+    App.toast(`Entraînement : <b>10 spots</b> sur cette fuite`);
+    App.go("play");
+    App.newHand();
+  },
+
+  /** Quitte l'entraînement ciblé et revient au diagnostic. */
+  endDrill() {
+    SessionCtl.drillRun = null;
+    App.t = null; App.phase = "idle"; App.analysis = null; App.lastDecision = null;
+    App.go("tracker");
+    if (window.Feutre) window.Feutre.open();
+  },
+
+  /** Termine la session, produit le rapport et l'intègre à la carrière. */
+  endSession() {
+    const S = SessionCtl.session;
+    if (!S) return;
+    const report = Session.report(S, Career.data);
+    Career.newBadges = [];
+    Career.closeSession(report, S.leakCounts);
+    SessionCtl.sessionReport = report;
+    App.t = null;
+    App.phase = "idle";
+    App.go("career");
+  },
+
+  closeReport() {
+    SessionCtl.sessionReport = null;
+    SessionCtl.session = null;
+    SessionCtl.sessionComplete = false;
+    Career.newBadges = [];
+    App.render();
+  },
+
+  promote() {
+    const next = Career.nextTier();
+    if (!Career.promote()) { App.toast("Les conditions ne sont pas réunies"); return; }
+    App.toast(`Bienvenue en <b>${Career.tier().name}</b>`);
+    App.render();
   }
 };
 
@@ -8489,8 +8515,8 @@ const DataPort = {
     if (!ok) return;
     Career.data = Career.blank();
     Career.save();
-    App.session = null;
-    App.sessionReport = null;
+    SessionCtl.session = null;
+    SessionCtl.sessionReport = null;
     App.render();
     App.toast("Nouvelle carrière lancée");
   },
@@ -8589,9 +8615,9 @@ const CareerUI = {
     const d = Career.data;
 
     // Session en cours : on affiche le tableau de bord de session
-    if (App.session && !App.sessionReport) return CareerUI.renderActive(box);
+    if (SessionCtl.session && !SessionCtl.sessionReport) return CareerUI.renderActive(box);
     // Rapport de fin de session
-    if (App.sessionReport) return CareerUI.renderReport(box);
+    if (SessionCtl.sessionReport) return CareerUI.renderReport(box);
     // Écran de carrière
     return CareerUI.renderHome(box);
   },
@@ -8638,7 +8664,7 @@ const CareerUI = {
       <div class="card-h"><h3>Lancer une session</h3><span class="note">${tier.name} · ${tier.stake}</span></div>
       <div class="grid c3">
         ${SESSION_LENGTHS.map(l => `
-          <button class="sess-pick" onclick="App.startSession('${l.key}')">
+          <button class="sess-pick" onclick="SessionCtl.startSession('${l.key}')">
             <span class="sp-n">${l.name}</span>
             <span class="sp-h mono">${l.hands} mains</span>
             <span class="sp-d">${l.desc}</span>
@@ -8681,7 +8707,7 @@ const CareerUI = {
       ${next ? `
         ${ps.goals.map(g => CareerUI.goal(g)).join("")}
         ${ps.can
-          ? `<button class="btn pri mt" onclick="App.promote()" style="width:100%;padding:12px">
+          ? `<button class="btn pri mt" onclick="SessionCtl.promote()" style="width:100%;padding:12px">
                Monter en ${next.name}
              </button>`
           : `<div style="margin-top:11px;font-size:12.5px;color:var(--faint);line-height:1.55">
@@ -8746,7 +8772,7 @@ const CareerUI = {
 
   /* ------------------------------------------------- Session en cours (HUD) */
   renderActive(box) {
-    const s = App.session;
+    const s = SessionCtl.session;
     const tier = TIERS.find(t => t.key === s.tier) || TIERS[0];
     const pct = Math.min(100, s.hands / s.target * 100);
     const acc = s.decisions ? s.accurate / s.decisions * 100 : 0;
@@ -8795,7 +8821,7 @@ const CareerUI = {
 
     <div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:13px">
       <button class="btn pri" onclick="App.go('play')">Retourner à la table</button>
-      <button class="btn" onclick="App.endSession()">Terminer la session maintenant</button>
+      <button class="btn" onclick="SessionCtl.endSession()">Terminer la session maintenant</button>
     </div>`;
   },
 
@@ -8820,7 +8846,7 @@ const CareerUI = {
 
   /* ------------------------------------------------------ Rapport de session */
   renderReport(box) {
-    const r = App.sessionReport;
+    const r = SessionCtl.sessionReport;
     const tier = r.tier;
     const vClass = r.bb100 > 0 ? "ok" : r.bb100 < 0 ? "no" : "mid";
     const newBadges = Career.newBadges || [];
@@ -8877,7 +8903,7 @@ const CareerUI = {
     </div>` : ""}
 
     <div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:13px">
-      <button class="btn pri" onclick="App.closeReport()">Retour à la carrière</button>
+      <button class="btn pri" onclick="SessionCtl.closeReport()">Retour à la carrière</button>
       <button class="btn" onclick="App.go('leaks')">Voir mes leaks</button>
     </div>`;
   }
@@ -15977,7 +16003,7 @@ const V = {
         : "";
       const canDrill = typeof LEAK_DRILL !== "undefined" && LEAK_DRILL[l.id];
       const drillBtn = canDrill
-        ? `<button class="btn sm primary leak-drill" onclick="App.drillLeak('${l.id}')">
+        ? `<button class="btn sm primary leak-drill" onclick="SessionCtl.drillLeak('${l.id}')">
              ${LEAK_DRILL[l.id].label || "M'entraîner"} · 10 spots →
            </button>`
         : "";
