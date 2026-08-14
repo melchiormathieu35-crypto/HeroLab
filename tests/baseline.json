@@ -1,0 +1,632 @@
+{
+  "engine": {
+    "deck_full": "f49bc5f9858770ed",
+    "deck_shuffle": "53fb6b4f66f37a6f",
+    "deck_encoding": "3eefef4f408f454c",
+    "handeval": "cb73082baf134760",
+    "ranges": "35b036a2610503f1",
+    "boardtex_analyse": "40185847003e981d",
+    "boardtex_made": "8e6627128dc740d1",
+    "boardtex_made2": "82b7aa61c86919e8",
+    "boardtex_empty": "74234e98afe7498f",
+    "boardtex_made_pre": "23ae84aef38e8d32",
+    "equity": "3a024af7a1f75c67",
+    "odds": "ee763842e7b3ed45",
+    "cat": "11da5935e6e7f3bd",
+    "ranks": "56397320b4f5cca6"
+  },
+  "engineFull": {
+    "deck_full": {
+      "n": 52,
+      "first": 0,
+      "last": 51
+    },
+    "deck_shuffle": [
+      8,
+      4,
+      21,
+      9,
+      50,
+      23,
+      27,
+      18,
+      29,
+      2,
+      31,
+      32
+    ],
+    "deck_encoding": [
+      {
+        "c": 0,
+        "r": 0,
+        "s": 0
+      },
+      {
+        "c": 1,
+        "r": 0,
+        "s": 1
+      },
+      {
+        "c": 2,
+        "r": 0,
+        "s": 2
+      },
+      {
+        "c": 3,
+        "r": 0,
+        "s": 3
+      },
+      {
+        "c": 4,
+        "r": 1,
+        "s": 0
+      },
+      {
+        "c": 17,
+        "r": 4,
+        "s": 1
+      },
+      {
+        "c": 33,
+        "r": 8,
+        "s": 1
+      },
+      {
+        "c": 51,
+        "r": 12,
+        "s": 3
+      }
+    ],
+    "handeval": [
+      "ERR:HandEval.best7 is not a function",
+      "ERR:HandEval.best7 is not a function",
+      "ERR:HandEval.best7 is not a function",
+      "ERR:HandEval.best7 is not a function",
+      "ERR:HandEval.best7 is not a function",
+      "ERR:HandEval.best7 is not a function",
+      "ERR:HandEval.best7 is not a function",
+      "ERR:HandEval.best7 is not a function",
+      "ERR:HandEval.best7 is not a function",
+      "ERR:HandEval.best7 is not a function"
+    ],
+    "ranges": [
+      {
+        "t": "77+, A5s+"
+      },
+      {
+        "t": "22+"
+      },
+      {
+        "t": "AKs"
+      },
+      {
+        "t": "AKo"
+      },
+      {
+        "t": "JJ+, AQs+, AKo"
+      },
+      {
+        "t": "T9s+, 76s"
+      },
+      {
+        "t": "any"
+      },
+      {
+        "t": ""
+      }
+    ],
+    "boardtex_analyse": [
+      {
+        "high": 2,
+        "span": 2,
+        "connected": true,
+        "veryConnected": true,
+        "paired": false,
+        "trips": false,
+        "maxSuit": 3,
+        "monotone": true,
+        "rainbow": false,
+        "danger": 0.8,
+        "label": "monotone, très connecté, board bas",
+        "favorsAggressor": false
+      },
+      {
+        "high": 12,
+        "span": 2,
+        "connected": true,
+        "veryConnected": true,
+        "paired": false,
+        "trips": false,
+        "maxSuit": 3,
+        "monotone": true,
+        "rainbow": false,
+        "danger": 0.6,
+        "label": "monotone, très connecté, carte haute",
+        "favorsAggressor": false
+      },
+      {
+        "high": 0,
+        "span": 0,
+        "connected": true,
+        "veryConnected": true,
+        "paired": true,
+        "trips": true,
+        "maxSuit": 1,
+        "monotone": false,
+        "rainbow": true,
+        "danger": 0.4,
+        "label": "arc-en-ciel, brelan au board, très connecté, board bas",
+        "favorsAggressor": false
+      },
+      {
+        "high": 6,
+        "span": 2,
+        "connected": true,
+        "veryConnected": true,
+        "paired": false,
+        "trips": false,
+        "maxSuit": 4,
+        "monotone": true,
+        "rainbow": false,
+        "danger": 0.8,
+        "label": "quatre à couleur, très connecté, board bas",
+        "favorsAggressor": false
+      },
+      {
+        "high": 4,
+        "span": 2,
+        "connected": true,
+        "veryConnected": true,
+        "paired": false,
+        "trips": false,
+        "maxSuit": 5,
+        "monotone": true,
+        "rainbow": false,
+        "danger": 0.8,
+        "label": "quatre à couleur, très connecté, board bas",
+        "favorsAggressor": false
+      },
+      {
+        "high": 1,
+        "span": 1,
+        "connected": true,
+        "veryConnected": true,
+        "paired": true,
+        "trips": false,
+        "maxSuit": 2,
+        "monotone": false,
+        "rainbow": false,
+        "danger": 0.4,
+        "label": "bicolore, pairé, très connecté, board bas",
+        "favorsAggressor": false
+      },
+      {
+        "high": 12,
+        "span": 2,
+        "connected": true,
+        "veryConnected": true,
+        "paired": false,
+        "trips": false,
+        "maxSuit": 3,
+        "monotone": true,
+        "rainbow": false,
+        "danger": 0.6,
+        "label": "monotone, très connecté, carte haute",
+        "favorsAggressor": false
+      },
+      {
+        "high": 8,
+        "span": 8,
+        "connected": false,
+        "veryConnected": false,
+        "paired": false,
+        "trips": false,
+        "maxSuit": 1,
+        "monotone": false,
+        "rainbow": true,
+        "danger": 0.2,
+        "label": "arc-en-ciel, sec, board bas",
+        "favorsAggressor": false
+      }
+    ],
+    "boardtex_made": [
+      {
+        "cat": 0,
+        "name": "carte haute",
+        "strength": 0.12,
+        "overpair": false,
+        "topPair": false,
+        "flushDraw": false,
+        "straightDraw": false,
+        "draw": false,
+        "desc": "Hauteur as"
+      },
+      {
+        "cat": 2,
+        "name": "double paire",
+        "strength": 0.74,
+        "overpair": false,
+        "topPair": false,
+        "flushDraw": false,
+        "straightDraw": false,
+        "draw": false,
+        "desc": "Double paire, as et rois"
+      },
+      {
+        "cat": 3,
+        "name": "brelan",
+        "strength": 0.84,
+        "overpair": false,
+        "topPair": false,
+        "flushDraw": false,
+        "straightDraw": false,
+        "draw": false,
+        "desc": "Brelan de 2"
+      },
+      {
+        "cat": 0,
+        "name": "tirage quinte",
+        "strength": 0.4,
+        "overpair": false,
+        "topPair": false,
+        "flushDraw": false,
+        "straightDraw": true,
+        "draw": true,
+        "desc": "Hauteur as"
+      },
+      {
+        "cat": 8,
+        "name": "Quinte flush au 6",
+        "strength": 0.98,
+        "overpair": false,
+        "topPair": false,
+        "flushDraw": false,
+        "straightDraw": false,
+        "draw": false,
+        "desc": "Quinte flush au 6"
+      },
+      {
+        "cat": 1,
+        "name": "paire faible",
+        "strength": 0.45,
+        "overpair": false,
+        "topPair": false,
+        "flushDraw": true,
+        "straightDraw": false,
+        "draw": true,
+        "desc": "Paire de 2"
+      },
+      {
+        "cat": 2,
+        "name": "double paire",
+        "strength": 0.74,
+        "overpair": false,
+        "topPair": false,
+        "flushDraw": false,
+        "straightDraw": false,
+        "draw": false,
+        "desc": "Double paire, as et rois"
+      },
+      {
+        "cat": 0,
+        "name": "carte haute",
+        "strength": 0.12,
+        "overpair": false,
+        "topPair": false,
+        "flushDraw": false,
+        "straightDraw": false,
+        "draw": false,
+        "desc": "Hauteur as"
+      }
+    ],
+    "boardtex_made2": [
+      {
+        "cat": 1,
+        "name": "paire faible",
+        "strength": 0.58,
+        "overpair": false,
+        "topPair": false,
+        "flushDraw": true,
+        "straightDraw": true,
+        "draw": true,
+        "desc": "Paire de 2"
+      },
+      {
+        "cat": 0,
+        "name": "carte haute",
+        "strength": 0.12,
+        "overpair": false,
+        "topPair": false,
+        "flushDraw": false,
+        "straightDraw": false,
+        "draw": false,
+        "desc": "Hauteur as"
+      },
+      {
+        "cat": 7,
+        "name": "Carré de 2",
+        "strength": 0.98,
+        "overpair": false,
+        "topPair": false,
+        "flushDraw": false,
+        "straightDraw": false,
+        "draw": false,
+        "desc": "Carré de 2"
+      },
+      {
+        "cat": 5,
+        "name": "Couleur au 8",
+        "strength": 0.93,
+        "overpair": false,
+        "topPair": false,
+        "flushDraw": false,
+        "straightDraw": true,
+        "draw": true,
+        "desc": "Couleur au 8"
+      },
+      {
+        "cat": 8,
+        "name": "Quinte flush au 6",
+        "strength": 0.98,
+        "overpair": false,
+        "topPair": false,
+        "flushDraw": false,
+        "straightDraw": false,
+        "draw": false,
+        "desc": "Quinte flush au 6"
+      },
+      {
+        "cat": 3,
+        "name": "brelan",
+        "strength": 0.84,
+        "overpair": false,
+        "topPair": false,
+        "flushDraw": false,
+        "straightDraw": false,
+        "draw": false,
+        "desc": "Brelan de 2"
+      },
+      {
+        "cat": 0,
+        "name": "tirage couleur",
+        "strength": 0.45,
+        "overpair": false,
+        "topPair": false,
+        "flushDraw": true,
+        "straightDraw": false,
+        "draw": true,
+        "desc": "Hauteur as"
+      },
+      {
+        "cat": 1,
+        "name": "paire faible",
+        "strength": 0.38,
+        "overpair": false,
+        "topPair": false,
+        "flushDraw": false,
+        "straightDraw": false,
+        "draw": false,
+        "desc": "Paire de 2"
+      }
+    ],
+    "boardtex_empty": null,
+    "boardtex_made_pre": {
+      "cat": "preflop",
+      "strength": 0
+    },
+    "equity": [
+      {
+        "equity": 0.5,
+        "win": 0,
+        "tie": 0,
+        "lose": 0,
+        "n": 0
+      },
+      {
+        "equity": 0.5,
+        "win": 0,
+        "tie": 0,
+        "lose": 0,
+        "n": 0
+      },
+      {
+        "equity": 0.5,
+        "win": 0,
+        "tie": 0,
+        "lose": 0,
+        "n": 0
+      }
+    ],
+    "odds": {
+      "potOdds": [
+        0.6666666666666666,
+        0.75,
+        0.5,
+        0.75
+      ],
+      "mdf": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "foldEquity": [
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "cat": {
+      "HIGH": 0,
+      "PAIR": 1,
+      "TWO": 2,
+      "TRIPS": 3,
+      "STRAIGHT": 4,
+      "FLUSH": 5,
+      "FULL": 6,
+      "QUADS": 7,
+      "SF": 8
+    },
+    "ranks": "23456789TJQKA"
+  },
+  "purity": {
+    "Deck": {
+      "methods": 9,
+      "violations": []
+    },
+    "HandEval": {
+      "methods": 7,
+      "violations": []
+    },
+    "Ranges": {
+      "methods": 12,
+      "violations": []
+    },
+    "BoardTex": {
+      "methods": 2,
+      "violations": []
+    },
+    "Equity": {
+      "methods": 5,
+      "violations": []
+    },
+    "Odds": {
+      "methods": 7,
+      "violations": []
+    }
+  },
+  "contracts": {
+    "tests": [
+      {
+        "name": "contract:Progress.summary shape",
+        "pass": true,
+        "detail": "n=0 champs=16"
+      },
+      {
+        "name": "contract:Progress.summary leaks[] shape",
+        "pass": true,
+        "detail": "0 leak (état neuf) — forme non contraignable"
+      },
+      {
+        "name": "contract:Progress.summary est stable sur 2 appels",
+        "pass": true
+      },
+      {
+        "name": "storage:les 8 clés Pivot sont déclarées",
+        "pass": true,
+        "detail": "8 clés Pivot + feutre.v1 encapsulée"
+      },
+      {
+        "name": "storage:aucune clé n'a été renommée",
+        "pass": true
+      },
+      {
+        "name": "storage:écriture puis relecture (round-trip Player)",
+        "pass": true
+      },
+      {
+        "name": "storage:JSON corrompu ne fait pas planter le chargement",
+        "pass": true
+      },
+      {
+        "name": "storage:clé absente est tolérée",
+        "pass": true
+      },
+      {
+        "name": "storage:StorageGuard existe et ne persiste rien lui-même",
+        "pass": true,
+        "detail": "gestion d'erreur uniquement"
+      },
+      {
+        "name": "bridge:window.Feutre expose drillConfig et leakTitle",
+        "pass": true
+      },
+      {
+        "name": "bridge:drillConfig renvoie une config pour chaque leak connu",
+        "pass": true,
+        "detail": "10 leaks résolus"
+      },
+      {
+        "name": "bridge:leakTitle renvoie un libellé lisible",
+        "pass": true
+      },
+      {
+        "name": "bridge:drillConfig(inconnu) renvoie null",
+        "pass": true
+      },
+      {
+        "name": "bridge:leakTitle retombe sur l'id si inconnu",
+        "pass": true
+      },
+      {
+        "name": "bridge:App.drillLeak arme un drillRun (workflow tracker→simulateur)",
+        "pass": true,
+        "detail": "leak=utg-loose total=10 mode=preflop"
+      },
+      {
+        "name": "engine:Studio n'écrit pas dans la progression réelle",
+        "pass": true
+      },
+      {
+        "name": "engine:le garde _studio existe dans App.choose",
+        "pass": true
+      },
+      {
+        "name": "ui:navigation sur toutes les vues sans erreur",
+        "pass": true,
+        "detail": "9 vues"
+      },
+      {
+        "name": "ui:le conteneur racine reçoit du contenu",
+        "pass": true,
+        "detail": "731248 chars"
+      },
+      {
+        "name": "ui:les labs s'ouvrent",
+        "pass": true
+      },
+      {
+        "name": "ui:Modal est une primitive partagée (pas dupliquée)",
+        "pass": true,
+        "detail": "api: confirm,prompt"
+      },
+      {
+        "name": "ui:sparkline générique accessible",
+        "pass": true,
+        "detail": "HRUI.sparkline (à déplacer)"
+      },
+      {
+        "name": "game:newHand produit une table jouable",
+        "pass": true,
+        "detail": "hero=[36,19] board=0"
+      },
+      {
+        "name": "game:Judge.evaluate(t, decision) rend un verdict structuré",
+        "pass": true,
+        "detail": "verdict,loss,lossBB,equity,equityTurn,eqRes"
+      },
+      {
+        "name": "game:Judge.evaluate est déterministe pour un même état",
+        "pass": true
+      },
+      {
+        "name": "dataport:l'export produit un payload versionné",
+        "pass": true,
+        "detail": "v1 · 8 slots"
+      },
+      {
+        "name": "dataport:round-trip export→import sans perte",
+        "pass": true
+      },
+      {
+        "name": "dataport:un fichier étranger est rejeté proprement",
+        "pass": true
+      },
+      {
+        "name": "dataport:un fichier illisible est rejeté proprement",
+        "pass": true
+      }
+    ]
+  }
+}
