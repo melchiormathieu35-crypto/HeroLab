@@ -29,26 +29,20 @@
     "selfRefs": 350
   },
   "storage": {
-    "directModules": 16,
+    "directModules": 10,
     "modules": [
-      "Modal",
-      "StorageGuard",
       "Progress",
       "Career",
-      "UI",
       "Player",
       "Rating",
       "Journey",
       "App",
-      "HRExplain",
       "HRStats",
       "PRStats",
       "BLStats",
-      "Feutre",
-      "Parser",
       "Store"
     ],
-    "totalRefs": 35,
+    "totalRefs": 28,
     "hasStorageLayer": false
   },
   "dom": {

@@ -2278,9 +2278,14 @@ const Modal = {
 };
 
 /* ============================================================================
-   STORAGE GUARD — quand une écriture localStorage échoue (quota plein, mode
-   privé restrictif), l'utilisateur est prévenu UNE fois au lieu de perdre sa
-   progression en silence. Le détail technique part en console.warn.
+   STORAGE GUARD — NOTIFICATION D'ÉCHEC, PAS PERSISTANCE.
+   Quand une écriture échoue (quota plein, mode privé restrictif), l'utilisateur
+   est prévenu UNE fois au lieu de perdre sa progression en silence. Le détail
+   technique part en console.warn.
+
+   Ce module ne lit ni n'écrit jamais le stockage : c'est le rôle de `Storage`
+   ci-dessous. Les deux responsabilités sont volontairement séparées —
+   `Storage` = accès, `StorageGuard` = erreur/notification.
    ========================================================================== */
 const StorageGuard = {
   warned: false,
@@ -2291,6 +2296,78 @@ const StorageGuard = {
     try {
       App.toast("⚠ <b>Sauvegarde impossible</b> — stockage du navigateur plein ou bloqué. Exporte tes données pour ne rien perdre.", 7000);
     } catch (_) { /* App pas encore initialisé : le console.warn suffit */ }
+  }
+};
+
+/* ============================================================================
+   STORAGE — point d'accès unique à la persistance.
+
+   Avant cette couche, 10 modules appelaient localStorage directement, chacun
+   avec son propre try/catch et son propre parsing défensif. Une migration de
+   schéma imposait donc de toucher 10 endroits, et un stockage indisponible se
+   manifestait différemment selon le module.
+
+   Architecture :   modules métier  →  Storage  →  localStorage
+
+   Aucune clé n'est renommée : les 9 clés historiques (pivot.*, feutre.v1)
+   restent les clés physiques. Cette couche ne change pas le format des données,
+   elle ne fait que centraliser l'accès.
+
+   Sémantique volontairement identique à l'ancien code inline :
+     - `get` reproduit `raw ? JSON.parse(raw) : defaut` — une chaîne vide ou une
+       clé absente rendent le défaut, et "null" rend bien null ;
+     - une écriture refusée notifie StorageGuard puis retourne false, comme
+       avant, sans lever d'exception vers l'appelant.
+   ========================================================================== */
+const Storage = {
+  /** Le stockage est-il utilisable ? (mode privé, quota déjà plein…) */
+  available() {
+    try {
+      const probe = "__pivot_probe__";
+      localStorage.setItem(probe, "1");
+      localStorage.removeItem(probe);
+      return true;
+    } catch (e) { return false; }
+  },
+
+  /** Lecture brute. null si absent, illisible, ou stockage indisponible. */
+  getRaw(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  },
+
+  /**
+   * Lecture JSON tolérante. Rend `fallback` si la clé est absente, vide, ou
+   * si le contenu n'est pas du JSON valide — jamais d'exception à l'appelant.
+   */
+  get(key, fallback = null) {
+    const raw = Storage.getRaw(key);
+    if (!raw) return fallback;
+    try { return JSON.parse(raw); } catch (e) { return fallback; }
+  },
+
+  /** Écriture JSON. true si écrit, false si le stockage a refusé. */
+  set(key, value) { return Storage.setRaw(key, JSON.stringify(value)); },
+
+  /** Écriture brute, avec notification d'échec centralisée. */
+  setRaw(key, str) {
+    try { localStorage.setItem(key, str); return true; }
+    catch (e) { StorageGuard.fail(e); return false; }
+  },
+
+  remove(key) {
+    try { localStorage.removeItem(key); return true; } catch (e) { return false; }
+  },
+
+  has(key) { return Storage.getRaw(key) !== null; },
+
+  /** Retire un lot de clés (reset / wipe). */
+  removeAll(keys) { (keys || []).forEach(k => Storage.remove(k)); },
+
+  /** Instantané { clé → valeur parsée } — utilisé par l'export. */
+  snapshot(keys) {
+    const out = {};
+    for (const k of (keys || [])) out[k] = Storage.get(k, null);
+    return out;
   }
 };
 
@@ -4575,8 +4652,7 @@ const Progress = {
 
   load() {
     try {
-      const raw = localStorage.getItem(Progress.KEY);
-      Progress.data = raw ? JSON.parse(raw) : Progress.blank();
+      Progress.data = Storage.get(Progress.KEY, null) || Progress.blank();
     } catch { Progress.data = Progress.blank(); }
     if (!Progress.data.tagStats) Progress.data.tagStats = {};
     return Progress.data;
@@ -4587,7 +4663,7 @@ const Progress = {
       // On borne l'historique pour ne pas saturer le stockage
       const d = Progress.data;
       if (d.decisions.length > 3000) d.decisions = d.decisions.slice(-3000);
-      localStorage.setItem(Progress.KEY, JSON.stringify(d));
+      Storage.set(Progress.KEY, d);   /* échec éventuel notifié par Storage */
     } catch (e) { StorageGuard.fail(e); /* stockage plein : on continue sans persister */ }
   },
 
@@ -5537,8 +5613,7 @@ const Career = {
 
   load() {
     try {
-      const raw = localStorage.getItem(Career.KEY);
-      Career.data = raw ? JSON.parse(raw) : Career.blank();
+      Career.data = Storage.get(Career.KEY, null) || Career.blank();
     } catch { Career.data = Career.blank(); }
     // Rétro-compatibilité si de nouveaux champs apparaissent
     const b = Career.blank();
@@ -5552,7 +5627,7 @@ const Career = {
       const d = Career.data;
       if (d.sessions.length > 120) d.sessions = d.sessions.slice(-120);
       if (d.timeline.length > 200) d.timeline = d.timeline.slice(-200);
-      localStorage.setItem(Career.KEY, JSON.stringify(d));
+      Storage.set(Career.KEY, d);
     } catch (e) { StorageGuard.fail(e); /* stockage plein : la session en cours reste utilisable */ }
   },
 
@@ -6001,8 +6076,7 @@ const Player = {
 
   load() {
     try {
-      const raw = localStorage.getItem(Player.KEY);
-      Player.data = raw ? JSON.parse(raw) : Player.blank();
+      Player.data = Storage.get(Player.KEY, null) || Player.blank();
     } catch { Player.data = Player.blank(); }
     const b = Player.blank();
     for (const k of Object.keys(b)) if (Player.data[k] === undefined) Player.data[k] = b[k];
@@ -6010,7 +6084,7 @@ const Player = {
   },
 
   save() {
-    try { localStorage.setItem(Player.KEY, JSON.stringify(Player.data)); } catch (e) { StorageGuard.fail(e); }
+    Storage.set(Player.KEY, Player.data);
   },
 
   isOnboarded() {
@@ -6081,13 +6155,13 @@ const Player = {
     const dump = {
       _format: "pivot-save", _appVersion: APP_VERSION, _version: 1, _exported: new Date().toISOString(),
       player: Player.data,
-      progress: safeParse(localStorage.getItem(Progress.KEY)),
-      career: safeParse(localStorage.getItem(Career.KEY)),
-      hr: safeParse(localStorage.getItem(HRStats.KEY)),
-      pr: safeParse(localStorage.getItem(PRStats.KEY)),
-      bl: safeParse(localStorage.getItem(BLStats.KEY)),
-      rating: safeParse(localStorage.getItem(Rating.KEY)),
-      journey: safeParse(localStorage.getItem(Journey.KEY))
+      progress: Storage.get(Progress.KEY, null),
+      career: Storage.get(Career.KEY, null),
+      hr: Storage.get(HRStats.KEY, null),
+      pr: Storage.get(PRStats.KEY, null),
+      bl: Storage.get(BLStats.KEY, null),
+      rating: Storage.get(Rating.KEY, null),
+      journey: Storage.get(Journey.KEY, null)
     };
     return JSON.stringify(dump, null, 2);
   },
@@ -6096,7 +6170,7 @@ const Player = {
     let dump;
     try { dump = JSON.parse(json); } catch { return { ok: false, error: "Fichier illisible : ce n'est pas une sauvegarde Pivot valide." }; }
     if (!dump || dump._format !== "pivot-save") return { ok: false, error: "Ce fichier n'est pas une sauvegarde Pivot." };
-    const put = (key, val) => { if (val) try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) { StorageGuard.fail(e); } };
+    const put = (key, val) => { if (val) Storage.set(key, val); };
     if (dump.player) { Player.data = dump.player; Player.save(); }
     put(Progress.KEY, dump.progress);
     put(Career.KEY, dump.career);
@@ -6124,12 +6198,12 @@ const Rating = {
   data: null,
 
   load() {
-    try { const raw = localStorage.getItem(Rating.KEY); Rating.data = raw ? JSON.parse(raw) : { history: [] }; }
+    try { Rating.data = Storage.get(Rating.KEY, null) || { history: [] }; }
     catch { Rating.data = { history: [] }; }
     if (!Rating.data.history) Rating.data.history = [];
     return Rating.data;
   },
-  save() { try { localStorage.setItem(Rating.KEY, JSON.stringify(Rating.data)); } catch (e) { StorageGuard.fail(e); } },
+  save() { Storage.set(Rating.KEY, Rating.data); },
 
   /**
    * Score d'une compétence sur 100 : performance × facteur de confiance lié
@@ -6266,14 +6340,14 @@ const Journey = {
   data: null,
 
   load() {
-    try { const raw = localStorage.getItem(Journey.KEY); Journey.data = raw ? JSON.parse(raw) : { snaps: [], missions: {}, seen: {} }; }
+    try { Journey.data = Storage.get(Journey.KEY, null) || { snaps: [], missions: {}, seen: {} }; }
     catch { Journey.data = { snaps: [], missions: {}, seen: {} }; }
     if (!Journey.data.snaps) Journey.data.snaps = [];
     if (!Journey.data.missions) Journey.data.missions = {};
     if (!Journey.data.seen) Journey.data.seen = {};
     return Journey.data;
   },
-  save() { try { localStorage.setItem(Journey.KEY, JSON.stringify(Journey.data)); } catch (e) { StorageGuard.fail(e); } },
+  save() { Storage.set(Journey.KEY, Journey.data); },
 
   /** Photographie quotidienne de l'état des leaks + précision globale. */
   snapshot() {
@@ -6985,7 +7059,7 @@ const App = {
     });
     if (!ok) return;
     try {
-      [Player.KEY, Progress.KEY, Career.KEY, HRStats.KEY, PRStats.KEY, BLStats.KEY, Rating.KEY, Journey.KEY].forEach(k => localStorage.removeItem(k));
+      Storage.removeAll([Player.KEY, Progress.KEY, Career.KEY, HRStats.KEY, PRStats.KEY, BLStats.KEY, Rating.KEY, Journey.KEY]);
     } catch (e) { }
     Player.load(); Progress.load(); Career.load(); HRStats.load(); PRStats.load(); BLStats.load(); Rating.load();
     App.renderOnboarding();
@@ -9816,8 +9890,7 @@ const HRStats = {
 
   load() {
     try {
-      const raw = localStorage.getItem(HRStats.KEY);
-      HRStats.data = raw ? JSON.parse(raw) : HRStats.blank();
+      HRStats.data = Storage.get(HRStats.KEY, null) || HRStats.blank();
     } catch { HRStats.data = HRStats.blank(); }
     const b = HRStats.blank();
     for (const k of Object.keys(b)) if (HRStats.data[k] === undefined) HRStats.data[k] = b[k];
@@ -9831,7 +9904,7 @@ const HRStats = {
   save() {
     try {
       if (HRStats.data.spots.length > 500) HRStats.data.spots = HRStats.data.spots.slice(-500);
-      localStorage.setItem(HRStats.KEY, JSON.stringify(HRStats.data));
+      Storage.set(HRStats.KEY, HRStats.data);
     } catch (e) { StorageGuard.fail(e); /* stockage plein : sans gravité */ }
   },
 
@@ -11758,8 +11831,7 @@ const PRStats = {
 
   load() {
     try {
-      const raw = localStorage.getItem(PRStats.KEY);
-      PRStats.data = raw ? JSON.parse(raw) : PRStats.blank();
+      PRStats.data = Storage.get(PRStats.KEY, null) || PRStats.blank();
     } catch { PRStats.data = PRStats.blank(); }
     const b = PRStats.blank();
     for (const k of Object.keys(b)) if (PRStats.data[k] === undefined) PRStats.data[k] = b[k];
@@ -11771,7 +11843,7 @@ const PRStats = {
   save() {
     try {
       if (PRStats.data.spots.length > 500) PRStats.data.spots = PRStats.data.spots.slice(-500);
-      localStorage.setItem(PRStats.KEY, JSON.stringify(PRStats.data));
+      Storage.set(PRStats.KEY, PRStats.data);
     } catch (e) { StorageGuard.fail(e); }
   },
 
@@ -13068,8 +13140,7 @@ const BLStats = {
 
   load() {
     try {
-      const raw = localStorage.getItem(BLStats.KEY);
-      BLStats.data = raw ? JSON.parse(raw) : BLStats.blank();
+      BLStats.data = Storage.get(BLStats.KEY, null) || BLStats.blank();
     } catch { BLStats.data = BLStats.blank(); }
     const b = BLStats.blank();
     for (const k of Object.keys(b)) if (BLStats.data[k] === undefined) BLStats.data[k] = b[k];
@@ -13081,7 +13152,7 @@ const BLStats = {
   save() {
     try {
       if (BLStats.data.spots.length > 600) BLStats.data.spots = BLStats.data.spots.slice(-600);
-      localStorage.setItem(BLStats.KEY, JSON.stringify(BLStats.data));
+      Storage.set(BLStats.KEY, BLStats.data);
     } catch (e) { StorageGuard.fail(e); }
   },
 
@@ -14230,9 +14301,8 @@ const Store = {
 
   load() {
     try {
-      const raw = localStorage.getItem(Store.KEY);
-      if (!raw) return;
-      const d = JSON.parse(raw);
+      const d = Storage.get(Store.KEY, null);
+      if (!d) return;
       Store.sessions = d.sessions || [];
       Store.hands = d.hands || [];
       Store.index = new Set(Store.hands.map(h => h.id));
@@ -14243,7 +14313,7 @@ const Store = {
     try {
       // On n'enregistre pas le texte brut : trop volumineux pour localStorage
       const slim = Store.hands.map(h => { const { raw, ...rest } = h; return rest; });
-      localStorage.setItem(Store.KEY, JSON.stringify({ sessions: Store.sessions, hands: slim }));
+      Storage.set(Store.KEY, { sessions: Store.sessions, hands: slim });
       return true;
     } catch (e) {
       StorageGuard.fail(e);
@@ -14299,7 +14369,7 @@ const Store = {
 
   wipe() {
     Store.sessions = []; Store.hands = []; Store.index = new Set();
-    localStorage.removeItem(Store.KEY);
+    Storage.remove(Store.KEY);
   },
 
   /** Session à laquelle appartient une main. */

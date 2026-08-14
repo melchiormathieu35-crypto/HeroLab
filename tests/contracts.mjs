@@ -121,6 +121,115 @@ export function contractSuite() {
       return typeof s.n === "number" ? true : { pass: false, detail: "summary cassé sans données" };
     } finally { if (saved != null) localStorage.setItem(Progress.KEY, saved); }
   });
+  // ------------------------------------------------- COUCHE STORAGE (API)
+  t("storage:la couche Storage existe et expose l'API attendue", () => {
+    const S = G("Storage");
+    if (!S) return { pass: false, detail: "Storage absent" };
+    const need = ["get", "set", "remove", "has", "getRaw", "setRaw", "removeAll", "snapshot", "available"];
+    const miss = need.filter(f => typeof S[f] !== "function");
+    return miss.length ? { pass: false, detail: "manque: " + miss.join(",") }
+      : { pass: true, detail: need.length + " méthodes" };
+  });
+  t("storage:Storage est le SEUL accès direct à localStorage", () => {
+    // On inspecte le source réellement chargé de chaque module global.
+    const offenders = [];
+    for (const name of ["Progress", "Career", "Player", "Rating", "Journey",
+      "HRStats", "PRStats", "BLStats", "App", "UI", "Modal", "Studio"]) {
+      const mod = G(name);
+      if (!mod) continue;
+      let src = "";
+      for (const k of Object.keys(mod)) {
+        const v = mod[k];
+        if (typeof v === "function") src += v.toString() + "\n";
+      }
+      if (/localStorage\s*\.\s*(getItem|setItem|removeItem|clear)/.test(src)) offenders.push(name);
+    }
+    return offenders.length
+      ? { pass: false, detail: "accès direct restant: " + offenders.join(",") }
+      : { pass: true, detail: "12 modules vérifiés, aucun accès direct" };
+  });
+  t("storage:get/set/remove round-trip", () => {
+    const K = "__pivot_test_rt__";
+    try {
+      if (Storage.set(K, { a: 1, b: [2, 3] }) !== true) return { pass: false, detail: "set a échoué" };
+      if (Storage.has(K) !== true) return { pass: false, detail: "has=false après set" };
+      const v = Storage.get(K, null);
+      if (!v || v.a !== 1 || v.b[1] !== 3) return { pass: false, detail: "valeur altérée" };
+      Storage.remove(K);
+      if (Storage.has(K) !== false) return { pass: false, detail: "has=true après remove" };
+      return true;
+    } finally { Storage.remove(K); }
+  });
+  t("storage:get(clé absente) rend le fallback", () => {
+    const v = Storage.get("__pivot_absent__", { def: true });
+    return v && v.def === true ? true : { pass: false, detail: JSON.stringify(v) };
+  });
+  t("storage:get(JSON invalide) rend le fallback sans throw", () => {
+    const K = "__pivot_test_bad__";
+    try {
+      Storage.setRaw(K, "{{{ pas du json");
+      const v = Storage.get(K, "FALLBACK");
+      return v === "FALLBACK" ? true : { pass: false, detail: "obtenu: " + JSON.stringify(v) };
+    } finally { Storage.remove(K); }
+  });
+  t("storage:get reproduit la sémantique historique (raw ? parse : defaut)", () => {
+    const K = "__pivot_test_sem__";
+    try {
+      Storage.setRaw(K, "");            // chaîne vide = falsy => défaut, comme avant
+      if (Storage.get(K, "D") !== "D") return { pass: false, detail: "chaîne vide ≠ défaut" };
+      Storage.setRaw(K, "null");        // "null" parse en null, comme avant
+      if (Storage.get(K, "D") !== null) return { pass: false, detail: '"null" devrait rendre null' };
+      return true;
+    } finally { Storage.remove(K); }
+  });
+  t("storage:set notifie StorageGuard quand le stockage refuse", () => {
+    const real = localStorage.setItem.bind(localStorage);
+    const realFail = StorageGuard.fail, realWarned = StorageGuard.warned;
+    let notified = false;
+    try {
+      localStorage.setItem = () => { throw new Error("QuotaExceededError (simulé)"); };
+      StorageGuard.fail = () => { notified = true; };
+      const ok = Storage.set("__pivot_test_quota__", { x: 1 });
+      if (ok !== false) return { pass: false, detail: "set devrait rendre false" };
+      if (!notified) return { pass: false, detail: "StorageGuard.fail non appelé" };
+      return true;
+    } catch (e) {
+      return { pass: false, detail: "une exception a fui vers l'appelant: " + e.message };
+    } finally {
+      localStorage.setItem = real; StorageGuard.fail = realFail; StorageGuard.warned = realWarned;
+      try { localStorage.removeItem("__pivot_test_quota__"); } catch (_) { }
+    }
+  });
+  t("storage:stockage indisponible ne fait pas planter les chargements", () => {
+    const rg = localStorage.getItem.bind(localStorage);
+    const rs = localStorage.setItem.bind(localStorage);
+    const realFail = StorageGuard.fail, realWarned = StorageGuard.warned;
+    try {
+      localStorage.getItem = () => { throw new Error("SecurityError (simulé)"); };
+      localStorage.setItem = () => { throw new Error("SecurityError (simulé)"); };
+      StorageGuard.fail = () => { };
+      Progress.load(); Career.load(); Player.load(); Rating.load(); Journey.load();
+      HRStats.load(); PRStats.load(); BLStats.load();
+      const s = Progress.summary();
+      return typeof s.n === "number" ? true : { pass: false, detail: "summary cassé" };
+    } catch (e) {
+      return { pass: false, detail: "throw en stockage indisponible: " + e.message };
+    } finally {
+      localStorage.getItem = rg; localStorage.setItem = rs;
+      StorageGuard.fail = realFail; StorageGuard.warned = realWarned;
+      Progress.load(); Career.load(); Player.load();
+    }
+  });
+  t("storage:snapshot rend les valeurs parsées par clé", () => {
+    const K = "__pivot_test_snap__";
+    try {
+      Storage.set(K, { v: 7 });
+      const snap = Storage.snapshot([K, "__pivot_absent__"]);
+      return snap[K] && snap[K].v === 7 && snap["__pivot_absent__"] === null
+        ? true : { pass: false, detail: JSON.stringify(snap) };
+    } finally { Storage.remove(K); }
+  });
+
   t("storage:StorageGuard existe et ne persiste rien lui-même", () => {
     const SG = G("StorageGuard");
     if (!SG) return { pass: false, detail: "StorageGuard absent" };

@@ -65,10 +65,12 @@ export function collect(file) {
     [...src.matchAll(/\bApp\.([A-Za-z_$][A-Za-z0-9_$]*)/g)].map(m => m[1]));
   const appDynamic = [...appRefd].filter(k => !appDeclared.has(k));
 
-  // --- localStorage ---
-  const lsModules = names.filter(n => /\blocalStorage\b/.test(seg(n)));
+  // --- localStorage : accès RÉELS uniquement (les commentaires qui mentionnent
+  // le mot ne sont pas des dépendances) ---
+  const LS_ACCESS = /localStorage\s*\.\s*(?:getItem|setItem|removeItem|clear|key|length)|localStorage\s*\[/g;
+  const lsModules = names.filter(n => new RegExp(LS_ACCESS.source).test(seg(n)));
   const lsTotal = lines.filter((l, i) => i + 1 >= appStart && !isNoise(l))
-    .reduce((a, l) => a + count(l, /\blocalStorage\b/g), 0);
+    .reduce((a, l) => a + count(l, new RegExp(LS_ACCESS.source, "g")), 0);
 
   // --- DOM ---
   const domRe = /\b(?:innerHTML|getElementById|querySelector|querySelectorAll|createElement)\b/g;
