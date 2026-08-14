@@ -10,10 +10,18 @@ import re
 
 
 def _scan_body(src, open_brace, limit):
-    """Retourne l'index du `}` fermant le bloc ouvert en `open_brace`."""
+    """Retourne l'index du `}` fermant le bloc ouvert en `open_brace`.
+
+    `interp` mémorise, pour chaque interpolation `${` ouverte, la profondeur
+    d'accolades à laquelle elle commence. Sans cela, une accolade de bloc
+    imbriquée dans une interpolation — par exemple
+    `${xs.map(x => { return `...`; })}` — refermerait l'interpolation trop tôt
+    et tout le reste du corps serait analysé dans le mauvais mode.
+    """
     i = open_brace
     # pile de modes : 'code' | 'sq' | 'dq' | 'tpl' | 'line' | 'block'
     stack = ['code']
+    interp = []
     depth = 0
     while i < limit:
         mode = stack[-1]
@@ -49,9 +57,11 @@ def _scan_body(src, open_brace, limit):
                 i += 1
                 continue
             if c == '$' and nxt == '{':
-                # on entre dans du code : l'accolade sera équilibrée par le '}'
-                stack.append('code')
+                # on entre dans du code ; on note la profondeur d'entrée pour
+                # ne refermer l'interpolation qu'au '}' correspondant
                 depth += 1
+                interp.append(depth)
+                stack.append('code')
                 i += 2
                 continue
             i += 1
@@ -83,13 +93,15 @@ def _scan_body(src, open_brace, limit):
             i += 1
             continue
         if c == '}':
-            depth -= 1
-            if len(stack) > 1:
-                # fin d'une interpolation : on retourne dans le template
+            if interp and depth == interp[-1]:
+                # ce '}' referme l'interpolation courante, pas un bloc interne
+                interp.pop()
+                depth -= 1
                 stack.pop()
                 i += 1
                 continue
-            if depth == 0:
+            depth -= 1
+            if depth == 0 and not interp:
                 return i
             i += 1
             continue

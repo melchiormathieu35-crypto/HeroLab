@@ -121,6 +121,81 @@ export function contractSuite() {
       return typeof s.n === "number" ? true : { pass: false, detail: "summary cassé sans données" };
     } finally { if (saved != null) localStorage.setItem(Progress.KEY, saved); }
   });
+  // --------------------------------------- INTÉGRITÉ DES MODULES EXTRAITS
+  // Une extraction réécrit des références par recherche/remplacement. Si un nom
+  // est le préfixe d'un autre (App.renderProfile / App.renderProfiles), le
+  // remplacement déborde et crée un membre qui n'existe pas. Ce test rend cette
+  // classe d'erreur impossible à laisser passer.
+  t("refactor:aucun membre fantôme sur les modules extraits", () => {
+    const MODULES = ["Storage", "Onboarding", "DataPort", "ProfileUI", "DailyUI",
+      "JourneyUI", "SessionCtl", "App", "UI", "Modal"];
+    const ghosts = [];
+    for (const name of MODULES) {
+      const mod = G(name);
+      if (!mod) continue;
+      // tous les identifiants X.y présents dans le source chargé de TOUS les modules
+      for (const other of MODULES) {
+        const om = G(other);
+        if (!om) continue;
+        let src = "";
+        for (const k of Object.keys(om)) {
+          const v = om[k];
+          if (typeof v === "function") src += v.toString() + "\n";
+        }
+        // Uniquement les SITES D'APPEL (`X.y(`). Un champ d'état greffé à
+        // l'exécution est légitimement undefined au repos ; une méthode
+        // appelée mais inexistante est toujours un bug.
+        const re = new RegExp("\\b" + name + "\\.([A-Za-z_$][A-Za-z0-9_$]*)\\s*\\(", "g");
+        let m;
+        while ((m = re.exec(src))) {
+          if (typeof mod[m[1]] !== "function" && !ghosts.includes(name + "." + m[1])) {
+            ghosts.push(name + "." + m[1]);
+          }
+        }
+      }
+    }
+    return ghosts.length
+      ? { pass: false, detail: "membres inexistants: " + ghosts.join(", ") }
+      : { pass: true, detail: "10 modules croisés" };
+  });
+  t("refactor:App n'expose plus les responsabilités extraites", () => {
+    const moved = {
+      Onboarding: ["renderOnboarding", "obPickAvatar", "obPickMentor", "obValidate", "finishOnboarding"],
+      DataPort: ["exportAll", "importAll", "doExport", "triggerImport", "handleImport",
+        "confirmWipe", "exportCareer", "resetCareer", "exportData", "resetData"],
+      ProfileUI: ["renderProfile", "profPickAvatar", "profPickMentor", "saveProfile"],
+      DailyUI: ["renderDaily", "dailyVerdict", "startDaily"],
+      JourneyUI: ["renderJourney", "journeyMissions", "journeyTimeline", "trainLeak"],
+    };
+    const leaks = [];
+    for (const [owner, members] of Object.entries(moved)) {
+      const target = G(owner);
+      for (const m of members) {
+        if (App[m] !== undefined) leaks.push(`App.${m} devrait avoir été déplacé`);
+        if (!target || typeof target[m] !== "function") leaks.push(`${owner}.${m} manquant`);
+      }
+    }
+    return leaks.length ? { pass: false, detail: leaks.join(" | ") }
+      : { pass: true, detail: "5 modules, 26 membres déplacés" };
+  });
+  t("refactor:l'onboarding reste fonctionnel après extraction", () => {
+    const savedName = Player.data && Player.data.name;
+    try {
+      Onboarding.renderOnboarding();
+      const ov = document.getElementById("onboard");
+      if (!ov || !ov.innerHTML.includes("obName")) return { pass: false, detail: "écran non rendu" };
+      if (Onboarding._obAvatar == null) return { pass: false, detail: "_obAvatar non initialisé" };
+      if (Onboarding._obMentor == null) return { pass: false, detail: "_obMentor non initialisé" };
+      Onboarding.obPickAvatar("♦");
+      if (Onboarding._obAvatar !== "♦") return { pass: false, detail: "obPickAvatar sans effet" };
+      return true;
+    } finally {
+      const ov = document.getElementById("onboard");
+      if (ov) { ov.classList.remove("on"); ov.innerHTML = ""; }
+      if (savedName) Player.data.name = savedName;
+    }
+  });
+
   // ------------------------------------------------- COUCHE STORAGE (API)
   t("storage:la couche Storage existe et expose l'API attendue", () => {
     const S = G("Storage");

@@ -2623,7 +2623,7 @@ Preflop: UTG raise 2.5bb, HJ raise 10bb, hero to act`,
     const spec = this.parse(text);
     const t = this.build(spec);
     this.lastText = text;
-    App.drillRun = null; App.dailyRun = null;
+    App.drillRun = null; DailyUI.dailyRun = null;
     App.focusNote = "SPOT STUDIO";
     App.t = t;
     App.analysis = null; App.result = null; App.lastDecision = null;
@@ -6580,8 +6580,8 @@ const App = {
 
   render() {
     if (App.view === "home") App.renderHome();
-    else if (App.view === "daily") App.renderDaily();
-    else if (App.view === "profile") App.renderProfile();
+    else if (App.view === "daily") DailyUI.renderDaily();
+    else if (App.view === "profile") ProfileUI.renderProfile();
     else if (App.view === "hr") HRUI.render();
     else if (App.view === "hrstats") HRUI.renderStats();
     else if (App.view === "pr") PRUI.render();
@@ -6592,7 +6592,7 @@ const App = {
     else if (App.view === "play") App.renderPlay();
     else if (App.view === "setup") App.renderSetup();
     else if (App.view === "stats") App.renderStats();
-    else if (App.view === "journey") App.renderJourney();
+    else if (App.view === "journey") JourneyUI.renderJourney();
     else if (App.view === "tracker") { if (window.Feutre) Feutre.open(); }
     else if (App.view === "leaks") App.renderLeaks();
     else if (App.view === "career") CareerUI.render();
@@ -6729,7 +6729,7 @@ const App = {
           <span class="home-leak-sev ${leak.loss > 8 ? "hi" : leak.loss > 3 ? "md" : "lo"}">${leak.loss > 8 ? "prioritaire" : leak.loss > 3 ? "à corriger" : "à surveiller"}</span></div>
         <div class="home-card-title">${leakInfo.name}</div>
         <div class="home-card-desc">${leakInfo.why || ""}</div>
-        <button class="btn pri home-leak-btn" onclick="App.trainLeak()">Travailler ça maintenant</button>
+        <button class="btn pri home-leak-btn" onclick="JourneyUI.trainLeak()">Travailler ça maintenant</button>
       </div>` : ""}
 
       <!-- Cartes de modes façon Netflix -->
@@ -6806,7 +6806,7 @@ const App = {
     }
     if (leak) {
       return {
-        action: "App.trainLeak()", color: "var(--bad)",
+        action: "JourneyUI.trainLeak()", color: "var(--bad)",
         kicker: "Entraînement ciblé", cta: "Travailler →",
         title: leakInfo.name,
         desc: "Défi du jour bouclé. Enchaîne sur des spots taillés pour corriger ta faiblesse principale."
@@ -6923,136 +6923,10 @@ const App = {
   },
 
 
-  /* ================================================================ PROFIL */
-  renderProfile() {
-    const box = document.getElementById("v-profile");
-    if (!box) return;
-    const p = Player.data;
-    const created = p.created ? new Date(p.created).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }) : "—";
-    const s = Progress.summary();
-
-    box.innerHTML = `
-    <div class="card">
-      <div class="card-h"><h3>Mon profil</h3></div>
-      <div class="prof-id">
-        <div class="prof-avatar">${p.avatar || "♠"}</div>
-        <div class="prof-fields">
-          <label class="prof-label">Pseudo</label>
-          <input id="profName" class="ob-input" type="text" maxlength="24" value="${UI.esc(p.name || "")}">
-          <label class="prof-label">Symbole</label>
-          <div class="ob-avatars" id="profAvatars">
-            ${AVATARS.map(a => `<button class="ob-avatar ${a === p.avatar ? "on" : ""}" data-a="${a}" onclick="App.profPickAvatar('${a}')">${a}</button>`).join("")}
-          </div>
-          <button class="btn pri mt" onclick="App.saveProfile()">Enregistrer</button>
-        </div>
-      </div>
-      <div class="prof-meta">Membre depuis le ${created} · Niveau ${s.level} · ${s.n} décisions jouées</div>
-    </div>
-
-    <div class="card mt">
-      <div class="card-h"><h3>Mon mentor</h3>${(() => { const m = Mentor.get(); if (!m) return ""; const lvl = Mentor.bondLevel(); return `<span class="mentor-badge"><span style="color:${m.color}">${m.icon}</span> ${lvl.label} · niv.${lvl.n}<span class="mb-bar"><span class="mb-fill" style="width:${p.mentorBond || 0}%;background:${m.color}"></span></span></span>`; })()}</div>
-      <p style="font-size:13px;color:var(--dim);margin:2px 0 12px;line-height:1.5">Ton mentor réagit à chaque décision. Votre lien grandit quand tu joues juste. Tu peux en changer quand tu veux.</p>
-      <div class="mentor-grid" id="profMentors">
-        ${Object.values(MENTORS).map(m => { const on = m.id === p.mentorId; return `<button class="mentor-card ${on ? "on" : ""}" data-m="${m.id}" onclick="App.profPickMentor('${m.id}')" ${on ? 'style="border-color:var(--brass)"' : ""}>
-          <span class="mc-ic" style="background:${m.color}22;color:${m.color}">${m.icon}</span>
-          <b>${m.name}</b><span class="mc-t">${m.title}</span>
-          <span class="mc-bio">${m.bio}</span></button>`; }).join("")}
-      </div>
-    </div>
-
-    <div class="card mt">
-      <div class="card-h"><h3>Sauvegarde</h3></div>
-      <p class="prof-save-desc">Ta progression est stockée sur cet appareil, dans ce navigateur. Pour la
-        transférer sur un autre appareil, la mettre à l'abri, ou repartir de zéro, utilise les boutons ci-dessous.</p>
-      <div class="prof-save-actions">
-        <button class="btn pri" onclick="DataPort.doExport()">Exporter ma progression</button>
-        <button class="btn" onclick="DataPort.triggerImport()">Importer une sauvegarde</button>
-        <button class="btn gh" onclick="DataPort.confirmWipe()">Tout effacer</button>
-      </div>
-      <div class="prof-save-note">L'export génère un fichier <b>.json</b> qui contient tout : profil, statistiques,
-        carrière, et progression des trois modes. L'import le restaure à l'identique.</div>
-    </div>`;
-    App._profAvatar = p.avatar;
-  },
-  profPickAvatar(a) {
-    App._profAvatar = a;
-    document.querySelectorAll("#profAvatars .ob-avatar").forEach(b => b.classList.toggle("on", b.dataset.a === a));
-  },
-  profPickMentor(id) {
-    if (Player.data.mentorId === id) return;
-    Player.data.mentorId = id;
-    Player.save();
-    App.renderProfile();
-    const m = MENTORS[id];
-    App.toast(`${m.name} est désormais ton mentor.`);
-  },
-  saveProfile() {
-    const name = (document.getElementById("profName").value || "").trim();
-    Player.setProfile(name, App._profAvatar || Player.data.avatar);
-    App.renderXP();
-    App.toast("Profil enregistré");
-  },
 
 
-  /* ============================================================ DÉFI DU JOUR */
-  renderDaily() {
-    const box = document.getElementById("v-daily");
-    if (!box) return;
-    const daily = Player.dailyState();
 
-    // Défi déjà terminé aujourd'hui
-    if (daily.done && !App.dailyRun) {
-      box.innerHTML = `
-      <div class="daily-done">
-        <div class="daily-done-ring" style="--p:${(daily.score / (daily.total || 10)) * 100}">
-          <span>${daily.score}<small>/${daily.total || 10}</small></span>
-        </div>
-        <div class="daily-done-title">Défi du jour terminé</div>
-        <p class="daily-done-desc">${App.dailyVerdict(daily.score, daily.total || 10)}</p>
-        <div class="daily-done-streak">${daily.streak > 1 ? `🔥 ${daily.streak} jours d'affilée — ne casse pas la série, reviens demain.` : "Reviens demain pour lancer une série."}</div>
-        <button class="btn lg mt" onclick="App.go('home')">Retour à l'accueil</button>
-      </div>`;
-      return;
-    }
 
-    // Écran de lancement
-    if (!App.dailyRun) {
-      const leak = (() => { const s = Progress.summary(); return s.n >= 30 && s.leaks.length ? s.leaks[0] : null; })();
-      const leakInfo = leak ? (LEAK_INFO[leak.key] || { name: leak.key }) : null;
-      box.innerHTML = `
-      <div class="daily-intro">
-        <div class="daily-intro-icon">◆</div>
-        <div class="daily-intro-title">Défi du jour</div>
-        ${leakInfo ? `
-        <div class="daily-leak-link">
-          <div class="daily-leak-row"><span class="daily-leak-k">Ton leak prioritaire</span><span class="daily-leak-v">${leakInfo.name.toLowerCase()}</span></div>
-          <div class="daily-leak-arrow">↓</div>
-          <div class="daily-leak-row"><span class="daily-leak-k">Le défi</span><span class="daily-leak-v">10 spots ciblés pour le corriger</span></div>
-        </div>` : `
-        <p class="daily-intro-desc">10 décisions à la table pour t'échauffer sur des situations variées. Un score par jour ; reviens chaque jour pour entretenir ta série.</p>`}
-        <button class="btn pri lg" onclick="App.startDaily()">Lancer le défi</button>
-      </div>`;
-      return;
-    }
-
-    // En cours : la table héberge le défi (elle seule rend #v-play)
-    App.go("play");
-  },
-
-  dailyVerdict(score, total) {
-    const r = score / total;
-    if (r >= 0.9) return "Score excellent. Tu es affûté aujourd'hui.";
-    if (r >= 0.7) return "Bon score. Quelques spots à revoir, mais l'essentiel est là.";
-    if (r >= 0.5) return "Score correct. Regarde les décisions ratées : c'est là que se trouve la marge.";
-    return "Journée difficile. Ce sont justement les spots où tu perds le plus qu'il faut retravailler — le défi de demain t'y ramènera.";
-  },
-
-  startDaily() {
-    App.dailyRun = { i: 0, total: 10, correct: 0 };
-    App.cfg.mode = "cible";   // ciblé sur les leaks
-    App.newHand();
-    App.go("play");           // la table héberge le défi (bandeau ◆ DÉFI DU JOUR)
-  },
 
   /* ================================================================ TABLE */
   newHand() {
@@ -7176,10 +7050,10 @@ const App = {
     }
 
     // Défi du jour : chaque décision compte, on s'arrête à 10
-    if (!ghost && App.dailyRun) {
-      App.dailyRun.i++;
-      if (wasOk) App.dailyRun.correct++;
-      if (App.dailyRun.i >= App.dailyRun.total) App.dailyRun.finishing = true;
+    if (!ghost && DailyUI.dailyRun) {
+      DailyUI.dailyRun.i++;
+      if (wasOk) DailyUI.dailyRun.correct++;
+      if (DailyUI.dailyRun.i >= DailyUI.dailyRun.total) DailyUI.dailyRun.finishing = true;
     }
 
     // Entraînement ciblé sur un leak : même logique, 10 spots comptés
@@ -7210,15 +7084,15 @@ const App = {
       return;
     }
     // Défi du jour bouclé : on clôt au lieu de poursuivre
-    if (App.dailyRun && App.dailyRun.finishing) {
-      Player.completeDaily(App.dailyRun.correct, App.dailyRun.total);
-      App.dailyRun = null;
+    if (DailyUI.dailyRun && DailyUI.dailyRun.finishing) {
+      Player.completeDaily(DailyUI.dailyRun.correct, DailyUI.dailyRun.total);
+      DailyUI.dailyRun = null;
       App.t = null; App.phase = "idle"; App.analysis = null; App.lastDecision = null;
       App.go("daily");
       return;
     }
     // En défi du jour, on enchaîne les décisions : nouveau spot à chaque fois
-    if (App.dailyRun) {
+    if (DailyUI.dailyRun) {
       App.analysis = null; App.lastDecision = null;
       App.newHand();
       return;
@@ -7314,8 +7188,8 @@ const App = {
     let html = "";
 
     // Bandeau défi du jour
-    if (App.dailyRun) {
-      const dr = App.dailyRun;
+    if (DailyUI.dailyRun) {
+      const dr = DailyUI.dailyRun;
       const done = App.phase === "review" ? dr.i : dr.i;
       const pctD = (done / dr.total) * 100;
       html += `<div class="daily-hud">
@@ -7513,8 +7387,8 @@ const App = {
     </div>
 
     <div style="display:flex;gap:9px;flex-wrap:wrap;margin-bottom:13px">
-      ${App.dailyRun
-        ? `<button class="btn pri" onclick="App.continueHand()">${App.dailyRun.finishing ? "Voir mon score →" : `Spot suivant (${App.dailyRun.i}/${App.dailyRun.total}) →`}</button>`
+      ${DailyUI.dailyRun
+        ? `<button class="btn pri" onclick="App.continueHand()">${DailyUI.dailyRun.finishing ? "Voir mon score →" : `Spot suivant (${DailyUI.dailyRun.i}/${DailyUI.dailyRun.total}) →`}</button>`
         : `<button class="btn pri" onclick="App.continueHand()">Continuer la main</button>
            <button class="btn" onclick="App.newHand()">Nouvelle main</button>`}
     </div>
@@ -7892,7 +7766,7 @@ const App = {
           ? `${leaks.length} tendance${leaks.length > 1 ? "s" : ""} récurrente${leaks.length > 1 ? "s" : ""} détectée${leaks.length > 1 ? "s" : ""}, classée${leaks.length > 1 ? "s" : ""} par espérance perdue. Le mode <b style="color:var(--bone)">Entraînement ciblé</b> te reproposera en priorité les situations correspondantes.`
           : `Aucune tendance nette ne ressort : tes erreurs sont dispersées plutôt que systématiques. C'est plutôt bon signe.`}
       </p>
-      ${leaks.length ? `<button class="btn pri mt" onclick="App.trainLeak()">Travailler mon principal leak</button>` : ""}
+      ${leaks.length ? `<button class="btn pri mt" onclick="JourneyUI.trainLeak()">Travailler mon principal leak</button>` : ""}
     </div>
 
     ${leaks.map((l, li) => {
@@ -7920,200 +7794,18 @@ const App = {
       </tbody></table>
     </div>
 
-    ${App.masteryPanel()}`;
+    ${JourneyUI.masteryPanel()}`;
   },
 
   /* ============================================================ MON ÉVOLUTION */
 
-  renderJourney() {
-    const box = document.getElementById("v-journey");
-    if (!box) return;
-    Journey.snapshot();
-    const st = Journey.story();
-    const s = Progress.summary();
 
-    if (s.n < 15) {
-      box.innerHTML = `
-      <div class="jy">
-        <div class="jy-hero jy-hero-empty">
-          <div class="jy-hero-eyebrow">Mon évolution</div>
-          <div class="jy-hero-title">Ton coach apprend à te connaître.</div>
-          <p class="jy-hero-lede">Encore quelques mains et HeroLab saura précisément où tu perds de l'argent —
-            et te donnera un plan pour corriger ça. Il te faut environ ${15 - s.n} décision${15 - s.n > 1 ? "s" : ""} de plus.</p>
-          <div class="jy-progress-intro"><div class="jy-progress-bar"><i style="width:${s.n / 15 * 100}%"></i></div><span>${s.n}/15</span></div>
-          <button class="btn pri lg mt" onclick="App.go('play');App.newHand()">Jouer quelques mains</button>
-        </div>
-      </div>`;
-      return;
-    }
 
-    const curInfo = st.currentLeak ? (LEAK_INFO[st.currentLeak.key] || { name: st.currentLeak.key }) : null;
-    const impInfo = st.improved ? (LEAK_INFO[st.improved.key] || { name: st.improved.key }) : null;
 
-    box.innerHTML = `
-    <div class="jy">
-      <div class="jy-hero">
-        <div class="jy-hero-eyebrow">Ton coach a suivi tes ${st.totalDecisions} décisions</div>
-        <div class="jy-hero-headline">${App.journeyHeadline(st)}</div>
-      </div>
 
-      <div class="jy-triptych">
-        ${st.improved ? `
-        <div class="jy-panel was">
-          <div class="jy-panel-tag">Il y a ${st.spanDays} jours</div>
-          <div class="jy-panel-title">${impInfo.name}</div>
-          <div class="jy-panel-metric">${st.improved.before.toFixed(0)} bb<small>/100 perdues</small></div>
-        </div>
-        <div class="jy-panel now">
-          <div class="jy-panel-tag">Depuis</div>
-          <div class="jy-panel-title">${st.volumeSince} spots travaillés</div>
-          <div class="jy-panel-metric up">${st.improved.dropPct > 0 ? "−" + st.improved.dropPct + "%" : "en cours"}<small>de coût sur ce leak</small></div>
-        </div>` : `
-        <div class="jy-panel now" style="grid-column:span 2">
-          <div class="jy-panel-tag">Ta précision</div>
-          <div class="jy-panel-title">${st.rate.toFixed(0)}% de décisions justes</div>
-          <div class="jy-panel-metric"><small>sur ${st.totalDecisions} décisions analysées</small></div>
-        </div>`}
-        <div class="jy-panel next">
-          <div class="jy-panel-tag">Ton chantier maintenant</div>
-          <div class="jy-panel-title">${curInfo ? curInfo.name : "Consolider ton jeu"}</div>
-          ${st.currentLeak ? `<button class="btn pri jy-panel-btn" onclick="App.trainLeak()">Travailler ça →</button>` : ""}
-        </div>
-      </div>
 
-      ${App.journeyMissions()}
-      ${App.journeyMastery()}
-      ${App.journeyTimeline()}
-    </div>`;
-  },
 
-  journeyHeadline(st) {
-    if (st.improved && st.improved.dropPct >= 15)
-      return `Tu progresses vraiment. ${LEAK_INFO[st.improved.key] ? LEAK_INFO[st.improved.key].name.replace(/^Tu /, "").replace(/^./, c => c.toUpperCase()) : "Ton point faible"} te coûte nettement moins qu'avant.`;
-    if (st.currentLeak)
-      return `Ta priorité du moment : ${(LEAK_INFO[st.currentLeak.key] || { name: "" }).name.toLowerCase().replace(/^tu /, "")}. On l'attaque ensemble.`;
-    return `Ton jeu est solide et régulier. Continue à empiler les décisions justes.`;
-  },
 
-  journeyMissions() {
-    const missions = Journey.activeMissions();
-    if (!missions.length) return `
-      <div class="jy-section">
-        <div class="jy-section-h">Tes missions</div>
-        <div class="jy-empty-note">Aucune fuite majeure détectée en ce moment — c'est bon signe. Continue à jouer, HeroLab t'assignera une mission dès qu'un point faible ressort.</div>
-      </div>`;
-    return `
-    <div class="jy-section">
-      <div class="jy-section-h">Tes missions <span class="jy-section-sub">tes fuites transformées en objectifs</span></div>
-      <div class="jy-missions">
-        ${missions.map(m => {
-          const pct = m.target ? m.done / m.target * 100 : 0;
-          return `<div class="jy-mission ${m.complete ? "done" : ""}">
-            <div class="jy-mission-top">
-              <div class="jy-mission-title">${m.title}</div>
-              ${m.complete ? `<span class="jy-mission-badge">✓ accompli</span>` : `<span class="jy-mission-count">${m.done}/${m.target}</span>`}
-            </div>
-            <div class="jy-mission-desc">${m.fix || ""}</div>
-            <div class="jy-mission-bar"><i style="width:${Math.min(100, pct)}%"></i></div>
-            <div class="jy-mission-foot">
-              <span class="mastery-tier t${m.mastery.tier}">${m.mastery.name}</span>
-              <button class="btn sm jy-mission-btn" onclick="App.trainSpecificLeak('${m.key}')">S'entraîner</button>
-            </div>
-          </div>`;
-        }).join("")}
-      </div>
-    </div>`;
-  },
-
-  journeyMastery() {
-    const skills = Rating.skills();
-    return `
-    <div class="jy-section">
-      <div class="jy-section-h">Ta maîtrise par thème <span class="jy-section-sub">ce que tu gères de mieux en mieux</span></div>
-      <div class="jy-mastery">
-        ${skills.map(sk => `
-          <div class="jy-mastery-row">
-            <span class="jy-mastery-name">${sk.label}</span>
-            <div class="jy-mastery-track"><i style="width:${Math.max(3, sk.score)}%;background:${App.skillColor(sk.key)}"></i></div>
-            <span class="jy-mastery-val">${sk.score}</span>
-          </div>`).join("")}
-      </div>
-      <div class="jy-mastery-note">Ces indicateurs mesurent la qualité de tes décisions à l'entraînement — pas des gains en argent réel. Ils montent quand tu joues juste, sur du volume.</div>
-    </div>`;
-  },
-
-  journeyTimeline() {
-    const tl = Journey.timeline();
-    if (tl.length < 2) return "";
-    return `
-    <div class="jy-section">
-      <div class="jy-section-h">Ton parcours <span class="jy-section-sub">semaine après semaine</span></div>
-      <div class="jy-timeline">
-        ${tl.slice(-6).map((w, i, arr) => {
-          const d = new Date(w.ts);
-          const label = d.toLocaleDateString("fr-FR", { day: "numeric", month: "short" });
-          const prev = i > 0 ? arr[i - 1].rate : null;
-          const trend = prev != null ? (w.rate - prev) : 0;
-          return `<div class="jy-tl-week">
-            <div class="jy-tl-dot"></div>
-            <div class="jy-tl-body">
-              <div class="jy-tl-date">Semaine du ${label}</div>
-              <div class="jy-tl-focus">${w.topLeak ? "Travail : " + w.topLeak.toLowerCase().replace(/^tu /, "") : "Jeu général"}</div>
-              <div class="jy-tl-rate">${w.rate.toFixed(0)}% de décisions justes${Math.abs(trend) >= 2 ? ` <span class="${trend > 0 ? "up" : "down"}">${trend > 0 ? "▲" : "▼"} ${Math.abs(trend).toFixed(0)}</span>` : ""}</div>
-            </div>
-          </div>`;
-        }).join("")}
-      </div>
-    </div>`;
-  },
-
-  trainSpecificLeak(leakKey) {
-    const f = Progress.focusFor(leakKey);
-    App.cfg.mode = f.mode || "cible";
-    App.focusLeak = leakKey;
-    App.go("play");
-    App.newHand();
-  },
-
-  /** Panneau de maîtrise : progression par notion, sur la durée. */
-  masteryPanel() {
-    const m = (Player.data && Player.data.mastery) || {};
-    const keys = Object.keys(m).filter(k => m[k].seen >= 1);
-    if (!keys.length) return "";
-    // Trier : les plus maîtrisés en haut
-    const rows = keys.map(k => {
-      const info = LEAK_INFO[k] || { name: k };
-      const lvl = Player.masteryLevel(k);
-      return { k, name: info.name, lvl };
-    }).sort((a, b) => b.lvl.tier - a.lvl.tier || b.lvl.rate - a.lvl.rate);
-
-    return `<div class="card mt">
-      <div class="card-h"><h3>Ta maîtrise par notion</h3>
-        <span class="note">se construit à mesure que tu joues</span></div>
-      <div class="mastery-list">
-        ${rows.map(r => `
-          <div class="mastery-row">
-            <div class="mastery-name">${r.name}</div>
-            <div class="mastery-track"><i class="t${r.lvl.tier}" style="width:${Math.max(6, r.lvl.tier / 4 * 100)}%"></i></div>
-            <span class="mastery-tier t${r.lvl.tier}">${r.lvl.name}</span>
-          </div>`).join("")}
-      </div>
-      <div class="mastery-legend">Découverte → En apprentissage → Familier → Solide → Maîtrisé.
-        Un palier se gagne en répétant les bonnes décisions sur ce type de situation.</div>
-    </div>`;
-  },
-
-  trainLeak(leakKey) {
-    if (leakKey && Progress.focusFor) {
-      const f = Progress.focusFor(leakKey);
-      App.cfg.mode = f.mode || "cible";
-      App.focusLeak = leakKey;
-    } else {
-      App.cfg.mode = "cible";
-    }
-    App.go("play");
-    App.newHand();
-  },
 
   /* ============================================================== PROFILS */
   renderProfiles() {
@@ -8197,7 +7889,7 @@ const App = {
      ici on ne fait que piloter l'état de l'interface.                        */
 
   startSession(lengthKey) {
-    App.dailyRun = null; App.drillRun = null;   // une session remplace tout run en cours
+    DailyUI.dailyRun = null; App.drillRun = null;   // une session remplace tout run en cours
     const tier = Career.tier();
     const roster = new Roster(tier, 8);
     App.session = Session.create(tier, lengthKey, roster);
@@ -8220,7 +7912,7 @@ const App = {
       label: cfg.label || "Entraînement ciblé",
       i: 0, total: 10, correct: 0, acceptable: 0, finishing: false
     };
-    App.session = null; App.sessionReport = null; App.dailyRun = null;
+    App.session = null; App.sessionReport = null; DailyUI.dailyRun = null;
     App.toast(`Entraînement : <b>10 spots</b> sur cette fuite`);
     App.go("play");
     App.newHand();
@@ -8324,6 +8016,358 @@ const App = {
 };
 
 document.addEventListener("DOMContentLoaded", App.init);
+
+/* ============================================================================
+   PROFILE UI — écran de profil (pseudo, symbole, mentor).
+
+   Extrait d'App : ne touche que Player et ne partage aucun état avec la boucle
+   de jeu. Son unique champ est le brouillon d'avatar en cours d'édition.
+   ========================================================================== */
+const ProfileUI = {
+  _profAvatar: null,
+
+  /* ================================================================ PROFIL */
+  renderProfile() {
+    const box = document.getElementById("v-profile");
+    if (!box) return;
+    const p = Player.data;
+    const created = p.created ? new Date(p.created).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }) : "—";
+    const s = Progress.summary();
+
+    box.innerHTML = `
+    <div class="card">
+      <div class="card-h"><h3>Mon profil</h3></div>
+      <div class="prof-id">
+        <div class="prof-avatar">${p.avatar || "♠"}</div>
+        <div class="prof-fields">
+          <label class="prof-label">Pseudo</label>
+          <input id="profName" class="ob-input" type="text" maxlength="24" value="${UI.esc(p.name || "")}">
+          <label class="prof-label">Symbole</label>
+          <div class="ob-avatars" id="profAvatars">
+            ${AVATARS.map(a => `<button class="ob-avatar ${a === p.avatar ? "on" : ""}" data-a="${a}" onclick="ProfileUI.profPickAvatar('${a}')">${a}</button>`).join("")}
+          </div>
+          <button class="btn pri mt" onclick="ProfileUI.saveProfile()">Enregistrer</button>
+        </div>
+      </div>
+      <div class="prof-meta">Membre depuis le ${created} · Niveau ${s.level} · ${s.n} décisions jouées</div>
+    </div>
+
+    <div class="card mt">
+      <div class="card-h"><h3>Mon mentor</h3>${(() => { const m = Mentor.get(); if (!m) return ""; const lvl = Mentor.bondLevel(); return `<span class="mentor-badge"><span style="color:${m.color}">${m.icon}</span> ${lvl.label} · niv.${lvl.n}<span class="mb-bar"><span class="mb-fill" style="width:${p.mentorBond || 0}%;background:${m.color}"></span></span></span>`; })()}</div>
+      <p style="font-size:13px;color:var(--dim);margin:2px 0 12px;line-height:1.5">Ton mentor réagit à chaque décision. Votre lien grandit quand tu joues juste. Tu peux en changer quand tu veux.</p>
+      <div class="mentor-grid" id="profMentors">
+        ${Object.values(MENTORS).map(m => { const on = m.id === p.mentorId; return `<button class="mentor-card ${on ? "on" : ""}" data-m="${m.id}" onclick="ProfileUI.profPickMentor('${m.id}')" ${on ? 'style="border-color:var(--brass)"' : ""}>
+          <span class="mc-ic" style="background:${m.color}22;color:${m.color}">${m.icon}</span>
+          <b>${m.name}</b><span class="mc-t">${m.title}</span>
+          <span class="mc-bio">${m.bio}</span></button>`; }).join("")}
+      </div>
+    </div>
+
+    <div class="card mt">
+      <div class="card-h"><h3>Sauvegarde</h3></div>
+      <p class="prof-save-desc">Ta progression est stockée sur cet appareil, dans ce navigateur. Pour la
+        transférer sur un autre appareil, la mettre à l'abri, ou repartir de zéro, utilise les boutons ci-dessous.</p>
+      <div class="prof-save-actions">
+        <button class="btn pri" onclick="DataPort.doExport()">Exporter ma progression</button>
+        <button class="btn" onclick="DataPort.triggerImport()">Importer une sauvegarde</button>
+        <button class="btn gh" onclick="DataPort.confirmWipe()">Tout effacer</button>
+      </div>
+      <div class="prof-save-note">L'export génère un fichier <b>.json</b> qui contient tout : profil, statistiques,
+        carrière, et progression des trois modes. L'import le restaure à l'identique.</div>
+    </div>`;
+    ProfileUI._profAvatar = p.avatar;
+  },
+
+  profPickAvatar(a) {
+    ProfileUI._profAvatar = a;
+    document.querySelectorAll("#profAvatars .ob-avatar").forEach(b => b.classList.toggle("on", b.dataset.a === a));
+  },
+
+  profPickMentor(id) {
+    if (Player.data.mentorId === id) return;
+    Player.data.mentorId = id;
+    Player.save();
+    ProfileUI.renderProfile();
+    const m = MENTORS[id];
+    App.toast(`${m.name} est désormais ton mentor.`);
+  },
+
+  saveProfile() {
+    const name = (document.getElementById("profName").value || "").trim();
+    Player.setProfile(name, ProfileUI._profAvatar || Player.data.avatar);
+    App.renderXP();
+    App.toast("Profil enregistré");
+  }
+};
+
+/* ============================================================================
+   DAILY UI — défi du jour (10 spots, un verdict).
+
+   Extrait d'App : mode autonome avec son propre compteur de série. Le
+   comportement du défi est inchangé ; seul le propriétaire de dailyRun change.
+   ========================================================================== */
+const DailyUI = {
+  dailyRun: null,
+
+  /* ============================================================ DÉFI DU JOUR */
+  renderDaily() {
+    const box = document.getElementById("v-daily");
+    if (!box) return;
+    const daily = Player.dailyState();
+
+    // Défi déjà terminé aujourd'hui
+    if (daily.done && !DailyUI.dailyRun) {
+      box.innerHTML = `
+      <div class="daily-done">
+        <div class="daily-done-ring" style="--p:${(daily.score / (daily.total || 10)) * 100}">
+          <span>${daily.score}<small>/${daily.total || 10}</small></span>
+        </div>
+        <div class="daily-done-title">Défi du jour terminé</div>
+        <p class="daily-done-desc">${DailyUI.dailyVerdict(daily.score, daily.total || 10)}</p>
+        <div class="daily-done-streak">${daily.streak > 1 ? `🔥 ${daily.streak} jours d'affilée — ne casse pas la série, reviens demain.` : "Reviens demain pour lancer une série."}</div>
+        <button class="btn lg mt" onclick="App.go('home')">Retour à l'accueil</button>
+      </div>`;
+      return;
+    }
+
+    // Écran de lancement
+    if (!DailyUI.dailyRun) {
+      const leak = (() => { const s = Progress.summary(); return s.n >= 30 && s.leaks.length ? s.leaks[0] : null; })();
+      const leakInfo = leak ? (LEAK_INFO[leak.key] || { name: leak.key }) : null;
+      box.innerHTML = `
+      <div class="daily-intro">
+        <div class="daily-intro-icon">◆</div>
+        <div class="daily-intro-title">Défi du jour</div>
+        ${leakInfo ? `
+        <div class="daily-leak-link">
+          <div class="daily-leak-row"><span class="daily-leak-k">Ton leak prioritaire</span><span class="daily-leak-v">${leakInfo.name.toLowerCase()}</span></div>
+          <div class="daily-leak-arrow">↓</div>
+          <div class="daily-leak-row"><span class="daily-leak-k">Le défi</span><span class="daily-leak-v">10 spots ciblés pour le corriger</span></div>
+        </div>` : `
+        <p class="daily-intro-desc">10 décisions à la table pour t'échauffer sur des situations variées. Un score par jour ; reviens chaque jour pour entretenir ta série.</p>`}
+        <button class="btn pri lg" onclick="DailyUI.startDaily()">Lancer le défi</button>
+      </div>`;
+      return;
+    }
+
+    // En cours : la table héberge le défi (elle seule rend #v-play)
+    App.go("play");
+  },
+
+  dailyVerdict(score, total) {
+    const r = score / total;
+    if (r >= 0.9) return "Score excellent. Tu es affûté aujourd'hui.";
+    if (r >= 0.7) return "Bon score. Quelques spots à revoir, mais l'essentiel est là.";
+    if (r >= 0.5) return "Score correct. Regarde les décisions ratées : c'est là que se trouve la marge.";
+    return "Journée difficile. Ce sont justement les spots où tu perds le plus qu'il faut retravailler — le défi de demain t'y ramènera.";
+  },
+
+  startDaily() {
+    DailyUI.dailyRun = { i: 0, total: 10, correct: 0 };
+    App.cfg.mode = "cible";   // ciblé sur les leaks
+    App.newHand();
+    App.go("play");           // la table héberge le défi (bandeau ◆ DÉFI DU JOUR)
+  }
+};
+
+/* ============================================================================
+   JOURNEY UI — frise de progression, missions, panneau de maîtrise.
+
+   Extrait d'App sur le modèle de CareerUI, déjà sorti auparavant. Ne change ni
+   les règles de progression ni la structure de Progress.summary() : cette
+   couche ne fait que rendre ce que Journey et Progress calculent.
+   ========================================================================== */
+const JourneyUI = {
+  renderJourney() {
+    const box = document.getElementById("v-journey");
+    if (!box) return;
+    Journey.snapshot();
+    const st = Journey.story();
+    const s = Progress.summary();
+
+    if (s.n < 15) {
+      box.innerHTML = `
+      <div class="jy">
+        <div class="jy-hero jy-hero-empty">
+          <div class="jy-hero-eyebrow">Mon évolution</div>
+          <div class="jy-hero-title">Ton coach apprend à te connaître.</div>
+          <p class="jy-hero-lede">Encore quelques mains et HeroLab saura précisément où tu perds de l'argent —
+            et te donnera un plan pour corriger ça. Il te faut environ ${15 - s.n} décision${15 - s.n > 1 ? "s" : ""} de plus.</p>
+          <div class="jy-progress-intro"><div class="jy-progress-bar"><i style="width:${s.n / 15 * 100}%"></i></div><span>${s.n}/15</span></div>
+          <button class="btn pri lg mt" onclick="App.go('play');App.newHand()">Jouer quelques mains</button>
+        </div>
+      </div>`;
+      return;
+    }
+
+    const curInfo = st.currentLeak ? (LEAK_INFO[st.currentLeak.key] || { name: st.currentLeak.key }) : null;
+    const impInfo = st.improved ? (LEAK_INFO[st.improved.key] || { name: st.improved.key }) : null;
+
+    box.innerHTML = `
+    <div class="jy">
+      <div class="jy-hero">
+        <div class="jy-hero-eyebrow">Ton coach a suivi tes ${st.totalDecisions} décisions</div>
+        <div class="jy-hero-headline">${JourneyUI.journeyHeadline(st)}</div>
+      </div>
+
+      <div class="jy-triptych">
+        ${st.improved ? `
+        <div class="jy-panel was">
+          <div class="jy-panel-tag">Il y a ${st.spanDays} jours</div>
+          <div class="jy-panel-title">${impInfo.name}</div>
+          <div class="jy-panel-metric">${st.improved.before.toFixed(0)} bb<small>/100 perdues</small></div>
+        </div>
+        <div class="jy-panel now">
+          <div class="jy-panel-tag">Depuis</div>
+          <div class="jy-panel-title">${st.volumeSince} spots travaillés</div>
+          <div class="jy-panel-metric up">${st.improved.dropPct > 0 ? "−" + st.improved.dropPct + "%" : "en cours"}<small>de coût sur ce leak</small></div>
+        </div>` : `
+        <div class="jy-panel now" style="grid-column:span 2">
+          <div class="jy-panel-tag">Ta précision</div>
+          <div class="jy-panel-title">${st.rate.toFixed(0)}% de décisions justes</div>
+          <div class="jy-panel-metric"><small>sur ${st.totalDecisions} décisions analysées</small></div>
+        </div>`}
+        <div class="jy-panel next">
+          <div class="jy-panel-tag">Ton chantier maintenant</div>
+          <div class="jy-panel-title">${curInfo ? curInfo.name : "Consolider ton jeu"}</div>
+          ${st.currentLeak ? `<button class="btn pri jy-panel-btn" onclick="JourneyUI.trainLeak()">Travailler ça →</button>` : ""}
+        </div>
+      </div>
+
+      ${JourneyUI.journeyMissions()}
+      ${JourneyUI.journeyMastery()}
+      ${JourneyUI.journeyTimeline()}
+    </div>`;
+  },
+
+  journeyHeadline(st) {
+    if (st.improved && st.improved.dropPct >= 15)
+      return `Tu progresses vraiment. ${LEAK_INFO[st.improved.key] ? LEAK_INFO[st.improved.key].name.replace(/^Tu /, "").replace(/^./, c => c.toUpperCase()) : "Ton point faible"} te coûte nettement moins qu'avant.`;
+    if (st.currentLeak)
+      return `Ta priorité du moment : ${(LEAK_INFO[st.currentLeak.key] || { name: "" }).name.toLowerCase().replace(/^tu /, "")}. On l'attaque ensemble.`;
+    return `Ton jeu est solide et régulier. Continue à empiler les décisions justes.`;
+  },
+
+  journeyMissions() {
+    const missions = Journey.activeMissions();
+    if (!missions.length) return `
+      <div class="jy-section">
+        <div class="jy-section-h">Tes missions</div>
+        <div class="jy-empty-note">Aucune fuite majeure détectée en ce moment — c'est bon signe. Continue à jouer, HeroLab t'assignera une mission dès qu'un point faible ressort.</div>
+      </div>`;
+    return `
+    <div class="jy-section">
+      <div class="jy-section-h">Tes missions <span class="jy-section-sub">tes fuites transformées en objectifs</span></div>
+      <div class="jy-missions">
+        ${missions.map(m => {
+          const pct = m.target ? m.done / m.target * 100 : 0;
+          return `<div class="jy-mission ${m.complete ? "done" : ""}">
+            <div class="jy-mission-top">
+              <div class="jy-mission-title">${m.title}</div>
+              ${m.complete ? `<span class="jy-mission-badge">✓ accompli</span>` : `<span class="jy-mission-count">${m.done}/${m.target}</span>`}
+            </div>
+            <div class="jy-mission-desc">${m.fix || ""}</div>
+            <div class="jy-mission-bar"><i style="width:${Math.min(100, pct)}%"></i></div>
+            <div class="jy-mission-foot">
+              <span class="mastery-tier t${m.mastery.tier}">${m.mastery.name}</span>
+              <button class="btn sm jy-mission-btn" onclick="JourneyUI.trainSpecificLeak('${m.key}')">S'entraîner</button>
+            </div>
+          </div>`;
+        }).join("")}
+      </div>
+    </div>`;
+  },
+
+  journeyMastery() {
+    const skills = Rating.skills();
+    return `
+    <div class="jy-section">
+      <div class="jy-section-h">Ta maîtrise par thème <span class="jy-section-sub">ce que tu gères de mieux en mieux</span></div>
+      <div class="jy-mastery">
+        ${skills.map(sk => `
+          <div class="jy-mastery-row">
+            <span class="jy-mastery-name">${sk.label}</span>
+            <div class="jy-mastery-track"><i style="width:${Math.max(3, sk.score)}%;background:${App.skillColor(sk.key)}"></i></div>
+            <span class="jy-mastery-val">${sk.score}</span>
+          </div>`).join("")}
+      </div>
+      <div class="jy-mastery-note">Ces indicateurs mesurent la qualité de tes décisions à l'entraînement — pas des gains en argent réel. Ils montent quand tu joues juste, sur du volume.</div>
+    </div>`;
+  },
+
+  journeyTimeline() {
+    const tl = Journey.timeline();
+    if (tl.length < 2) return "";
+    return `
+    <div class="jy-section">
+      <div class="jy-section-h">Ton parcours <span class="jy-section-sub">semaine après semaine</span></div>
+      <div class="jy-timeline">
+        ${tl.slice(-6).map((w, i, arr) => {
+          const d = new Date(w.ts);
+          const label = d.toLocaleDateString("fr-FR", { day: "numeric", month: "short" });
+          const prev = i > 0 ? arr[i - 1].rate : null;
+          const trend = prev != null ? (w.rate - prev) : 0;
+          return `<div class="jy-tl-week">
+            <div class="jy-tl-dot"></div>
+            <div class="jy-tl-body">
+              <div class="jy-tl-date">Semaine du ${label}</div>
+              <div class="jy-tl-focus">${w.topLeak ? "Travail : " + w.topLeak.toLowerCase().replace(/^tu /, "") : "Jeu général"}</div>
+              <div class="jy-tl-rate">${w.rate.toFixed(0)}% de décisions justes${Math.abs(trend) >= 2 ? ` <span class="${trend > 0 ? "up" : "down"}">${trend > 0 ? "▲" : "▼"} ${Math.abs(trend).toFixed(0)}</span>` : ""}</div>
+            </div>
+          </div>`;
+        }).join("")}
+      </div>
+    </div>`;
+  },
+
+  /** Panneau de maîtrise : progression par notion, sur la durée. */
+  masteryPanel() {
+    const m = (Player.data && Player.data.mastery) || {};
+    const keys = Object.keys(m).filter(k => m[k].seen >= 1);
+    if (!keys.length) return "";
+    // Trier : les plus maîtrisés en haut
+    const rows = keys.map(k => {
+      const info = LEAK_INFO[k] || { name: k };
+      const lvl = Player.masteryLevel(k);
+      return { k, name: info.name, lvl };
+    }).sort((a, b) => b.lvl.tier - a.lvl.tier || b.lvl.rate - a.lvl.rate);
+
+    return `<div class="card mt">
+      <div class="card-h"><h3>Ta maîtrise par notion</h3>
+        <span class="note">se construit à mesure que tu joues</span></div>
+      <div class="mastery-list">
+        ${rows.map(r => `
+          <div class="mastery-row">
+            <div class="mastery-name">${r.name}</div>
+            <div class="mastery-track"><i class="t${r.lvl.tier}" style="width:${Math.max(6, r.lvl.tier / 4 * 100)}%"></i></div>
+            <span class="mastery-tier t${r.lvl.tier}">${r.lvl.name}</span>
+          </div>`).join("")}
+      </div>
+      <div class="mastery-legend">Découverte → En apprentissage → Familier → Solide → Maîtrisé.
+        Un palier se gagne en répétant les bonnes décisions sur ce type de situation.</div>
+    </div>`;
+  },
+
+  trainLeak(leakKey) {
+    if (leakKey && Progress.focusFor) {
+      const f = Progress.focusFor(leakKey);
+      App.cfg.mode = f.mode || "cible";
+      App.focusLeak = leakKey;
+    } else {
+      App.cfg.mode = "cible";
+    }
+    App.go("play");
+    App.newHand();
+  },
+
+  trainSpecificLeak(leakKey) {
+    const f = Progress.focusFor(leakKey);
+    App.cfg.mode = f.mode || "cible";
+    App.focusLeak = leakKey;
+    App.go("play");
+    App.newHand();
+  }
+};
 
 /* ============================================================================
    DATAPORT — export / import / réinitialisation de la progression.
