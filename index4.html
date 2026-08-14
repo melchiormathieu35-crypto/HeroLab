@@ -6326,6 +6326,86 @@ const Rating = {
   }
 };
 
+/* ============================================================================
+   ONBOARDING — création du profil au tout premier lancement.
+
+   Extrait d'App : flux fermé, joué une fois, sans lien avec la boucle de jeu.
+   Il ne possède que ses deux brouillons de sélection (_obAvatar, _obMentor) et
+   délègue la persistance à Player et la navigation à App.
+   ========================================================================== */
+const Onboarding = {
+  _obAvatar: null,
+  _obMentor: null,
+
+  renderOnboarding() {
+    const ov = document.getElementById("onboard");
+    if (!ov) return;
+    ov.classList.add("on");
+    ov.innerHTML = `
+    <div class="ob-panel">
+      <div class="ob-mark"><h1>Hero<i>L</i>ab</h1><small>Cash Game · NLHE</small></div>
+      <div class="ob-title">Bienvenue.</div>
+      <p class="ob-lede">HeroLab est un simulateur d'entraînement au cash game. Tu joues des situations
+        réelles, tu reçois une analyse après chaque décision, et tu progresses. Commençons par te créer un profil —
+        ta progression sera sauvegardée sur cet appareil.</p>
+
+      <label class="ob-label">Ton pseudo</label>
+      <input id="obName" class="ob-input" type="text" maxlength="24" placeholder="Comment veux-tu qu'on t'appelle ?" oninput="Onboarding.obValidate()">
+
+      <label class="ob-label">Ton symbole</label>
+      <div class="ob-avatars" id="obAvatars">
+        ${AVATARS.map((a, i) => `<button class="ob-avatar ${i === 0 ? "on" : ""}" data-a="${a}" onclick="Onboarding.obPickAvatar('${a}')">${a}</button>`).join("")}
+      </div>
+
+      <label class="ob-label">Ton mentor <span style="color:var(--faint);font-weight:400;text-transform:none;letter-spacing:0">— il t'accompagnera et réagira à ton jeu. Ta relation grandira quand tu joueras juste.</span></label>
+      <div class="mentor-grid" id="obMentors">
+        ${Object.values(MENTORS).map((m, i) => `<button class="mentor-card ${i === 0 ? "on" : ""}" data-m="${m.id}" onclick="Onboarding.obPickMentor('${m.id}')" ${i === 0 ? 'style="border-color:var(--brass)"' : ""}>
+          <span class="mc-ic" style="background:${m.color}22;color:${m.color}">${m.icon}</span>
+          <b>${m.name}</b><span class="mc-t">${m.title}</span>
+          <span class="mc-bio">${m.bio}</span></button>`).join("")}
+      </div>
+
+      <button id="obStart" class="btn pri lg ob-start" onclick="Onboarding.finishOnboarding()" disabled>Créer mon profil</button>
+
+      <div class="ob-import">
+        Déjà une sauvegarde ? <button class="ob-link" onclick="App.triggerImport()">Importer ma progression</button>
+      </div>
+    </div>`;
+    Onboarding._obAvatar = AVATARS[0];
+    Onboarding._obMentor = Object.keys(MENTORS)[0];
+    setTimeout(() => { const el = document.getElementById("obName"); if (el) el.focus(); }, 100);
+  },
+  obPickAvatar(a) {
+    Onboarding._obAvatar = a;
+    document.querySelectorAll("#obAvatars .ob-avatar").forEach(b => b.classList.toggle("on", b.dataset.a === a));
+  },
+  obPickMentor(id) {
+    Onboarding._obMentor = id;
+    document.querySelectorAll("#obMentors .mentor-card").forEach(b => {
+      const on = b.dataset.m === id;
+      b.classList.toggle("on", on);
+      b.style.borderColor = on ? "var(--brass)" : "";
+    });
+  },
+  obValidate() {
+    const name = (document.getElementById("obName").value || "").trim();
+    const btn = document.getElementById("obStart");
+    if (btn) btn.disabled = name.length < 1;
+  },
+  finishOnboarding() {
+    const name = (document.getElementById("obName").value || "").trim();
+    if (!name) return;
+    Player.setProfile(name, Onboarding._obAvatar || "♠");
+    Player.data.mentorId = Onboarding._obMentor || Object.keys(MENTORS)[0];
+    Player.data.mentorBond = 5;
+    Player.save();
+    document.getElementById("onboard").classList.remove("on");
+    App.go("home");
+    const m = MENTORS[Player.data.mentorId];
+    App.toast(`Profil créé — ${m.name} t'accompagne, ${UI.esc(Player.data.name)} !`);
+  }
+};
+
 /* ==========================================================================
    MODULE : JOURNEY — « Mon évolution »
    --------------------------------------------------------------------------
@@ -6874,74 +6954,6 @@ const App = {
     </svg>`;
   },
 
-  /* ============================================================= ONBOARDING */
-  renderOnboarding() {
-    const ov = document.getElementById("onboard");
-    if (!ov) return;
-    ov.classList.add("on");
-    ov.innerHTML = `
-    <div class="ob-panel">
-      <div class="ob-mark"><h1>Hero<i>L</i>ab</h1><small>Cash Game · NLHE</small></div>
-      <div class="ob-title">Bienvenue.</div>
-      <p class="ob-lede">HeroLab est un simulateur d'entraînement au cash game. Tu joues des situations
-        réelles, tu reçois une analyse après chaque décision, et tu progresses. Commençons par te créer un profil —
-        ta progression sera sauvegardée sur cet appareil.</p>
-
-      <label class="ob-label">Ton pseudo</label>
-      <input id="obName" class="ob-input" type="text" maxlength="24" placeholder="Comment veux-tu qu'on t'appelle ?" oninput="App.obValidate()">
-
-      <label class="ob-label">Ton symbole</label>
-      <div class="ob-avatars" id="obAvatars">
-        ${AVATARS.map((a, i) => `<button class="ob-avatar ${i === 0 ? "on" : ""}" data-a="${a}" onclick="App.obPickAvatar('${a}')">${a}</button>`).join("")}
-      </div>
-
-      <label class="ob-label">Ton mentor <span style="color:var(--faint);font-weight:400;text-transform:none;letter-spacing:0">— il t'accompagnera et réagira à ton jeu. Ta relation grandira quand tu joueras juste.</span></label>
-      <div class="mentor-grid" id="obMentors">
-        ${Object.values(MENTORS).map((m, i) => `<button class="mentor-card ${i === 0 ? "on" : ""}" data-m="${m.id}" onclick="App.obPickMentor('${m.id}')" ${i === 0 ? 'style="border-color:var(--brass)"' : ""}>
-          <span class="mc-ic" style="background:${m.color}22;color:${m.color}">${m.icon}</span>
-          <b>${m.name}</b><span class="mc-t">${m.title}</span>
-          <span class="mc-bio">${m.bio}</span></button>`).join("")}
-      </div>
-
-      <button id="obStart" class="btn pri lg ob-start" onclick="App.finishOnboarding()" disabled>Créer mon profil</button>
-
-      <div class="ob-import">
-        Déjà une sauvegarde ? <button class="ob-link" onclick="App.triggerImport()">Importer ma progression</button>
-      </div>
-    </div>`;
-    App._obAvatar = AVATARS[0];
-    App._obMentor = Object.keys(MENTORS)[0];
-    setTimeout(() => { const el = document.getElementById("obName"); if (el) el.focus(); }, 100);
-  },
-  obPickAvatar(a) {
-    App._obAvatar = a;
-    document.querySelectorAll("#obAvatars .ob-avatar").forEach(b => b.classList.toggle("on", b.dataset.a === a));
-  },
-  obPickMentor(id) {
-    App._obMentor = id;
-    document.querySelectorAll("#obMentors .mentor-card").forEach(b => {
-      const on = b.dataset.m === id;
-      b.classList.toggle("on", on);
-      b.style.borderColor = on ? "var(--brass)" : "";
-    });
-  },
-  obValidate() {
-    const name = (document.getElementById("obName").value || "").trim();
-    const btn = document.getElementById("obStart");
-    if (btn) btn.disabled = name.length < 1;
-  },
-  finishOnboarding() {
-    const name = (document.getElementById("obName").value || "").trim();
-    if (!name) return;
-    Player.setProfile(name, App._obAvatar || "♠");
-    Player.data.mentorId = App._obMentor || Object.keys(MENTORS)[0];
-    Player.data.mentorBond = 5;
-    Player.save();
-    document.getElementById("onboard").classList.remove("on");
-    App.go("home");
-    const m = MENTORS[Player.data.mentorId];
-    App.toast(`Profil créé — ${m.name} t'accompagne, ${UI.esc(Player.data.name)} !`);
-  },
 
   /* ================================================================ PROFIL */
   renderProfile() {
@@ -7062,7 +7074,7 @@ const App = {
       Storage.removeAll([Player.KEY, Progress.KEY, Career.KEY, HRStats.KEY, PRStats.KEY, BLStats.KEY, Rating.KEY, Journey.KEY]);
     } catch (e) { }
     Player.load(); Progress.load(); Career.load(); HRStats.load(); PRStats.load(); BLStats.load(); Rating.load();
-    App.renderOnboarding();
+    Onboarding.renderOnboarding();
   },
 
   /* ============================================================ DÉFI DU JOUR */
@@ -8411,7 +8423,7 @@ const App = {
       if (e.key === "Escape" && document.getElementById("rail").classList.contains("open")) App.closeMenu();
     });
     // Premier lancement : onboarding (création de profil). Sinon accueil.
-    if (!Player.isOnboarded()) { App.renderOnboarding(); App.view = "home"; }
+    if (!Player.isOnboarded()) { Onboarding.renderOnboarding(); App.view = "home"; }
     // Raccourcis clavier : F/C/R et espace pour continuer
     document.addEventListener("keydown", e => {
       if (App.view !== "play" || !App.t) return;
