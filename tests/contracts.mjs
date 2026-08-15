@@ -336,6 +336,73 @@ export function contractSuite() {
     } finally { Storage.remove(K); }
   });
 
+  // ------------------------------------ ROBUSTESSE AUX DONNÉES PERSISTÉES
+  // Une valeur JSON valide mais de mauvaise forme rendait l'application
+  // impossible à démarrer, sans recours pour l'utilisateur. Ces cas sont
+  // dérivés de crashs réellement observés, pas imaginés.
+  const CORRUPTIONS = {
+    "null littéral": "null",
+    "tableau": "[]",
+    "chaîne nue": '"texte"',
+    "nombre": "42",
+    "booléen": "true",
+    "clés inconnues": '{"inconnu":1,"autre":[2]}',
+    "champ tableau à null": '{"decisions":null,"xp":"beaucoup"}',
+    "champ objet remplacé par tableau": '{"tagStats":[1,2]}',
+    "objet partiel": '{"xp":7}',
+    "JSON invalide": "{{{nope",
+  };
+  for (const [label, value] of Object.entries(CORRUPTIONS)) {
+    t(`storage:boot résiste à une donnée « ${label} »`, () => {
+      const saved = {};
+      for (const k of KEYS) saved[k] = localStorage.getItem(k);
+      try {
+        for (const k of KEYS) localStorage.setItem(k, value);
+        Progress.load(); Career.load(); Player.load(); Rating.load(); Journey.load();
+        HRStats.load(); PRStats.load(); BLStats.load();
+        const s = Progress.summary();
+        if (typeof s.n !== "number") return { pass: false, detail: "summary.n non numérique" };
+        if (!Array.isArray(Progress.data.decisions)) {
+          return { pass: false, detail: "decisions n'est pas un tableau après réparation" };
+        }
+        return { pass: true, detail: `n=${s.n}` };
+      } catch (e) {
+        return { pass: false, detail: "CRASH au boot: " + e.message };
+      } finally {
+        for (const k of KEYS) {
+          if (saved[k] == null) localStorage.removeItem(k); else localStorage.setItem(k, saved[k]);
+        }
+        Progress.load(); Career.load(); Player.load(); Rating.load(); Journey.load();
+        HRStats.load(); PRStats.load(); BLStats.load();
+      }
+    });
+  }
+  t("storage:getObject préserve les données valides", () => {
+    const K = "__pivot_test_obj__";
+    try {
+      Storage.set(K, { xp: 7, decisions: [{ a: 1 }], perso: "gardé" });
+      const v = Storage.getObject(K, { xp: 0, decisions: [], tagStats: {} });
+      if (v.xp !== 7) return { pass: false, detail: "xp écrasé: " + v.xp };
+      if (v.decisions.length !== 1) return { pass: false, detail: "decisions perdues" };
+      if (v.perso !== "gardé") return { pass: false, detail: "clé inconnue supprimée — perte de données" };
+      if (typeof v.tagStats !== "object") return { pass: false, detail: "clé manquante non complétée" };
+      return true;
+    } finally { Storage.remove(K); }
+  });
+  t("storage:getObject répare uniquement les types contredits", () => {
+    const K = "__pivot_test_rep__";
+    try {
+      Storage.set(K, { decisions: null, xp: "texte", tagStats: [1, 2], ok: 5 });
+      const v = Storage.getObject(K, { decisions: [], xp: 0, tagStats: {}, ok: 0 });
+      const bad = [];
+      if (!Array.isArray(v.decisions)) bad.push("decisions non réparé");
+      if (typeof v.xp !== "number") bad.push("xp non réparé");
+      if (Array.isArray(v.tagStats) || typeof v.tagStats !== "object") bad.push("tagStats non réparé");
+      if (v.ok !== 5) bad.push("champ valide écrasé");
+      return bad.length ? { pass: false, detail: bad.join(", ") } : true;
+    } finally { Storage.remove(K); }
+  });
+
   t("storage:StorageGuard existe et ne persiste rien lui-même", () => {
     const SG = G("StorageGuard");
     if (!SG) return { pass: false, detail: "StorageGuard absent" };

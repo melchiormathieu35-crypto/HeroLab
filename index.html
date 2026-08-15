@@ -2488,6 +2488,51 @@ const Storage = {
     const out = {};
     for (const k of (keys || [])) out[k] = Storage.get(k, null);
     return out;
+  },
+
+  /**
+   * Lecture d'un store, normalisée contre une forme de référence.
+   *
+   * `get` rend fidèlement ce qui a été écrit — y compris `[]`, `"texte"` ou
+   * `42` si c'est ce que contient la clé. Les modules qui attendent un objet
+   * plantaient alors au démarrage : `|| blank()` ne rattrape que les valeurs
+   * falsy, or un tableau vide ou le nombre 42 sont truthy. Une donnée
+   * persistée invalide rendait l'application impossible à lancer, sans moyen
+   * de récupération pour l'utilisateur.
+   *
+   * `getObject` garantit un objet exploitable :
+   *   - valeur absente, illisible, ou non-objet  → la forme de référence ;
+   *   - objet valide                             → conservé tel quel ;
+   *   - clé manquante ou de type incompatible    → réparée depuis la référence.
+   *
+   * La réparation est volontairement SUPERFICIELLE et limitée aux types : elle
+   * remplace un champ dont le type contredit la référence (un tableau attendu
+   * qui vaut null, par exemple), et ne touche à rien d'autre. Les données
+   * valides de l'utilisateur sont préservées, y compris les clés inconnues —
+   * les supprimer perdrait les données d'une version plus récente.
+   *
+   * Ce garde-fou ne masque aucune erreur applicative : il ne s'applique qu'aux
+   * valeurs relues du stockage, jamais aux objets construits en mémoire.
+   */
+  getObject(key, template) {
+    const ref = template || {};
+    const raw = Storage.get(key, null);
+    const isPlain = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
+    if (!isPlain(raw)) return ref;
+
+    for (const k of Object.keys(ref)) {
+      const want = ref[k], got = raw[k];
+      if (got === undefined) { raw[k] = want; continue; }
+      // Un type qui contredit la référence est réparé ; le reste est laissé.
+      if (Array.isArray(want) !== Array.isArray(got)) { raw[k] = want; continue; }
+      if (Array.isArray(want)) continue;
+      if (want !== null && typeof want === "object") {
+        if (!isPlain(got)) raw[k] = want;
+        continue;
+      }
+      if (want !== null && typeof want !== typeof got) raw[k] = want;
+    }
+    return raw;
   }
 };
 
@@ -4809,7 +4854,7 @@ const Progress = {
 
   load() {
     try {
-      Progress.data = Storage.get(Progress.KEY, null) || Progress.blank();
+      Progress.data = Storage.getObject(Progress.KEY, Progress.blank());
     } catch { Progress.data = Progress.blank(); }
     if (!Progress.data.tagStats) Progress.data.tagStats = {};
     return Progress.data;
@@ -5800,7 +5845,7 @@ const Career = {
 
   load() {
     try {
-      Career.data = Storage.get(Career.KEY, null) || Career.blank();
+      Career.data = Storage.getObject(Career.KEY, Career.blank());
     } catch { Career.data = Career.blank(); }
     // Rétro-compatibilité si de nouveaux champs apparaissent
     const b = Career.blank();
@@ -6303,7 +6348,7 @@ const Player = {
 
   load() {
     try {
-      Player.data = Storage.get(Player.KEY, null) || Player.blank();
+      Player.data = Storage.getObject(Player.KEY, Player.blank());
     } catch { Player.data = Player.blank(); }
     const b = Player.blank();
     for (const k of Object.keys(b)) if (Player.data[k] === undefined) Player.data[k] = b[k];
@@ -6393,7 +6438,7 @@ const Rating = {
   data: null,
 
   load() {
-    try { Rating.data = Storage.get(Rating.KEY, null) || { history: [] }; }
+    try { Rating.data = Storage.getObject(Rating.KEY, { history: [] }); }
     catch { Rating.data = { history: [] }; }
     if (!Rating.data.history) Rating.data.history = [];
     return Rating.data;
@@ -6615,7 +6660,7 @@ const Journey = {
   data: null,
 
   load() {
-    try { Journey.data = Storage.get(Journey.KEY, null) || { snaps: [], missions: {}, seen: {} }; }
+    try { Journey.data = Storage.getObject(Journey.KEY, { snaps: [], missions: {}, seen: {} }); }
     catch { Journey.data = { snaps: [], missions: {}, seen: {} }; }
     if (!Journey.data.snaps) Journey.data.snaps = [];
     if (!Journey.data.missions) Journey.data.missions = {};
@@ -10211,7 +10256,7 @@ const HRStats = {
 
   load() {
     try {
-      HRStats.data = Storage.get(HRStats.KEY, null) || HRStats.blank();
+      HRStats.data = Storage.getObject(HRStats.KEY, HRStats.blank());
     } catch { HRStats.data = HRStats.blank(); }
     const b = HRStats.blank();
     for (const k of Object.keys(b)) if (HRStats.data[k] === undefined) HRStats.data[k] = b[k];
@@ -12130,7 +12175,7 @@ const PRStats = {
 
   load() {
     try {
-      PRStats.data = Storage.get(PRStats.KEY, null) || PRStats.blank();
+      PRStats.data = Storage.getObject(PRStats.KEY, PRStats.blank());
     } catch { PRStats.data = PRStats.blank(); }
     const b = PRStats.blank();
     for (const k of Object.keys(b)) if (PRStats.data[k] === undefined) PRStats.data[k] = b[k];
@@ -13439,7 +13484,7 @@ const BLStats = {
 
   load() {
     try {
-      BLStats.data = Storage.get(BLStats.KEY, null) || BLStats.blank();
+      BLStats.data = Storage.getObject(BLStats.KEY, BLStats.blank());
     } catch { BLStats.data = BLStats.blank(); }
     const b = BLStats.blank();
     for (const k of Object.keys(b)) if (BLStats.data[k] === undefined) BLStats.data[k] = b[k];
