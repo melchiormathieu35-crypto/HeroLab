@@ -13,36 +13,37 @@
      sans empilement de mots-clés : chaque terme correspond à une fonction qui
      existe dans l'application.
 
-     canonical et og:url pointent vers un domaine de production à confirmer.
-     Tant qu'il n'est pas arbitré, ils restent volontairement relatifs pour ne
-     pas déclarer une URL fausse : un canonical erroné nuit plus que son absence.
+     Le domaine de production est https://herolab.eu/ : canonical, og:url et
+     og:image sont donc des URLs absolues, seule forme exploitable par les
+     moteurs et par les générateurs d'aperçu, qui ne résolvent pas le relatif.
      =========================================================================== -->
 <meta name="description" content="Hero Lab est un simulateur d'entraînement au poker cash game NLHE. Joue des situations réelles, reçois une analyse EV après chaque décision, identifie tes fuites et travaille-les par entraînements ciblés. Lecture de range, profilage adverse, effet de blocage et tracker de mains Winamax intégré.">
 <meta name="author" content="Hero Lab">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#0f1113">
 <meta name="color-scheme" content="dark">
-<link rel="canonical" href="./index.html">
+<link rel="canonical" href="https://herolab.eu/">
 
 <!-- Aperçu au partage : Discord, WhatsApp, X, Facebook, LinkedIn, iMessage.
-     L'image est un SVG en data-URI — cohérent avec le parti « zéro réseau »
-     du reste du fichier, et donc sans requête ni asset externe à héberger.
-     Note : X et Facebook n'affichent pas les data-URI en aperçu ; ils
-     retomberont sur titre + description, ce qui reste correct. Une vraie
-     image hébergée (1200×630 PNG) reste préférable une fois le domaine fixé. -->
+     L'image est un PNG 1200×630 hébergé (assets/og-image.png), composé avec
+     les fontes et la palette réelles du produit. Un data-URI avait été utilisé
+     tant que le domaine n'était pas arbitré, mais X et Facebook ne les rendent
+     pas : seule une image hébergée fonctionne réellement sur ces plateformes. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Hero Lab">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:title" content="Hero Lab — Simulateur de décisions poker cash game">
 <meta property="og:description" content="Joue des situations réelles de cash game NLHE, reçois une analyse EV après chaque décision, et transforme tes fuites en entraînements ciblés.">
-<meta property="og:url" content="./index.html">
-<meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect width='1200' height='630' fill='%230f1113'/%3E%3Ctext x='600' y='300' font-family='Georgia,serif' font-size='96' fill='%23e8e3d8' text-anchor='middle'%3EHero%3Ctspan fill='%23c8a24a'%3EL%3C/tspan%3Eab%3C/text%3E%3Ctext x='600' y='372' font-family='Helvetica,Arial' font-size='34' fill='%238a8578' text-anchor='middle'%3ESimulateur de d%C3%A9cisions %C2%B7 Cash Game NLHE%3C/text%3E%3C/svg%3E">
+<meta property="og:url" content="https://herolab.eu/">
+<meta property="og:image" content="https://herolab.eu/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Hero Lab — simulateur de décisions poker cash game">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Hero Lab — Simulateur de décisions poker cash game">
 <meta name="twitter:description" content="Joue des situations réelles de cash game NLHE, reçois une analyse EV après chaque décision, et transforme tes fuites en entraînements ciblés.">
+<meta name="twitter:image" content="https://herolab.eu/assets/og-image.png">
+<meta name="twitter:image:alt" content="Hero Lab — simulateur de décisions poker cash game">
 
 <!-- Favicon SVG en data-URI : identité d'onglet sans requête réseau. -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f1113'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='%23c8a24a' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
@@ -55,6 +56,8 @@
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Hero Lab",
+  "url": "https://herolab.eu/",
+  "image": "https://herolab.eu/assets/og-image.png",
   "applicationCategory": "GameApplication",
   "applicationSubCategory": "Poker training",
   "operatingSystem": "Web",

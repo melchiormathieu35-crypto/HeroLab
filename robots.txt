@@ -5,10 +5,12 @@
 User-agent: *
 Allow: /
 
-# La génération précédente est conservée pour référence historique mais ne doit
-# pas être indexée : elle ferait doublon avec index.html sur des contenus très
-# proches, sous un nom de produit obsolète.
+# La génération précédente est conservée dans le dépôt pour référence
+# historique mais n'est pas servie : netlify.toml répond 404 sur ce chemin.
+# La règle reste ici comme seconde barrière si la configuration changeait.
 Disallow: /archive/
 
-# À compléter une fois le domaine de production arbitré :
-# Sitemap: https://<domaine>/sitemap.xml
+# Les suites de test ne sont pas du contenu.
+Disallow: /tests/
+
+Sitemap: https://herolab.eu/sitemap.xml

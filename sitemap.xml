@@ -6,13 +6,10 @@
   internes (Range Detective, Profiling Lab, Blocker Finder, Tracker, Carrière)
   sont des vues rendues côté client sans URL propre — les déclarer ici
   reviendrait à annoncer des pages qui n'existent pas.
-
-  Les URLs sont relatives tant que le domaine de production n'est pas arbitré ;
-  elles devront être absolues avant soumission à un moteur.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>./index.html</loc>
+    <loc>https://herolab.eu/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
