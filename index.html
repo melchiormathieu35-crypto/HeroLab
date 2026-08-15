@@ -270,8 +270,8 @@ body.stu-cam .stu-badge{top:10px}
 .ob-panel{max-width:440px;width:100%;background:var(--panel);border:1px solid var(--line-lit);border-radius:16px;padding:32px 30px;
   box-shadow:0 24px 80px rgba(0,0,0,.5)}
 .ob-mark{margin-bottom:22px}
-.ob-mark h1{font-family:var(--f-display);font-size:30px}
-.ob-mark h1 i{font-style:italic;color:var(--brass)}
+.ob-mark h1,.ob-mark h2{font-family:var(--f-display);font-size:30px}
+.ob-mark h1 i,.ob-mark h2 i{font-style:italic;color:var(--brass)}
 .ob-mark small{display:block;margin-top:6px;font-family:var(--f-mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
 .ob-title{font-family:var(--f-display);font-size:26px;margin-bottom:10px}
 .ob-lede{font-size:13.5px;line-height:1.6;color:var(--bone-dim);margin-bottom:22px}
@@ -1837,7 +1837,7 @@ input:focus-visible,select:focus-visible,
   z-index:40;
 }
 #v-tracker .brand{padding:22px 20px 18px;border-bottom:1px solid var(--line)}
-#v-tracker .brand h1{
+#v-tracker .brand h1,#v-tracker .brand h2{
   font-family:var(--font-display);font-weight:800;font-size:21px;
   letter-spacing:-.02em;line-height:1;
   display:flex;align-items:center;gap:9px;
@@ -2110,6 +2110,58 @@ to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
+
+<!-- ===========================================================================
+     CONTENU INDEXABLE
+
+     L'application se rend intégralement côté client : sans JavaScript, le
+     document ne contenait que des libellés de navigation (151 mots), et rien
+     n'expliquait ce qu'est le produit — ni pour un moteur, ni pour un visiteur
+     dont le script échoue.
+
+     Ce bloc décrit le produit tel qu'il est réellement, y compris sa boucle
+     centrale. Il n'est PAS un artifice de référencement : il est affiché aux
+     visiteurs sans JavaScript, et masqué dès que l'application démarre, ce que
+     fait `hidden` via le script de bootstrap plus bas. Aucun texte caché aux
+     visiteurs mais servi aux moteurs.
+     =========================================================================== -->
+<noscript>
+  <div style="max-width:46rem;margin:0 auto;padding:3rem 1.5rem;font-family:system-ui,sans-serif;color:#e9e6de;background:#0f1113;line-height:1.6">
+    <p style="font-size:1.6rem;font-weight:600;margin:0 0 .5rem">Hero Lab</p>
+    <p style="color:#8a8578;margin:0 0 2rem">Simulateur de décisions — poker cash game NLHE</p>
+
+    <p><strong>Hero Lab est un simulateur d'entraînement à la décision au poker cash game
+    No-Limit Hold'em.</strong> Tu joues des situations réelles, tu reçois une analyse d'espérance
+    de gain après chaque décision, et tes erreurs récurrentes deviennent des entraînements
+    ciblés.</p>
+
+    <p style="font-weight:600;margin-top:2rem">La boucle</p>
+    <p>Importe tes mains réelles depuis Winamax ou PokerStars → le tracker identifie tes fuites
+    → chaque fuite ouvre un entraînement ciblé de dix situations → tes décisions alimentent ta
+    progression et ton historique.</p>
+
+    <p style="font-weight:600;margin-top:2rem">Ce que contient l'application</p>
+    <ul>
+      <li><strong>Table</strong> — situations de cash game jouées contre neuf profils
+      d'adversaires, avec verdict et espérance de gain après chaque décision.</li>
+      <li><strong>Range Detective</strong> — déduire la range adverse street après street.</li>
+      <li><strong>Profiling Lab</strong> — identifier le profil d'un adversaire à partir de son
+      comportement.</li>
+      <li><strong>Blocker Finder</strong> — travailler l'effet de blocage et le card removal.</li>
+      <li><strong>Tracker</strong> — importer et analyser tes historiques de mains réelles.</li>
+      <li><strong>Carrière</strong> — progression par paliers de limites avec gestion de
+      bankroll.</li>
+    </ul>
+
+    <p style="font-weight:600;margin-top:2rem">Pour qui</p>
+    <p>Les joueurs de cash game qui veulent travailler leur prise de décision sur des situations
+    concrètes plutôt que mémoriser des tableaux, et savoir précisément où ils perdent.</p>
+
+    <p style="margin-top:2rem;color:#8a8578"><strong>JavaScript est requis</strong> pour utiliser
+    l'application : tout le calcul (équité, évaluation de mains, analyse) s'exécute dans ton
+    navigateur, sans serveur. Active JavaScript et recharge la page.</p>
+  </div>
+</noscript>
 <div class="onboard" id="onboard"></div>
 <div class="scrim" id="scrim"></div>
 <div class="app">
@@ -2179,7 +2231,7 @@ to{opacity:1;transform:none}}
   <!-- ==================================================== SIDEBAR ==== -->
   <aside class="sidebar" id="sidebar">
     <div class="brand">
-      <h1><span class="pip"></span>Feutre</h1>
+      <h2><span class="pip"></span>Feutre</h2>
       <small>Cash Game · Winamax</small>
     </div>
     <nav id="nav">
@@ -6486,7 +6538,7 @@ const Onboarding = {
     ov.classList.add("on");
     ov.innerHTML = `
     <div class="ob-panel">
-      <div class="ob-mark"><h1>Hero<i>L</i>ab</h1><small>Cash Game · NLHE</small></div>
+      <div class="ob-mark"><h2>Hero<i>L</i>ab</h2><small>Cash Game · NLHE</small></div>
       <div class="ob-title">Bienvenue.</div>
       <p class="ob-lede">HeroLab est un simulateur d'entraînement au cash game. Tu joues des situations
         réelles, tu reçois une analyse après chaque décision, et tu progresses. Commençons par te créer un profil —
@@ -10345,7 +10397,7 @@ const HRUI = {
     <div class="hr-hero">
       <div class="hr-hero-in">
         <div class="hr-kicker">Le laboratoire de lecture</div>
-        <h1 class="hr-title">Range Detective</h1>
+        <h2 class="hr-title">Range Detective</h2>
         <p class="hr-lede">Retrouve la main adverse par la déduction, pas par le hasard. Chaque
           action filtre sa range ; à toi de la resserrer street après street jusqu'aux quelques
           combos qui tiennent debout.</p>
@@ -12233,7 +12285,7 @@ const PRUI = {
     <div class="pr-hero">
       <div class="pr-hero-in">
         <div class="pr-kicker">Le laboratoire de lecture des joueurs</div>
-        <h1 class="pr-title">Profiling Lab</h1>
+        <h2 class="pr-title">Profiling Lab</h2>
         <p class="pr-lede">Observe un adversaire, décode son style et nomme son profil. Une main
           suffit rarement — comme un vrai reg, tu construis ton read main après main jusqu'à ce que
           la lecture se resserre.</p>
@@ -13546,7 +13598,7 @@ const BLUI = {
     <div class="bl-hero">
       <div class="bl-hero-in">
         <div class="bl-kicker">Le laboratoire des bloqueurs</div>
-        <h1 class="bl-title">Blocker Finder</h1>
+        <h2 class="bl-title">Blocker Finder</h2>
         <p class="bl-lede">Tes cartes ne servent pas qu'à faire une main : elles retirent des combos de la
           range adverse. Apprends à voir exactement lesquels — et comment ça change chaque décision.</p>
         <button class="btn pri lg" onclick="BLUI.begin()">Commencer un exercice</button>
