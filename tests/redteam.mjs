@@ -3,17 +3,22 @@
  * Audit seul : ne modifie rien, ne commit rien.
  */
 import { chromium } from "playwright";
-import { pathToFileURL } from "node:url";
+import { pathToFileURL, fileURLToPath } from "node:url";
+import { resolve, dirname } from "node:path";
+import { launchOptions } from "./browser.mjs";
 
-const FILE = pathToFileURL("/home/user/HeroLab/index.html").href;
-const CHROME = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome";
+// Cible résolue par rapport au dépôt, pas par un chemin absolu de machine.
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const TARGET = process.argv[2] || "index.html";
+const FILE = pathToFileURL(resolve(ROOT, TARGET)).href;
+
 const results = [];
 const rec = (n, pass, d = "") => {
   results.push({ n, pass, d });
   console.log(`  ${pass ? "\x1b[32mPASS\x1b[0m" : "\x1b[31mFAIL\x1b[0m"}  ${n}${d ? "  — " + d : ""}`);
 };
 
-const browser = await chromium.launch({ executablePath: CHROME });
+const browser = await chromium.launch(launchOptions());
 
 /** Ouvre une page neuve, retourne {ctx,page,errs} */
 async function open(opts = {}) {

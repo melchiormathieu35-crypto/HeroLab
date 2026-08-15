@@ -1,0 +1,99 @@
+name: CI
+
+# Exécute les protections déjà construites sur chaque push et chaque PR.
+#
+# Principes :
+#   - la CI ne modifie jamais le code applicatif ni la baseline du moteur ;
+#     elle échoue si l'un des deux a bougé pendant l'exécution ;
+#   - aucun test n'est neutralisé, ignoré ou rendu non bloquant ;
+#   - dépendances minimales : Node, Playwright et Chromium. Rien d'autre.
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - "claude/**"
+  workflow_dispatch:
+
+# Une PR qui reçoit plusieurs pushes n'accumule pas les exécutions.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Syntaxe, contrats, red-team, empreinte moteur
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # `npm ci` exige un lockfile cohérent et n'installe que les dépendances
+      # déclarées — ici Playwright seul.
+      - name: Installer les dépendances
+        run: npm ci
+
+      # Le navigateur n'est pas dans node_modules ; il faut l'installer
+      # explicitement. `--with-deps` ajoute les bibliothèques système que
+      # Chromium exige sur ubuntu-latest.
+      - name: Installer Chromium
+        run: npx playwright install --with-deps chromium
+
+      # Empreinte de l'arbre AVANT exécution. Les suites ne doivent modifier
+      # ni le fichier applicatif ni la baseline ; on le vérifie plutôt que de
+      # le supposer.
+      - name: Empreinte de l'arbre avant tests
+        run: |
+          sha256sum index.html tests/baseline.json > /tmp/tree-before.sha
+          cat /tmp/tree-before.sha
+
+      - name: Contrôle de syntaxe — index.html
+        run: node tests/syntax-check.mjs index.html
+
+      - name: Contrôle de syntaxe — génération archivée
+        run: node tests/syntax-check.mjs archive/pivot-simulateur-cashgame-17.html
+
+      # Couvre l'empreinte déterministe du moteur gelé (comparée à
+      # tests/baseline.json), sa pureté, les contrats, le stockage, les ponts
+      # Feutre et la boucle de jeu. Sort en code 1 au moindre échec.
+      - name: Tests de contrats et empreinte moteur
+        run: node tests/run.mjs
+
+      - name: Scénarios red-team
+        run: node tests/redteam.mjs
+
+      # Garde-fou explicite : si un test avait écrit la baseline ou touché
+      # l'application, le job échoue ici même si les suites étaient vertes.
+      - name: Vérifier que rien n'a été modifié
+        run: |
+          sha256sum -c /tmp/tree-before.sha
+          if ! git diff --quiet; then
+            echo "::error::L'exécution des tests a modifié des fichiers suivis :"
+            git --no-pager diff --stat
+            exit 1
+          fi
+          echo "Arbre inchangé : ni index.html ni tests/baseline.json n'ont bougé."
+
+      # Informatif : publie les métriques architecturales dans le résumé du job
+      # pour suivre leur dérive. N'échoue jamais et ne bloque rien.
+      - name: Métriques (informatif)
+        if: always()
+        run: |
+          {
+            echo '### Métriques architecturales'
+            echo '```'
+            node tests/metrics.mjs || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

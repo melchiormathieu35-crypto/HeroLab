@@ -18,6 +18,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { dirname, resolve } from "node:path";
 import { engineProbe, enginePurityProbe } from "./engine-fingerprint.mjs";
 import { contractSuite } from "./contracts.mjs";
+import { launchOptions } from "./browser.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..");
@@ -43,9 +44,7 @@ const run = async () => {
   if (!existsSync(target)) throw new Error("fichier introuvable: " + target);
   console.log(`\nHero Lab — suite de régression\n  cible: ${TARGET}\n`);
 
-  const browser = await chromium.launch({
-    executablePath: "/opt/pw-browsers/chromium-1194/chrome-linux/chrome",
-  });
+  const browser = await chromium.launch(launchOptions());
   const ctx = await browser.newContext();
   const page = await ctx.newPage();
   const pageErrors = [];
