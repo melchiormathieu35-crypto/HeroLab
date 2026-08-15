@@ -70,6 +70,12 @@ jobs:
       - name: Contrôle de syntaxe — génération archivée
         run: node tests/syntax-check.mjs archive/pivot-simulateur-cashgame-17.html
 
+      # Ce qui doit être déployé existe-t-il, et est-ce cohérent ? Répond à un
+      # incident réel : la production a longtemps été un dépôt manuel sans
+      # robots.txt ni sitemap.xml, et main ne contenait aucun index.html.
+      - name: Contrôles de production (fichiers, canonical, JSON-LD, robots)
+        run: node tests/production-check.mjs
+
       # Couvre l'empreinte déterministe du moteur gelé (comparée à
       # tests/baseline.json), sa pureté, les contrats, le stockage, les ponts
       # Feutre et la boucle de jeu. Sort en code 1 au moindre échec.
