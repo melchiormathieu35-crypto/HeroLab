@@ -5,7 +5,7 @@
 import { chromium } from "playwright";
 import { pathToFileURL } from "node:url";
 
-const FILE = pathToFileURL("/home/user/HeroLab/index4.html").href;
+const FILE = pathToFileURL("/home/user/HeroLab/index.html").href;
 const CHROME = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome";
 const results = [];
 const rec = (n, pass, d = "") => {

@@ -1,0 +1,14 @@
+# Hero Lab — simulateur de décisions poker cash game
+# L'application est un fichier unique (index.html) ; il n'y a pas de section
+# privée ni d'espace authentifié à protéger.
+
+User-agent: *
+Allow: /
+
+# La génération précédente est conservée pour référence historique mais ne doit
+# pas être indexée : elle ferait doublon avec index.html sur des contenus très
+# proches, sous un nom de produit obsolète.
+Disallow: /archive/
+
+# À compléter une fois le domaine de production arbitré :
+# Sitemap: https://<domaine>/sitemap.xml

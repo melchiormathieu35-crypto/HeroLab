@@ -24,7 +24,7 @@ const ROOT = resolve(__dirname, "..");
 const argv = process.argv.slice(2);
 const WRITE = argv.includes("--write-baseline");
 const fileArg = argv.indexOf("--file");
-const TARGET = fileArg >= 0 ? argv[fileArg + 1] : "index4.html";
+const TARGET = fileArg >= 0 ? argv[fileArg + 1] : "index.html";
 const BASELINE = resolve(__dirname, "baseline.json");
 
 const stable = (v) => JSON.stringify(v, (k, val) =>

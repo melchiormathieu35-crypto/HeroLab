@@ -2,7 +2,7 @@
  * Métriques architecturales statiques — comparaison BEFORE / AFTER.
  *
  * Usage:
- *   node tests/metrics.mjs                       # mesure index4.html
+ *   node tests/metrics.mjs                       # mesure index.html
  *   node tests/metrics.mjs --file x.html --json  # sortie machine
  *   node tests/metrics.mjs --save before         # fige un instantané
  *   node tests/metrics.mjs --diff before         # compare à un instantané
@@ -16,7 +16,7 @@ const ROOT = resolve(__dirname, "..");
 const SNAP = resolve(__dirname, "snapshots");
 const argv = process.argv.slice(2);
 const arg = (n, d) => { const i = argv.indexOf(n); return i >= 0 ? argv[i + 1] : d; };
-const TARGET = arg("--file", "index4.html");
+const TARGET = arg("--file", "index.html");
 
 const FROZEN = ["Deck", "HandEval", "Ranges", "BoardTex", "Equity", "Odds", "CAT", "RANKS"];
 const LAB_FAMILIES = { HR: /^HR/, PR: /^PR(?!OFILE)/, BL: /^BL/ };
