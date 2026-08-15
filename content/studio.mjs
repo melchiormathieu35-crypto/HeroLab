@@ -244,6 +244,12 @@ export async function checkFraming(page, selector, { minOut = 30, key = null, sc
       ? b.top >= band.top - 2 && b.top < band.bottom - 60
       : b.top >= band.top - 2 && b.bottom <= band.bottom + 2;
 
+    // Contenance horizontale. Omise dans une première version, elle a laissé
+    // passer un zoom sur un bloc pleine largeur : les montants et les libellés
+    // d'action étaient coupés aux deux bords (« 97.5 b », « asser »), alors que
+    // le contrôle vertical passait. Rien d'essentiel ne doit sortir du cadre.
+    const dansLargeur = b.left >= -2 && b.right <= innerWidth + 2;
+
     const measure = (node) => {
       let px = 0;
       for (const n of [node, ...node.querySelectorAll("*")]) {
@@ -262,12 +268,15 @@ export async function checkFraming(page, selector, { minOut = 30, key = null, sc
     const out = Math.round(px * scaleUp * scale);
 
     return {
-      ok: inBand && out >= minOut,
-      inBand, tall,
+      ok: inBand && dansLargeur && out >= minOut,
+      inBand, dansLargeur, tall,
+      gauche: Math.round(b.left), droite: Math.round(b.right), largeurVue: innerWidth,
       textePx: Math.round(px * 10) / 10,
       texteRush: out,
       top: Math.round(b.top), bottom: Math.round(b.bottom),
-      why: !inBand ? "hors bande utile" : out < minOut ? `texte trop petit (${out}px dans le rush)` : null,
+      why: !inBand ? "hors bande utile"
+        : !dansLargeur ? `coupé horizontalement (${Math.round(b.left)} → ${Math.round(b.right)} pour ${innerWidth}px de large)`
+        : out < minOut ? `texte trop petit (${out}px dans le rush)` : null,
     };
   }, { selector, minOut, key, band: SAFE_BAND, scaleUp: SHOT_SIZE.width / SHOT_VIEWPORT.width, scale });
 }

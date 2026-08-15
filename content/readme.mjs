@@ -1,261 +1,268 @@
 /**
- * Génère les README livrés avec les rushes.
+ * Génère le README de montage livré avec chaque vidéo.
  *
- * Tout ce qui est écrit ici sort du relevé de production : chiffres du moteur,
- * durées réelles des fichiers, contrôles de cadrage. Rien n'est estimé de
- * mémoire, et aucun chiffre de poker n'est écrit à la main.
+ * Tout ce qui est écrit sort du manifeste de production : chiffres du moteur,
+ * durées réelles des fichiers, raisons de chaque mouvement telles qu'elles ont
+ * été déclarées dans le blueprint. Aucun chiffre de poker n'est écrit à la main.
  *
- * Ce que ces README ne contiennent PAS, volontairement : la voix off, les
- * sous-titres et le texte final à l'écran. Ils relèvent du montage, donc de
- * l'auteur. Le README donne la matière et les chiffres exacts sur lesquels
- * s'appuyer, pas le script à réciter.
- *
- * Usage : node content/readme.mjs
+ * Ce README ne contient PAS, volontairement, la voix off, les sous-titres ni
+ * les textes définitifs : il indique OÙ les placer et sur QUELLES données
+ * s'appuyer, pas quoi dire.
  */
 import { readFile, writeFile } from "node:fs/promises";
-import { existsSync } from "node:fs";
-import { join, resolve, dirname, relative } from "node:path";
+import { join, relative, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { SERIES } from "./spots.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const RUSH_DIR = join(ROOT, "Format court", "Rush avant montage");
+const bb = (n) => `${n > 0 ? "+" : ""}${Number(n).toFixed(2)} bb`;
 
-/** Rôle narratif de chaque plan, pour que le monteur sache quoi en faire. */
-const ROLES = {
-  "01-accroche-main": ["Accroche", "La main seule, resserrée. À poser en premier : on montre le problème avant de l'expliquer. C'est le plan qui doit retenir dans les deux premières secondes."],
-  "02-situation-large": ["Situation", "La table entière, fixe. Laisse le temps de lire le board, le pot et la position. À garder si le spectateur doit vraiment comprendre la main."],
-  "02b-situation-serree": ["Situation (variante)", "Même moment, resserré sur le board. Plus nerveux, moins informatif. À préférer quand le rythme prime."],
-  "03-choix": ["Choix", "Descente de la table vers les options réelles, avec leurs montants. C'est ici que le spectateur décide. Ne coupe pas trop tôt : c'est le plan qui crée l'engagement."],
-  "04-verdict": ["Verdict", "La décision instinctive est jouée, le moteur tranche, le coût s'affiche. Le plan de bascule."],
-  "04b-verdict-serre": ["Verdict (variante)", "Resserré sur le verdict seul. Coupe plus sèche, sans le raisonnement."],
-  "05-preuve-ev": ["Preuve", "L'espérance de chaque option, en big blinds. C'est ce plan qui rend le propos vérifiable — à garder même si tu raccourcis ailleurs."],
+/** Où poser la voix, les sous-titres et les textes, plan par plan. */
+const PLACEMENTS = {
+  HOOK: {
+    voix: "Rien, ou une seule phrase courte. Le plan doit tenir par l'image.",
+    soustitres: "Aucun — ils entreraient en concurrence avec les cartes.",
+    textes: "Une accroche très courte, en haut de la bande utile, hors des 10 % supérieurs.",
+  },
+  SITUATION: {
+    voix: "Pose du contexte. C'est le plan le plus tolérant à la parole.",
+    soustitres: "À partir d'ici, en bas de la bande utile.",
+    textes: "Rappel de position et de tapis si tu veux les souligner ; l'information est déjà à l'écran.",
+  },
+  TENSION: {
+    voix: "Silence recommandé sur le freeze. Le vide fait le travail.",
+    soustitres: "La question, si tu veux la poser à l'écrit.",
+    textes: "C'est l'emplacement naturel d'un « tu fais quoi ? ». Ne masque pas le montant.",
+  },
+  CHOICE: {
+    voix: "Énoncé des options, ou silence complet pour laisser choisir.",
+    soustitres: "Oui, courts.",
+    textes: "Éventuel compte à rebours. Ne recouvre pas les boutons : ce sont eux le sujet.",
+  },
+  REVEAL: {
+    voix: "La bascule. C'est ici que la voix a le plus de valeur.",
+    soustitres: "Oui — le verdict doit être lisible sans le son.",
+    textes: "Le coût chiffré peut être repris en gros, mais il est déjà à l'écran : évite de le doubler.",
+  },
+  PAYOFF: {
+    voix: "Explication de l'écart, calmement.",
+    soustitres: "Oui.",
+    textes: "Rien par-dessus la liste des espérances : c'est la preuve, elle doit rester lisible.",
+  },
 };
 
-const nb = (n) => (n > 0 ? `+${n.toFixed(2)}` : n.toFixed(2));
+export function readmeVideo(m, qa) {
+  const e = m.moteur;
+  const plansOk = m.plans.filter(p => p.ok);
+  const duree = plansOk.reduce((n, p) => n + (p.secondes || 0), 0);
+  const rates = m.plans.filter(p => !p.ok);
+  const qaVideo = qa || null;
 
-/**
- * Décrit le paradoxe du spot avec les seuls chiffres du moteur.
- * Retourne null si le moteur n'a pas produit d'analyse — on n'invente pas.
- */
-function lecture(e) {
-  if (!e) return null;
-  const passer = e.options.find(o => o.action === "fold");
-  const choisi = e.joue;
-  const best = e.meilleure;
-  const pire = e.options[e.options.length - 1];
-  const lignes = [];
 
-  lignes.push(`Le moteur donne au héros **${e.equity} % d'équité**.`);
-  if (choisi.evBB < 0 && passer) {
-    lignes.push(
-      `L'action instinctive — ${choisi.label} — vaut **${nb(choisi.evBB)} bb**. ` +
-      `Comme passer vaut 0 par construction, cela veut dire, littéralement, ` +
-      `que ce coup coûte plus cher que de jeter la main.`);
-  } else {
-    lignes.push(`L'action instinctive — ${choisi.label} — vaut **${nb(choisi.evBB)} bb**.`);
-  }
-  lignes.push(`La meilleure option est **${best.label}**, à **${nb(best.evBB)} bb**.`);
-  lignes.push(`L'écart entre les deux, soit le coût de l'erreur, est de **${e.lossBB.toFixed(2)} bb**. ` +
-    `Le verdict rendu par l'application est « ${e.verdict} ».`);
-  // On ne répète pas l'action instinctive si c'est déjà elle la pire.
-  if (pire && pire.evBB < 0 && pire.label !== choisi.label) {
-    lignes.push(`La pire option du spot est ${pire.label}, à ${nb(pire.evBB)} bb.`);
-  }
-  return lignes;
-}
+  return `# ${m.video} — ${m.titreInterne}
 
-function readmeVideo(v) {
-  const plans = v.shots.filter(s => s.ok);
-  const rates = v.shots.filter(s => !s.ok);
-  const duree = plans.reduce((n, s) => n + s.seconds, 0);
-  const e = v.engine;
-  const serie = v.serie ? SERIES[v.serie] : null;
-  const l = lecture(e);
+**Titre interne** : ${m.titreInterne}
+**Spot** : \`${m.spot.id}\`
+**Potentiel contenu** : ${m.score}/100
 
-  const cadrageKo = (v.framing || []).filter(f => !f.ok);
+## Concept
 
-  return `# ${v.label}
+${m.concept}
 
-Rushes verticaux prêts à monter — \`${v.id}\`${serie ? ` · série « ${serie.title} »` : ""}
+**Objectif de rétention.** ${m.objectifRetention}
 
-${plans.length} plan(s), ${duree.toFixed(1)} s de matière au total, 1080×1920, 30 im/s.
+**Moment exact du reveal.** ${m.momentReveal}
 
 ---
 
 ## Ce que dit le moteur
 
-${l ? l.map(x => `- ${x}`).join("\n") : "**NON VÉRIFIÉ** — le moteur n'a pas produit d'analyse pour ce spot lors de cette prise."}
+${e ? `- Le héros a **${e.equity} % d'équité**.
+- L'action instinctive est **${e.joue.label}**, à **${bb(e.joue.evBB)}**.${e.joue.evBB < 0 ? `\n  Passer valant 0 par construction, ce coup coûte donc plus cher que de jeter la main.` : ""}
+- La meilleure action est **${e.meilleure.label}**, à **${bb(e.meilleure.evBB)}**.
+- **Différentiel d'EV : ${e.lossBB.toFixed(2)} bb.** Verdict de l'application : « ${e.verdict} ».` : "**NON VÉRIFIÉ** — aucun plan n'a produit d'analyse moteur pour cette vidéo."}
 
 ${e ? `### Espérance de chaque option
 
-Valeurs en big blinds, à partir de la décision. Passer vaut 0 : c'est la
-référence commune, l'argent déjà investi étant ignoré pour toutes les options.
-Un chiffre négatif signifie donc « pire que jeter la main ».
+En big blinds, à partir de la décision. Passer vaut 0 : c'est la référence
+commune, l'argent déjà investi étant ignoré pour toutes les options. Un chiffre
+négatif signifie donc « pire que jeter la main ».
 
 | option | espérance |
 |---|---|
-${e.options.map(o => `| ${o.label} | ${nb(o.evBB)} bb |`).join("\n")}
+${e.options.map(o => `| ${o.label} | ${bb(o.evBB)} |`).join("\n")}
 
-Ces valeurs sont celles affichées à l'écran dans le plan \`05-preuve-ev\`. Elles
-proviennent de \`Judge.evaluate\` et sont, comme l'indique l'application
-elle-même, des estimations sur la range adverse et les profils en jeu — un
-ordre de grandeur et un classement, pas une vérité au centième. Ne les présente
-pas comme une sortie de solveur.` : ""}
+Ces valeurs sont celles affichées à l'écran dans \`06-payoff.webm\`. Elles
+viennent de \`Judge.evaluate\`. Comme l'indique l'application elle-même, ce sont
+des estimations sur la range adverse et les profils en jeu — un ordre de
+grandeur et un classement, pas une sortie de solveur. Ne les présente pas
+autrement.` : ""}
 
 ---
 
-## Les plans
+## Ordre des rushs
 
-| fichier | durée | rôle |
-|---|---|---|
-${plans.map(s => `| \`${s.name}.webm\` | ${s.seconds.toFixed(1)} s | ${(ROLES[s.name] || ["—"])[0]} |`).join("\n")}
+| # | fichier | beat | durée | rôle |
+|---|---|---|---|---|
+${m.plans.map((p, i) => `| ${i + 1} | ${p.ok ? `\`${p.fichier}\`` : "—"} | ${p.beat} | ${p.ok ? `${p.secondes.toFixed(1)} s` : "raté"} | ${(p.role || "").split(".")[0]}. |`).join("\n")}
 
-${plans.map(s => {
-  const r = ROLES[s.name] || ["—", "—"];
-  return `### \`${s.name}.webm\` — ${r[0]}\n\n${r[1]}`;
+**Durée totale de matière : ${duree.toFixed(1)} s.**
+
+${rates.length ? `> **Plans manquants** : ${rates.map(p => `${p.beat} (${p.why})`).join(", ")}\n` : ""}
+---
+
+## Détail des plans
+
+${m.plans.filter(p => p.ok).map(p => {
+  const pl = PLACEMENTS[p.beat] || {};
+  const mv = p.mouvements.filter(x => x.pourquoi);
+  return `### \`${p.fichier}\` — ${p.beat} · ${p.secondes.toFixed(1)} s
+
+${p.role}
+
+${mv.length ? `**Mouvements et leur raison**\n\n${mv.map(x => `- *${x.type}*${x.duree ? ` (${x.duree} s)` : ""} — ${x.pourquoi}`).join("\n")}` : "Plan fixe."}
+
+**Montage** — voix : ${pl.voix || "libre."} · sous-titres : ${pl.soustitres || "libre."} · textes : ${pl.textes || "libre."}`;
 }).join("\n\n")}
 
-${rates.length ? `\n> **Plans manquants** : ${rates.map(s => `\`${s.name}\` (${s.why})`).join(", ")}\n` : ""}
 ---
 
-## Montage suggéré
+## Indications de montage
 
-Un ordre qui fonctionne, à ajuster :
+1. Les plans sont **indépendants** : aucun ne dépend du précédent, l'ordre et
+   les coupes restent libres.
+2. Chaque plan **commence sur une image posée**, donc une coupe franche au début
+   ne coupe jamais un mouvement.
+3. Les mouvements sont **calculés image par image**, pas enregistrés au vol : un
+   ralenti ou un accéléré reste propre.
+4. Le plan \`06-payoff\` est celui à ne pas sacrifier si tu raccourcis : c'est
+   lui qui rend le propos vérifiable.
 
-1. \`01-accroche-main\` — la main, sans contexte.
-2. \`02-situation-large\` ou \`02b-situation-serree\` — une seule des deux.
-3. \`03-choix\` — le spectateur décide.
-4. \`04-verdict\` ou \`04b-verdict-serre\` — la bascule.
-5. \`05-preuve-ev\` — les chiffres.
+### Emplacement recommandé de la voix, des sous-titres et des textes
 
-Les plans sont indépendants : aucun ne dépend du précédent, l'ordre et les
-coupes restent entièrement libres. Chacun commence sur une image posée, donc
-une coupe franche au début d'un plan ne coupe jamais un mouvement.
-
-Les mouvements de caméra sont calculés image par image, pas enregistrés au vol :
-un ralenti ou un accéléré sur ces plans reste propre.
-
----
-
-## Ce qui n'est pas fait ici, volontairement
-
-- **pas de voix off** ;
-- **pas de sous-titres** ;
-- **pas de texte final à l'écran** ;
-- **pas de montage**.
-
-Ces éléments t'appartiennent. Le README fournit les chiffres exacts pour que
-rien de ce que tu écriras ne contredise ce qui est à l'image.
-
----
-
-## Distribution
-
-**Format livré** : WebM / VP8, 1080×1920, 30 im/s.
-
-Ce point demande une action de ta part : le \`ffmpeg\` disponible dans
-l'environnement de production est compilé sans multiplexeur MP4 — il ne sait
-écrire que du WebM. TikTok, Reels et Shorts privilégient MP4/H.264. Les WebM
-s'importent sans problème dans CapCut, Premiere, DaVinci Resolve ou Final Cut,
-donc cela ne gêne pas le montage ; c'est à l'export final que le MP4 se fait.
-Si tu veux convertir un rush avant montage, avec un ffmpeg complet :
-
-\`\`\`sh
-ffmpeg -i 01-accroche-main.webm -c:v libx264 -crf 18 -preset slow -pix_fmt yuv420p 01-accroche-main.mp4
-\`\`\`
+| beat | voix | sous-titres | textes |
+|---|---|---|---|
+${m.plans.filter(p => p.ok).map(p => {
+  const pl = PLACEMENTS[p.beat] || {};
+  return `| ${p.beat} | ${pl.voix || "—"} | ${pl.soustitres || "—"} | ${pl.textes || "—"} |`;
+}).join("\n")}
 
 **Zones à ne pas encombrer.** Les plans sont cadrés en tenant compte de
-l'interface des plateformes : rien d'important n'est placé dans les 10 % du
-haut ni les 20 % du bas, ni dans la bande droite des boutons. Garde cette
-contrainte pour tes textes ajoutés.
+l'interface des plateformes : rien d'essentiel dans les 10 % du haut, les 20 %
+du bas, ni la bande droite des boutons. Garde cette contrainte pour tes ajouts.
 
-**Durées.** La matière totale est de ${duree.toFixed(0)} s. En gardant une
-variante sur deux aux étapes 2 et 4, il reste environ ${(duree - (plans.find(s => s.name === "02b-situation-serree")?.seconds || 0) - (plans.find(s => s.name === "04b-verdict-serre")?.seconds || 0)).toFixed(0)} s,
-ce qui laisse de la marge pour resserrer vers 20–30 s.
+**Ce qui n'est pas fait ici, volontairement** : pas de voix off, pas de
+sous-titres, pas de texte définitif, pas de montage. Ces éléments t'appartiennent.
+Le README fournit les chiffres exacts pour que rien de ce que tu écriras ne
+contredise ce qui est à l'image.
 
-**Ordre de publication.** Le plan de preuve est ce qui distingue ce contenu
-d'une simple question de quiz : il montre le calcul. Si tu publies plusieurs
-vidéos de la série, garde ce plan dans toutes — c'est lui qui installe la
-crédibilité et justifie l'application.
+---
 
-${cadrageKo.length ? `\n> **Réserves de cadrage relevées à la prise** : ${cadrageKo.map(f => `${f.plan} (${f.why})`).join(", ")}. À vérifier à l'œil avant publication.\n` : ""}
+## Contrôle qualité
+
+${qaVideo ? `${qaVideo.ok ? "**Tous les contrôles sont passés.**" : "**Anomalies relevées — à vérifier avant publication.**"}
+
+| plan | format | durée | image | safe area | cohérence moteur |
+|---|---|---|---|---|---|
+${qaVideo.plans.map(p => {
+  const c = (nom) => { const x = p.controles.find(y => y.nom === nom); return x ? (x.ok ? "ok" : `✗ ${x.why}`) : "—"; };
+  return `| \`${p.plan}\` | ${c("format")} | ${c("durée")} | ${c("image")} | ${c("safe area")} | ${c("cohérence moteur")} |`;
+}).join("\n")}` : "Non exécuté."}
+
+---
+
+## Format
+
+WebM / VP8, 1080×1920, ${m.format.fps} im/s.
+
+Le \`ffmpeg\` de l'environnement de production est compilé sans multiplexeur
+MP4 ; il ne sait écrire que du WebM. Les fichiers s'importent tels quels dans
+CapCut, Premiere, DaVinci Resolve et Final Cut, donc le montage n'est pas gêné —
+c'est à l'export final que le MP4 se fait. Pour convertir un rush en amont, avec
+un ffmpeg complet :
+
+\`\`\`sh
+ffmpeg -i 01-hook.webm -c:v libx264 -crf 18 -preset slow -pix_fmt yuv420p 01-hook.mp4
+\`\`\`
+
 ---
 
 ## Reproduire ce spot
 
-Le spot est défini dans le DSL Studio de Hero Lab. Ouvre l'application avec
-\`?admin=1\` et colle ceci pour retrouver exactement la même main :
+Ouvre l'application avec \`?admin=1\` et colle ceci dans le mode Studio :
 
 \`\`\`
-${v.spec}
+${m.spot.spec}
 \`\`\`
-
-Rejouer la production : \`node content/produce.mjs --spot ${v.id}\`
 `;
 }
 
-function readmeIndex(releve) {
-  const total = releve.reduce((n, v) => n + v.shots.filter(s => s.ok).reduce((m, s) => m + s.seconds, 0), 0);
+export function readmeIndex(videos, qaGlobal) {
+  const total = videos.reduce((n, v) => n + v.plans.filter(p => p.ok).reduce((m, p) => m + p.secondes, 0), 0);
   return `# Rushes avant montage — format court
 
-Matière brute pour TikTok, Reels et Shorts, produite depuis le mode Studio de
-Hero Lab. ${releve.length} vidéo(s), ${releve.reduce((n, v) => n + v.shots.filter(s => s.ok).length, 0)} plans,
-${total.toFixed(0)} s au total. Tous les plans sont en 1080×1920, 30 im/s.
+Matière brute pour TikTok, Instagram Reels et YouTube Shorts, produite depuis le
+mode Studio de Hero Lab. ${videos.length} vidéo(s), ${videos.reduce((n, v) => n + v.plans.filter(p => p.ok).length, 0)} plans,
+${total.toFixed(0)} s au total. Tout est en 1080×1920, 30 im/s, un plan par fichier.
 
-| vidéo | spot | plans | durée | série |
-|---|---|---|---|---|
-${releve.map(v => {
-  const p = v.shots.filter(s => s.ok);
-  return `| [${v.label}](${encodeURI(relative(RUSH_DIR, v.dir))}/README.md) | \`${v.id}\` | ${p.length} | ${p.reduce((n, s) => n + s.seconds, 0).toFixed(0)} s | ${v.serie || "—"} |`;
+| vidéo | titre interne | score | plans | durée | différentiel EV |
+|---|---|---|---|---|---|
+${videos.map(v => {
+  const p = v.plans.filter(x => x.ok);
+  return `| [${v.video}](${encodeURI(v.video)}/README.md) | ${v.titreInterne} | ${v.score}/100 | ${p.length} | ${p.reduce((n, x) => n + x.secondes, 0).toFixed(0)} s | ${v.moteur ? v.moteur.lossBB.toFixed(2) + " bb" : "—"} |`;
 }).join("\n")}
 
 ## Comment ces spots ont été choisis
 
-Ils ne l'ont pas été à la main. \`content/scan.mjs\` soumet chaque spot candidat
-au moteur de l'application, lit l'espérance de chaque option légale, et classe
-selon trois mesures : l'action instinctive est-elle perdante, l'équité
-contredit-elle la bonne décision, et combien coûte l'erreur. On mesure d'abord,
-on raconte ensuite — jamais l'inverse.
+Aucun n'a été choisi à la main. La chaîne énumère des situations réelles à
+partir du vocabulaire du produit (positions, profils, limites, grammaire
+Studio), soumet chacune à \`Judge.evaluate\`, et note le potentiel de contenu sur
+100 à partir des seuls chiffres du moteur : paradoxe, contre-intuitivité,
+différentiel d'EV, difficulté, curiosité, lisibilité, force du reveal, intérêt
+pédagogique, potentiel de débat et de série.
+
+Deux garde-fous s'appliquent ensuite :
+
+- **anti-redondance** — deux spots qui racontent la même chose (même modèle,
+  même famille de main, même texture, même nature de paradoxe, même famille
+  d'action correcte) ne donnent qu'une vidéo, la mieux notée ;
+- **fragilité** — un spot dont la bonne réponse repose entièrement sur
+  l'estimation de fold equity du modèle est écarté, même s'il score haut. Voir
+  \`content/scan.mjs\`.
 
 ## La chaîne
 
 | étape | commande | rôle |
 |---|---|---|
-| catalogue | \`content/spots.mjs\` | spots candidats, en DSL Studio |
-| sélection | \`node content/scan.mjs\` | classement par le moteur |
-| tournage | \`node content/produce.mjs --serie <clé>\` | plans 1080×1920 |
-| contrôle | \`node content/qa.mjs\` | format, durée, image, cadrage |
-| README | \`node content/readme.mjs\` | cette documentation |
+| génération | \`content/generate.mjs\` | énumère les situations à partir du vocabulaire réel |
+| sélection | \`node content/scan.mjs\` | note sur 100, écarte fragiles et doublons |
+| blueprint | \`content/blueprint.mjs\` | traduit un spot en plan de tournage |
+| tournage | \`content/produce.mjs\` | exécute le blueprint, image par image |
+| contrôle | \`node content/qa.mjs\` | format, durée, image, cadrage, cohérence moteur |
+| README | \`content/readme.mjs\` | cette documentation |
+| tout | \`node content/engine.mjs --count 10\` | la chaîne complète |
+
+${qaGlobal ? `## Contrôle qualité
+
+${qaGlobal.anomalies === 0
+  ? `**${qaGlobal.plans} plans contrôlés, aucune anomalie.**`
+  : `**${qaGlobal.anomalies} anomalie(s) sur ${qaGlobal.plans} plans contrôlés.** Détail dans le README de chaque vidéo.`}` : ""}
 
 ## Ce qui n'est pas fourni
 
-Voix off, sous-titres, texte à l'écran et montage final. Chaque README de
-vidéo donne en revanche les chiffres exacts du moteur, pour que le texte
-ajouté ne contredise jamais l'image.
-
-## Format des fichiers
-
-WebM / VP8. Le \`ffmpeg\` de l'environnement de production est compilé sans
-multiplexeur MP4. Les fichiers s'importent tels quels dans les logiciels de
-montage courants ; la conversion en MP4 se fait à l'export final. La commande
-de conversion figure dans chaque README de vidéo.
+Voix off, sous-titres, textes définitifs et montage final. Chaque README de
+vidéo donne en revanche les chiffres exacts du moteur et l'emplacement
+recommandé de chaque élément, pour que le texte ajouté ne contredise jamais
+l'image.
 `;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
-  const relevePath = join(RUSH_DIR, "production.json");
-  if (!existsSync(relevePath)) {
-    console.error(`relevé absent : ${relevePath} — lancer content/produce.mjs d'abord`);
-    process.exit(1);
+export async function ecrireReadmes(dossiers, rapportQA) {
+  const videos = [];
+  for (const d of dossiers) {
+    const m = JSON.parse(await readFile(join(d, "manifest.json"), "utf8"));
+    const qa = rapportQA ? rapportQA.find(v => v.dossier === d) : null;
+    await writeFile(join(d, "README.md"), readmeVideo(m, qa));
+    videos.push(m);
   }
-  const releve = JSON.parse(await readFile(relevePath, "utf8"));
-  for (const v of releve) {
-    const p = join(v.dir, "README.md");
-    await writeFile(p, readmeVideo(v));
-    console.log("écrit :", relative(ROOT, p));
-  }
-  const idx = join(RUSH_DIR, "README.md");
-  await writeFile(idx, readmeIndex(releve));
-  console.log("écrit :", relative(ROOT, idx));
+  return videos;
 }
