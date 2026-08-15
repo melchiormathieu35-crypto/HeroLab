@@ -554,6 +554,45 @@ export function contractSuite() {
     }
     return broken.length ? { pass: false, detail: broken.join(" | ") } : true;
   });
+  t("ui:aucun identifiant DOM dupliqué", () => {
+    const seen = {};
+    for (const el of document.querySelectorAll("[id]")) seen[el.id] = (seen[el.id] || 0) + 1;
+    const dupes = Object.entries(seen).filter(([, n]) => n > 1).map(([id, n]) => `${id}×${n}`);
+    return dupes.length ? { pass: false, detail: dupes.join(", ") }
+      : { pass: true, detail: Object.keys(seen).length + " identifiants uniques" };
+  });
+  t("ui:la cible tactile du burger atteint 44px", () => {
+    const b = document.getElementById("burger");
+    if (!b) return { pass: false, detail: "#burger absent" };
+    // Mesurable même quand display:none via la media query : on lit la boîte
+    // en forçant l'affichage le temps de la mesure, puis on restaure.
+    const prev = b.style.display;
+    b.style.display = "block";
+    const r = b.getBoundingClientRect();
+    b.style.display = prev;
+    const w = Math.round(r.width), h = Math.round(r.height);
+    return (w >= 44 && h >= 44) ? { pass: true, detail: `${w}×${h}` }
+      : { pass: false, detail: `${w}×${h} — sous 44×44` };
+  });
+  t("ui:le tiroir masqué n'est pas focusable (mode mobile)", () => {
+    const rail = document.getElementById("rail"), burger = document.getElementById("burger");
+    if (!rail || !burger) return { pass: false, detail: "rail ou burger absent" };
+    if (typeof App.syncRailInert !== "function") return { pass: false, detail: "syncRailInert absent" };
+    const drawer = getComputedStyle(burger).display !== "none";
+    App.syncRailInert();
+    if (!drawer) {
+      // Desktop : la barre latérale est permanente, elle NE DOIT PAS être inerte.
+      return (!rail.inert && !rail.getAttribute("aria-hidden"))
+        ? { pass: true, detail: "desktop : navigation permanente accessible" }
+        : { pass: false, detail: "desktop : la navigation a été rendue inerte" };
+    }
+    const closedOk = rail.inert && rail.getAttribute("aria-hidden") === "true";
+    App.openMenu();
+    const openOk = !rail.inert && !rail.getAttribute("aria-hidden");
+    App.closeMenu();
+    return (closedOk && openOk) ? { pass: true, detail: "fermé inerte, ouvert navigable" }
+      : { pass: false, detail: `fermé=${closedOk} ouvert=${openOk}` };
+  });
   t("ui:Modal est une primitive partagée (pas dupliquée)", () => {
     const M = G("Modal");
     if (!M) return { pass: false, detail: "Modal absent" };

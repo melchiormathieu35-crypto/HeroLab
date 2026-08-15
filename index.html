@@ -252,7 +252,7 @@ body.stu-cam .stu-badge{top:10px}
   border-bottom:1px solid var(--line);background:rgba(13,20,36,.8);
   backdrop-filter:blur(12px);position:sticky;top:0;z-index:40;
 }
-.burger{display:none;font-size:18px}
+.burger{display:none;font-size:18px;padding:13px 14px;margin:-13px -14px;background:none;border:0;color:inherit;line-height:1;cursor:pointer}
 
 /* ---- Profil dans le rail ---- */
 .rail-profile{display:flex;align-items:center;gap:10px;width:calc(100% - 16px);margin:10px 8px 2px;padding:9px 11px;
@@ -2225,7 +2225,7 @@ to{opacity:1;transform:none}}
       <section class="view" id="v-bl"></section>
       <section class="view" id="v-tracker">
 
-<div class="scrim" id="scrim"></div>
+<div class="scrim" id="ft-scrim"></div>
 
 <div class="app">
   <!-- ==================================================== SIDEBAR ==== -->
@@ -2255,7 +2255,7 @@ to{opacity:1;transform:none}}
   <!-- ======================================================= MAIN ==== -->
   <div class="main">
     <header class="topbar">
-      <button class="burger" id="burger" aria-label="Menu">☰</button>
+      <button class="burger" id="ft-burger" aria-label="Menu">☰</button>
       <h2 id="viewTitle">Tableau de bord</h2>
       <div class="spacer"></div>
       <span class="chip-stat" id="tbHero">—</span>
@@ -6847,8 +6847,38 @@ const App = {
     App.closeMenu();
     window.scrollTo({ top: 0, behavior: "smooth" });
   },
-  openMenu() { document.getElementById("rail").classList.add("open"); document.getElementById("scrim").classList.add("on"); },
-  closeMenu() { document.getElementById("rail").classList.remove("open"); document.getElementById("scrim").classList.remove("on"); },
+  openMenu() {
+    document.getElementById("rail").classList.add("open");
+    document.getElementById("scrim").classList.add("on");
+    App.syncRailInert();
+  },
+  closeMenu() {
+    document.getElementById("rail").classList.remove("open");
+    document.getElementById("scrim").classList.remove("on");
+    App.syncRailInert();
+  },
+
+  /**
+   * Le rail est la barre latérale permanente sur desktop, et un tiroir
+   * off-canvas sur mobile. Fermé, il reste dans le flux avec
+   * `visibility: visible` : 15 liens hors ecran restaient donc atteignables au
+   * clavier et annonces par les lecteurs d'ecran.
+   *
+   * On ne peut pas simplement poser `inert` quand `.open` est absent : sur
+   * desktop il n'y a pas d'etat ouvert, et cela desactiverait la navigation
+   * principale. L'etat mobile est donc deduit de la visibilite du burger, qui
+   * est precisement ce que la media query controle.
+   */
+  syncRailInert() {
+    const rail = document.getElementById("rail");
+    const burger = document.getElementById("burger");
+    if (!rail || !burger) return;
+    const drawerMode = getComputedStyle(burger).display !== "none";
+    const hidden = drawerMode && !rail.classList.contains("open");
+    rail.inert = hidden;
+    if (hidden) rail.setAttribute("aria-hidden", "true");
+    else rail.removeAttribute("aria-hidden");
+  },
 
   render() {
     if (App.view === "home") App.renderHome();
@@ -8186,6 +8216,8 @@ const App = {
     document.querySelectorAll("[data-v]:not(.tab)").forEach(b => b.onclick = () => App.go(b.dataset.v));
     const burger = document.getElementById("burger"); if (burger) burger.onclick = App.openMenu;
     const scrim = document.getElementById("scrim"); if (scrim) scrim.onclick = App.closeMenu;
+    App.syncRailInert();
+    window.addEventListener("resize", App.syncRailInert);
     // Échap referme le menu mobile.
     document.addEventListener("keydown", e => {
       if (e.key === "Escape" && document.getElementById("rail").classList.contains("open")) App.closeMenu();
@@ -16571,8 +16603,8 @@ const FT = {
     window.scrollTo({ top: 0, behavior: "smooth" });
   },
 
-  openMenu() { const r = FT_ROOT(); r.querySelector("#sidebar").classList.add("open"); r.querySelector("#scrim").classList.add("on"); },
-  closeMenu() { const r = FT_ROOT(); r.querySelector("#sidebar").classList.remove("open"); r.querySelector("#scrim").classList.remove("on"); },
+  openMenu() { const r = FT_ROOT(); r.querySelector("#sidebar").classList.add("open"); r.querySelector("#ft-scrim").classList.add("on"); },
+  closeMenu() { const r = FT_ROOT(); r.querySelector("#sidebar").classList.remove("open"); r.querySelector("#ft-scrim").classList.remove("on"); },
 
   /** Lit les fichiers, parse, enregistre, journalise. */
   async handleFiles(files) {
