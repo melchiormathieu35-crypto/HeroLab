@@ -16,7 +16,7 @@ sont documentés en §13.
 | Testabilité | **8 / 10** | 66 tests + 34 scénarios, empreinte moteur exacte ; aucune CI |
 | Performance | **7 / 10** | boot 258 ms, 322 nœuds DOM, aucun blocage réseau ; 1 522 Ko dont 47 % d'actifs figés assumés |
 | Sécurité des données | **8 / 10** | XSS neutralisé sur les deux vecteurs réels, aucun secret, surface `window` minimale ; 92 handlers inline |
-| **Production readiness** | **2 / 10** | **aucune métadonnée SEO, aucun `index.html`, aucun favicon, aucune preview sociale, aucune instrumentation** |
+| **Production readiness** | **2 / 10** → **7 / 10** | avant : aucune métadonnée, aucun `index.html`, aucun favicon, aucune preview sociale. Après corrections : tout est en place sauf l'instrumentation (volontairement non branchée) et le domaine de production (non arbitré) |
 
 Le produit est **techniquement sain et fonctionnellement solide**. Il n'est **pas prêt à être mis
 en ligne** : tout ce qui touche à la découverte, au partage et à la mesure est absent.
@@ -281,3 +281,71 @@ peut-être inutilisées. **Mesure à faire avant tout retrait.**
 - **Vrai positif utile** : le second passage a détecté deux champs morts (`App.session`,
   `App.sessionReport`) qu'aucun test ne voyait. Corrigé.
 - **Conclusion** : bon détecteur d'anomalies, mauvaise source de vérité sur les dépendances.
+
+
+---
+
+## §Phase 15 — corrections appliquées
+
+Onze corrections, en cinq commits atomiques, chacune testée avant commit.
+
+| # | correction | commit | vérification |
+|---|---|---|---|
+| 1 | Métadonnées SEO complètes (description, robots, canonical, theme-color) | `ebd9153` | 66/66 + 34/34 |
+| 2 | Open Graph + Twitter Card + image sociale SVG inline | `ebd9153` | idem |
+| 3 | Favicon + apple-touch-icon en data-URI | `ebd9153` | idem |
+| 4 | JSON-LD `WebApplication` | `ebd9153` | JSON validé par le harnais |
+| 5 | `index4.html` → **`index.html`** (source canonique) | `79c272f` | tests repointés |
+| 6 | Ancienne génération → `archive/` + README justifiant l'écart | `79c272f` | 10 modules absents documentés |
+| 7 | `robots.txt` + `sitemap.xml` | `79c272f` | XML + namespace validés |
+| 8 | `syntax-check.mjs` généralisé à tous les blocs inline | `79c272f` | testé sur les 2 fichiers + contrôle négatif |
+| 9 | Hiérarchie de titres : **6 `<h1>` → 1** | `bafe965` | styles calculés identiques sur 6 éléments |
+| 10 | Contenu indexable `<noscript>` : **151 → 369 mots** | `bafe965` | 34/34 |
+| 11 | Marque « Pivot » → « Hero Lab » dans 2 messages utilisateur | `3dbdbd2` | round-trip export/import préservé |
+| 12 | `.pyc` suivi retiré, `graphify-out/` daté comme historique | `3dbdbd2` | — |
+
+### Métriques avant / après (référence = avant refactor)
+
+| métrique | avant | après | delta |
+|---|---:|---:|---:|
+| `<h1>` | 6 | **1** | −5 |
+| texte indexable sans JS | 151 mots | **369 mots** | +218 |
+| balises `meta` | 2 | **17** | +15 |
+| balises `<link>` | 0 | **3** | +3 |
+| fichiers SEO racine | 0 | **2** | +2 |
+| App — lignes | 1 957 | 1 416 | −541 |
+| App — état greffé | 13 | 2 | −11 |
+| modules `localStorage` | 10 | **1** | −9 |
+| dépendances inter-labs | 2 | **0** | −2 |
+| moteur pur | oui | **oui** | = |
+| boot (`App` prêt) | — | **252 ms** | — |
+| tests | 0 | **66 + 34** | +100 |
+
+### Tests
+
+- Suite unitaire : **66/66**, à chaque commit.
+- Red-team : **34/34** scénarios, pérennisée dans `tests/redteam.mjs`.
+- Empreinte moteur : **inchangée**, toujours identique à la mesure figée en `f60b3e1`.
+- Aucun test neutralisé, aucun échec masqué.
+
+### Risques résiduels
+
+| # | risque | portée |
+|---|---|---|
+| 1 | `canonical`, `og:url` et `sitemap.xml` sont **relatifs** — le domaine de production n'est pas arbitré. À rendre absolus avant soumission à un moteur. | bloquant pour l'indexation |
+| 2 | L'image sociale est un data-URI : X et Facebook ne la rendront pas et retomberont sur titre + description. Un PNG 1200×630 hébergé reste préférable. | preview partielle |
+| 3 | **Aucune instrumentation** — impossible de mesurer acquisition, activation, rétention. Architecture proposée en §G, non branchée (décision produit). | mesure produit |
+| 4 | Pas de page d'acquisition séparée. Le `<noscript>` explique le produit, mais ne remplace pas une vraie page d'entrée. | conversion |
+| 5 | Centralité d'`App` toujours en hausse (fan-out 31). Le `Router` reste la correction identifiée. | dette architecturale |
+| 6 | 642 lignes d'écrans encore dans `App` ; extraction à faire **après** le `Router`, pas avant. | dette architecturale |
+| 7 | `Stats.compute` (315 lignes) et `Parser.parseHandWinamax` (191) non couverts par la suite — dans l'IIFE Feutre. | dette de test |
+| 8 | Aucune CI : les suites ne tournent qu'à la main. | process |
+
+### Recommandations — prochaine phase
+
+1. **Arbitrer le domaine**, puis rendre `canonical`, `og:url` et `sitemap.xml` absolus, et produire une image sociale hébergée.
+2. **Ajouter une CI** exécutant `npm test` + la red-team à chaque push — le harnais existe, il ne manque que le déclencheur.
+3. **Décider de l'instrumentation** (§G) : l'architecture est prête, les événements produit existent déjà côté code.
+4. **Créer la page d'acquisition** séparée (`/` statique, l'app en `/app`).
+5. **Introduire le `Router`**, puis seulement ensuite extraire `HomeUI`/`StatsUI`.
+6. **Couvrir `Stats.compute` et le parser Winamax** par des tests avant toute découpe.
