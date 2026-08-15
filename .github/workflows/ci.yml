@@ -9,16 +9,21 @@ name: CI
 #   - dépendances minimales : Node, Playwright et Chromium. Rien d'autre.
 
 on:
+  # Les branches de travail sont couvertes par leur PR. Déclencher aussi sur
+  # push pour ces branches produisait deux exécutions identiques sur le même
+  # commit — constaté lors de la mise en place. `push` est donc réservé à
+  # l'intégration, `pull_request` couvre le reste.
   pull_request:
   push:
     branches:
       - main
-      - "claude/**"
   workflow_dispatch:
 
-# Une PR qui reçoit plusieurs pushes n'accumule pas les exécutions.
+# Un push supplémentaire sur une PR annule l'exécution précédente au lieu de
+# s'empiler. La clé inclut le workflow ET la ref, pour qu'une exécution `push`
+# sur main n'annule jamais celle d'une PR.
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
