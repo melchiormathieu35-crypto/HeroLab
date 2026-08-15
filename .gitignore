@@ -5,3 +5,7 @@ graphify-out/cache/
 
 # refactor harness
 node_modules/
+
+# bytecode Python (outils de refactor jetables)
+__pycache__/
+*.pyc

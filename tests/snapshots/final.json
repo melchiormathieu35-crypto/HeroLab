@@ -1,0 +1,110 @@
+{
+  "file": "index.html",
+  "totalLines": 16657,
+  "appJsLines": 14329,
+  "modules": 99,
+  "App": {
+    "lines": 1416,
+    "methods": 29,
+    "stateDeclared": 8,
+    "stateDynamic": 2,
+    "dynamicFields": [
+      "_homeChart",
+      "_mentorRewarded"
+    ],
+    "fanOut": 31,
+    "fanIn": 13,
+    "domWrites": 36,
+    "selfRefs": 171
+  },
+  "storage": {
+    "directModules": 1,
+    "modules": [
+      "Storage"
+    ],
+    "totalRefs": 5,
+    "hasStorageLayer": true
+  },
+  "dom": {
+    "modules": 18,
+    "list": [
+      "Modal",
+      "Studio",
+      "UI",
+      "Onboarding",
+      "App",
+      "ProfileUI",
+      "DailyUI",
+      "JourneyUI",
+      "DataPort",
+      "CareerUI",
+      "HRUI",
+      "PRUI",
+      "BLUI",
+      "Feutre",
+      "U",
+      "Charts",
+      "V",
+      "FT"
+    ]
+  },
+  "engine": {
+    "frozenPresent": 8,
+    "violations": {},
+    "pure": true
+  },
+  "interLabDeps": {
+    "count": 0,
+    "list": []
+  },
+  "topFanOut": [
+    {
+      "n": "App",
+      "loc": 1416,
+      "out": 31,
+      "in": 13
+    },
+    {
+      "n": "DataPort",
+      "loc": 144,
+      "out": 14,
+      "in": 4
+    },
+    {
+      "n": "Studio",
+      "loc": 349,
+      "out": 13,
+      "in": 1
+    },
+    {
+      "n": "HRUI",
+      "loc": 753,
+      "out": 10,
+      "in": 1
+    },
+    {
+      "n": "CareerUI",
+      "loc": 378,
+      "out": 9,
+      "in": 1
+    },
+    {
+      "n": "PRUI",
+      "loc": 494,
+      "out": 9,
+      "in": 1
+    },
+    {
+      "n": "BLUI",
+      "loc": 529,
+      "out": 9,
+      "in": 1
+    },
+    {
+      "n": "Spot",
+      "loc": 252,
+      "out": 8,
+      "in": 7
+    }
+  ]
+}

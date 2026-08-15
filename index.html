@@ -8642,8 +8642,8 @@ const DataPort = {
 
   importAll(json) {
     let dump;
-    try { dump = JSON.parse(json); } catch { return { ok: false, error: "Fichier illisible : ce n'est pas une sauvegarde Pivot valide." }; }
-    if (!dump || dump._format !== "pivot-save") return { ok: false, error: "Ce fichier n'est pas une sauvegarde Pivot." };
+    try { dump = JSON.parse(json); } catch { return { ok: false, error: "Fichier illisible : ce n'est pas une sauvegarde Hero Lab valide." }; }
+    if (!dump || dump._format !== "pivot-save") return { ok: false, error: "Ce fichier n'est pas une sauvegarde Hero Lab." };
     const put = (key, val) => { if (val) Storage.set(key, val); };
     if (dump.player) { Player.data = dump.player; Player.save(); }
     put(Progress.KEY, dump.progress);
