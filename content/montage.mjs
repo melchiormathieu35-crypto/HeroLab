@@ -569,12 +569,18 @@ if (import.meta.url === `file://${process.argv[1]}`) {
       for (const c of ko) console.log(`       ✗ ${c.nom} : ${c.why}`);
     }
 
-    const manifests = [];
     for (const p of produits) {
       const m = JSON.parse(await readFile(join(p.dossier, "manifest.json"), "utf8"));
       const q = rapport.find(v => v.dossier === p.dossier) || null;
       await writeFile(join(p.dossier, "README.md"), readmeMontage(m, q));
-      manifests.push(m);
+    }
+    // L'index du concept liste le DOSSIER ENTIER, pas la dernière exécution :
+    // ne passer que les manifestes du lot écrasait les lignes des vidéos
+    // précédentes — constaté sur le lot de 8, qui avait fait disparaître les
+    // deux premières de l'index.
+    const manifests = [];
+    for (const d of (await readdir(dossierConcept, { withFileTypes: true })).filter(x => x.isDirectory()).sort((a, b) => a.name.localeCompare(b.name))) {
+      try { manifests.push(JSON.parse(await readFile(join(dossierConcept, d.name, "manifest.json"), "utf8"))); } catch { /* dossier étranger */ }
     }
     await writeFile(join(dossierConcept, "README.md"), readmeConcept(def, manifests));
     await ecrireScripts(produits.map(p => p.dossier));

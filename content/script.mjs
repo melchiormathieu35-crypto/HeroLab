@@ -222,9 +222,14 @@ export function construireScript(m) {
   // ── REVEAL — le verdict, avec les chiffres de l'écran. Le coût est un coût :
   // il se dit sans signe, « 7,26 big blinds », pas « +7,26 ».
   const joueMot = e.joue.action === "check" ? "Checké" : "Suivi";
+  const verdictMot = e.verdict === "erreur" ? "Erreur" : e.verdict;
+  const coutDit = e.lossBB.toFixed(2).replace(".", ",");
   entrees.push({
     beat: "REVEAL",
-    voix: `${joueMot} ? ${e.verdict === "erreur" ? "Erreur" : e.verdict}, dit le moteur. Coût : ${e.lossBB.toFixed(2).replace(".", ",")} big blinds. Il fallait ${e.meilleure.label.toLowerCase()}.`,
+    voixNiveaux: [
+      `${joueMot} ? ${verdictMot}, dit le moteur. Coût : ${coutDit} big blinds. Il fallait ${e.meilleure.label.toLowerCase()}.`,
+      `${joueMot} ? ${verdictMot}. Coût : ${coutDit} big blinds. Il fallait ${e.meilleure.label.toLowerCase()}.`,
+    ],
     sousTitres: [`Verdict : ${e.verdict}.`, `Coût : ${e.lossBB.toFixed(2).replace(".", ",")} bb`, `La bonne réponse : ${e.meilleure.label.toLowerCase()}`],
     note: "C'est ici que la voix a le plus de valeur. Les chiffres dits sont exactement ceux affichés — ne pas les arrondir autrement.",
   });
@@ -237,11 +242,25 @@ export function construireScript(m) {
   // Le cas « rien ne bat le fold » ne vaut que pour un fold : un check optimal
   // passe par la formulation générique, qui reste juste.
   const meilleurEstFold = e.meilleure.label === "Passer";
+  // Échelle de compression, comme la SITUATION : le libellé de la meilleure
+  // option vient de l'écran et sa longueur varie (« Relancer Pot » : 2 mots,
+  // « Relancer 2.5 bb » : 3) — la garde a réellement refusé un PAYOFF d'un mot
+  // de trop. On retire d'abord la chute, puis le commentaire, jamais les
+  // chiffres.
+  const pireQueJeter = evJoue < 0 ? " — pire que jeter la main" : "";
   entrees.push({
     beat: "PAYOFF",
-    voix: meilleurEstFold
-      ? `Passer vaut zéro. ${reflexeMot} : ${bb(evJoue)} — pire que jeter la main. Rien ne bat le fold.`
-      : `${e.meilleure.label} : ${bb(e.meilleure.evBB)}. ${reflexeMot} : ${bb(evJoue)}${evJoue < 0 ? " — pire que jeter la main" : ""}. Tout l'écart est là.`,
+    voixNiveaux: meilleurEstFold
+      ? [
+        `Passer vaut zéro. ${reflexeMot} : ${bb(evJoue)} — pire que jeter la main. Rien ne bat le fold.`,
+        `Passer vaut zéro. ${reflexeMot} : ${bb(evJoue)} — pire que jeter la main.`,
+        `Passer vaut zéro. ${reflexeMot} : ${bb(evJoue)}.`,
+      ]
+      : [
+        `${e.meilleure.label} : ${bb(e.meilleure.evBB)}. ${reflexeMot} : ${bb(evJoue)}${pireQueJeter}. Tout l'écart est là.`,
+        `${e.meilleure.label} : ${bb(e.meilleure.evBB)}. ${reflexeMot} : ${bb(evJoue)}${pireQueJeter}.`,
+        `${e.meilleure.label} : ${bb(e.meilleure.evBB)}. ${reflexeMot} : ${bb(evJoue)}.`,
+      ],
     sousTitres: meilleurEstFold
       ? [`Passer = 0 bb`, `${e.joue.label} = ${bb(evJoue)} bb`, "Rien ne bat le fold ici."]
       : [`${e.meilleure.label} = ${bb(e.meilleure.evBB)} bb`, `${e.joue.label} = ${bb(evJoue)} bb`],
