@@ -25,7 +25,7 @@ import { resolve, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   openShot, loadSpot, setCamera, currentScroll,
-  scrollTargetFor, zoomOriginFor, checkFraming,
+  scrollTargetFor, zoomOriginFor, checkFraming, SAFE_BAND,
 } from "./studio.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -166,27 +166,48 @@ export async function executer(page, enc, m, etat) {
       //
       // Un blueprint peut demander `a: "max"` pour dire « le plus près possible
       // sans rien couper » et laisser la page fixer la valeur.
-      const dim = await page.evaluate((sel) => {
+      // Le plafond de page dépend de L'ORIGINE du zoom, pas seulement de la
+      // largeur du contenu. Une première version supposait un agrandissement
+      // symétrique et calculait `cadre / contenu` : elle laissait encore passer
+      // « LAG », « SB · 9.95 € » et « Flop » coupés au bord droit, parce que
+      // l'origine du zoom du HOOK est le centre des deux cartes du héros, très à
+      // gauche du cadre. Tout ce qui est à droite s'éloigne donc bien plus vite
+      // que la moyenne. On résout la contrainte réelle, côté par côté :
+      //
+      //   x ↦ ox + (x − ox)·s      donc   s ≤ ox / (ox − L)      à gauche
+      //                            et     s ≤ (vw − ox) / (R − ox)  à droite
+      //
+      // L et R sont les extrémités des GLYPHES effectivement visibles dans la
+      // bande utile — même mesure que le contrôle de cadrage, pour que la garde
+      // et le contrôle ne puissent pas diverger.
+      const dim = await page.evaluate(({ sel, origin, band }) => {
         const el = document.querySelector(sel);
         const r = el.getBoundingClientRect();
         const vue = document.getElementById("v-play") || document.body;
-        // Colonne de contenu : le plus large bloc porteur de texte de la page.
-        let contenu = 0;
+        const v = vue.getBoundingClientRect();
+        const ox = v.left + (origin.x / 100) * v.width;
+
+        const rng = document.createRange();
+        let L = Infinity, R = -Infinity;
         for (const n of vue.querySelectorAll("*")) {
-          const b = n.getBoundingClientRect();
-          if (b.height < 8 || b.width < 40) continue;
-          if (![...n.childNodes].some(c => c.nodeType === 3 && c.textContent.trim())) continue;
-          if (b.width > contenu) contenu = b.width;
+          for (const c of n.childNodes) {
+            if (c.nodeType !== 3 || !c.textContent.trim()) continue;
+            rng.selectNodeContents(c);
+            for (const b of rng.getClientRects()) {
+              if (b.height < 6 || b.width < 4) continue;
+              if (b.bottom < band.top || b.top > band.bottom) continue;
+              if (b.left < L) L = b.left;
+              if (b.right > R) R = b.right;
+            }
+          }
         }
-        return { w: r.width, vw: innerWidth, contenu };
-      }, m.cible);
-      const echelleCourante = etat.scale || 1;
+        return { w: r.width, vw: innerWidth, ox, L, R };
+      }, { sel: m.cible, origin, band: SAFE_BAND });
+
       const plafondCible = dim.w > 0 ? (dim.vw * 0.96) / dim.w : Infinity;
-      // `contenu` est mesuré à l'échelle courante : on le ramène à l'échelle 1
-      // avant d'en déduire le plafond, sinon un enchaînement de zooms se
-      // borne sur sa propre sortie.
-      const contenu1 = dim.contenu > 0 ? dim.contenu / echelleCourante : 0;
-      const plafondPage = contenu1 > 0 ? dim.vw / contenu1 : Infinity;
+      const gauche = dim.L < dim.ox ? dim.ox / (dim.ox - dim.L) : Infinity;
+      const droite = dim.R > dim.ox ? (dim.vw - dim.ox) / (dim.R - dim.ox) : Infinity;
+      const plafondPage = Math.min(gauche, droite);
       const plafond = Math.min(plafondCible, plafondPage);
       const demande = m.a === "max" ? plafond : m.a;
       const vise = Math.max(1, Math.min(demande, plafond));
