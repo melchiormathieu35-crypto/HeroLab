@@ -50,4 +50,6 @@ librement sans changer les chiffres.
 | notation sur 100 | `node content/scan.mjs` |
 | rushs (un plan par fichier) | `node content/engine.mjs --count 10` |
 | vidéos montées, par concept | `node content/montage.mjs --concept quizz --count 2` |
-| scripts voix off + sous-titres | `node content/script.mjs` (aussi appelé par la commande ci-dessus) |
+| duels de profils | `node content/duel.mjs --count 3` |
+| scripts voix off + sous-titres | `node content/script.mjs` (aussi appelé par les commandes ci-dessus) |
+| conversion CapCut (sur le Mac) | `./outils/capcut/collecter.sh` puis `./outils/capcut/convert_videos.sh` — voir `outils/capcut/README.md` |
