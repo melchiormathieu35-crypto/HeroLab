@@ -50,6 +50,24 @@ export const CONCEPTS = {
       "Le spectateur est mis en situation, voit les options réelles, doit choisir, " +
       "puis le moteur tranche et chiffre ce que son réflexe coûte.",
   },
+  "duel-profils": {
+    dossier: "Duel de profils",
+    titre: "Duel de profils",
+    principe:
+      "Même main, même board, même mise en face — seul l'adversaire change. La même " +
+      "action, correcte contre le premier profil, devient une erreur chiffrée contre le " +
+      "second. La leçon : on ne joue pas contre des cartes, on joue contre quelqu'un.",
+    structure: [
+      ["HOOK", "la main seule — le point commun des deux manches"],
+      ["MANCHE A", "la table contre le premier profil, badge visible"],
+      ["CHOICE A", "les options réelles — le spectateur choisit contre CE profil"],
+      ["REVEAL A", "l'action optimale est jouée et prouvée par la liste des espérances"],
+      ["MANCHE B", "même situation rechargée — seul le badge de profil a changé"],
+      ["TENSION B", "la question du duel : la même action tient-elle encore ?"],
+      ["REVEAL B", "la même action, rejouée à l'identique, reçoit le verdict opposé"],
+      ["PAYOFF", "la liste des espérances de la manche B — le reclassement complet"],
+    ],
+  },
 };
 
 /** Fourchette de durée imposée pour une vidéo montée, en secondes. */
@@ -304,6 +322,7 @@ export async function produireMontage(browser, ff, spot, bp, dossier) {
   const etat = { scrollY: 0, scale: 1, origin: null, cadrages: [], bornages: [] };
 
   const timeline = [];
+  const moteurs = [];
   let moteur = null, echec = null;
 
   try {
@@ -318,7 +337,7 @@ export async function produireMontage(browser, ff, spot, bp, dossier) {
       etat.cadrages = [];
       for (const m of b.mouvements) {
         const r = await executer(page, enc, m, etat);
-        if (r) moteur = r;
+        if (r) { moteur = r; moteurs.push({ beat: b.beat, ...r }); }
       }
       const cadrages = etat.cadrages.slice();
       timeline.push({
@@ -361,6 +380,11 @@ export async function produireMontage(browser, ff, spot, bp, dossier) {
     duree: Math.round(fin.seconds * 100) / 100,
     images: fin.frames,
     moteur,
+    // Toutes les décisions jouées, dans l'ordre — une vidéo de duel en joue
+    // deux, une de quizz une seule. `moteur` reste la dernière pour la
+    // compatibilité des contrôles existants.
+    moteurs,
+    duel: bp.duel || null,
     timeline,
     bornages: etat.bornages,
     erreurs: fatals,

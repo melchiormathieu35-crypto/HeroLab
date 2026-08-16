@@ -290,7 +290,199 @@ export function construireScript(m) {
   return entrees;
 }
 
+/**
+ * Script d'un DUEL DE PROFILS. Même contrat que le quizz : chiffres de l'écran
+ * uniquement, lignes calibrées par la fenêtre de leur beat, échelles de
+ * compression quand un libellé s'allonge.
+ */
+export function construireScriptDuel(m) {
+  const d = m.duel;
+  const specA = lireSpec(d.specA);
+  const [mA, mB] = m.moteurs;
+  const beat = (nom) => m.timeline.find(b => b.beat === nom);
+
+  const profilDit = (p) => PROFILS[p] || p;
+  const actionBas = d.action.toLowerCase();
+  const derniereMise = (spec) => {
+    const s = lireSpec(spec);
+    const rue = s.river || s.turn || s.flop || s.preflop;
+    return { rue, texte: `${rue.board ? `${s.river ? "River" : s.turn ? "Turn" : "Flop"} ${rue.board.includes(" ") ? cartes(rue.board) : carte(rue.board)}` : "Préflop"} : ${direActions(rue.actions, { compact: true, garderMontant: true })}.` };
+  };
+  const mise = derniereMise(d.specA);
+
+  const entrees = [];
+
+  entrees.push({
+    beat: "HOOK",
+    voixNiveaux: [
+      `${cartes(specA.hero.cartes)} ${EN_POSITION[specA.hero.pos] || specA.hero.pos}. Même main, deux adversaires. Deux réponses.`,
+      `Même main, deux adversaires. Deux réponses.`,
+    ],
+    sousTitres: ["Même main. Deux adversaires.", "Deux réponses."],
+    note: "L'accroche est la promesse du duel. Aucun chiffre, aucune réponse.",
+  });
+
+  entrees.push({
+    beat: "MANCHE A",
+    voixNiveaux: [
+      `Premier adversaire : ${profilDit(d.profilA)}. ${mise.texte}`,
+      `Premier adversaire : ${profilDit(d.profilA)}.`,
+    ],
+    sousTitres: [`Manche 1 — ${profilDit(d.profilA)}`, mise.texte],
+    note: "Le badge de profil est à l'écran : le nommer suffit, ne pas décrire toute la table.",
+  });
+
+  entrees.push({
+    beat: "CHOICE A",
+    voixNiveaux: [
+      `Les montants sont à l'écran. Contre lui, tu fais quoi ?`,
+    ],
+    sousTitres: ["Contre LUI, tu fais quoi ?"],
+    note: "Laisser le temps de pose travailler après la question.",
+  });
+
+  entrees.push({
+    beat: "REVEAL A",
+    voixNiveaux: [
+      `Contre ce profil, ${actionBas} est le bon coup : ${bb(d.evA)} big blinds. Retiens ce chiffre.`,
+      `Ici, ${actionBas} est le bon coup : ${bb(d.evA)}. Retiens ce chiffre.`,
+      `${d.action} : ${bb(d.evA)}. Retiens ce chiffre.`,
+    ],
+    sousTitres: [`${d.action} = ${bb(d.evA)} bb`, "Retiens ce chiffre."],
+    note: "Le chiffre cité est sur la ligne en tête de la liste des espérances, à l'écran pendant ce beat.",
+  });
+
+  entrees.push({
+    beat: "MANCHE B",
+    voixNiveaux: [
+      `Deuxième manche. Même main, même board, même mise. Un seul changement : ${profilDit(d.profilB)}.`,
+      `Même main, même mise. Un seul changement : ${profilDit(d.profilB)}.`,
+      `Tout pareil, sauf lui : ${profilDit(d.profilB)}.`,
+    ],
+    sousTitres: [`Manche 2 — ${profilDit(d.profilB)}`, "Tout est identique, sauf lui."],
+    note: "Le pivot du concept. Le badge de profil, différent, est le seul changement visible à l'écran.",
+  });
+
+  entrees.push({
+    beat: "TENSION B",
+    voixNiveaux: [
+      `La même action… toujours une bonne idée ?`,
+    ],
+    sousTitres: [`${d.action}… encore ?`],
+    note: "Silence sur le freeze : le spectateur parie sur la bascule. Ne rien révéler.",
+  });
+
+  entrees.push({
+    beat: "REVEAL B",
+    voixNiveaux: [
+      `${d.action}, à l'identique ? ${mB.verdict === "erreur" ? "Erreur" : mB.verdict}, dit le moteur. Coût : ${mB.lossBB.toFixed(2).replace(".", ",")} big blinds.`,
+      `La même action ? ${mB.verdict === "erreur" ? "Erreur" : mB.verdict}. Coût : ${mB.lossBB.toFixed(2).replace(".", ",")} big blinds.`,
+    ],
+    sousTitres: [`Verdict : ${mB.verdict}.`, `Coût : ${mB.lossBB.toFixed(2).replace(".", ",")} bb`],
+    note: "La bascule — le moment le plus fort de la vidéo. Chiffres exactement comme affichés.",
+  });
+
+  entrees.push({
+    beat: "PAYOFF",
+    voixNiveaux: [
+      `Contre lui, ${actionBas} vaut ${bb(d.evB)}. La bonne réponse : ${d.bestB.label.toLowerCase()}, ${bb(d.bestB.evBB)}. L'adversaire fait la décision.`,
+      `${d.action} : ${bb(d.evB)}. La bonne réponse : ${d.bestB.label.toLowerCase()}, ${bb(d.bestB.evBB)}. L'adversaire fait la décision.`,
+      `${d.action} : ${bb(d.evB)}. Mieux : ${d.bestB.label.toLowerCase()}, ${bb(d.bestB.evBB)}. L'adversaire fait la décision.`,
+    ],
+    sousTitres: [`${d.action} = ${bb(d.evB)} bb`, `${d.bestB.label} = ${bb(d.bestB.evBB)} bb`, "L'adversaire fait la décision."],
+    note: "La dernière phrase est la leçon du concept — elle se dit sur la liste des espérances, sans la recouvrir.",
+  });
+
+  for (const en of entrees) {
+    const b = beat(en.beat);
+    if (!b) throw new Error(`beat absent de la timeline : ${en.beat}`);
+    en.debut = b.debut; en.fin = b.fin; en.secondes = b.secondes;
+    en.motsMax = Math.floor(b.secondes * DEBIT);
+    en.voix = en.voixNiveaux.find(v => mots(v) <= en.motsMax) || en.voixNiveaux[en.voixNiveaux.length - 1];
+    en.niveauxEcartes = en.voixNiveaux.indexOf(en.voix);
+    delete en.voixNiveaux;
+    en.motsProposes = mots(en.voix);
+    if (en.motsProposes > en.motsMax) {
+      throw new Error(`script infaisable : ${en.beat} demande ${en.motsProposes} mots pour une fenêtre de ${en.motsMax} (${en.secondes} s à ${DEBIT} mots/s) — « ${en.voix} »`);
+    }
+  }
+  return entrees;
+}
+
+/** Table des chiffres de référence d'un duel — les deux manches côte à côte. */
+function chiffresDuel(m) {
+  const d = m.duel;
+  const [mA, mB] = m.moteurs;
+  return `| donnée | manche A (${d.profilA}) | manche B (${d.profilB}) |
+|---|---|---|
+| équité du héros | ${d.equityA} % | ${d.equityB} % |
+| EV de ${d.action} | ${bb(d.evA)} bb | ${bb(d.evB)} bb |
+| verdict affiché | « ${mA.verdict} » | « ${mB.verdict} » |
+| meilleure action | ${d.action} | ${d.bestB.label} (${bb(d.bestB.evBB)} bb) |
+| bascule | \\— | **${d.contraste.toFixed(2).replace(".", ",")} bb** |`;
+}
+
+function scriptMarkdownDuel(m) {
+  const entrees = construireScriptDuel(m);
+  const d = m.duel;
+
+  return `# Script — ${m.video}
+
+**Vidéo** : \`${m.fichier}\` · ${m.duree.toFixed(2)} s · **Concept** : ${m.conceptTitre || m.concept}
+**Situation** : ${m.titreInterne}
+
+> **Statut de ce texte : une proposition.** Le ton, le rythme et les mots se
+> reformulent librement — c'est ta voix. Les **chiffres**, en revanche, sont ceux
+> que le moteur affiche à l'écran au même moment : ne les change pas, ne les
+> arrondis pas autrement, n'en ajoute pas d'autres.
+>
+> Calibrage : environ ${DEBIT} mots par seconde de voix posée. Chaque beat
+> indique sa contrainte ; si tu reformules plus long, ça ne rentrera pas.
+>
+> **Le principe du duel** : la même action — ${d.action} — est jouée dans les
+> deux manches. Correcte contre ${d.profilA} (${bb(d.evA)} bb), elle devient une
+> erreur contre ${d.profilB} (${bb(d.evB)} bb). Rien d'autre ne change.
+
+---
+
+## Le script, d'une traite
+
+${entrees.map(en => en.voix).join("\n\n")}
+
+*(Les crochets de calage : ${entrees.map(en => `${en.beat} à ${tc(en.debut)}`).join(" · ")}.)*
+
+---
+
+## Le détail, beat par beat
+
+${entrees.map(en => `### ${en.beat} — \`${tc(en.debut)}\` → \`${tc(en.fin)}\` (${en.secondes.toFixed(1)} s · ${en.motsMax} mots max, proposé : ${en.motsProposes})
+
+**Voix off proposée**
+
+> ${en.voix}
+
+**Sous-titres proposés** (à caler dans la fenêtre du beat, en bas de la bande utile)
+
+${en.sousTitres.map(s => `- ${s}`).join("\n")}
+
+**Note de jeu.** ${en.note}
+`).join("\n")}
+---
+
+## Les chiffres de référence (ceux de l'écran)
+
+${chiffresDuel(m)}
+
+Ces valeurs viennent de \`Judge.evaluate\`, rejouées et revérifiées par le
+contrôle qualité sur les deux manches. Comme l'indique l'application elle-même,
+ce sont des estimations sur la range adverse et les profils en jeu — un ordre de
+grandeur et un classement, pas une sortie de solveur. Le script ne doit pas les
+présenter autrement.
+`;
+}
+
 export function scriptMarkdown(m) {
+  if (m.duel) return scriptMarkdownDuel(m);
   const entrees = construireScript(m);
   const e = m.moteur;
 

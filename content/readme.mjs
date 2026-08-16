@@ -48,6 +48,37 @@ const PLACEMENTS = {
     soustitres: "Oui.",
     textes: "Rien par-dessus la liste des espérances : c'est la preuve, elle doit rester lisible.",
   },
+  // ── Beats propres au duel de profils
+  "MANCHE A": {
+    voix: "Présenter le premier adversaire. Son badge de profil est à l'écran — le nommer suffit.",
+    soustitres: "Oui, courts : profil et action en face.",
+    textes: "Un marqueur « Manche 1 » possible en haut de bande utile. Ne pas cacher le badge de profil.",
+  },
+  "CHOICE A": {
+    voix: "Poser la question du choix contre CE profil, ou silence.",
+    soustitres: "Oui, courts.",
+    textes: "Éventuel compte à rebours. Ne pas recouvrir les boutons.",
+  },
+  "REVEAL A": {
+    voix: "Valider le coup et citer son espérance — le chiffre est à l'écran dans la liste.",
+    soustitres: "Oui — la validation doit se lire sans le son.",
+    textes: "Rien par-dessus la liste des espérances.",
+  },
+  "MANCHE B": {
+    voix: "Le pivot du concept : tout est identique, sauf l'adversaire. Le dire simplement.",
+    soustitres: "Oui : « même main, même mise — autre adversaire ».",
+    textes: "Un marqueur « Manche 2 » possible. Le badge de profil, différent, est le seul changement visible : ne pas le couvrir.",
+  },
+  "TENSION B": {
+    voix: "Poser la question de la bascule, puis silence sur le freeze.",
+    soustitres: "La question, si tu veux la poser à l'écrit.",
+    textes: "« La même relance ? » fonctionne. Ne pas donner la réponse.",
+  },
+  "REVEAL B": {
+    voix: "La bascule. C'est ici que la voix a le plus de valeur.",
+    soustitres: "Oui — le verdict doit être lisible sans le son.",
+    textes: "Le coût est déjà à l'écran : éviter de le doubler.",
+  },
 };
 
 export function readmeVideo(m, qa) {
@@ -272,13 +303,39 @@ bande droite des boutons. Garde cette contrainte pour tes ajouts.
 
 ## Ce que dit le moteur
 
-${e ? `- Le héros a **${e.equity} % d'équité**.
+${m.duel ? `Deux manches, une seule action : **${m.duel.action}**.
+
+| | manche A (${m.duel.profilA}) | manche B (${m.duel.profilB}) |
+|---|---|---|
+| équité du héros | ${m.duel.equityA} % | ${m.duel.equityB} % |
+| EV de **${m.duel.action}** | **${bb(m.duel.evA)}** | **${bb(m.duel.evB)}** |
+| verdict de l'application | « ${(m.moteurs && m.moteurs[0]) ? m.moteurs[0].verdict : "—"} » | « ${(m.moteurs && m.moteurs[1]) ? m.moteurs[1].verdict : "—"} » |
+| meilleure action | ${m.duel.action} | ${m.duel.bestB.label} (${bb(m.duel.bestB.evBB)}) |
+
+**La bascule : ${m.duel.contraste.toFixed(2)} bb** pour la même action, quand seul
+le profil adverse change. C'est la démonstration de la vidéo — rien d'autre n'a
+bougé entre les deux manches, les deux specs ne diffèrent que d'un mot.
+
+### Espérances à l'écran, manche par manche
+
+En big blinds, à partir de la décision ; passer vaut 0 par construction. Ces
+valeurs viennent de \`Judge.evaluate\` — des estimations sur la range adverse et
+les profils en jeu, un ordre de grandeur et un classement, pas une sortie de
+solveur. Ne les présente pas autrement.
+
+| option | manche A (${m.duel.profilA}) | manche B (${m.duel.profilB}) |
+|---|---|---|
+${(m.moteurs && m.moteurs.length === 2) ? m.moteurs[0].options.map(oA => {
+  const oB = m.moteurs[1].options.find(x => x.label === oA.label);
+  return `| ${oA.label} | ${bb(oA.evBB)} | ${oB ? bb(oB.evBB) : "—"} |`;
+}).join("\n") : "| — | — | — |"}
+` : e ? `- Le héros a **${e.equity} % d'équité**.
 - L'action instinctive est **${e.joue.label}**, à **${bb(e.joue.evBB)}**.${e.joue.evBB < 0 ? `
   Passer valant 0 par construction, ce coup coûte donc plus cher que de jeter la main.` : ""}
 - La meilleure action est **${e.meilleure.label}**, à **${bb(e.meilleure.evBB)}**.
-- **Différentiel d'EV : ${e.lossBB.toFixed(2)} bb.** Verdict de l'application : « ${e.verdict} ».
+- **Différentiel d'EV : ${e.lossBB.toFixed(2)} bb.** Verdict de l'application : « ${e.verdict} ».` : "**NON VÉRIFIÉ** — aucune analyse moteur n'a été produite pour cette vidéo."}
 
-### Espérance de chaque option
+${!m.duel && e ? `### Espérance de chaque option
 
 En big blinds, à partir de la décision. Passer vaut 0 : c'est la référence
 commune, l'argent déjà investi étant ignoré pour toutes les options. Un chiffre
@@ -291,7 +348,7 @@ ${e.options.map(o => `| ${o.label} | ${bb(o.evBB)} |`).join("\n")}
 Ces valeurs sont celles affichées à l'écran pendant le beat PAYOFF. Elles
 viennent de \`Judge.evaluate\`. Comme l'indique l'application elle-même, ce sont
 des estimations sur la range adverse et les profils en jeu — un ordre de grandeur
-et un classement, pas une sortie de solveur. Ne les présente pas autrement.` : "**NON VÉRIFIÉ** — aucune analyse moteur n'a été produite pour cette vidéo."}
+et un classement, pas une sortie de solveur. Ne les présente pas autrement.` : ""}
 
 ---
 
@@ -376,12 +433,14 @@ ${videos.map(v => `| [${v.video}](${encodeURI(v.video)}/README.md) | ${v.titreIn
 
 | beat | rôle |
 |---|---|
-| HOOK | la main seule, sans contexte — tenir les deux premières secondes |
-| SITUATION | la table, la position, l'adversaire, le board |
-| TENSION | la donnée qui rend la décision coûteuse, tenue à l'écran |
-| CHOICE | les options réelles et leurs montants — le temps de choix |
-| REVEAL | l'action instinctive est jouée, le moteur tranche |
-| PAYOFF | l'espérance de chaque option — la preuve |
+${(concept.structure || [
+  ["HOOK", "la main seule, sans contexte — tenir les deux premières secondes"],
+  ["SITUATION", "la table, la position, l'adversaire, le board"],
+  ["TENSION", "la donnée qui rend la décision coûteuse, tenue à l'écran"],
+  ["CHOICE", "les options réelles et leurs montants — le temps de choix"],
+  ["REVEAL", "l'action instinctive est jouée, le moteur tranche"],
+  ["PAYOFF", "l'espérance de chaque option — la preuve"],
+]).map(([b, r]) => `| ${b} | ${r} |`).join("\n")}
 
 Les timecodes exacts de chaque beat sont dans le README de chaque vidéo.
 

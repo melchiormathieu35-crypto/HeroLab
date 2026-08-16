@@ -88,7 +88,14 @@ export class Encodeur {
 export const grab = (page) => page.screenshot({ type: "jpeg", quality: 92 });
 export const images = (sec) => Math.max(1, Math.round(sec * FPS));
 
-/** Joue une option en prenant les montants exacts du moteur. */
+/**
+ * Joue une option en prenant les montants exacts du moteur.
+ *
+ * `quoi` : "best", "instinct", ou un libellé exact d'option (« Relancer Pot »).
+ * Le libellé sert au duel de profils : la même action doit être jouée dans les
+ * deux manches, et c'est le libellé — pas l'indice — qui la désigne sans
+ * ambiguïté d'un spot à l'autre.
+ */
 async function jouerOption(page, quoi) {
   return page.evaluate((quoi) => {
     const t = App.t;
@@ -98,7 +105,10 @@ async function jouerOption(page, quoi) {
     const instinct = t.toCall(t.hero) > 0 ? "call" : "check";
     const pick = quoi === "best"
       ? tries[0]
-      : tries.find(o => o.action === instinct) || tries[tries.length - 1];
+      : quoi === "instinct"
+        ? (tries.find(o => o.action === instinct) || tries[tries.length - 1])
+        : tries.find(o => (o.label || o.action) === quoi);
+    if (!pick) return { erreur: `option introuvable : ${quoi} (disponibles : ${tries.map(o => o.label || o.action).join(", ")})` };
     App.choose(pick.action, pick.amount);
     const a = App.analysis;
     return {
@@ -267,9 +277,22 @@ export async function executer(page, enc, m, etat) {
       return null;
     }
     case "jouer": {
-      const r = await jouerOption(page, m.quoi === "best" ? "best" : "instinct");
+      const r = await jouerOption(page, m.quoi || "instinct");
+      if (r && r.erreur) throw new Error(r.erreur);
       etat.scale = 1; etat.origin = null;   // l'écran a changé, la caméra repart à plat
       return r;
+    }
+    case "charger": {
+      // Recharge un spot en cours de vidéo — le cœur du duel de profils : la
+      // manche B rejoue la même situation contre un autre adversaire, sur la
+      // même page et dans le même fichier. Studio reste en fantôme, vérifié à
+      // chaque chargement comme au premier.
+      const built = await loadSpot(page, m.spec);
+      if (!built.ok) throw new Error(`rechargement impossible : ${built.err}`);
+      if (!built.ghost) throw new Error("spot rechargé non fantôme");
+      etat.scale = 1; etat.origin = null; etat.scrollY = 0;
+      await setCamera(page, { scrollY: 0, scale: 1, origin: null });
+      return null;
     }
     default:
       throw new Error(`mouvement inconnu : ${m.type}`);

@@ -206,7 +206,58 @@ async function qaVisuelle(ff, file, duree) {
  * Studio est déterministe — le même spot rend les mêmes ranges, donc les mêmes
  * EV — ce qui rend cette comparaison exacte et non approximative.
  */
+/**
+ * Cohérence moteur d'un DUEL : deux manches, deux vérités à recontrôler. On
+ * recharge chaque spec, on rejoue la même action (désignée par son libellé,
+ * comme à la prise), et chaque chiffre livré doit revenir à l'identique — EV
+ * de l'action dans les deux manches, meilleure option de la manche B, verdict.
+ */
+async function coherenceDuel(page, manifest) {
+  const d = manifest.duel;
+  const [mA, mB] = manifest.moteurs || [];
+  if (!mA || !mB) return { ok: false, why: "manifeste de duel sans les deux analyses moteur" };
+
+  const rejouer = async (spec, action) => {
+    const built = await loadSpot(page, spec);
+    if (!built.ok) return { err: built.err };
+    return page.evaluate((action) => {
+      const t = App.t;
+      const opts = Spot.options(t);
+      const a0 = Judge.evaluate(t, { action: opts[0].action, amount: opts[0].amount });
+      const pick = a0.options.find(o => (o.label || o.action) === action);
+      if (!pick) return { err: "option absente : " + action };
+      App.choose(pick.action, pick.amount);
+      const a = App.analysis;
+      return {
+        evAction: Number(pick.evBB.toFixed(2)),
+        verdict: a.verdict,
+        lossBB: Number(a.lossBB.toFixed(2)),
+        meilleure: { label: a.best.label || a.best.action, evBB: Number(a.best.evBB.toFixed(2)) },
+      };
+    }, action);
+  };
+
+  const ecarts = [];
+  const rA = await rejouer(d.specA, d.action);
+  if (rA.err) return { ok: false, why: `manche A : ${rA.err}` };
+  if (Math.abs(rA.evAction - mA.joue.evBB) > TOLERANCE_BB) ecarts.push(`EV manche A ${mA.joue.evBB} → ${rA.evAction}`);
+  if (rA.verdict !== mA.verdict) ecarts.push(`verdict A « ${mA.verdict} » → « ${rA.verdict} »`);
+
+  const rB = await rejouer(d.specB, d.action);
+  if (rB.err) return { ok: false, why: `manche B : ${rB.err}` };
+  if (Math.abs(rB.evAction - mB.joue.evBB) > TOLERANCE_BB) ecarts.push(`EV manche B ${mB.joue.evBB} → ${rB.evAction}`);
+  if (rB.verdict !== mB.verdict) ecarts.push(`verdict B « ${mB.verdict} » → « ${rB.verdict} »`);
+  if (rB.meilleure.label !== mB.meilleure.label) ecarts.push(`meilleure B « ${mB.meilleure.label} » → « ${rB.meilleure.label} »`);
+  if (Math.abs(rB.meilleure.evBB - mB.meilleure.evBB) > TOLERANCE_BB) ecarts.push(`EV meilleure B ${mB.meilleure.evBB} → ${rB.meilleure.evBB}`);
+  // Le contraste annoncé est une soustraction des deux EV rejouées : vérifié aussi.
+  const contraste = Number((rA.evAction - rB.evAction).toFixed(2));
+  if (Math.abs(contraste - d.contraste) > TOLERANCE_BB * 2) ecarts.push(`contraste ${d.contraste} → ${contraste}`);
+
+  return { ok: ecarts.length === 0, why: ecarts.length ? ecarts.join(" · ") : null, ecarts };
+}
+
 async function coherenceMoteur(page, manifest) {
+  if (manifest.duel) return coherenceDuel(page, manifest);
   const e = manifest.moteur;
   if (!e) return { ok: false, why: "aucune donnée moteur dans le manifeste" };
   const built = await loadSpot(page, manifest.spot.spec);
