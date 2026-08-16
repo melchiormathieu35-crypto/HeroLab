@@ -302,9 +302,56 @@ async function coherencePodium(page, manifest) {
   return { ok: ecarts.length === 0, why: ecarts.length ? ecarts.join(" · ") : null, ecarts };
 }
 
+/**
+ * Cohérence moteur d'une vidéo LA COTE : les deux nombres de la leçon (équité
+ * exigée par le prix, équité réelle) sont relus dans le texte que le moteur
+ * régénère — pas recalculés à la main — et comparés au manifeste, avec le
+ * verdict et le coût.
+ */
+async function coherenceCote(page, manifest) {
+  const c = manifest.cote;
+  const m0 = (manifest.moteurs || [])[0];
+  if (!c || !m0) return { ok: false, why: "manifeste de cote incomplet" };
+
+  const built = await loadSpot(page, c.spot.spec);
+  if (!built.ok) return { ok: false, why: `spot non rechargeable : ${built.err}` };
+
+  const r = await page.evaluate(() => {
+    const t = App.t;
+    const opts = Spot.options(t);
+    const a0 = Judge.evaluate(t, { action: opts[0].action, amount: opts[0].amount });
+    const instinct = t.toCall(t.hero) > 0 ? "call" : "check";
+    const pick = a0.options.find(o => o.action === instinct) || a0.options[a0.options.length - 1];
+    App.choose(pick.action, pick.amount);
+    const a = App.analysis;
+    return {
+      detail: pick.detail || "",
+      verdict: a.verdict,
+      lossBB: Number(a.lossBB.toFixed(2)),
+    };
+  });
+
+  const ecarts = [];
+  const ex = /exige\s+([\d.]+)\s*%\s+d'équité/.exec(r.detail);
+  const tu = /Tu en as\s+([\d.]+)\s*%/.exec(r.detail);
+  if (!ex || !tu) ecarts.push("la phrase de cote n'est plus dans l'explication du moteur");
+  else {
+    if (Number(ex[1]) !== c.exige) ecarts.push(`équité exigée ${c.exige} → ${ex[1]}`);
+    if (Number(tu[1]) !== c.tuEnAs) ecarts.push(`équité réelle ${c.tuEnAs} → ${tu[1]}`);
+  }
+  if (r.verdict !== m0.verdict) ecarts.push(`verdict « ${m0.verdict} » → « ${r.verdict} »`);
+  if (Math.abs(r.lossBB - c.coutInstinct) > TOLERANCE_BB) ecarts.push(`coût ${c.coutInstinct} → ${r.lossBB}`);
+  // Le sens annoncé doit correspondre au verdict rejoué.
+  const sensAttendu = c.sens === "non" ? "erreur" : "correct";
+  if (r.verdict !== sensAttendu) ecarts.push(`sens « ${c.sens} » incompatible avec le verdict « ${r.verdict} »`);
+
+  return { ok: ecarts.length === 0, why: ecarts.length ? ecarts.join(" · ") : null, ecarts };
+}
+
 async function coherenceMoteur(page, manifest) {
   if (manifest.duel) return coherenceDuel(page, manifest);
   if (manifest.podium) return coherencePodium(page, manifest);
+  if (manifest.cote) return coherenceCote(page, manifest);
   const e = manifest.moteur;
   if (!e) return { ok: false, why: "aucune donnée moteur dans le manifeste" };
   const built = await loadSpot(page, manifest.spot.spec);

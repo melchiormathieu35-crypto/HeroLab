@@ -79,6 +79,17 @@ const PLACEMENTS = {
     soustitres: "Oui — le verdict doit être lisible sans le son.",
     textes: "Le coût est déjà à l'écran : éviter de le doubler.",
   },
+  // ── Beats propres à La Cote
+  "LA COTE": {
+    voix: "Poser l'exigence du prix — le nombre est le sujet du beat. Puis silence sur le freeze.",
+    soustitres: "Oui : « prix X → il faut Y % ».",
+    textes: "L'emplacement naturel d'un « fais le calcul ». Ne pas masquer la ligne « à payer ».",
+  },
+  "ÉQUITÉ": {
+    voix: "La leçon de méthode, calmement — le nombre à l'écran répond à la question posée.",
+    soustitres: "Oui.",
+    textes: "Rien par-dessus le panneau d'équité : c'est la preuve et la dernière image.",
+  },
   // ── Beats propres au podium des erreurs
   "ERREUR N°3": {
     voix: "La moins chère des trois. Rythme rapide : situation, réflexe, coût — sans s'attarder.",
@@ -319,7 +330,24 @@ bande droite des boutons. Garde cette contrainte pour tes ajouts.
 
 ## Ce que dit le moteur
 
-${m.podium ? `Trois erreurs indépendantes, classées par coût réel — chacune rejouée et revérifiée au contrôle qualité.
+${m.cote ? `Une leçon de cote, dont les deux nombres sont écrits par le moteur lui-même dans
+son explication à l'écran (beat REVEAL) :
+
+| donnée | valeur |
+|---|---|
+| à payer | ${Number(m.cote.toCall).toFixed(2)} € |
+| pot au moment de payer | ${Number(m.cote.pot).toFixed(2)} € |
+| équité **exigée** par le prix | **${m.cote.exige} %** |
+| équité **réelle** du héros | **${m.cote.tuEnAs} %** |
+| écart | ${m.cote.ecart > 0 ? "+" : ""}${m.cote.ecart} points |
+| la cote dit | **${m.cote.sens.toUpperCase()}** |
+| verdict de l'application | « ${(m.moteurs && m.moteurs[0]) ? m.moteurs[0].verdict : "—"} » |
+| coût du call | ${m.cote.coutInstinct.toFixed(2)} bb |
+
+${m.cote.sens === "non"
+    ? "L'équité réelle est nettement sous l'exigée : payer est une erreur chiffrée, passer est la réponse."
+    : "L'équité réelle dépasse nettement l'exigée : payer est correct — la série alterne les deux sens, c'est la méthode qui s'enseigne."}
+` : m.podium ? `Trois erreurs indépendantes, classées par coût réel — chacune rejouée et revérifiée au contrôle qualité.
 
 | rang | situation | réflexe joué | coût |
 |---|---|---|---|
@@ -364,7 +392,7 @@ ${(m.moteurs && m.moteurs.length === 2) ? m.moteurs[0].options.map(oA => {
 - La meilleure action est **${e.meilleure.label}**, à **${bb(e.meilleure.evBB)}**.
 - **Différentiel d'EV : ${e.lossBB.toFixed(2)} bb.** Verdict de l'application : « ${e.verdict} ».` : "**NON VÉRIFIÉ** — aucune analyse moteur n'a été produite pour cette vidéo."}
 
-${!m.duel && !m.podium && e ? `### Espérance de chaque option
+${!m.duel && !m.podium && !m.cote && e ? `### Espérance de chaque option
 
 En big blinds, à partir de la décision. Passer vaut 0 : c'est la référence
 commune, l'argent déjà investi étant ignoré pour toutes les options. Un chiffre

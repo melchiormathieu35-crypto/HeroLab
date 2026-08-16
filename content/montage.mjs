@@ -68,6 +68,22 @@ export const CONCEPTS = {
       ["PAYOFF", "la liste des espérances de la manche B — le reclassement complet"],
     ],
   },
+  "la-cote": {
+    dossier: "La Cote",
+    titre: "La Cote",
+    principe:
+      "Le prix à payer, le pot, et la question que tout joueur devrait se poser : combien " +
+      "d'équité ce prix exige-t-il, et combien en ai-je vraiment ? Le moteur écrit les deux " +
+      "nombres à l'écran — parfois la cote dit non, parfois elle dit oui. La leçon est la " +
+      "méthode, pas la main.",
+    structure: [
+      ["HOOK", "la main et le prix à payer — la promesse d'un calcul, pas la réponse"],
+      ["SITUATION", "la table, l'adversaire, la mise en face"],
+      ["LA COTE", "le prix isolé à l'écran — l'équité exigée par la cote"],
+      ["REVEAL", "le réflexe est joué : le moteur compare l'exigé au réel et tranche"],
+      ["ÉQUITÉ", "le panneau d'équité en grand — la preuve chiffrée, tenue jusqu'au bout"],
+    ],
+  },
   podium: {
     dossier: "Podium",
     titre: "Podium des erreurs",
@@ -399,6 +415,7 @@ export async function produireMontage(browser, ff, spot, bp, dossier) {
     moteurs,
     duel: bp.duel || null,
     podium: bp.podium || null,
+    cote: bp.cote || null,
     timeline,
     bornages: etat.bornages,
     erreurs: fatals,

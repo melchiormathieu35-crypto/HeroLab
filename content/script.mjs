@@ -480,6 +480,168 @@ export function construireScriptPodium(m) {
   return entrees;
 }
 
+/**
+ * Script d'une vidéo LA COTE. La leçon tient en deux nombres — l'équité que le
+ * prix exige, l'équité réelle — tous deux écrits par le moteur à l'écran.
+ * Même contrat que partout : chiffres de l'écran, calibrage par fenêtre.
+ */
+export function construireScriptCote(m) {
+  const c = m.cote;
+  const s = lireSpec(c.spot.spec);
+  const e0 = m.moteurs[0];
+  const beat = (nom) => m.timeline.find(b => b.beat === nom);
+  const vilain = s.vilains[0];
+  const vilainDit = `${POSITIONS[vilain.pos] || vilain.pos}, ${PROFILS[vilain.profil] || vilain.profil}`;
+  const derniere = [s.river && ["River", s.river], s.turn && ["Turn", s.turn], s.flop && ["Flop", s.flop], s.preflop && ["Préflop", s.preflop]].find(Boolean);
+  const rueDite = `${derniere[0]}${derniere[1].board ? ` ${cartes(derniere[1].board)}` : ""}${derniere[1].actions ? ` : ${direActions(derniere[1].actions, { compact: true, garderMontant: true })}` : ""}.`;
+  const eur = (n) => `${Number(n).toFixed(2).replace(".", ",")} €`;
+  const ditNon = c.sens === "non";
+
+  const entrees = [];
+
+  entrees.push({
+    beat: "HOOK",
+    voixNiveaux: [
+      `${cartes(s.hero.cartes)} ${EN_POSITION[s.hero.pos] || s.hero.pos}. Payer ou pas ? Fais le calcul avec moi.`,
+      `Payer ou pas ? Fais le calcul avec moi.`,
+    ],
+    sousTitres: ["Payer ou pas ?", "Fais le calcul."],
+    note: "Aucun chiffre : la promesse est le calcul, pas la réponse.",
+  });
+
+  entrees.push({
+    beat: "SITUATION",
+    voixNiveaux: [
+      `En face : ${vilainDit}. ${rueDite}`,
+      `En face : ${vilainDit}.`,
+      rueDite,
+    ],
+    sousTitres: [`En face : ${vilainDit}`, rueDite],
+    note: "Le déroulement complet est à l'écran ; la voix ne raconte que l'essentiel.",
+  });
+
+  entrees.push({
+    beat: "LA COTE",
+    voixNiveaux: [
+      `Payer ${eur(c.toCall)} dans un pot de ${eur(c.pot)} : ça exige ${String(c.exige).replace(".", ",")} % d'équité. C'est la cote.`,
+      `${eur(c.toCall)} dans un pot de ${eur(c.pot)} : il faut ${String(c.exige).replace(".", ",")} % d'équité.`,
+    ],
+    sousTitres: [`Prix : ${eur(c.toCall)} · Pot : ${eur(c.pot)}`, `→ il faut ${String(c.exige).replace(".", ",")} %`],
+    note: "Le nombre exigé est LE sujet du beat. Silence sur la fin du freeze : le spectateur estime son équité.",
+  });
+
+  entrees.push({
+    beat: "REVEAL",
+    voixNiveaux: ditNon
+      ? [
+        `Ton équité réelle : ${String(c.tuEnAs).replace(".", ",")} %. Loin sous les ${String(c.exige).replace(".", ",")}. Payer coûte ${e0.lossBB.toFixed(2).replace(".", ",")} big blinds.`,
+        `Équité réelle : ${String(c.tuEnAs).replace(".", ",")} %. Payer coûte ${e0.lossBB.toFixed(2).replace(".", ",")} big blinds.`,
+      ]
+      : [
+        `Ton équité réelle : ${String(c.tuEnAs).replace(".", ",")} %. Au-dessus des ${String(c.exige).replace(".", ",")} exigés. Payer est correct.`,
+        `Équité réelle : ${String(c.tuEnAs).replace(".", ",")} %. Payer est correct.`,
+      ],
+    sousTitres: ditNon
+      ? [`Réel : ${String(c.tuEnAs).replace(".", ",")} % < exigé ${String(c.exige).replace(".", ",")} %`, `Payer = ${e0.lossBB.toFixed(2).replace(".", ",")} bb de perdus`]
+      : [`Réel : ${String(c.tuEnAs).replace(".", ",")} % > exigé ${String(c.exige).replace(".", ",")} %`, "Payer est correct."],
+    note: "La phrase de comparaison est écrite par le moteur à l'écran, mot pour mot — la voix la lit, elle n'affirme rien de plus.",
+  });
+
+  entrees.push({
+    beat: "ÉQUITÉ",
+    voixNiveaux: [
+      `Retiens la méthode, pas la main : le prix exige un pourcentage, ton équité répond. Compare les deux — avant de payer.`,
+      `Retiens la méthode : le prix exige, ton équité répond. Compare — avant de payer.`,
+      `La méthode : le prix exige, ton équité répond.`,
+    ],
+    sousTitres: ["Le prix exige. Ton équité répond.", "Compare — avant de payer."],
+    note: "La leçon transposable, sur la dernière image. Ne pas recouvrir le panneau d'équité.",
+  });
+
+  for (const en of entrees) {
+    const b = beat(en.beat);
+    if (!b) throw new Error(`beat absent de la timeline : ${en.beat}`);
+    en.debut = b.debut; en.fin = b.fin; en.secondes = b.secondes;
+    en.motsMax = Math.floor(b.secondes * DEBIT);
+    en.voix = en.voixNiveaux.find(v => mots(v) <= en.motsMax) || en.voixNiveaux[en.voixNiveaux.length - 1];
+    en.niveauxEcartes = en.voixNiveaux.indexOf(en.voix);
+    delete en.voixNiveaux;
+    en.motsProposes = mots(en.voix);
+    if (en.motsProposes > en.motsMax) {
+      throw new Error(`script infaisable : ${en.beat} demande ${en.motsProposes} mots pour une fenêtre de ${en.motsMax} (${en.secondes} s à ${DEBIT} mots/s) — « ${en.voix} »`);
+    }
+  }
+  return entrees;
+}
+
+function scriptMarkdownCote(m) {
+  const entrees = construireScriptCote(m);
+  const c = m.cote;
+  const e0 = m.moteurs[0];
+
+  return `# Script — ${m.video}
+
+**Vidéo** : \`${m.fichier}\` · ${m.duree.toFixed(2)} s · **Concept** : ${m.conceptTitre || m.concept}
+**Situation** : ${m.titreInterne}
+
+> **Statut de ce texte : une proposition.** Le ton, le rythme et les mots se
+> reformulent librement — c'est ta voix. Les **chiffres**, en revanche, sont ceux
+> que le moteur affiche à l'écran au même moment : ne les change pas, ne les
+> arrondis pas autrement, n'en ajoute pas d'autres.
+>
+> Calibrage : environ ${DEBIT} mots par seconde de voix posée. Chaque beat
+> indique sa contrainte ; si tu reformules plus long, ça ne rentrera pas.
+>
+> **Le principe de La Cote** : le prix exige ${c.exige} % d'équité, le héros en
+> a ${c.tuEnAs} % — **la cote dit ${c.sens}**. La phrase de comparaison est
+> écrite par le moteur lui-même à l'écran pendant le REVEAL.
+
+---
+
+## Le script, d'une traite
+
+${entrees.map(en => en.voix).join("\n\n")}
+
+*(Les crochets de calage : ${entrees.map(en => `${en.beat} à ${tc(en.debut)}`).join(" · ")}.)*
+
+---
+
+## Le détail, beat par beat
+
+${entrees.map(en => `### ${en.beat} — \`${tc(en.debut)}\` → \`${tc(en.fin)}\` (${en.secondes.toFixed(1)} s · ${en.motsMax} mots max, proposé : ${en.motsProposes})
+
+**Voix off proposée**
+
+> ${en.voix}
+
+**Sous-titres proposés** (à caler dans la fenêtre du beat, en bas de la bande utile)
+
+${en.sousTitres.map(x => `- ${x}`).join("\n")}
+
+**Note de jeu.** ${en.note}
+`).join("\n")}
+---
+
+## Les chiffres de référence (ceux de l'écran)
+
+| donnée | valeur |
+|---|---|
+| à payer | ${Number(c.toCall).toFixed(2).replace(".", ",")} € |
+| pot | ${Number(c.pot).toFixed(2).replace(".", ",")} € |
+| équité exigée par le prix | ${String(c.exige).replace(".", ",")} % |
+| équité réelle du héros | ${String(c.tuEnAs).replace(".", ",")} % |
+| la cote dit | ${c.sens.toUpperCase()} |
+| verdict affiché | « ${e0.verdict} » |
+| coût du call | ${e0.lossBB.toFixed(2).replace(".", ",")} bb |
+
+Ces valeurs viennent de \`Judge.evaluate\` — l'exigence de la cote est relue
+dans le texte que le moteur écrit lui-même, et revérifiée par le contrôle
+qualité. Comme l'indique l'application, ce sont des estimations sur la range
+adverse et les profils en jeu — un ordre de grandeur et un classement, pas une
+sortie de solveur. Le script ne doit pas les présenter autrement.
+`;
+}
+
 function chiffresPodium(m) {
   const rangs = m.podium.rang.slice().sort((a, b) => b.rang - a.rang);
   const moteursParRang = Object.fromEntries(rangs.map((r, i) => [r.rang, m.moteurs[i]]));
@@ -624,6 +786,7 @@ présenter autrement.
 export function scriptMarkdown(m) {
   if (m.duel) return scriptMarkdownDuel(m);
   if (m.podium) return scriptMarkdownPodium(m);
+  if (m.cote) return scriptMarkdownCote(m);
   const entrees = construireScript(m);
   const e = m.moteur;
 
