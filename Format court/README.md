@@ -13,6 +13,8 @@ qui détermine la structure de la vidéo — et non un thème de poker.
 | [`Quizz/`](Quizz/README.md) | vidéos **montées**, un fichier par vidéo, 30 s à 1 min | prêt pour voix et sous-titres |
 | [`Duel de profils/`](Duel%20de%20profils/README.md) | même main, deux adversaires, la même action bascule | prêt pour voix et sous-titres |
 | [`Podium/`](Podium/README.md) | trois erreurs classées par coût réel, dans une seule vidéo | prêt pour voix et sous-titres |
+| [`La Cote/`](La%20Cote/README.md) | le prix, l'équité exigée, l'équité réelle — la cote dit oui ou non | prêt pour voix et sous-titres |
+| [`Le Bluff/`](Le%20Bluff/README.md) | une mise tentante, jugée par sa fold equity — elle brûle ou elle passe | prêt pour voix et sous-titres |
 | [`Rush avant montage/`](Rush%20avant%20montage/README.md) | rushs bruts, un plan par fichier | à monter |
 
 Les deux ne s'opposent pas : les rushs servent quand on veut reprendre la main
@@ -54,5 +56,7 @@ librement sans changer les chiffres.
 | vidéos montées, par concept | `node content/montage.mjs --concept quizz --count 2` |
 | duels de profils | `node content/duel.mjs --count 3` |
 | podiums de 3 erreurs | `node content/podium.mjs --count 10` |
+| leçons de cote (pot odds) | `node content/cote.mjs --count 10` |
+| leçons de bluff (fold equity) | `node content/bluff.mjs --count 10` |
 | scripts voix off + sous-titres | `node content/script.mjs` (aussi appelé par les commandes ci-dessus) |
 | conversion CapCut (sur le Mac) | `./outils/capcut/collecter.sh` puis `./outils/capcut/convert_videos.sh` — voir `outils/capcut/README.md` |
