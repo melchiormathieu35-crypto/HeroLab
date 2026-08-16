@@ -26,11 +26,13 @@ n'est nécessaire.
 
 Les timecodes exacts de chaque beat sont dans le README de chaque vidéo.
 
-## Ce qui n'est pas fourni
+## Ce qui est fourni pour la voix et les sous-titres
 
-Voix off, sous-titres et textes incrustés définitifs. Le README de chaque vidéo
-donne les timecodes, les emplacements recommandés et les chiffres exacts du
-moteur, pour que rien de ce qui sera ajouté ne contredise l'image.
+Chaque vidéo est livrée avec un `SCRIPT.md` : une **proposition** de voix off
+et de sous-titres, beat par beat, calée sur les timecodes réels et calibrée sur
+la durée de chaque fenêtre. Le ton se reformule librement ; les chiffres sont
+ceux de l'écran et ne doivent pas changer. L'enregistrement de la voix et
+l'incrustation restent à faire au montage.
 
 ## Reproduire
 

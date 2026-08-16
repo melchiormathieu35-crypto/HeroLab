@@ -8,6 +8,10 @@
 > Vidéo **montée**, d'un seul tenant. Il ne reste qu'à ajouter **la voix off et
 > les sous-titres**. Aucun montage n'est nécessaire : les coupes, les mouvements
 > et les temps de pose sont déjà en place.
+>
+> Une **proposition de script** (voix off + sous-titres, calée sur les
+> timecodes) est fournie dans [`SCRIPT.md`](SCRIPT.md) — à reformuler
+> librement, sans changer les chiffres.
 
 ## Ce que la vidéo démontre
 

@@ -22,9 +22,10 @@ sur le montage, les vidéos montées quand on veut publier vite.
 les timecodes de chaque beat, et les chiffres exacts du moteur pour chaque
 situation.
 
-**Non fourni, volontairement** : voix off, sous-titres, textes incrustés
-définitifs. Le README de chaque vidéo indique où les poser et sur quelles
-données s'appuyer — jamais quoi dire.
+**Non fourni** : l'enregistrement de la voix et l'incrustation des textes.
+Chaque vidéo montée est en revanche livrée avec un `SCRIPT.md` — une
+proposition de voix off et de sous-titres calée sur les timecodes, à reformuler
+librement sans changer les chiffres.
 
 ## Règles tenues à la production
 
@@ -49,3 +50,4 @@ données s'appuyer — jamais quoi dire.
 | notation sur 100 | `node content/scan.mjs` |
 | rushs (un plan par fichier) | `node content/engine.mjs --count 10` |
 | vidéos montées, par concept | `node content/montage.mjs --concept quizz --count 2` |
+| scripts voix off + sous-titres | `node content/script.mjs` (aussi appelé par la commande ci-dessus) |

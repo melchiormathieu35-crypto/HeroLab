@@ -526,6 +526,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   else {
     const { qaMontage } = await import("./qa.mjs");
     const { readmeMontage, readmeConcept } = await import("./readme.mjs");
+    const { ecrireScripts } = await import("./script.mjs");
 
     console.log(`\nContrôle qualité…`);
     const rapport = await qaMontage({ dossiers: produits.map(p => p.dossier), duree: DUREE_CIBLE });
@@ -545,6 +546,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
       manifests.push(m);
     }
     await writeFile(join(dossierConcept, "README.md"), readmeConcept(def, manifests));
+    await ecrireScripts(produits.map(p => p.dossier));
 
     console.log(`\n${produits.length} vidéo(s) montée(s) · ${anomalies} anomalie(s)`);
     console.log(`Livré dans : ${relative(ROOT, dossierConcept)}/`);
