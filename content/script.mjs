@@ -50,11 +50,16 @@ const EN_POSITION = {
   BTN: "au bouton", SB: "en petite blinde", BB: "en grosse blinde",
 };
 
-/** Profils en français parlé — les glossaires de l'application, résumés. */
+/**
+ * Profils en français parlé — les glossaires de l'application, résumés.
+ * « profil … » plutôt qu'un adjectif nu : l'adjectif s'accorderait avec la
+ * position (« la petite blinde, très serré » est fautif), le nom « profil »
+ * reste invariable quel que soit le siège.
+ */
 const PROFILS = {
-  nit: "très serré", tag: "serré-agressif", lag: "large-agressif",
+  nit: "profil très serré", tag: "profil serré-agressif", lag: "profil large-agressif",
   reg: "un régulier solide", fish: "un joueur faible", station: "du genre à tout payer",
-  maniac: "hyper-agressif", rec: "un récréatif",
+  maniac: "profil hyper-agressif", rec: "un récréatif",
 };
 
 /**
@@ -130,7 +135,6 @@ export function construireScript(m) {
   const s = lireSpec(m.spot.spec);
   const e = m.moteur;
   const beat = (nom) => m.timeline.find(b => b.beat === nom);
-  const meilleurEstPassif = e.meilleure.label === "Passer" || /check/i.test(e.meilleure.label);
 
   const vilain = s.vilains[0];
   const vilainDit = `${POSITIONS[vilain.pos] || vilain.pos}, ${PROFILS[vilain.profil] || vilain.profil}`;
@@ -177,6 +181,8 @@ export function construireScript(m) {
     `En face : ${vilainDit}. ${ruesJouees.map(r => dire(r, r === derniere)).join(" ")}`,
     // 3 — le profil et la seule rue du problème.
     `En face : ${vilainDit}. ${dire(derniere, true)}`,
+    // 4 — la seule rue du problème. Le profil reste à l'écran et en sous-titre.
+    dire(derniere, true),
   ];
 
   entrees.push({
@@ -188,18 +194,28 @@ export function construireScript(m) {
 
   // ── TENSION — le prix, et rien d'autre. L'équité n'est PAS dite : c'est le
   // moteur qui la révèle au PAYOFF, la dire ici tuerait le quizz.
+  // Sans mise en face, la tension n'est pas un prix : c'est la main faite qui
+  // donne une fausse assurance — même bascule que dans le plan de tournage.
+  const faceAMise = e.toCall > 0;
   entrees.push({
     beat: "TENSION",
-    voix: `Le prix : ${eur(e.toCall)}, dans un pot de ${eur(e.pot)}.`,
-    sousTitres: [`À payer : ${eur(e.toCall)}`, `Pot : ${eur(e.pot)}`],
+    voix: faceAMise
+      ? `Le prix : ${eur(e.toCall)}, dans un pot de ${eur(e.pot)}.`
+      : `Personne n'a misé. Le pot : ${eur(e.pot)}. À toi de fixer le prix.`,
+    sousTitres: faceAMise
+      ? [`À payer : ${eur(e.toCall)}`, `Pot : ${eur(e.pot)}`]
+      : [`Pot : ${eur(e.pot)}`, "Personne n'a misé."],
     note: "Silence recommandé sur le freeze final. Ne pas donner l'équité ni la réponse : c'est le moment où le spectateur se forge un avis.",
   });
 
-  // ── CHOICE — les options, puis le silence du choix.
+  // ── CHOICE — les options réelles (les familles viennent du moteur), puis le
+  // silence du choix.
   entrees.push({
     beat: "CHOICE",
-    voix: `Passer, suivre, ou relancer — les montants sont à l'écran. Tu fais quoi ?`,
-    sousTitres: ["Passer, suivre… ou relancer ?", "Tu fais quoi ?"],
+    voix: faceAMise
+      ? `Passer, suivre, ou relancer — les montants sont à l'écran. Tu fais quoi ?`
+      : `Checker, ou miser — les montants sont à l'écran. Tu fais quoi ?`,
+    sousTitres: [faceAMise ? "Passer, suivre… ou relancer ?" : "Checker… ou miser ?", "Tu fais quoi ?"],
     note: "La question posée, laisser le temps de pose travailler : les ~5 dernières secondes du beat sont volontairement muettes (compte à rebours possible).",
   });
 
@@ -213,14 +229,20 @@ export function construireScript(m) {
     note: "C'est ici que la voix a le plus de valeur. Les chiffres dits sont exactement ceux affichés — ne pas les arrondir autrement.",
   });
 
-  // ── PAYOFF — la preuve, lue dans la liste des espérances.
+  // ── PAYOFF — la preuve, lue dans la liste des espérances. Le mot du réflexe
+  // suit l'action réellement jouée : « suivre » face à une mise, « checker »
+  // sans mise en face.
   const evJoue = e.joue.evBB;
+  const reflexeMot = e.joue.action === "check" ? "Checker" : "Suivre";
+  // Le cas « rien ne bat le fold » ne vaut que pour un fold : un check optimal
+  // passe par la formulation générique, qui reste juste.
+  const meilleurEstFold = e.meilleure.label === "Passer";
   entrees.push({
     beat: "PAYOFF",
-    voix: meilleurEstPassif
-      ? `Passer vaut zéro. Suivre : ${bb(evJoue)} — pire que jeter la main. Rien ne bat le fold.`
-      : `${e.meilleure.label} : ${bb(e.meilleure.evBB)}. Suivre : ${bb(evJoue)}${evJoue < 0 ? " — pire que jeter la main" : ""}. Tout l'écart est là.`,
-    sousTitres: meilleurEstPassif
+    voix: meilleurEstFold
+      ? `Passer vaut zéro. ${reflexeMot} : ${bb(evJoue)} — pire que jeter la main. Rien ne bat le fold.`
+      : `${e.meilleure.label} : ${bb(e.meilleure.evBB)}. ${reflexeMot} : ${bb(evJoue)}${evJoue < 0 ? " — pire que jeter la main" : ""}. Tout l'écart est là.`,
+    sousTitres: meilleurEstFold
       ? [`Passer = 0 bb`, `${e.joue.label} = ${bb(evJoue)} bb`, "Rien ne bat le fold ici."]
       : [`${e.meilleure.label} = ${bb(e.meilleure.evBB)} bb`, `${e.joue.label} = ${bb(evJoue)} bb`],
     note: "Ne rien poser par-dessus la liste des espérances : c'est la preuve, elle doit rester lisible. Terminer la voix avant la dernière seconde.",

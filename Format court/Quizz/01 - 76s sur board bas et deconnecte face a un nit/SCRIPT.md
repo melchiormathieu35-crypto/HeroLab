@@ -17,7 +17,7 @@
 
 7♥ 6♥ en grosse blinde. Simple, en apparence.
 
-En face : le bouton, très serré. Flop 6♣ 5♥ 2♠ : tu checkes, il mise 4 bb.
+En face : le bouton, profil très serré. Flop 6♣ 5♥ 2♠ : tu checkes, il mise 4 bb.
 
 Le prix : 0,40 €, dans un pot de 0,95 €.
 
@@ -46,15 +46,15 @@ Relancer Pot : +4,83. Suivre : −2,43 — pire que jeter la main. Tout l'écart
 
 **Note de jeu.** L'accroche tient par l'image des cartes ; la voix ne fait qu'ouvrir la question. Aucun chiffre ici.
 
-### SITUATION — `00:03.70` → `00:10.70` (7.0 s · 19 mots max, proposé : 18)
+### SITUATION — `00:03.70` → `00:10.70` (7.0 s · 19 mots max, proposé : 19)
 
 **Voix off proposée**
 
-> En face : le bouton, très serré. Flop 6♣ 5♥ 2♠ : tu checkes, il mise 4 bb.
+> En face : le bouton, profil très serré. Flop 6♣ 5♥ 2♠ : tu checkes, il mise 4 bb.
 
 **Sous-titres proposés** (à caler dans la fenêtre du beat, en bas de la bande utile)
 
-- NL10 · en face : le bouton, très serré
+- NL10 · en face : le bouton, profil très serré
 - Préflop : le bouton relance à 2,5 bb, tu paies.
 - Flop 6♣ 5♥ 2♠ : tu checkes, le bouton mise 4 bb.
 

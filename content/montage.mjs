@@ -129,7 +129,11 @@ export function montageBlueprint(spot, note, { index = 1, concept = "quizz" } = 
     { type: "coupe" },
     { type: "cadre", cible: ANCHORS.table, at: 0.22, align: "top" },
     { type: "controle", cible: ANCHORS.table, texte: preflop ? ".pot" : ".board" },
-    { type: "fixe", duree: preflop ? 4.5 : 2.0 },
+    // Préflop, la SITUATION n'a pas de mouvement vers le board : tout le temps
+    // du beat est du temps de lecture. 6 s et non 4,5 : c'est la fenêtre qu'il
+    // faut pour DIRE la situation au débit d'une voix off — mesuré par le
+    // générateur de script, qui refuse une ligne trop longue pour son beat.
+    { type: "fixe", duree: preflop ? 6.0 : 2.0 },
   ];
   if (!preflop) {
     // DÉPLACEMENT ET NON ZOOM. Un ×1,3 sur le centre de la table coupait les
@@ -447,7 +451,7 @@ export async function evaluerEtNoter(page, spot, contexte = {}) {
  * plafond de diversité : à deux vidéos, deux modèles de situation différents,
  * sinon on livrerait deux fois la même leçon en habits différents.
  */
-export async function choisirSpots({ combien = 2, ids = null, budget = CATALOGUE_COMPLET } = {}) {
+export async function choisirSpots({ combien = 2, ids = null, exclure = new Set(), budget = CATALOGUE_COMPLET } = {}) {
   if (ids && ids.length) {
     return ids.map(id => {
       const s = spotParId(id, { budget });
@@ -458,19 +462,33 @@ export async function choisirSpots({ combien = 2, ids = null, budget = CATALOGUE
 
   const classement = JSON.parse(
     await readFile(join(ROOT, "Format court", "Rush avant montage", "classement.json"), "utf8"));
+  const manifests = [];
+  for (const c of classement) {
+    const m = JSON.parse(await readFile(join(ROOT, c.dossier, "manifest.json"), "utf8"));
+    if (!exclure.has(m.spot.id)) manifests.push(m);
+  }
 
   const plafondModele = Math.max(1, Math.ceil(combien / 3));
   const parModele = new Map();
   const choisis = [];
-  for (const c of classement) {
+  for (const m of manifests) {
     if (choisis.length >= combien) break;
-    const m = JSON.parse(await readFile(join(ROOT, c.dossier, "manifest.json"), "utf8"));
     const n = parModele.get(m.spot.modele) || 0;
     if (n >= plafondModele) continue;
     const spot = spotParId(m.spot.id, { budget });
     if (!spot) continue;
     parModele.set(m.spot.modele, n + 1);
     choisis.push(spot);
+  }
+  // Si le plafond de diversité empêche d'atteindre le compte, on complète avec
+  // les meilleurs restants plutôt que de livrer moins que demandé.
+  if (choisis.length < combien) {
+    for (const m of manifests) {
+      if (choisis.length >= combien) break;
+      if (choisis.some(s => s.id === m.spot.id)) continue;
+      const spot = spotParId(m.spot.id, { budget });
+      if (spot) choisis.push(spot);
+    }
   }
   return choisis;
 }
@@ -481,7 +499,20 @@ export async function monter({ concept = "quizz", combien = 2, ids = null, verbe
   const log = (s) => { if (verbeux) console.log(s); };
 
   const dossierConcept = join(COURT_DIR, def.dossier);
-  const spots = await choisirSpots({ combien, ids });
+
+  // Anti-redondance du concept : un spot déjà monté dans ce dossier ne doit
+  // jamais être repris — sans cette mémoire, « les N meilleurs du classement »
+  // rendrait les mêmes vidéos à chaque exécution.
+  const dejaMontes = new Set();
+  try {
+    for (const d of await readdir(dossierConcept, { withFileTypes: true })) {
+      if (!d.isDirectory()) continue;
+      const mf = join(dossierConcept, d.name, "manifest.json");
+      try { dejaMontes.add(JSON.parse(await readFile(mf, "utf8")).spot.id); } catch { /* dossier sans manifeste */ }
+    }
+  } catch { /* premier passage : pas encore de dossier */ }
+
+  const spots = await choisirSpots({ combien, ids, exclure: dejaMontes });
   if (spots.length < combien) log(`\n⚠ ${spots.length} spot(s) disponibles pour ${combien} demandés.`);
   log(`\nConcept « ${def.titre} » — ${spots.length} vidéo(s) à monter\n`);
 
