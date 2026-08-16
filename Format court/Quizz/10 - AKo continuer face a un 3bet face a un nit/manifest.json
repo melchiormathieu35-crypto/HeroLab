@@ -1,0 +1,408 @@
+{
+  "video": "10 - AKo continuer face a un 3bet face a un nit",
+  "concept": "quizz",
+  "conceptTitre": "Quizz",
+  "titreInterne": "AKo — continuer face à un 3bet face à un nit",
+  "enonce": "Le réflexe (payer) coûte -3.01 bb ; la bonne réponse est relancer 2.5 bb, à +6.30 bb.",
+  "fichier": "video.webm",
+  "montee": true,
+  "spot": {
+    "id": "pre-face-3bet_co_ako_nit",
+    "modele": "pre-face-3bet",
+    "theme": "preflop",
+    "label": "AKo — continuer face à un 3bet face à un nit",
+    "spec": "Hero: CO, Ah Kd, 100bb\nTable: 6-max, NL10\nVillains: SB (nit, 100bb)\nPreflop: hero raise 2.5bb, SB raise 11bb, hero to act"
+  },
+  "score": 81,
+  "scoreDetail": {
+    "paradoxe": 18,
+    "contreIntuitif": 14,
+    "differentielEV": 18,
+    "difficulte": 2.8,
+    "curiosite": 3.8,
+    "lisibilite": 9,
+    "reveal": 8,
+    "pedagogie": 3.6,
+    "debat": 0,
+    "serie": 4
+  },
+  "signature": "pre-face-3bet|broadway|sans-board|aggro|instinct-perdant",
+  "momentReveal": "Beat REVEAL, à l'affichage du verdict après l'action jouée.",
+  "objectifRetention": "Retenir par la contradiction : le spectateur croit connaître la réponse au HOOK, choisit au CHOICE, et découvre au REVEAL que son réflexe est chiffré comme une perte. Le PAYOFF empêche le doute en montrant le calcul.",
+  "format": {
+    "largeur": 1080,
+    "hauteur": 1920,
+    "fps": 30,
+    "conteneur": "webm",
+    "codec": "vp8"
+  },
+  "duree": 33.3,
+  "images": 999,
+  "moteur": {
+    "joue": {
+      "action": "call",
+      "label": "Suivre 0.85 €",
+      "evBB": -3.01
+    },
+    "instinct": "call",
+    "verdict": "erreur",
+    "lossBB": 9.32,
+    "equity": 36.5,
+    "pot": 1.4500000000000002,
+    "toCall": 0.8500000000000001,
+    "options": [
+      {
+        "label": "Relancer 2.5 bb",
+        "action": "raise",
+        "evBB": 6.3
+      },
+      {
+        "label": "Relancer Tapis",
+        "action": "raise",
+        "evBB": 4.38
+      },
+      {
+        "label": "Passer",
+        "action": "fold",
+        "evBB": 0
+      },
+      {
+        "label": "Suivre 0.85 €",
+        "action": "call",
+        "evBB": -3.01
+      }
+    ],
+    "meilleure": {
+      "action": "raise",
+      "label": "Relancer 2.5 bb",
+      "evBB": 6.3
+    }
+  },
+  "timeline": [
+    {
+      "beat": "HOOK",
+      "role": "Montrer la main sans son contexte. C'est ce plan qui doit retenir dans les deux premières secondes.",
+      "debut": 0,
+      "fin": 3.7,
+      "secondes": 3.7,
+      "mouvements": [
+        {
+          "type": "zoomIn",
+          "cible": ".hero-hand .cards",
+          "duree": 0.9,
+          "pourquoi": "Resserrer sur les cartes conduit l'œil vers la seule information utile à cet instant, sans jamais rogner un montant."
+        }
+      ],
+      "cadrages": [
+        {
+          "cible": ".hero-hand .cards",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 27,
+          "droite": 99,
+          "largeurVue": 360,
+          "textePx": 13,
+          "texteRush": 44,
+          "top": 212,
+          "bottom": 257,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".hero-hand .cards",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 27,
+        "droite": 99,
+        "largeurVue": 360,
+        "textePx": 13,
+        "texteRush": 44,
+        "top": 212,
+        "bottom": 257,
+        "why": null
+      }
+    },
+    {
+      "beat": "SITUATION",
+      "role": "Poser la table : position, adversaire, montant à payer.",
+      "debut": 3.7,
+      "fin": 9.7,
+      "secondes": 6,
+      "mouvements": [],
+      "cadrages": [
+        {
+          "cible": ".felt",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 14,
+          "droite": 346,
+          "largeurVue": 360,
+          "textePx": 11,
+          "texteRush": 33,
+          "top": 141,
+          "bottom": 411,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".felt",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 14,
+        "droite": 346,
+        "largeurVue": 360,
+        "textePx": 11,
+        "texteRush": 33,
+        "top": 141,
+        "bottom": 411,
+        "why": null
+      }
+    },
+    {
+      "beat": "TENSION",
+      "role": "Isoler le montant à payer : c'est lui qui rend la décision coûteuse.",
+      "debut": 9.7,
+      "fin": 14.3,
+      "secondes": 4.6,
+      "mouvements": [
+        {
+          "type": "pan",
+          "cible": ".hero-hand",
+          "duree": 0.9,
+          "pourquoi": "Descendre sur la ligne du montant à payer conduit l'œil vers la donnée que le spectateur oublie de regarder : c'est elle qui rend la décision coûteuse."
+        },
+        {
+          "type": "freeze",
+          "cible": null,
+          "duree": 3,
+          "pourquoi": "L'arrêt franc laisse le temps de se forger un avis. Sans ce temps mort il n'y a pas de participation, donc pas de rétention."
+        }
+      ],
+      "cadrages": [
+        {
+          "cible": ".hero-hand",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 14,
+          "droite": 346,
+          "largeurVue": 360,
+          "textePx": 15,
+          "texteRush": 45,
+          "top": 170,
+          "bottom": 291,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".hero-hand",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 14,
+        "droite": 346,
+        "largeurVue": 360,
+        "textePx": 15,
+        "texteRush": 45,
+        "top": 170,
+        "bottom": 291,
+        "why": null
+      }
+    },
+    {
+      "beat": "CHOICE",
+      "role": "Présenter les options légales et leurs montants exacts. C'est ici que le spectateur choisit — le temps de pose est dimensionné pour ça.",
+      "debut": 14.3,
+      "fin": 21.2,
+      "secondes": 6.9,
+      "mouvements": [
+        {
+          "type": "pan",
+          "cible": ".actions",
+          "duree": 1,
+          "pourquoi": "Descendre de la table vers les boutons reproduit le geste réel du joueur : le mouvement raconte le passage de l'observation à la décision."
+        },
+        {
+          "type": "fixe",
+          "cible": null,
+          "duree": 5,
+          "pourquoi": "Temps de choix. Cinq secondes sur les options est la seule durée de la vidéo qui n'est pas dictée par la lecture mais par la décision : c'est la fenêtre où poser un compte à rebours si tu en veux un."
+        }
+      ],
+      "cadrages": [
+        {
+          "cible": ".actions",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 14,
+          "droite": 346,
+          "largeurVue": 360,
+          "textePx": 13.5,
+          "texteRush": 41,
+          "top": 102,
+          "bottom": 361,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".actions",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 14,
+        "droite": 346,
+        "largeurVue": 360,
+        "textePx": 13.5,
+        "texteRush": 41,
+        "top": 102,
+        "bottom": 361,
+        "why": null
+      }
+    },
+    {
+      "beat": "REVEAL",
+      "role": "Jouer l'action instinctive (call) et afficher le verdict du moteur avec son coût.",
+      "debut": 21.2,
+      "fin": 27.1,
+      "secondes": 5.9,
+      "mouvements": [
+        {
+          "type": "jouer",
+          "cible": null,
+          "duree": null,
+          "pourquoi": "La décision est jouée à l'écran, pas racontée : le verdict vient du moteur, ce qui rend la révélation vérifiable."
+        },
+        {
+          "type": "pan",
+          "cible": ".verdict",
+          "duree": 0.9,
+          "pourquoi": "Le bloc verdict fait presque la hauteur de la bande utile ; on le cale en haut pour que le titre et le coût entrent dans le cadre."
+        },
+        {
+          "type": "zoomIn",
+          "cible": ".vh",
+          "duree": 0.5,
+          "pourquoi": "Le resserrement final accompagne la révélation : le coût chiffré est le point de bascule de la vidéo."
+        }
+      ],
+      "cadrages": [
+        {
+          "cible": ".vh",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 7,
+          "droite": 353,
+          "largeurVue": 360,
+          "textePx": 11.5,
+          "texteRush": 41,
+          "top": 78,
+          "bottom": 142,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".vh",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 7,
+        "droite": 353,
+        "largeurVue": 360,
+        "textePx": 11.5,
+        "texteRush": 41,
+        "top": 78,
+        "bottom": 142,
+        "why": null
+      }
+    },
+    {
+      "beat": "PAYOFF",
+      "role": "Montrer l'espérance de chaque option, en big blinds. C'est la preuve, et ce qui distingue la vidéo d'un simple quiz.",
+      "debut": 27.1,
+      "fin": 33.3,
+      "secondes": 6.2,
+      "mouvements": [
+        {
+          "type": "fixe",
+          "cible": null,
+          "duree": 2,
+          "pourquoi": "La meilleure option est lue en premier : elle donne la réponse avant de montrer ce que l'erreur coûte."
+        },
+        {
+          "type": "panPx",
+          "cible": ".opt-row",
+          "duree": 1.6,
+          "pourquoi": "La descente le long de la liste fait parcourir l'écart du meilleur au pire coup — le classement se lit comme une chute, ce qui est exactement le propos."
+        },
+        {
+          "type": "fixe",
+          "cible": null,
+          "duree": 2.6,
+          "pourquoi": "Dernière image tenue : la vidéo se termine sur la preuve, pas sur un mouvement."
+        }
+      ],
+      "cadrages": [
+        {
+          "cible": ".opt-row.best",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 32,
+          "droite": 328,
+          "largeurVue": 360,
+          "textePx": 13,
+          "texteRush": 39,
+          "top": 167,
+          "bottom": 232,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".opt-row.best",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 32,
+        "droite": 328,
+        "largeurVue": 360,
+        "textePx": 13,
+        "texteRush": 39,
+        "top": 167,
+        "bottom": 232,
+        "why": null
+      }
+    }
+  ],
+  "bornages": [],
+  "erreurs": []
+}

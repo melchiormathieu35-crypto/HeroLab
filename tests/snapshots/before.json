@@ -1,0 +1,127 @@
+{
+  "file": "index4.html",
+  "totalLines": 16288,
+  "appJsLines": 14080,
+  "modules": 92,
+  "App": {
+    "lines": 1957,
+    "methods": 61,
+    "stateDeclared": 10,
+    "stateDynamic": 13,
+    "dynamicFields": [
+      "_homeChart",
+      "_mentorRewarded",
+      "_obAvatar",
+      "_obMentor",
+      "_profAvatar",
+      "confirmWipe",
+      "dailyRun",
+      "drillRun",
+      "focusLeak",
+      "focusNote",
+      "resetCareer",
+      "resetData",
+      "sessionComplete"
+    ],
+    "fanOut": 27,
+    "fanIn": 7,
+    "domWrites": 64,
+    "selfRefs": 350
+  },
+  "storage": {
+    "directModules": 10,
+    "modules": [
+      "Progress",
+      "Career",
+      "Player",
+      "Rating",
+      "Journey",
+      "App",
+      "HRStats",
+      "PRStats",
+      "BLStats",
+      "Store"
+    ],
+    "totalRefs": 28,
+    "hasStorageLayer": false
+  },
+  "dom": {
+    "modules": 12,
+    "list": [
+      "Modal",
+      "Studio",
+      "App",
+      "CareerUI",
+      "HRUI",
+      "PRUI",
+      "BLUI",
+      "Feutre",
+      "U",
+      "Charts",
+      "V",
+      "FT"
+    ]
+  },
+  "engine": {
+    "frozenPresent": 8,
+    "violations": {},
+    "pure": true
+  },
+  "interLabDeps": {
+    "count": 2,
+    "list": [
+      "PRUI->HRUI",
+      "BLUI->HRUI"
+    ]
+  },
+  "topFanOut": [
+    {
+      "n": "App",
+      "loc": 1957,
+      "out": 27,
+      "in": 7
+    },
+    {
+      "n": "Studio",
+      "loc": 349,
+      "out": 10,
+      "in": 1
+    },
+    {
+      "n": "HRUI",
+      "loc": 775,
+      "out": 10,
+      "in": 3
+    },
+    {
+      "n": "PRUI",
+      "loc": 494,
+      "out": 10,
+      "in": 1
+    },
+    {
+      "n": "BLUI",
+      "loc": 529,
+      "out": 10,
+      "in": 1
+    },
+    {
+      "n": "Spot",
+      "loc": 252,
+      "out": 8,
+      "in": 7
+    },
+    {
+      "n": "Judge",
+      "loc": 356,
+      "out": 8,
+      "in": 2
+    },
+    {
+      "n": "Player",
+      "loc": 134,
+      "out": 8,
+      "in": 3
+    }
+  ]
+}

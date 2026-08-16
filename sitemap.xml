@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Hero Lab — sitemap.
+
+  L'application est une page unique : une seule URL est déclarée. Les écrans
+  internes (Range Detective, Profiling Lab, Blocker Finder, Tracker, Carrière)
+  sont des vues rendues côté client sans URL propre — les déclarer ici
+  reviendrait à annoncer des pages qui n'existent pas.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://herolab.eu/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

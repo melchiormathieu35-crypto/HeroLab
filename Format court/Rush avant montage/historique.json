@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "videos": [
+    {
+      "numero": 1,
+      "dossier": "Format court/Rush avant montage/Video 001",
+      "titre": "Video 001",
+      "titreInterne": "76s sur board bas et déconnecté face à un nit",
+      "spot": "flop-face-mise_bb_76s_nit_bas",
+      "modele": "flop-face-mise",
+      "signature": "flop-face-mise|connecteur|bas|aggro|instinct-perdant",
+      "signatureVisuelle": "76s|bas|-",
+      "score": 93,
+      "qa": "ok"
+    },
+    {
+      "numero": 2,
+      "dossier": "Format court/Rush avant montage/Video 002",
+      "titre": "Video 002",
+      "titreInterne": "55 sur board très connecté face à un nit",
+      "spot": "flop-face-mise_bb_55_nit_connecte",
+      "modele": "flop-face-mise",
+      "signature": "flop-face-mise|petite-paire|connecte|aggro|instinct-perdant",
+      "signatureVisuelle": "55|connecte|-",
+      "score": 89,
+      "qa": "ok"
+    },
+    {
+      "numero": 3,
+      "dossier": "Format court/Rush avant montage/Video 003",
+      "titre": "Video 003",
+      "titreInterne": "55 sur deux broadway, une surcarte tombe, face à un reg",
+      "spot": "turn-apres-call_btn_55_reg_deux-broadway_surcarte",
+      "modele": "turn-apres-call",
+      "signature": "turn-apres-call|petite-paire|deux-broadway|fold|instinct-perdant",
+      "signatureVisuelle": "55|deux-broadway|surcarte",
+      "score": 89,
+      "qa": "ok"
+    },
+    {
+      "numero": 4,
+      "dossier": "Format court/Rush avant montage/Video 004",
+      "titre": "Video 004",
+      "titreInterne": "QQ — continuer face à un 3bet face à un nit",
+      "spot": "pre-face-3bet_btn_qq_nit",
+      "modele": "pre-face-3bet",
+      "signature": "pre-face-3bet|grosse-paire|sans-board|aggro|instinct-perdant",
+      "signatureVisuelle": "QQ|preflop|-",
+      "score": 86,
+      "qa": "ok"
+    },
+    {
+      "numero": 5,
+      "dossier": "Format court/Rush avant montage/Video 005",
+      "titre": "Video 005",
+      "titreInterne": "98s sur sec, dame haute, carte qui connecte, face à un nit",
+      "spot": "turn-deuxieme-balle_bb_98s_nit_sec-tete-moyenne_connexion",
+      "modele": "turn-deuxieme-balle",
+      "signature": "turn-deuxieme-balle|connecteur|sec-tete-moyenne|aggro|instinct-perdant",
+      "signatureVisuelle": "98s|sec-tete-moyenne|connexion",
+      "score": 84,
+      "qa": "ok"
+    },
+    {
+      "numero": 6,
+      "dossier": "Format court/Rush avant montage/Video 006",
+      "titre": "Video 006",
+      "titreInterne": "76s sur board sec, tête haute face à un reg",
+      "spot": "flop-face-mise_bb_76s_reg_sec-tete-haute",
+      "modele": "flop-face-mise",
+      "signature": "flop-face-mise|connecteur|sec-tete-haute|fold|instinct-perdant",
+      "signatureVisuelle": "76s|sec-tete-haute|-",
+      "score": 83,
+      "qa": "ok"
+    },
+    {
+      "numero": 7,
+      "dossier": "Format court/Rush avant montage/Video 007",
+      "titre": "Video 007",
+      "titreInterne": "Q9s sur board pairé face à un TAG",
+      "spot": "flop-face-mise_bb_q9s_tag_paire",
+      "modele": "flop-face-mise",
+      "signature": "flop-face-mise|assorti-moyen|paire|fold|instinct-perdant",
+      "signatureVisuelle": "Q9s|paire|-",
+      "score": 83,
+      "qa": "ok"
+    },
+    {
+      "numero": 8,
+      "dossier": "Format court/Rush avant montage/Video 008",
+      "titre": "Video 008",
+      "titreInterne": "KTs sur sec, dame haute, carte blanche, face à un TAG",
+      "spot": "turn-deuxieme-balle_bb_kts_tag_sec-tete-moyenne_blanche",
+      "modele": "turn-deuxieme-balle",
+      "signature": "turn-deuxieme-balle|assorti-haut|sec-tete-moyenne|fold|instinct-perdant",
+      "signatureVisuelle": "KTs|sec-tete-moyenne|blanche",
+      "score": 83,
+      "qa": "ok"
+    },
+    {
+      "numero": 9,
+      "dossier": "Format court/Rush avant montage/Video 009",
+      "titre": "Video 009",
+      "titreInterne": "KTs sur monotone, une surcarte tombe, face à un reg",
+      "spot": "turn-deuxieme-balle_bb_kts_reg_monotone_surcarte",
+      "modele": "turn-deuxieme-balle",
+      "signature": "turn-deuxieme-balle|assorti-haut|monotone|fold|instinct-perdant",
+      "signatureVisuelle": "KTs|monotone|surcarte",
+      "score": 83,
+      "qa": "ok"
+    },
+    {
+      "numero": 10,
+      "dossier": "Format court/Rush avant montage/Video 010",
+      "titre": "Video 010",
+      "titreInterne": "AKo — continuer face à un 3bet face à un nit",
+      "spot": "pre-face-3bet_co_ako_nit",
+      "modele": "pre-face-3bet",
+      "signature": "pre-face-3bet|broadway|sans-board|aggro|instinct-perdant",
+      "signatureVisuelle": "AKo|preflop|-",
+      "score": 81,
+      "qa": "ok"
+    }
+  ]
+}

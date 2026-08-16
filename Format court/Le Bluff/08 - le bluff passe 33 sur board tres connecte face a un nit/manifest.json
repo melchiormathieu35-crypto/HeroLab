@@ -1,0 +1,438 @@
+{
+  "video": "08 - le bluff passe 33 sur board tres connecte face a un nit",
+  "concept": "le-bluff",
+  "conceptTitre": "Le Bluff",
+  "titreInterne": "Le bluff passe : 33 sur board très connecté face à un nit",
+  "enonce": "Miser 1/3 pot demande 25 % de folds — ce profil en donne 53 % : le bluff passe, marge 28 points.",
+  "fichier": "video.webm",
+  "montee": true,
+  "spot": {
+    "id": "flop-initiative_hj_33_nit_connecte",
+    "modele": "flop-initiative",
+    "theme": "flop",
+    "label": "33 sur board très connecté face à un nit",
+    "spec": "Hero: HJ, 3c 3d, 100bb\nTable: 6-max, NL50\nVillains: BB (nit, 100bb)\nPreflop: hero raise 2.5bb, BB call\nFlop: 9h 8s 7c | BB check, hero to act"
+  },
+  "score": 50,
+  "scoreDetail": {
+    "paradoxe": 0,
+    "contreIntuitif": 14,
+    "differentielEV": 1.3,
+    "difficulte": 10.1,
+    "curiosite": 2.6,
+    "lisibilite": 8.1,
+    "reveal": 1.4,
+    "pedagogie": 6,
+    "debat": 2.5,
+    "serie": 4
+  },
+  "signature": "bluff|passe|flop-initiative|petite-paire|connecte|aggro|ordinaire",
+  "momentReveal": "Beat REVEAL, quand le moteur affiche sa propre équation de fold equity et tranche.",
+  "objectifRetention": "Retenir par la méthode : le pari est isolé, l'exigence de folds est posée, la réponse du profil est comparée — et la leçon ferme sur une règle transposable, pas sur une seule main.",
+  "format": {
+    "largeur": 1080,
+    "hauteur": 1920,
+    "fps": 30,
+    "conteneur": "webm",
+    "codec": "vp8"
+  },
+  "duree": 33.9,
+  "images": 1017,
+  "moteur": {
+    "joue": {
+      "action": "bet",
+      "label": "Miser 1/3 pot",
+      "evBB": 2.5
+    },
+    "instinct": "check",
+    "verdict": "correct",
+    "lossBB": 0,
+    "equity": 40.8,
+    "pot": 2.75,
+    "toCall": 0,
+    "options": [
+      {
+        "label": "Miser 1/3 pot",
+        "action": "bet",
+        "evBB": 2.5
+      },
+      {
+        "label": "Miser 1/2 pot",
+        "action": "bet",
+        "evBB": 2.26
+      },
+      {
+        "label": "Miser Pot",
+        "action": "bet",
+        "evBB": 2.18
+      },
+      {
+        "label": "Miser 2/3 pot",
+        "action": "bet",
+        "evBB": 2.18
+      },
+      {
+        "label": "Checker",
+        "action": "check",
+        "evBB": 1.92
+      },
+      {
+        "label": "Miser Tapis",
+        "action": "bet",
+        "evBB": -2.35
+      }
+    ],
+    "meilleure": {
+      "action": "bet",
+      "label": "Miser 1/3 pot",
+      "evBB": 2.5
+    }
+  },
+  "moteurs": [
+    {
+      "beat": "REVEAL",
+      "joue": {
+        "action": "bet",
+        "label": "Miser 1/3 pot",
+        "evBB": 2.5
+      },
+      "instinct": "check",
+      "verdict": "correct",
+      "lossBB": 0,
+      "equity": 40.8,
+      "pot": 2.75,
+      "toCall": 0,
+      "options": [
+        {
+          "label": "Miser 1/3 pot",
+          "action": "bet",
+          "evBB": 2.5
+        },
+        {
+          "label": "Miser 1/2 pot",
+          "action": "bet",
+          "evBB": 2.26
+        },
+        {
+          "label": "Miser Pot",
+          "action": "bet",
+          "evBB": 2.18
+        },
+        {
+          "label": "Miser 2/3 pot",
+          "action": "bet",
+          "evBB": 2.18
+        },
+        {
+          "label": "Checker",
+          "action": "check",
+          "evBB": 1.92
+        },
+        {
+          "label": "Miser Tapis",
+          "action": "bet",
+          "evBB": -2.35
+        }
+      ],
+      "meilleure": {
+        "action": "bet",
+        "label": "Miser 1/3 pot",
+        "evBB": 2.5
+      }
+    }
+  ],
+  "duel": null,
+  "podium": null,
+  "cote": null,
+  "bluff": {
+    "sens": "passe",
+    "action": "Miser 1/3 pot",
+    "evCible": 2.5,
+    "evMeilleure": {
+      "label": "Miser 1/3 pot",
+      "evBB": 2.5
+    },
+    "exige": 25,
+    "estimation": 53,
+    "marge": 28,
+    "eqCalled": 17,
+    "cout": 2.5,
+    "spot": {
+      "id": "flop-initiative_hj_33_nit_connecte",
+      "label": "33 sur board très connecté face à un nit",
+      "spec": "Hero: HJ, 3c 3d, 100bb\nTable: 6-max, NL50\nVillains: BB (nit, 100bb)\nPreflop: hero raise 2.5bb, BB call\nFlop: 9h 8s 7c | BB check, hero to act"
+    }
+  },
+  "timeline": [
+    {
+      "beat": "HOOK",
+      "role": "La main, sans dire si le pari qui vient paie ou brûle — la question est la promesse.",
+      "debut": 0,
+      "fin": 4.1,
+      "secondes": 4.1,
+      "mouvements": [
+        {
+          "type": "zoomIn",
+          "cible": ".hero-hand .cards",
+          "duree": 0.9,
+          "pourquoi": "Ouvrir sur la main sans indice sur l'issue : le spectateur doit regarder pour savoir si le pari tient."
+        }
+      ],
+      "cadrages": [
+        {
+          "cible": ".hero-hand .cards",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 27,
+          "droite": 99,
+          "largeurVue": 360,
+          "textePx": 13,
+          "texteRush": 43,
+          "top": 212,
+          "bottom": 257,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".hero-hand .cards",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 27,
+        "droite": 99,
+        "largeurVue": 360,
+        "textePx": 13,
+        "texteRush": 43,
+        "top": 212,
+        "bottom": 257,
+        "why": null
+      }
+    },
+    {
+      "beat": "SITUATION",
+      "role": "La table et le profil adverse — c'est lui qui décide si un bluff a une chance ici.",
+      "debut": 4.1,
+      "fin": 9.1,
+      "secondes": 5,
+      "mouvements": [],
+      "cadrages": [
+        {
+          "cible": ".felt",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 14,
+          "droite": 346,
+          "largeurVue": 360,
+          "textePx": 16,
+          "texteRush": 48,
+          "top": 141,
+          "bottom": 411,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".felt",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 14,
+        "droite": 346,
+        "largeurVue": 360,
+        "textePx": 16,
+        "texteRush": 48,
+        "top": 141,
+        "bottom": 411,
+        "why": null
+      }
+    },
+    {
+      "beat": "LE PARI",
+      "role": "Isoler la mise envisagée (Miser 1/3 pot) : c'est elle qu'il faut juger, pas la main.",
+      "debut": 9.1,
+      "fin": 17,
+      "secondes": 7.9,
+      "mouvements": [
+        {
+          "type": "pan",
+          "cible": ".actions",
+          "duree": 0.9,
+          "pourquoi": "Descendre vers les options montre le pari envisagé au milieu des autres : la comparaison est le point du beat."
+        },
+        {
+          "type": "freeze",
+          "cible": null,
+          "duree": 6.4,
+          "pourquoi": "Le temps du calcul : combien de fois l'adversaire doit-il passer pour que ce pari soit rentable ? Le silence laisse deviner avant la réponse."
+        }
+      ],
+      "cadrages": [
+        {
+          "cible": ".actions",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 14,
+          "droite": 346,
+          "largeurVue": 360,
+          "textePx": 13.5,
+          "texteRush": 41,
+          "top": 102,
+          "bottom": 495,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".actions",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 14,
+        "droite": 346,
+        "largeurVue": 360,
+        "textePx": 13.5,
+        "texteRush": 41,
+        "top": 102,
+        "bottom": 495,
+        "why": null
+      }
+    },
+    {
+      "beat": "REVEAL",
+      "role": "La mise (Miser 1/3 pot) est jouée à l'écran ; le moteur écrit sa propre équation et tranche : le bluff passe.",
+      "debut": 17,
+      "fin": 25.9,
+      "secondes": 8.9,
+      "mouvements": [
+        {
+          "type": "jouer",
+          "cible": null,
+          "duree": null,
+          "pourquoi": "Le pari est joué à l'écran, pas raconté : l'équation qui s'affiche est celle du moteur, vérifiable telle quelle."
+        },
+        {
+          "type": "pan",
+          "cible": ".verdict",
+          "duree": 0.9,
+          "pourquoi": "Le bloc verdict porte l'équation complète ; calé en haut pour que le titre et le calcul entrent dans la bande utile."
+        },
+        {
+          "type": "zoomIn",
+          "cible": ".vh",
+          "duree": 0.5,
+          "pourquoi": "Le resserrement accompagne le verdict — le point de bascule de la vidéo."
+        }
+      ],
+      "cadrages": [
+        {
+          "cible": ".vh",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 7,
+          "droite": 353,
+          "largeurVue": 360,
+          "textePx": 11.5,
+          "texteRush": 41,
+          "top": 75,
+          "bottom": 175,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".vh",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 7,
+        "droite": 353,
+        "largeurVue": 360,
+        "textePx": 11.5,
+        "texteRush": 41,
+        "top": 75,
+        "bottom": 175,
+        "why": null
+      }
+    },
+    {
+      "beat": "LA LEÇON",
+      "role": "L'espérance de chaque option — la preuve chiffrée, et la méthode qui s'en dégage.",
+      "debut": 25.9,
+      "fin": 33.9,
+      "secondes": 8,
+      "mouvements": [
+        {
+          "type": "fixe",
+          "cible": null,
+          "duree": 2,
+          "pourquoi": "La meilleure option se lit en premier — la réponse avant la démonstration."
+        },
+        {
+          "type": "panPx",
+          "cible": ".opt-row",
+          "duree": 1.4,
+          "pourquoi": "La descente parcourt le classement complet : c'est la preuve que le calcul, pas l'instinct, doit trancher."
+        },
+        {
+          "type": "fixe",
+          "cible": null,
+          "duree": 4.6,
+          "pourquoi": "Dernière image tenue : la vidéo se termine sur la preuve, pas sur un mouvement."
+        }
+      ],
+      "cadrages": [
+        {
+          "cible": ".opt-row.best",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 32,
+          "droite": 328,
+          "largeurVue": 360,
+          "textePx": 13,
+          "texteRush": 39,
+          "top": 167,
+          "bottom": 254,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".opt-row.best",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 32,
+        "droite": 328,
+        "largeurVue": 360,
+        "textePx": 13,
+        "texteRush": 39,
+        "top": 167,
+        "bottom": 254,
+        "why": null
+      }
+    }
+  ],
+  "bornages": [],
+  "erreurs": []
+}

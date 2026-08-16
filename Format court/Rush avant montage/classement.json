@@ -1,0 +1,82 @@
+[
+  {
+    "video": "Video 001",
+    "titre": "76s sur board bas et déconnecté face à un nit",
+    "score": 93,
+    "dossier": "Format court/Rush avant montage/Video 001",
+    "differentielEV": 7.26,
+    "qa": "ok"
+  },
+  {
+    "video": "Video 002",
+    "titre": "55 sur board très connecté face à un nit",
+    "score": 89,
+    "dossier": "Format court/Rush avant montage/Video 002",
+    "differentielEV": 6.13,
+    "qa": "ok"
+  },
+  {
+    "video": "Video 003",
+    "titre": "55 sur deux broadway, une surcarte tombe, face à un reg",
+    "score": 89,
+    "dossier": "Format court/Rush avant montage/Video 003",
+    "differentielEV": 10.53,
+    "qa": "ok"
+  },
+  {
+    "video": "Video 004",
+    "titre": "QQ — continuer face à un 3bet face à un nit",
+    "score": 86,
+    "dossier": "Format court/Rush avant montage/Video 004",
+    "differentielEV": 7.65,
+    "qa": "ok"
+  },
+  {
+    "video": "Video 005",
+    "titre": "98s sur sec, dame haute, carte qui connecte, face à un nit",
+    "score": 84,
+    "dossier": "Format court/Rush avant montage/Video 005",
+    "differentielEV": 28.16,
+    "qa": "ok"
+  },
+  {
+    "video": "Video 006",
+    "titre": "76s sur board sec, tête haute face à un reg",
+    "score": 83,
+    "dossier": "Format court/Rush avant montage/Video 006",
+    "differentielEV": 4.8,
+    "qa": "ok"
+  },
+  {
+    "video": "Video 007",
+    "titre": "Q9s sur board pairé face à un TAG",
+    "score": 83,
+    "dossier": "Format court/Rush avant montage/Video 007",
+    "differentielEV": 4.91,
+    "qa": "ok"
+  },
+  {
+    "video": "Video 008",
+    "titre": "KTs sur sec, dame haute, carte blanche, face à un TAG",
+    "score": 83,
+    "dossier": "Format court/Rush avant montage/Video 008",
+    "differentielEV": 15.21,
+    "qa": "ok"
+  },
+  {
+    "video": "Video 009",
+    "titre": "KTs sur monotone, une surcarte tombe, face à un reg",
+    "score": 83,
+    "dossier": "Format court/Rush avant montage/Video 009",
+    "differentielEV": 11.65,
+    "qa": "ok"
+  },
+  {
+    "video": "Video 010",
+    "titre": "AKo — continuer face à un 3bet face à un nit",
+    "score": 81,
+    "dossier": "Format court/Rush avant montage/Video 010",
+    "differentielEV": 9.32,
+    "qa": "ok"
+  }
+]

@@ -1,0 +1,11 @@
+# graphify build internals — machine-specific paths and transient sidecars.
+# The generated outputs (graph.json, graph.html, GRAPH_REPORT.md) stay trackable.
+graphify-out/.graphify_*
+graphify-out/cache/
+
+# refactor harness
+node_modules/
+
+# bytecode Python (outils de refactor jetables)
+__pycache__/
+*.pyc

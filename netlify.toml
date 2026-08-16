@@ -1,0 +1,59 @@
+# Hero Lab — configuration de déploiement Netlify
+#
+# Hero Lab est une application statique en fichier unique : il n'y a rien à
+# compiler. Aucune commande de build n'est déclarée volontairement — en ajouter
+# une n'apporterait aucun bénéfice et introduirait un point de panne.
+#
+# La racine du dépôt est publiée telle quelle, et les chemins qui ne doivent pas
+# être servis sont explicitement neutralisés plus bas.
+
+[build]
+  publish = "."
+  command = ""
+
+# ---------------------------------------------------------------------------
+# Ce qui ne doit JAMAIS être servi.
+#
+# `archive/` contient la génération précédente du produit (publiée sous le nom
+# Pivot). Elle est fonctionnelle : ouverte dans un navigateur, elle démarre.
+# La servir créerait un second Hero Lab accessible publiquement, sous une marque
+# obsolète et sans aucune des métadonnées. On répond 404, sans redirection —
+# une redirection laisserait entendre qu'un équivalent existe ailleurs.
+# ---------------------------------------------------------------------------
+[[redirects]]
+  from = "/archive/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+# Les suites de test ne sont pas du contenu public.
+[[redirects]]
+  from = "/tests/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+# ---------------------------------------------------------------------------
+# En-têtes
+# ---------------------------------------------------------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+    # Permissions non utilisées par l'application : tout est calculé localement.
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=()"
+
+# L'application est un fichier unique qui change à chaque déploiement : on ne
+# le met pas en cache longuement, sinon un correctif met des heures à arriver.
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# L'image sociale est immuable une fois publiée (son nom changerait avec elle).
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

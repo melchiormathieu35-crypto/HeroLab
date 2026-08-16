@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "spotsUtilises": [
+    "pre-face-3bet_co_aqs_nit",
+    "turn-apres-call_btn_kts_nit_bas_blanche",
+    "turn-deuxieme-balle_bb_a3s_nit_as-haut_blanche",
+    "pre-face-3bet_co_kqo_station",
+    "turn-apres-call_co_76s_tag_sec-tete-haute_surcarte",
+    "turn-deuxieme-balle_bb_98s_rec_deux-broadway_surcarte",
+    "pre-face-3bet_co_55_station",
+    "turn-apres-call_btn_98s_tag_sec-tete-moyenne_blanche",
+    "turn-deuxieme-balle_bb_tt_nit_connecte_connexion",
+    "flop-face-mise_bb_98s_nit_bas",
+    "turn-apres-call_btn_q9s_tag_bas_surcarte",
+    "turn-deuxieme-balle_bb_88_fish_deux-broadway_connexion",
+    "pre-face-3bet_co_tt_station",
+    "turn-apres-call_btn_kqo_tag_connecte_surcarte",
+    "turn-deuxieme-balle_bb_q9s_station_sec-tete-haute_surcarte",
+    "pre-face-3bet_co_qq_nit",
+    "turn-apres-call_btn_a5s_nit_sec-tete-moyenne_surcarte",
+    "turn-deuxieme-balle_bb_kqo_station_bas_surcarte",
+    "flop-face-mise_bb_76s_nit_paire",
+    "turn-apres-call_co_55_fish_connecte_connexion",
+    "turn-deuxieme-balle_bb_jj_nit_bas_blanche",
+    "pre-face-3bet_co_a3s_station",
+    "turn-apres-call_co_q9s_tag_paire_surcarte",
+    "turn-deuxieme-balle_bb_33_tag_deux-broadway_surcarte",
+    "flop-face-mise_bb_a3s_nit_bas",
+    "turn-apres-call_co_ako_nit_monotone_surcarte",
+    "turn-deuxieme-balle_bb_kqo_station_paire_surcarte",
+    "pre-face-3bet_co_76s_rec",
+    "turn-apres-call_btn_98s_station_monotone_blanche",
+    "turn-deuxieme-balle_bb_q9s_station_as-haut_surcarte"
+  ],
+  "videos": [
+    {
+      "numero": 1,
+      "titre": "01 - podium AQs continuer face a un 3bet face a un nit KTs sur bas",
+      "spots": [
+        "pre-face-3bet_co_aqs_nit",
+        "turn-apres-call_btn_kts_nit_bas_blanche",
+        "turn-deuxieme-balle_bb_a3s_nit_as-haut_blanche"
+      ]
+    },
+    {
+      "numero": 2,
+      "titre": "02 - podium KQo continuer face a un 3bet face a une calling station",
+      "spots": [
+        "pre-face-3bet_co_kqo_station",
+        "turn-apres-call_co_76s_tag_sec-tete-haute_surcarte",
+        "turn-deuxieme-balle_bb_98s_rec_deux-broadway_surcarte"
+      ]
+    },
+    {
+      "numero": 3,
+      "titre": "03 - podium 55 continuer face a un 3bet face a une calling station",
+      "spots": [
+        "pre-face-3bet_co_55_station",
+        "turn-apres-call_btn_98s_tag_sec-tete-moyenne_blanche",
+        "turn-deuxieme-balle_bb_tt_nit_connecte_connexion"
+      ]
+    },
+    {
+      "numero": 4,
+      "titre": "04 - podium 98s sur board bas et deconnecte face a un nit Q9s sur",
+      "spots": [
+        "flop-face-mise_bb_98s_nit_bas",
+        "turn-apres-call_btn_q9s_tag_bas_surcarte",
+        "turn-deuxieme-balle_bb_88_fish_deux-broadway_connexion"
+      ]
+    },
+    {
+      "numero": 5,
+      "titre": "05 - podium TT continuer face a un 3bet face a une calling station",
+      "spots": [
+        "pre-face-3bet_co_tt_station",
+        "turn-apres-call_btn_kqo_tag_connecte_surcarte",
+        "turn-deuxieme-balle_bb_q9s_station_sec-tete-haute_surcarte"
+      ]
+    },
+    {
+      "numero": 6,
+      "titre": "06 - podium QQ continuer face a un 3bet face a un nit A5s sur sec",
+      "spots": [
+        "pre-face-3bet_co_qq_nit",
+        "turn-apres-call_btn_a5s_nit_sec-tete-moyenne_surcarte",
+        "turn-deuxieme-balle_bb_kqo_station_bas_surcarte"
+      ]
+    },
+    {
+      "numero": 7,
+      "titre": "07 - podium 76s sur board paire face a un nit 55 sur tres connecte",
+      "spots": [
+        "flop-face-mise_bb_76s_nit_paire",
+        "turn-apres-call_co_55_fish_connecte_connexion",
+        "turn-deuxieme-balle_bb_jj_nit_bas_blanche"
+      ]
+    },
+    {
+      "numero": 8,
+      "titre": "08 - podium A3s continuer face a un 3bet face a une calling station",
+      "spots": [
+        "pre-face-3bet_co_a3s_station",
+        "turn-apres-call_co_q9s_tag_paire_surcarte",
+        "turn-deuxieme-balle_bb_33_tag_deux-broadway_surcarte"
+      ]
+    },
+    {
+      "numero": 9,
+      "titre": "09 - podium A3s sur board bas et deconnecte face a un nit AKo sur",
+      "spots": [
+        "flop-face-mise_bb_a3s_nit_bas",
+        "turn-apres-call_co_ako_nit_monotone_surcarte",
+        "turn-deuxieme-balle_bb_kqo_station_paire_surcarte"
+      ]
+    },
+    {
+      "numero": 10,
+      "titre": "10 - podium 76s continuer face a un 3bet face a un recreatif 98s sur",
+      "spots": [
+        "pre-face-3bet_co_76s_rec",
+        "turn-apres-call_btn_98s_station_monotone_blanche",
+        "turn-deuxieme-balle_bb_q9s_station_as-haut_surcarte"
+      ]
+    }
+  ]
+}

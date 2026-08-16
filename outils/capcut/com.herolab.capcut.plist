@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Agent launchd : conversion automatique en arrière-plan, solution native
+  macOS sans dépendance. Dès qu'un fichier est déposé dans ~/RUSH/GENERATED,
+  launchd lance convert_videos.sh (idempotent : seuls les nouveaux fichiers
+  sont convertis).
+
+  REMPLACER __SCRIPT__ par le chemin absolu de convert_videos.sh avant
+  installation — ou utiliser « installer_watch.sh » qui le fait pour vous.
+
+  Activer   : cp com.herolab.capcut.plist ~/Library/LaunchAgents/
+              launchctl load ~/Library/LaunchAgents/com.herolab.capcut.plist
+  Désactiver: launchctl unload ~/Library/LaunchAgents/com.herolab.capcut.plist
+  Journal   : ~/RUSH/pipeline.log
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.herolab.capcut</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>__SCRIPT__</string>
+  </array>
+  <key>WatchPaths</key>
+  <array>
+    <string>__HOME__/RUSH/GENERATED</string>
+  </array>
+  <!--
+    PATH explicite. Un agent launchd ne reçoit PAS le PATH du Terminal : il
+    démarre avec /usr/bin:/bin:/usr/sbin:/sbin. Un ffmpeg installé dans
+    ~/bin (ou dans /usr/local/bin, ou par Homebrew) serait donc introuvable
+    et le watcher échouerait en silence alors que la commande manuelle
+    fonctionne. On déclare les emplacements usuels.
+  -->
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>__HOME__/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+  </dict>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>ThrottleInterval</key>
+  <integer>10</integer>
+  <key>StandardOutPath</key>
+  <string>__HOME__/RUSH/pipeline.log</string>
+  <key>StandardErrorPath</key>
+  <string>__HOME__/RUSH/pipeline.log</string>
+</dict>
+</plist>

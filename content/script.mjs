@@ -1,0 +1,1034 @@
+/**
+ * Script de voix off et de sous-titres, par vidéo montée.
+ *
+ * Généré à partir du manifeste de production : la situation vient de la spec
+ * Studio, les chiffres viennent de `Judge.evaluate`, les timecodes du compteur
+ * d'images de l'encodeur. AUCUN chiffre n'est écrit à la main, et aucune
+ * affirmation chiffrée n'est inventée (« 9 joueurs sur 10 se trompent » n'a pas
+ * de source, donc n'apparaît jamais).
+ *
+ * STATUT DU TEXTE : c'est une PROPOSITION, calibrée sur la durée réelle de
+ * chaque beat (~2,3 mots par seconde de voix posée). Le ton se reformule
+ * librement ; les chiffres, eux, sont ceux de l'écran et ne doivent pas être
+ * modifiés — le spectateur les a sous les yeux au même moment.
+ */
+import { readFile, writeFile, readdir } from "node:fs/promises";
+import { existsSync } from "node:fs";
+import { join, resolve, dirname, relative } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+
+/**
+ * Débit de parole, en mots par seconde — la contrainte qui calibre chaque ligne.
+ *
+ * 2,8 mots/s ≈ 170 mots/min : le débit d'une voix off dynamique de format
+ * court, plus rapide qu'une lecture posée mais sans précipitation. La règle est
+ * APPLIQUÉE, pas décorative : le générateur refuse d'écrire une ligne qui ne
+ * tient pas dans la fenêtre de son beat — un script trop long pour sa vidéo
+ * n'est pas un script, c'est un problème repoussé au moment de l'enregistrement.
+ */
+export const DEBIT = 2.8;
+
+const tc = (s) => {
+  const m = Math.floor(s / 60);
+  const r = s - m * 60;
+  return `${String(m).padStart(2, "0")}:${r.toFixed(2).padStart(5, "0")}`;
+};
+
+const SYMBOLES = { h: "♥", d: "♦", c: "♣", s: "♠" };
+const carte = (c) => c.replace(/^(.+)([hdcs])$/, (_, r, s) => (r === "T" ? "10" : r) + SYMBOLES[s]);
+const cartes = (liste) => liste.trim().split(/\s+/).map(carte).join(" ");
+
+/** Positions en français parlé. */
+const POSITIONS = {
+  UTG: "l'UTG", HJ: "le hijack", CO: "le cutoff",
+  BTN: "le bouton", SB: "la petite blinde", BB: "la grosse blinde",
+};
+const EN_POSITION = {
+  UTG: "UTG", HJ: "au hijack", CO: "au cutoff",
+  BTN: "au bouton", SB: "en petite blinde", BB: "en grosse blinde",
+};
+
+/**
+ * Profils en français parlé — les glossaires de l'application, résumés.
+ * « profil … » plutôt qu'un adjectif nu : l'adjectif s'accorderait avec la
+ * position (« la petite blinde, très serré » est fautif), le nom « profil »
+ * reste invariable quel que soit le siège.
+ */
+const PROFILS = {
+  nit: "profil très serré", tag: "profil serré-agressif", lag: "profil large-agressif",
+  reg: "un régulier solide", fish: "un joueur faible", station: "du genre à tout payer",
+  maniac: "profil hyper-agressif", rec: "un récréatif",
+};
+
+/**
+ * Lit la spec Studio — la même grammaire que `Studio.parse`, en lecture seule.
+ * On n'interprète rien : on traduit les actions écrites, telles quelles.
+ */
+export function lireSpec(spec) {
+  const l = Object.fromEntries(spec.split("\n").map(x => {
+    const i = x.indexOf(":");
+    return [x.slice(0, i).trim().toLowerCase(), x.slice(i + 1).trim()];
+  }));
+  const hero = /^(\w+),\s*([^,]+),\s*(\d+)bb$/.exec(l.hero || "");
+  const table = /^(\S+),\s*(\S+)$/.exec(l.table || "");
+  const vilains = (l.villains || "").split(/\)\s*,/).map(v => {
+    const m = /^\s*(\w+)\s*\((\w+)/.exec(v);
+    return m ? { pos: m[1], profil: m[2] } : null;
+  }).filter(Boolean);
+
+  const rue = (txt) => {
+    if (!txt) return null;
+    const [avant, apres] = txt.includes("|") ? txt.split("|") : [null, txt];
+    return { board: avant ? avant.trim() : null, actions: apres.trim() };
+  };
+  return {
+    hero: hero ? { pos: hero[1], cartes: hero[2].trim(), stack: hero[3] } : null,
+    table: table ? { taille: table[1], limite: table[2] } : null,
+    vilains,
+    preflop: l.preflop ? { board: null, actions: l.preflop } : null,
+    flop: rue(l.flop),
+    turn: rue(l.turn),
+    river: rue(l.river),
+  };
+}
+
+const virgule = (n) => String(n).replace(".", ",");
+
+/**
+ * Traduit une liste d'actions de la spec en français parlé.
+ *
+ * `compact` remplace la position du vilain par « il » et omet les montants —
+ * sauf `garderMontant`, qui les conserve (utilisé pour la dernière rue : c'est
+ * la mise qui pose le problème, son montant doit être dit).
+ */
+export function direActions(actions, { compact = false, garderMontant = true } = {}) {
+  const dits = [];
+  for (const a of actions.split(",").map(x => x.trim())) {
+    if (/to act$/i.test(a)) continue;      // c'est la décision : elle n'est pas encore prise
+    const m = /^(\w+)\s+(raise|bet|call|check|fold)\s*([\d.]+)?(bb)?/i.exec(a);
+    if (!m) continue;
+    const tu = m[1] === "hero";
+    const qui = tu ? "tu" : compact ? "il" : (POSITIONS[m[1]] || m[1]);
+    const verbe = {
+      raise: (tu ? "relances" : "relance") + (m[3] && garderMontant ? ` à ${virgule(m[3])} bb` : ""),
+      bet: (tu ? "mises" : "mise") + (m[3] && garderMontant ? ` ${virgule(m[3])} bb` : ""),
+      call: tu ? "paies" : "paie",
+      check: tu ? "checkes" : "check",
+      fold: tu ? "passes" : "passe",
+    }[m[2].toLowerCase()];
+    dits.push(`${qui} ${verbe}`);
+  }
+  return dits.join(", ");
+}
+
+const mots = (txt) => txt.split(/\s+/).filter(Boolean).length;
+const bb = (n) => `${n > 0 ? "+" : n < 0 ? "−" : ""}${Math.abs(Number(n)).toFixed(2).replace(".", ",")}`;
+const eur = (n) => `${Number(n).toFixed(2).replace(".", ",")} €`;
+
+/**
+ * Construit le script d'une vidéo montée : une entrée par beat, chacune avec la
+ * voix off proposée, les sous-titres découpés, et la contrainte de durée.
+ */
+export function construireScript(m) {
+  const s = lireSpec(m.spot.spec);
+  const e = m.moteur;
+  const beat = (nom) => m.timeline.find(b => b.beat === nom);
+
+  const vilain = s.vilains[0];
+  const vilainDit = `${POSITIONS[vilain.pos] || vilain.pos}, ${PROFILS[vilain.profil] || vilain.profil}`;
+
+  // Rues jouées, traduites depuis la spec — forme complète, pour les sous-titres.
+  const rues = [];
+  if (s.preflop) rues.push(`Préflop : ${direActions(s.preflop.actions)}.`);
+  if (s.flop) rues.push(`Flop ${cartes(s.flop.board)} : ${direActions(s.flop.actions)}.`);
+  if (s.turn) rues.push(`Turn ${carte(s.turn.board)}${s.turn.actions ? ` : ${direActions(s.turn.actions)}` : ""}.`);
+  if (s.river) rues.push(`River ${carte(s.river.board)}${s.river.actions ? ` : ${direActions(s.river.actions)}` : ""}.`);
+
+  const entrees = [];
+
+  // ── HOOK — pas de chiffre, pas de contexte : l'image porte, la voix intrigue.
+  entrees.push({
+    beat: "HOOK",
+    voix: `${cartes(s.hero.cartes)} ${EN_POSITION[s.hero.pos] || s.hero.pos}. Simple, en apparence.`,
+    sousTitres: [`${cartes(s.hero.cartes)} ${EN_POSITION[s.hero.pos] || s.hero.pos}.`, "Simple, en apparence."],
+    note: "L'accroche tient par l'image des cartes ; la voix ne fait qu'ouvrir la question. Aucun chiffre ici.",
+  });
+
+  // ── SITUATION — le déroulé réel, rue par rue.
+  //
+  // ÉCHELLE DE COMPRESSION. Sept secondes ne suffisent pas toujours à raconter
+  // trois rues au débit d'une voix off : plutôt que d'écrire un texte trop long
+  // (le premier jet proposait 33 mots pour une fenêtre de 16), on essaie trois
+  // niveaux de détail et on garde le plus riche qui TIENT. Ce qui saute à la
+  // voix reste dans les sous-titres et dans le panneau « Déroulement » à
+  // l'écran — rien n'est perdu, c'est réparti.
+  const ruesJouees = [
+    s.preflop && { nom: "Préflop", board: null, actions: s.preflop.actions },
+    s.flop && { nom: "Flop", board: s.flop.board, actions: s.flop.actions },
+    s.turn && { nom: "Turn", board: s.turn.board, actions: s.turn.actions },
+    s.river && { nom: "River", board: s.river.board, actions: s.river.actions },
+  ].filter(Boolean);
+  const derniere = ruesJouees[ruesJouees.length - 1];
+  const dire = (r, derniereRue) =>
+    `${r.nom}${r.board ? ` ${cartes(r.board)}` : ""}${r.actions ? ` : ${direActions(r.actions, { compact: true, garderMontant: derniereRue })}` : ""}.`;
+
+  const niveaux = [
+    // 1 — tout : limite, table, profil, chaque rue avec ses montants.
+    `${s.table.limite}, table de ${s.table.taille.replace("-max", "")}. En face : ${vilainDit}. ${rues.join(" ")}`,
+    // 2 — le profil et les rues, pronoms, montants seulement sur la dernière.
+    `En face : ${vilainDit}. ${ruesJouees.map(r => dire(r, r === derniere)).join(" ")}`,
+    // 3 — le profil et la seule rue du problème.
+    `En face : ${vilainDit}. ${dire(derniere, true)}`,
+    // 4 — la seule rue du problème. Le profil reste à l'écran et en sous-titre.
+    dire(derniere, true),
+  ];
+
+  entrees.push({
+    beat: "SITUATION",
+    voixNiveaux: niveaux,
+    sousTitres: [`${s.table.limite} · en face : ${vilainDit}`, ...rues],
+    note: "Tout ce qui est dit ici est aussi à l'écran (panneau « Déroulement »). Si la voix ne raconte pas toutes les rues, les sous-titres les portent.",
+  });
+
+  // ── TENSION — le prix, et rien d'autre. L'équité n'est PAS dite : c'est le
+  // moteur qui la révèle au PAYOFF, la dire ici tuerait le quizz.
+  // Sans mise en face, la tension n'est pas un prix : c'est la main faite qui
+  // donne une fausse assurance — même bascule que dans le plan de tournage.
+  const faceAMise = e.toCall > 0;
+  entrees.push({
+    beat: "TENSION",
+    voix: faceAMise
+      ? `Le prix : ${eur(e.toCall)}, dans un pot de ${eur(e.pot)}.`
+      : `Personne n'a misé. Le pot : ${eur(e.pot)}. À toi de fixer le prix.`,
+    sousTitres: faceAMise
+      ? [`À payer : ${eur(e.toCall)}`, `Pot : ${eur(e.pot)}`]
+      : [`Pot : ${eur(e.pot)}`, "Personne n'a misé."],
+    note: "Silence recommandé sur le freeze final. Ne pas donner l'équité ni la réponse : c'est le moment où le spectateur se forge un avis.",
+  });
+
+  // ── CHOICE — les options réelles (les familles viennent du moteur), puis le
+  // silence du choix.
+  entrees.push({
+    beat: "CHOICE",
+    voix: faceAMise
+      ? `Passer, suivre, ou relancer — les montants sont à l'écran. Tu fais quoi ?`
+      : `Checker, ou miser — les montants sont à l'écran. Tu fais quoi ?`,
+    sousTitres: [faceAMise ? "Passer, suivre… ou relancer ?" : "Checker… ou miser ?", "Tu fais quoi ?"],
+    note: "La question posée, laisser le temps de pose travailler : les ~5 dernières secondes du beat sont volontairement muettes (compte à rebours possible).",
+  });
+
+  // ── REVEAL — le verdict, avec les chiffres de l'écran. Le coût est un coût :
+  // il se dit sans signe, « 7,26 big blinds », pas « +7,26 ».
+  const joueMot = e.joue.action === "check" ? "Checké" : "Suivi";
+  const verdictMot = e.verdict === "erreur" ? "Erreur" : e.verdict;
+  const coutDit = e.lossBB.toFixed(2).replace(".", ",");
+  entrees.push({
+    beat: "REVEAL",
+    voixNiveaux: [
+      `${joueMot} ? ${verdictMot}, dit le moteur. Coût : ${coutDit} big blinds. Il fallait ${e.meilleure.label.toLowerCase()}.`,
+      `${joueMot} ? ${verdictMot}. Coût : ${coutDit} big blinds. Il fallait ${e.meilleure.label.toLowerCase()}.`,
+    ],
+    sousTitres: [`Verdict : ${e.verdict}.`, `Coût : ${e.lossBB.toFixed(2).replace(".", ",")} bb`, `La bonne réponse : ${e.meilleure.label.toLowerCase()}`],
+    note: "C'est ici que la voix a le plus de valeur. Les chiffres dits sont exactement ceux affichés — ne pas les arrondir autrement.",
+  });
+
+  // ── PAYOFF — la preuve, lue dans la liste des espérances. Le mot du réflexe
+  // suit l'action réellement jouée : « suivre » face à une mise, « checker »
+  // sans mise en face.
+  const evJoue = e.joue.evBB;
+  const reflexeMot = e.joue.action === "check" ? "Checker" : "Suivre";
+  // Le cas « rien ne bat le fold » ne vaut que pour un fold : un check optimal
+  // passe par la formulation générique, qui reste juste.
+  const meilleurEstFold = e.meilleure.label === "Passer";
+  // Échelle de compression, comme la SITUATION : le libellé de la meilleure
+  // option vient de l'écran et sa longueur varie (« Relancer Pot » : 2 mots,
+  // « Relancer 2.5 bb » : 3) — la garde a réellement refusé un PAYOFF d'un mot
+  // de trop. On retire d'abord la chute, puis le commentaire, jamais les
+  // chiffres.
+  const pireQueJeter = evJoue < 0 ? " — pire que jeter la main" : "";
+  entrees.push({
+    beat: "PAYOFF",
+    voixNiveaux: meilleurEstFold
+      ? [
+        `Passer vaut zéro. ${reflexeMot} : ${bb(evJoue)} — pire que jeter la main. Rien ne bat le fold.`,
+        `Passer vaut zéro. ${reflexeMot} : ${bb(evJoue)} — pire que jeter la main.`,
+        `Passer vaut zéro. ${reflexeMot} : ${bb(evJoue)}.`,
+      ]
+      : [
+        `${e.meilleure.label} : ${bb(e.meilleure.evBB)}. ${reflexeMot} : ${bb(evJoue)}${pireQueJeter}. Tout l'écart est là.`,
+        `${e.meilleure.label} : ${bb(e.meilleure.evBB)}. ${reflexeMot} : ${bb(evJoue)}${pireQueJeter}.`,
+        `${e.meilleure.label} : ${bb(e.meilleure.evBB)}. ${reflexeMot} : ${bb(evJoue)}.`,
+      ],
+    sousTitres: meilleurEstFold
+      ? [`Passer = 0 bb`, `${e.joue.label} = ${bb(evJoue)} bb`, "Rien ne bat le fold ici."]
+      : [`${e.meilleure.label} = ${bb(e.meilleure.evBB)} bb`, `${e.joue.label} = ${bb(evJoue)} bb`],
+    note: "Ne rien poser par-dessus la liste des espérances : c'est la preuve, elle doit rester lisible. Terminer la voix avant la dernière seconde.",
+  });
+
+  // ── Contrainte de durée : appliquée, pas déclarative.
+  //
+  // Pour la SITUATION, on descend l'échelle de compression jusqu'au niveau qui
+  // tient. Pour tous les beats, une ligne qui déborde encore est une ERREUR de
+  // génération — on refuse d'écrire un script infaisable plutôt que de laisser
+  // l'utilisateur le découvrir au micro.
+  for (const en of entrees) {
+    const b = beat(en.beat);
+    en.debut = b.debut; en.fin = b.fin; en.secondes = b.secondes;
+    en.motsMax = Math.floor(b.secondes * DEBIT);
+    if (en.voixNiveaux) {
+      en.voix = en.voixNiveaux.find(v => mots(v) <= en.motsMax) || en.voixNiveaux[en.voixNiveaux.length - 1];
+      en.niveauxEcartes = en.voixNiveaux.indexOf(en.voix);
+      delete en.voixNiveaux;
+    }
+    en.motsProposes = mots(en.voix);
+    if (en.motsProposes > en.motsMax) {
+      throw new Error(`script infaisable : ${en.beat} demande ${en.motsProposes} mots pour une fenêtre de ${en.motsMax} (${en.secondes} s à ${DEBIT} mots/s) — « ${en.voix} »`);
+    }
+  }
+  return entrees;
+}
+
+/**
+ * Script d'un DUEL DE PROFILS. Même contrat que le quizz : chiffres de l'écran
+ * uniquement, lignes calibrées par la fenêtre de leur beat, échelles de
+ * compression quand un libellé s'allonge.
+ */
+export function construireScriptDuel(m) {
+  const d = m.duel;
+  const specA = lireSpec(d.specA);
+  const [mA, mB] = m.moteurs;
+  const beat = (nom) => m.timeline.find(b => b.beat === nom);
+
+  const profilDit = (p) => PROFILS[p] || p;
+  const actionBas = d.action.toLowerCase();
+  const derniereMise = (spec) => {
+    const s = lireSpec(spec);
+    const rue = s.river || s.turn || s.flop || s.preflop;
+    return { rue, texte: `${rue.board ? `${s.river ? "River" : s.turn ? "Turn" : "Flop"} ${rue.board.includes(" ") ? cartes(rue.board) : carte(rue.board)}` : "Préflop"} : ${direActions(rue.actions, { compact: true, garderMontant: true })}.` };
+  };
+  const mise = derniereMise(d.specA);
+
+  const entrees = [];
+
+  entrees.push({
+    beat: "HOOK",
+    voixNiveaux: [
+      `${cartes(specA.hero.cartes)} ${EN_POSITION[specA.hero.pos] || specA.hero.pos}. Même main, deux adversaires. Deux réponses.`,
+      `Même main, deux adversaires. Deux réponses.`,
+    ],
+    sousTitres: ["Même main. Deux adversaires.", "Deux réponses."],
+    note: "L'accroche est la promesse du duel. Aucun chiffre, aucune réponse.",
+  });
+
+  entrees.push({
+    beat: "MANCHE A",
+    voixNiveaux: [
+      `Premier adversaire : ${profilDit(d.profilA)}. ${mise.texte}`,
+      `Premier adversaire : ${profilDit(d.profilA)}.`,
+    ],
+    sousTitres: [`Manche 1 — ${profilDit(d.profilA)}`, mise.texte],
+    note: "Le badge de profil est à l'écran : le nommer suffit, ne pas décrire toute la table.",
+  });
+
+  entrees.push({
+    beat: "CHOICE A",
+    voixNiveaux: [
+      `Les montants sont à l'écran. Contre lui, tu fais quoi ?`,
+    ],
+    sousTitres: ["Contre LUI, tu fais quoi ?"],
+    note: "Laisser le temps de pose travailler après la question.",
+  });
+
+  entrees.push({
+    beat: "REVEAL A",
+    voixNiveaux: [
+      `Contre ce profil, ${actionBas} est le bon coup : ${bb(d.evA)} big blinds. Retiens ce chiffre.`,
+      `Ici, ${actionBas} est le bon coup : ${bb(d.evA)}. Retiens ce chiffre.`,
+      `${d.action} : ${bb(d.evA)}. Retiens ce chiffre.`,
+    ],
+    sousTitres: [`${d.action} = ${bb(d.evA)} bb`, "Retiens ce chiffre."],
+    note: "Le chiffre cité est sur la ligne en tête de la liste des espérances, à l'écran pendant ce beat.",
+  });
+
+  entrees.push({
+    beat: "MANCHE B",
+    voixNiveaux: [
+      `Deuxième manche. Même main, même board, même mise. Un seul changement : ${profilDit(d.profilB)}.`,
+      `Même main, même mise. Un seul changement : ${profilDit(d.profilB)}.`,
+      `Tout pareil, sauf lui : ${profilDit(d.profilB)}.`,
+    ],
+    sousTitres: [`Manche 2 — ${profilDit(d.profilB)}`, "Même main, même mise — nouvel adversaire."],
+    note: "Le pivot du concept. Même main, même board, mêmes montants ; le badge de l'adversaire actif est le changement. " +
+      "Les sièges couchés sont décoratifs et leur habillage peut varier d'une manche à l'autre — ne pas bâtir le texte sur eux.",
+  });
+
+  entrees.push({
+    beat: "TENSION B",
+    voixNiveaux: [
+      `La même action… toujours une bonne idée ?`,
+    ],
+    sousTitres: [`${d.action}… encore ?`],
+    note: "Silence sur le freeze : le spectateur parie sur la bascule. Ne rien révéler.",
+  });
+
+  entrees.push({
+    beat: "REVEAL B",
+    voixNiveaux: [
+      `${d.action}, à l'identique ? ${mB.verdict === "erreur" ? "Erreur" : mB.verdict}, dit le moteur. Coût : ${mB.lossBB.toFixed(2).replace(".", ",")} big blinds.`,
+      `La même action ? ${mB.verdict === "erreur" ? "Erreur" : mB.verdict}. Coût : ${mB.lossBB.toFixed(2).replace(".", ",")} big blinds.`,
+    ],
+    sousTitres: [`Verdict : ${mB.verdict}.`, `Coût : ${mB.lossBB.toFixed(2).replace(".", ",")} bb`],
+    note: "La bascule — le moment le plus fort de la vidéo. Chiffres exactement comme affichés.",
+  });
+
+  entrees.push({
+    beat: "PAYOFF",
+    voixNiveaux: [
+      `Contre lui, ${actionBas} vaut ${bb(d.evB)}. La bonne réponse : ${d.bestB.label.toLowerCase()}, ${bb(d.bestB.evBB)}. L'adversaire fait la décision.`,
+      `${d.action} : ${bb(d.evB)}. La bonne réponse : ${d.bestB.label.toLowerCase()}, ${bb(d.bestB.evBB)}. L'adversaire fait la décision.`,
+      `${d.action} : ${bb(d.evB)}. Mieux : ${d.bestB.label.toLowerCase()}, ${bb(d.bestB.evBB)}. L'adversaire fait la décision.`,
+    ],
+    sousTitres: [`${d.action} = ${bb(d.evB)} bb`, `${d.bestB.label} = ${bb(d.bestB.evBB)} bb`, "L'adversaire fait la décision."],
+    note: "La dernière phrase est la leçon du concept — elle se dit sur la liste des espérances, sans la recouvrir.",
+  });
+
+  for (const en of entrees) {
+    const b = beat(en.beat);
+    if (!b) throw new Error(`beat absent de la timeline : ${en.beat}`);
+    en.debut = b.debut; en.fin = b.fin; en.secondes = b.secondes;
+    en.motsMax = Math.floor(b.secondes * DEBIT);
+    en.voix = en.voixNiveaux.find(v => mots(v) <= en.motsMax) || en.voixNiveaux[en.voixNiveaux.length - 1];
+    en.niveauxEcartes = en.voixNiveaux.indexOf(en.voix);
+    delete en.voixNiveaux;
+    en.motsProposes = mots(en.voix);
+    if (en.motsProposes > en.motsMax) {
+      throw new Error(`script infaisable : ${en.beat} demande ${en.motsProposes} mots pour une fenêtre de ${en.motsMax} (${en.secondes} s à ${DEBIT} mots/s) — « ${en.voix} »`);
+    }
+  }
+  return entrees;
+}
+
+/**
+ * Script d'un PODIUM DES ERREURS. Trois lignes indépendantes, une par rang,
+ * plus le HOOK. Même contrat que les autres concepts : chiffres de l'écran
+ * uniquement, calibrage strict par fenêtre de beat.
+ *
+ * Le rythme est volontairement plus sec que le quizz ou le duel — c'est un
+ * format liste, pas un temps de réflexion : chaque rang se dit en une phrase,
+ * situation puis coût, sans détailler la main carte par carte.
+ */
+export function construireScriptPodium(m) {
+  const rangs = m.podium.rang.slice().sort((a, b) => b.rang - a.rang);  // 3, 2, 1
+  const moteursParRang = Object.fromEntries(rangs.map((r, i) => [r.rang, m.moteurs[i]]));
+  const beat = (nom) => m.timeline.find(b => b.beat === nom);
+  const entrees = [];
+
+  const rangDeMoindre = rangs[rangs.length - 1];  // rang 1, le plus cher — cité au HOOK
+
+  entrees.push({
+    beat: "HOOK",
+    voixNiveaux: [
+      `Trois erreurs. De la moins chère… à la pire. Regarde jusqu'au bout.`,
+      `Trois erreurs, classées. Jusqu'à la pire.`,
+      `Trois erreurs classées.`,
+    ],
+    sousTitres: ["Trois erreurs, classées.", "De la moins chère… à la pire."],
+    note: "Aucun chiffre ici : l'accroche est la promesse du classement, pas la réponse.",
+  });
+
+  for (const r of rangs) {
+    const e = moteursParRang[r.rang];
+    const s = lireSpec(r.spot.spec);
+    const reflexeMot = r.instinct === "call" ? "Payer" : "Checker";
+    const situationCourte = `${cartes(s.hero.cartes)} ${EN_POSITION[s.hero.pos] || s.hero.pos}`;
+    const dernier = r.rang === 1;
+
+    entrees.push({
+      beat: `ERREUR N°${r.rang}`,
+      voixNiveaux: dernier
+        ? [
+          `La pire du lot. ${situationCourte}. ${reflexeMot} coûte ${e.lossBB.toFixed(2).replace(".", ",")} big blinds — le sommet du classement.`,
+          `La pire du lot : ${situationCourte}. ${reflexeMot} coûte ${e.lossBB.toFixed(2).replace(".", ",")} big blinds.`,
+          `La pire : ${reflexeMot}, ${e.lossBB.toFixed(2).replace(".", ",")} big blinds.`,
+        ]
+        : [
+          `Numéro ${r.rang} : ${situationCourte}. ${reflexeMot} coûte ${e.lossBB.toFixed(2).replace(".", ",")} big blinds.`,
+          `Numéro ${r.rang} : ${reflexeMot} coûte ${e.lossBB.toFixed(2).replace(".", ",")} big blinds.`,
+        ],
+      sousTitres: [`N°${r.rang}`, `${reflexeMot} = ${e.lossBB.toFixed(2).replace(".", ",")} bb`],
+      note: dernier
+        ? "Le clou de la vidéo : la voix peut s'attarder ici, c'est le seul rang qui le permet."
+        : "Rythme rapide : une phrase, le coût, on enchaîne — ne pas ralentir le classement.",
+    });
+  }
+
+  for (const en of entrees) {
+    const b = beat(en.beat);
+    if (!b) throw new Error(`beat absent de la timeline : ${en.beat}`);
+    en.debut = b.debut; en.fin = b.fin; en.secondes = b.secondes;
+    en.motsMax = Math.floor(b.secondes * DEBIT);
+    en.voix = en.voixNiveaux.find(v => mots(v) <= en.motsMax) || en.voixNiveaux[en.voixNiveaux.length - 1];
+    en.niveauxEcartes = en.voixNiveaux.indexOf(en.voix);
+    delete en.voixNiveaux;
+    en.motsProposes = mots(en.voix);
+    if (en.motsProposes > en.motsMax) {
+      throw new Error(`script infaisable : ${en.beat} demande ${en.motsProposes} mots pour une fenêtre de ${en.motsMax} (${en.secondes} s à ${DEBIT} mots/s) — « ${en.voix} »`);
+    }
+  }
+  return entrees;
+}
+
+/**
+ * Script d'une vidéo LA COTE. La leçon tient en deux nombres — l'équité que le
+ * prix exige, l'équité réelle — tous deux écrits par le moteur à l'écran.
+ * Même contrat que partout : chiffres de l'écran, calibrage par fenêtre.
+ */
+export function construireScriptCote(m) {
+  const c = m.cote;
+  const s = lireSpec(c.spot.spec);
+  const e0 = m.moteurs[0];
+  const beat = (nom) => m.timeline.find(b => b.beat === nom);
+  const vilain = s.vilains[0];
+  const vilainDit = `${POSITIONS[vilain.pos] || vilain.pos}, ${PROFILS[vilain.profil] || vilain.profil}`;
+  const derniere = [s.river && ["River", s.river], s.turn && ["Turn", s.turn], s.flop && ["Flop", s.flop], s.preflop && ["Préflop", s.preflop]].find(Boolean);
+  const rueDite = `${derniere[0]}${derniere[1].board ? ` ${cartes(derniere[1].board)}` : ""}${derniere[1].actions ? ` : ${direActions(derniere[1].actions, { compact: true, garderMontant: true })}` : ""}.`;
+  const eur = (n) => `${Number(n).toFixed(2).replace(".", ",")} €`;
+  const ditNon = c.sens === "non";
+
+  const entrees = [];
+
+  entrees.push({
+    beat: "HOOK",
+    voixNiveaux: [
+      `${cartes(s.hero.cartes)} ${EN_POSITION[s.hero.pos] || s.hero.pos}. Payer ou pas ? Fais le calcul avec moi.`,
+      `Payer ou pas ? Fais le calcul avec moi.`,
+    ],
+    sousTitres: ["Payer ou pas ?", "Fais le calcul."],
+    note: "Aucun chiffre : la promesse est le calcul, pas la réponse.",
+  });
+
+  entrees.push({
+    beat: "SITUATION",
+    voixNiveaux: [
+      `En face : ${vilainDit}. ${rueDite}`,
+      `En face : ${vilainDit}.`,
+      rueDite,
+    ],
+    sousTitres: [`En face : ${vilainDit}`, rueDite],
+    note: "Le déroulement complet est à l'écran ; la voix ne raconte que l'essentiel.",
+  });
+
+  entrees.push({
+    beat: "LA COTE",
+    voixNiveaux: [
+      `Payer ${eur(c.toCall)} dans un pot de ${eur(c.pot)} : ça exige ${String(c.exige).replace(".", ",")} % d'équité. C'est la cote.`,
+      `${eur(c.toCall)} dans un pot de ${eur(c.pot)} : il faut ${String(c.exige).replace(".", ",")} % d'équité.`,
+    ],
+    sousTitres: [`Prix : ${eur(c.toCall)} · Pot : ${eur(c.pot)}`, `→ il faut ${String(c.exige).replace(".", ",")} %`],
+    note: "Le nombre exigé est LE sujet du beat. Silence sur la fin du freeze : le spectateur estime son équité.",
+  });
+
+  entrees.push({
+    beat: "REVEAL",
+    voixNiveaux: ditNon
+      ? [
+        `Ton équité réelle : ${String(c.tuEnAs).replace(".", ",")} %. Loin sous les ${String(c.exige).replace(".", ",")}. Payer coûte ${e0.lossBB.toFixed(2).replace(".", ",")} big blinds.`,
+        `Équité réelle : ${String(c.tuEnAs).replace(".", ",")} %. Payer coûte ${e0.lossBB.toFixed(2).replace(".", ",")} big blinds.`,
+      ]
+      : [
+        `Ton équité réelle : ${String(c.tuEnAs).replace(".", ",")} %. Au-dessus des ${String(c.exige).replace(".", ",")} exigés. Payer est correct.`,
+        `Équité réelle : ${String(c.tuEnAs).replace(".", ",")} %. Payer est correct.`,
+      ],
+    sousTitres: ditNon
+      ? [`Réel : ${String(c.tuEnAs).replace(".", ",")} % < exigé ${String(c.exige).replace(".", ",")} %`, `Payer = ${e0.lossBB.toFixed(2).replace(".", ",")} bb de perdus`]
+      : [`Réel : ${String(c.tuEnAs).replace(".", ",")} % > exigé ${String(c.exige).replace(".", ",")} %`, "Payer est correct."],
+    note: "La phrase de comparaison est écrite par le moteur à l'écran, mot pour mot — la voix la lit, elle n'affirme rien de plus.",
+  });
+
+  entrees.push({
+    beat: "ÉQUITÉ",
+    voixNiveaux: [
+      `Retiens la méthode, pas la main : le prix exige un pourcentage, ton équité répond. Compare les deux — avant de payer.`,
+      `Retiens la méthode : le prix exige, ton équité répond. Compare — avant de payer.`,
+      `La méthode : le prix exige, ton équité répond.`,
+    ],
+    sousTitres: ["Le prix exige. Ton équité répond.", "Compare — avant de payer."],
+    note: "La leçon transposable, sur la dernière image. Ne pas recouvrir le panneau d'équité.",
+  });
+
+  for (const en of entrees) {
+    const b = beat(en.beat);
+    if (!b) throw new Error(`beat absent de la timeline : ${en.beat}`);
+    en.debut = b.debut; en.fin = b.fin; en.secondes = b.secondes;
+    en.motsMax = Math.floor(b.secondes * DEBIT);
+    en.voix = en.voixNiveaux.find(v => mots(v) <= en.motsMax) || en.voixNiveaux[en.voixNiveaux.length - 1];
+    en.niveauxEcartes = en.voixNiveaux.indexOf(en.voix);
+    delete en.voixNiveaux;
+    en.motsProposes = mots(en.voix);
+    if (en.motsProposes > en.motsMax) {
+      throw new Error(`script infaisable : ${en.beat} demande ${en.motsProposes} mots pour une fenêtre de ${en.motsMax} (${en.secondes} s à ${DEBIT} mots/s) — « ${en.voix} »`);
+    }
+  }
+  return entrees;
+}
+
+/**
+ * Script d'une vidéo LE BLUFF. Le HOOK reste neutre — ni le sens ni le
+ * verdict n'est trahi avant le REVEAL. « Fold equity » est défini en clair au
+ * premier usage (LE PARI), pour rester accessible à un public qui ne connaît
+ * pas le jargon. Même contrat que partout : chiffres de l'écran, calibrage
+ * par fenêtre, échelles de compression.
+ */
+export function construireScriptBluff(m) {
+  const b = m.bluff;
+  const s = lireSpec(b.spot.spec);
+  const beat = (nom) => m.timeline.find(x => x.beat === nom);
+  const vilain = s.vilains[0];
+  const vilainDit = `${POSITIONS[vilain.pos] || vilain.pos}, ${PROFILS[vilain.profil] || vilain.profil}`;
+  const brule = b.sens === "brule";
+  const entrees = [];
+
+  entrees.push({
+    beat: "HOOK",
+    voixNiveaux: [
+      `${cartes(s.hero.cartes)} ${EN_POSITION[s.hero.pos] || s.hero.pos}. Ce bluff… il paie, ou il brûle ?`,
+      `Ce bluff… il paie, ou il brûle ?`,
+    ],
+    sousTitres: ["Ce bluff…", "il paie, ou il brûle ?"],
+    note: "Ne rien trahir : ni le sens ni le verdict. Le hook est la question, gardée jusqu'au REVEAL.",
+  });
+
+  entrees.push({
+    beat: "SITUATION",
+    voixNiveaux: [
+      `En face : ${vilainDit}. C'est lui qui décide si ce bluff a une chance.`,
+      `En face : ${vilainDit}.`,
+    ],
+    sousTitres: [`En face : ${vilainDit}`, "C'est lui qui décide."],
+    note: "Le profil est LE facteur du bluff — insister dessus, pas sur les cartes.",
+  });
+
+  entrees.push({
+    beat: "LE PARI",
+    voixNiveaux: [
+      `${b.action}. Pour être rentable en bluff pur, il faut que ce profil passe ${b.exige} % du temps — c'est la fold equity nécessaire.`,
+      `${b.action}. Il faut ${b.exige} % de folds pour que ce pari soit rentable.`,
+      `${b.action} : il faut ${b.exige} % de folds.`,
+    ],
+    sousTitres: [`${b.action}`, `→ il faut ${b.exige} % de folds`],
+    note: "Le nombre exigé est LE sujet. Silence sur la fin du freeze : le spectateur estime ce que CE profil donne réellement.",
+  });
+
+  entrees.push({
+    beat: "REVEAL",
+    voixNiveaux: brule
+      ? [
+        `Ce profil ne donne que ${b.estimation} %. Loin des ${b.exige} exigés. Ce pari coûte ${bb(b.cout)} big blinds face à lui.`,
+        `Ce profil donne ${b.estimation} %, pas ${b.exige}. Ce pari coûte ${bb(b.cout)} big blinds.`,
+      ]
+      : [
+        `Ce profil donne ${b.estimation} %. Au-dessus des ${b.exige} exigés. Ce pari est le bon coup, à ${bb(b.evCible)} big blinds.`,
+        `Ce profil donne ${b.estimation} %, plus que les ${b.exige} exigés. Le bon coup.`,
+      ],
+    sousTitres: brule
+      ? [`Réel : ${b.estimation} % < exigé ${b.exige} %`, `Coût : ${bb(b.cout)} bb`]
+      : [`Réel : ${b.estimation} % > exigé ${b.exige} %`, `${bb(b.evCible)} bb`],
+    note: "L'équation est écrite par le moteur à l'écran, mot pour mot — la voix la lit, elle n'ajoute rien.",
+  });
+
+  entrees.push({
+    beat: "LA LEÇON",
+    voixNiveaux: [
+      `Retiens la méthode : la fold equity n'est pas un espoir, c'est un chiffre à comparer — l'exigé contre ce que CE profil donne vraiment.`,
+      `La méthode : compare toujours l'exigé à ce que ce profil donne vraiment.`,
+      `La méthode : compare l'exigé au réel.`,
+    ],
+    sousTitres: ["La fold equity : pas un espoir.", "Un chiffre à comparer."],
+    note: "La leçon transposable, sur la liste des espérances. Ne pas la recouvrir.",
+  });
+
+  for (const en of entrees) {
+    const bt = beat(en.beat);
+    if (!bt) throw new Error(`beat absent de la timeline : ${en.beat}`);
+    en.debut = bt.debut; en.fin = bt.fin; en.secondes = bt.secondes;
+    en.motsMax = Math.floor(bt.secondes * DEBIT);
+    en.voix = en.voixNiveaux.find(v => mots(v) <= en.motsMax) || en.voixNiveaux[en.voixNiveaux.length - 1];
+    en.niveauxEcartes = en.voixNiveaux.indexOf(en.voix);
+    delete en.voixNiveaux;
+    en.motsProposes = mots(en.voix);
+    if (en.motsProposes > en.motsMax) {
+      throw new Error(`script infaisable : ${en.beat} demande ${en.motsProposes} mots pour une fenêtre de ${en.motsMax} (${en.secondes} s à ${DEBIT} mots/s) — « ${en.voix} »`);
+    }
+  }
+  return entrees;
+}
+
+function scriptMarkdownBluff(m) {
+  const entrees = construireScriptBluff(m);
+  const b = m.bluff;
+
+  return `# Script — ${m.video}
+
+**Vidéo** : \`${m.fichier}\` · ${m.duree.toFixed(2)} s · **Concept** : ${m.conceptTitre || m.concept}
+**Situation** : ${m.titreInterne}
+
+> **Statut de ce texte : une proposition.** Le ton, le rythme et les mots se
+> reformulent librement — c'est ta voix. Les **chiffres**, en revanche, sont ceux
+> que le moteur affiche à l'écran au même moment : ne les change pas, ne les
+> arrondis pas autrement, n'en ajoute pas d'autres.
+>
+> Calibrage : environ ${DEBIT} mots par seconde de voix posée. Chaque beat
+> indique sa contrainte ; si tu reformules plus long, ça ne rentrera pas.
+>
+> **Le principe du Bluff** : ${b.action} demande ${b.exige} % de folds, ce
+> profil en donne ${b.estimation} % — **le bluff ${b.sens === "brule" ? "brûle" : "passe"}**.
+> L'équation est écrite par le moteur lui-même à l'écran pendant le REVEAL.
+> Aucun sens n'est trahi au HOOK — c'est volontaire, pour la rétention.
+
+---
+
+## Le script, d'une traite
+
+${entrees.map(en => en.voix).join("\n\n")}
+
+*(Les crochets de calage : ${entrees.map(en => `${en.beat} à ${tc(en.debut)}`).join(" · ")}.)*
+
+---
+
+## Le détail, beat par beat
+
+${entrees.map(en => `### ${en.beat} — \`${tc(en.debut)}\` → \`${tc(en.fin)}\` (${en.secondes.toFixed(1)} s · ${en.motsMax} mots max, proposé : ${en.motsProposes})
+
+**Voix off proposée**
+
+> ${en.voix}
+
+**Sous-titres proposés** (à caler dans la fenêtre du beat, en bas de la bande utile)
+
+${en.sousTitres.map(x => `- ${x}`).join("\n")}
+
+**Note de jeu.** ${en.note}
+`).join("\n")}
+---
+
+## Les chiffres de référence (ceux de l'écran)
+
+| donnée | valeur |
+|---|---|
+| pari jugé | ${b.action} |
+| EV du pari | ${bb(b.evCible)} bb |
+| meilleure action | ${b.evMeilleure.label} (${bb(b.evMeilleure.evBB)} bb) |
+| fold equity exigée | ${b.exige} % |
+| fold equity estimée (ce profil) | ${b.estimation} % |
+| marge | ${b.marge > 0 ? "+" : ""}${b.marge} points |
+| le bluff | ${b.sens === "brule" ? "BRÛLE" : "PASSE"} |
+| coût / gain | ${bb(b.cout)} bb |
+
+Ces valeurs viennent de \`Judge.evaluate\` — l'équation de fold equity est relue
+dans le texte que le moteur écrit lui-même, et revérifiée par le contrôle
+qualité. Comme l'indique l'application, ce sont des estimations sur la range
+adverse et les profils en jeu — un ordre de grandeur et un classement, pas une
+sortie de solveur. Le script ne doit pas les présenter autrement.
+`;
+}
+
+function scriptMarkdownCote(m) {
+  const entrees = construireScriptCote(m);
+  const c = m.cote;
+  const e0 = m.moteurs[0];
+
+  return `# Script — ${m.video}
+
+**Vidéo** : \`${m.fichier}\` · ${m.duree.toFixed(2)} s · **Concept** : ${m.conceptTitre || m.concept}
+**Situation** : ${m.titreInterne}
+
+> **Statut de ce texte : une proposition.** Le ton, le rythme et les mots se
+> reformulent librement — c'est ta voix. Les **chiffres**, en revanche, sont ceux
+> que le moteur affiche à l'écran au même moment : ne les change pas, ne les
+> arrondis pas autrement, n'en ajoute pas d'autres.
+>
+> Calibrage : environ ${DEBIT} mots par seconde de voix posée. Chaque beat
+> indique sa contrainte ; si tu reformules plus long, ça ne rentrera pas.
+>
+> **Le principe de La Cote** : le prix exige ${c.exige} % d'équité, le héros en
+> a ${c.tuEnAs} % — **la cote dit ${c.sens}**. La phrase de comparaison est
+> écrite par le moteur lui-même à l'écran pendant le REVEAL.
+
+---
+
+## Le script, d'une traite
+
+${entrees.map(en => en.voix).join("\n\n")}
+
+*(Les crochets de calage : ${entrees.map(en => `${en.beat} à ${tc(en.debut)}`).join(" · ")}.)*
+
+---
+
+## Le détail, beat par beat
+
+${entrees.map(en => `### ${en.beat} — \`${tc(en.debut)}\` → \`${tc(en.fin)}\` (${en.secondes.toFixed(1)} s · ${en.motsMax} mots max, proposé : ${en.motsProposes})
+
+**Voix off proposée**
+
+> ${en.voix}
+
+**Sous-titres proposés** (à caler dans la fenêtre du beat, en bas de la bande utile)
+
+${en.sousTitres.map(x => `- ${x}`).join("\n")}
+
+**Note de jeu.** ${en.note}
+`).join("\n")}
+---
+
+## Les chiffres de référence (ceux de l'écran)
+
+| donnée | valeur |
+|---|---|
+| à payer | ${Number(c.toCall).toFixed(2).replace(".", ",")} € |
+| pot | ${Number(c.pot).toFixed(2).replace(".", ",")} € |
+| équité exigée par le prix | ${String(c.exige).replace(".", ",")} % |
+| équité réelle du héros | ${String(c.tuEnAs).replace(".", ",")} % |
+| la cote dit | ${c.sens.toUpperCase()} |
+| verdict affiché | « ${e0.verdict} » |
+| coût du call | ${e0.lossBB.toFixed(2).replace(".", ",")} bb |
+
+Ces valeurs viennent de \`Judge.evaluate\` — l'exigence de la cote est relue
+dans le texte que le moteur écrit lui-même, et revérifiée par le contrôle
+qualité. Comme l'indique l'application, ce sont des estimations sur la range
+adverse et les profils en jeu — un ordre de grandeur et un classement, pas une
+sortie de solveur. Le script ne doit pas les présenter autrement.
+`;
+}
+
+function chiffresPodium(m) {
+  const rangs = m.podium.rang.slice().sort((a, b) => b.rang - a.rang);
+  const moteursParRang = Object.fromEntries(rangs.map((r, i) => [r.rang, m.moteurs[i]]));
+  return `| rang | situation | réflexe | coût | verdict |
+|---|---|---|---|---|
+${rangs.map(r => {
+    const e = moteursParRang[r.rang];
+    return `| N°${r.rang} | ${r.spot.label} | ${r.instinct === "call" ? "payer" : "checker"} | ${bb(e.lossBB)} bb | « ${e.verdict} » |`;
+  }).join("\n")}`;
+}
+
+function scriptMarkdownPodium(m) {
+  const entrees = construireScriptPodium(m);
+
+  return `# Script — ${m.video}
+
+**Vidéo** : \`${m.fichier}\` · ${m.duree.toFixed(2)} s · **Concept** : ${m.conceptTitre || m.concept}
+**Situation** : ${m.titreInterne}
+
+> **Statut de ce texte : une proposition.** Le ton, le rythme et les mots se
+> reformulent librement — c'est ta voix. Les **chiffres**, en revanche, sont ceux
+> que le moteur affiche à l'écran au même moment : ne les change pas, ne les
+> arrondis pas autrement, n'en ajoute pas d'autres.
+>
+> Calibrage : environ ${DEBIT} mots par seconde de voix posée. Chaque beat
+> indique sa contrainte ; si tu reformules plus long, ça ne rentrera pas.
+>
+> **Le principe du podium** : trois erreurs indépendantes, classées par coût
+> réel — n°3 la moins chère, n°1 la plus chère. Aucune des trois ne dépend
+> des autres ; c'est le classement, pas l'histoire, qui fait tenir la vidéo.
+
+---
+
+## Le script, d'une traite
+
+${entrees.map(en => en.voix).join("\n\n")}
+
+*(Les crochets de calage : ${entrees.map(en => `${en.beat} à ${tc(en.debut)}`).join(" · ")}.)*
+
+---
+
+## Le détail, beat par beat
+
+${entrees.map(en => `### ${en.beat} — \`${tc(en.debut)}\` → \`${tc(en.fin)}\` (${en.secondes.toFixed(1)} s · ${en.motsMax} mots max, proposé : ${en.motsProposes})
+
+**Voix off proposée**
+
+> ${en.voix}
+
+**Sous-titres proposés** (à caler dans la fenêtre du beat, en bas de la bande utile)
+
+${en.sousTitres.map(s => `- ${s}`).join("\n")}
+
+**Note de jeu.** ${en.note}
+`).join("\n")}
+---
+
+## Les chiffres de référence (ceux de l'écran)
+
+${chiffresPodium(m)}
+
+Ces valeurs viennent de \`Judge.evaluate\`, rejouées et revérifiées par le
+contrôle qualité sur les trois erreurs. Comme l'indique l'application
+elle-même, ce sont des estimations sur la range adverse et les profils en
+jeu — un ordre de grandeur et un classement, pas une sortie de solveur. Le
+script ne doit pas les présenter autrement.
+`;
+}
+
+/** Table des chiffres de référence d'un duel — les deux manches côte à côte. */
+function chiffresDuel(m) {
+  const d = m.duel;
+  const [mA, mB] = m.moteurs;
+  return `| donnée | manche A (${d.profilA}) | manche B (${d.profilB}) |
+|---|---|---|
+| équité du héros | ${d.equityA} % | ${d.equityB} % |
+| EV de ${d.action} | ${bb(d.evA)} bb | ${bb(d.evB)} bb |
+| verdict affiché | « ${mA.verdict} » | « ${mB.verdict} » |
+| meilleure action | ${d.action} | ${d.bestB.label} (${bb(d.bestB.evBB)} bb) |
+| bascule | \\— | **${d.contraste.toFixed(2).replace(".", ",")} bb** |`;
+}
+
+function scriptMarkdownDuel(m) {
+  const entrees = construireScriptDuel(m);
+  const d = m.duel;
+
+  return `# Script — ${m.video}
+
+**Vidéo** : \`${m.fichier}\` · ${m.duree.toFixed(2)} s · **Concept** : ${m.conceptTitre || m.concept}
+**Situation** : ${m.titreInterne}
+
+> **Statut de ce texte : une proposition.** Le ton, le rythme et les mots se
+> reformulent librement — c'est ta voix. Les **chiffres**, en revanche, sont ceux
+> que le moteur affiche à l'écran au même moment : ne les change pas, ne les
+> arrondis pas autrement, n'en ajoute pas d'autres.
+>
+> Calibrage : environ ${DEBIT} mots par seconde de voix posée. Chaque beat
+> indique sa contrainte ; si tu reformules plus long, ça ne rentrera pas.
+>
+> **Le principe du duel** : la même action — ${d.action} — est jouée dans les
+> deux manches. Correcte contre ${d.profilA} (${bb(d.evA)} bb), elle devient une
+> erreur contre ${d.profilB} (${bb(d.evB)} bb). Rien d'autre ne change.
+
+---
+
+## Le script, d'une traite
+
+${entrees.map(en => en.voix).join("\n\n")}
+
+*(Les crochets de calage : ${entrees.map(en => `${en.beat} à ${tc(en.debut)}`).join(" · ")}.)*
+
+---
+
+## Le détail, beat par beat
+
+${entrees.map(en => `### ${en.beat} — \`${tc(en.debut)}\` → \`${tc(en.fin)}\` (${en.secondes.toFixed(1)} s · ${en.motsMax} mots max, proposé : ${en.motsProposes})
+
+**Voix off proposée**
+
+> ${en.voix}
+
+**Sous-titres proposés** (à caler dans la fenêtre du beat, en bas de la bande utile)
+
+${en.sousTitres.map(s => `- ${s}`).join("\n")}
+
+**Note de jeu.** ${en.note}
+`).join("\n")}
+---
+
+## Les chiffres de référence (ceux de l'écran)
+
+${chiffresDuel(m)}
+
+Ces valeurs viennent de \`Judge.evaluate\`, rejouées et revérifiées par le
+contrôle qualité sur les deux manches. Comme l'indique l'application elle-même,
+ce sont des estimations sur la range adverse et les profils en jeu — un ordre de
+grandeur et un classement, pas une sortie de solveur. Le script ne doit pas les
+présenter autrement.
+`;
+}
+
+export function scriptMarkdown(m) {
+  if (m.duel) return scriptMarkdownDuel(m);
+  if (m.podium) return scriptMarkdownPodium(m);
+  if (m.cote) return scriptMarkdownCote(m);
+  if (m.bluff) return scriptMarkdownBluff(m);
+  const entrees = construireScript(m);
+  const e = m.moteur;
+
+  return `# Script — ${m.video}
+
+**Vidéo** : \`${m.fichier}\` · ${m.duree.toFixed(2)} s · **Concept** : ${m.conceptTitre || m.concept}
+**Situation** : ${m.titreInterne}
+
+> **Statut de ce texte : une proposition.** Le ton, le rythme et les mots se
+> reformulent librement — c'est ta voix. Les **chiffres**, en revanche, sont ceux
+> que le moteur affiche à l'écran au même moment : ne les change pas, ne les
+> arrondis pas autrement, n'en ajoute pas d'autres.
+>
+> Calibrage : environ ${DEBIT} mots par seconde de voix posée. Chaque beat
+> indique sa contrainte ; si tu reformules plus long, ça ne rentrera pas.
+
+---
+
+## Le script, d'une traite
+
+${entrees.map(en => en.voix).join("\n\n")}
+
+*(Les crochets de calage : ${entrees.map(en => `${en.beat} à ${tc(en.debut)}`).join(" · ")}.)*
+
+---
+
+## Le détail, beat par beat
+
+${entrees.map(en => `### ${en.beat} — \`${tc(en.debut)}\` → \`${tc(en.fin)}\` (${en.secondes.toFixed(1)} s · ${en.motsMax} mots max, proposé : ${en.motsProposes})
+
+**Voix off proposée**
+
+> ${en.voix}
+
+**Sous-titres proposés** (à caler dans la fenêtre du beat, en bas de la bande utile)
+
+${en.sousTitres.map(s => `- ${s}`).join("\n")}
+
+**Note de jeu.** ${en.note}
+`).join("\n")}
+---
+
+## Les chiffres de référence (ceux de l'écran)
+
+| donnée | valeur |
+|---|---|
+| équité du héros | ${e.equity} % |
+| action jouée dans la vidéo | ${e.joue.label} (${bb(e.joue.evBB)} bb) |
+| meilleure action | ${e.meilleure.label} (${bb(e.meilleure.evBB)} bb) |
+| coût de l'erreur | ${e.lossBB.toFixed(2).replace(".", ",")} bb |
+| verdict affiché | « ${e.verdict} » |
+${e.options.map(o => `| espérance — ${o.label} | ${bb(o.evBB)} bb |`).join("\n")}
+
+Ces valeurs viennent de \`Judge.evaluate\` et sont affichées dans la vidéo aux
+beats REVEAL et PAYOFF. Comme l'application l'indique elle-même, ce sont des
+estimations sur la range adverse et les profils en jeu — un ordre de grandeur et
+un classement, pas une sortie de solveur. Le script ne doit pas les présenter
+autrement.
+`;
+}
+
+/** Écrit le SCRIPT.md de chaque dossier vidéo passé. */
+export async function ecrireScripts(dossiers) {
+  const faits = [];
+  for (const d of dossiers) {
+    const mf = join(d, "manifest.json");
+    if (!existsSync(mf)) continue;
+    const m = JSON.parse(await readFile(mf, "utf8"));
+    await writeFile(join(d, "SCRIPT.md"), scriptMarkdown(m));
+    faits.push({ dossier: d, video: m.video });
+  }
+  return faits;
+}
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  const argv = process.argv.slice(2);
+  const arg = (n, d) => { const i = argv.indexOf(n); return i >= 0 ? argv[i + 1] : d; };
+  const base = join(ROOT, "Format court", arg("--concept-dir", "Quizz"));
+  const dossiers = (await readdir(base, { withFileTypes: true }))
+    .filter(x => x.isDirectory()).map(x => join(base, x.name)).sort();
+  const faits = await ecrireScripts(dossiers);
+  for (const f of faits) console.log(`  ✓ ${relative(ROOT, f.dossier)}/SCRIPT.md`);
+  console.log(`${faits.length} script(s) écrit(s)`);
+}

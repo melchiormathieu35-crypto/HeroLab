@@ -1,0 +1,551 @@
+{
+  "video": "07 - podium 76s sur board paire face a un nit 55 sur tres connecte",
+  "concept": "podium",
+  "conceptTitre": "Podium des erreurs",
+  "titreInterne": "Podium : 76s · 55 · JJ",
+  "enonce": "Trois erreurs classées : n°3 à +7.62 bb, n°2 à +9.83 bb, n°1 à +16.56 bb — le coût réel, tel que le moteur le calcule.",
+  "fichier": "video.webm",
+  "montee": true,
+  "spot": {
+    "id": "flop-face-mise_bb_76s_nit_paire",
+    "modele": "flop-face-mise",
+    "theme": "flop",
+    "label": "76s sur board pairé face à un nit",
+    "spec": "Hero: BB, 7h 6h, 100bb\nTable: 6-max, NL10\nVillains: BTN (nit, 100bb)\nPreflop: BTN raise 2.5bb, hero call\nFlop: 8h 8s 4c | hero check, BTN bet 4bb, hero to act"
+  },
+  "score": 88,
+  "scoreDetail": {
+    "paradoxe": 18,
+    "contreIntuitif": 14,
+    "differentielEV": 17.1,
+    "difficulte": 10.8,
+    "curiosite": 6.6,
+    "lisibilite": 8.1,
+    "reveal": 8,
+    "pedagogie": 6,
+    "debat": 2.5,
+    "serie": 4
+  },
+  "signature": "podium|flop-face-mise|connecteur|paire|aggro|instinct-perdant+turn-apres-call|petite-paire|connecte|fold|instinct-perdant+turn-deuxieme-balle|grosse-paire|bas|aggro|instinct-perdant",
+  "momentReveal": "Beat ERREUR N°1, sur le dernier verdict — le plus cher du classement.",
+  "objectifRetention": "Retenir par le classement : chaque erreur est plus chère que la précédente, et la structure elle-même pousse à rester jusqu'au numéro un. Aucune main ne dépend d'une autre — ce sont trois preuves indépendantes.",
+  "format": {
+    "largeur": 1080,
+    "hauteur": 1920,
+    "fps": 30,
+    "conteneur": "webm",
+    "codec": "vp8"
+  },
+  "duree": 34.07,
+  "images": 1022,
+  "moteur": {
+    "joue": {
+      "action": "call",
+      "label": "Suivre 6.00 €",
+      "evBB": -6.82
+    },
+    "instinct": "call",
+    "verdict": "erreur",
+    "lossBB": 16.56,
+    "equity": 26.5,
+    "pot": 12.75,
+    "toCall": 6,
+    "options": [
+      {
+        "label": "Relancer Tapis",
+        "action": "raise",
+        "evBB": 9.74
+      },
+      {
+        "label": "Relancer Pot",
+        "action": "raise",
+        "evBB": 9.6
+      },
+      {
+        "label": "Relancer 1/3 pot",
+        "action": "raise",
+        "evBB": 9.59
+      },
+      {
+        "label": "Passer",
+        "action": "fold",
+        "evBB": 0
+      },
+      {
+        "label": "Suivre 6.00 €",
+        "action": "call",
+        "evBB": -6.82
+      }
+    ],
+    "meilleure": {
+      "action": "raise",
+      "label": "Relancer Tapis",
+      "evBB": 9.74
+    }
+  },
+  "moteurs": [
+    {
+      "beat": "ERREUR N°3",
+      "joue": {
+        "action": "call",
+        "label": "Suivre 0.40 €",
+        "evBB": -3.54
+      },
+      "instinct": "call",
+      "verdict": "erreur",
+      "lossBB": 7.62,
+      "equity": 26.4,
+      "pot": 0.9500000000000001,
+      "toCall": 0.4,
+      "options": [
+        {
+          "label": "Relancer Pot",
+          "action": "raise",
+          "evBB": 4.07
+        },
+        {
+          "label": "Relancer 1/3 pot",
+          "action": "raise",
+          "evBB": 4.01
+        },
+        {
+          "label": "Relancer Tapis",
+          "action": "raise",
+          "evBB": 1.06
+        },
+        {
+          "label": "Passer",
+          "action": "fold",
+          "evBB": 0
+        },
+        {
+          "label": "Suivre 0.40 €",
+          "action": "call",
+          "evBB": -3.54
+        }
+      ],
+      "meilleure": {
+        "action": "raise",
+        "label": "Relancer Pot",
+        "evBB": 4.07
+      }
+    },
+    {
+      "beat": "ERREUR N°2",
+      "joue": {
+        "action": "call",
+        "label": "Suivre 0.90 €",
+        "evBB": -9.83
+      },
+      "instinct": "call",
+      "verdict": "erreur",
+      "lossBB": 9.83,
+      "equity": 6.7,
+      "pot": 2.0500000000000003,
+      "toCall": 0.9,
+      "options": [
+        {
+          "label": "Passer",
+          "action": "fold",
+          "evBB": 0
+        },
+        {
+          "label": "Suivre 0.90 €",
+          "action": "call",
+          "evBB": -9.83
+        },
+        {
+          "label": "Relancer 1/3 pot",
+          "action": "raise",
+          "evBB": -10.34
+        },
+        {
+          "label": "Relancer Pot",
+          "action": "raise",
+          "evBB": -10.47
+        },
+        {
+          "label": "Relancer Tapis",
+          "action": "raise",
+          "evBB": -11.26
+        }
+      ],
+      "meilleure": {
+        "action": "fold",
+        "label": "Passer",
+        "evBB": 0
+      }
+    },
+    {
+      "beat": "ERREUR N°1",
+      "joue": {
+        "action": "call",
+        "label": "Suivre 6.00 €",
+        "evBB": -6.82
+      },
+      "instinct": "call",
+      "verdict": "erreur",
+      "lossBB": 16.56,
+      "equity": 26.5,
+      "pot": 12.75,
+      "toCall": 6,
+      "options": [
+        {
+          "label": "Relancer Tapis",
+          "action": "raise",
+          "evBB": 9.74
+        },
+        {
+          "label": "Relancer Pot",
+          "action": "raise",
+          "evBB": 9.6
+        },
+        {
+          "label": "Relancer 1/3 pot",
+          "action": "raise",
+          "evBB": 9.59
+        },
+        {
+          "label": "Passer",
+          "action": "fold",
+          "evBB": 0
+        },
+        {
+          "label": "Suivre 6.00 €",
+          "action": "call",
+          "evBB": -6.82
+        }
+      ],
+      "meilleure": {
+        "action": "raise",
+        "label": "Relancer Tapis",
+        "evBB": 9.74
+      }
+    }
+  ],
+  "duel": null,
+  "podium": {
+    "rang": [
+      {
+        "rang": 3,
+        "spot": {
+          "id": "flop-face-mise_bb_76s_nit_paire",
+          "modele": "flop-face-mise",
+          "label": "76s sur board pairé face à un nit",
+          "spec": "Hero: BB, 7h 6h, 100bb\nTable: 6-max, NL10\nVillains: BTN (nit, 100bb)\nPreflop: BTN raise 2.5bb, hero call\nFlop: 8h 8s 4c | hero check, BTN bet 4bb, hero to act"
+        },
+        "instinct": "call",
+        "coutInstinct": 7.618412771192036,
+        "equity": 26.4
+      },
+      {
+        "rang": 2,
+        "spot": {
+          "id": "turn-apres-call_co_55_fish_connecte_connexion",
+          "modele": "turn-apres-call",
+          "label": "55 sur très connecté, carte qui connecte, face à un fish",
+          "spec": "Hero: CO, 5h 5s, 100bb\nTable: 6-max, NL10\nVillains: BB (fish, 100bb)\nPreflop: hero raise 2.5bb, BB call\nFlop: 9h 8s 7c | BB check, hero bet 3bb, BB call\nTurn: Ts | BB bet 9bb, hero to act"
+        },
+        "instinct": "call",
+        "coutInstinct": 9.830294359756095,
+        "equity": 6.7
+      },
+      {
+        "rang": 1,
+        "spot": {
+          "id": "turn-deuxieme-balle_bb_jj_nit_bas_blanche",
+          "modele": "turn-deuxieme-balle",
+          "label": "JJ sur bas et déconnecté, carte blanche, face à un nit",
+          "spec": "Hero: BB, Jc Jd, 100bb\nTable: 6-max, NL50\nVillains: BTN (nit, 100bb)\nPreflop: BTN raise 2.5bb, hero call\nFlop: 6c 5h 2s | hero check, BTN bet 4bb, hero call\nTurn: 2h | hero check, BTN bet 12bb, hero to act"
+        },
+        "instinct": "call",
+        "coutInstinct": 16.560473328333693,
+        "equity": 26.5
+      }
+    ]
+  },
+  "timeline": [
+    {
+      "beat": "HOOK",
+      "role": "La main de la première erreur, sans contexte : la promesse du classement, pas encore la réponse.",
+      "debut": 0,
+      "fin": 4.3,
+      "secondes": 4.3,
+      "mouvements": [
+        {
+          "type": "zoomIn",
+          "cible": ".hero-hand .cards",
+          "duree": 0.9,
+          "pourquoi": "Ouvrir sur une main, sans dire laquelle des trois erreurs elle est, pose la promesse du classement."
+        }
+      ],
+      "cadrages": [
+        {
+          "cible": ".hero-hand .cards",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 27,
+          "droite": 99,
+          "largeurVue": 360,
+          "textePx": 13,
+          "texteRush": 44,
+          "top": 212,
+          "bottom": 257,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".hero-hand .cards",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 27,
+        "droite": 99,
+        "largeurVue": 360,
+        "textePx": 13,
+        "texteRush": 44,
+        "top": 212,
+        "bottom": 257,
+        "why": null
+      }
+    },
+    {
+      "beat": "ERREUR N°3",
+      "role": "Rang 3/3 du podium — 76s sur board pairé face à un nit. Réflexe joué : call, coût +7.62 bb.",
+      "debut": 4.3,
+      "fin": 12.57,
+      "secondes": 8.27,
+      "mouvements": [
+        {
+          "type": "jouer",
+          "cible": null,
+          "duree": null,
+          "pourquoi": "Le réflexe (payer) est joué à l'écran : c'est lui, chiffré, qui fait l'erreur n°3."
+        },
+        {
+          "type": "pan",
+          "cible": ".verdict",
+          "duree": 0.85,
+          "pourquoi": "Le bloc verdict monte en haut du cadre pour que le titre et le coût entrent dans la bande utile."
+        },
+        {
+          "type": "zoomIn",
+          "cible": ".vh",
+          "duree": 0.5,
+          "pourquoi": "Le resserrement accompagne le chiffre qui classe cette erreur — le point de preuve du rang n°3."
+        }
+      ],
+      "cadrages": [
+        {
+          "cible": ".felt",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 14,
+          "droite": 346,
+          "largeurVue": 360,
+          "textePx": 16,
+          "texteRush": 48,
+          "top": 141,
+          "bottom": 411,
+          "why": null
+        },
+        {
+          "cible": ".vh",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 7,
+          "droite": 353,
+          "largeurVue": 360,
+          "textePx": 11.5,
+          "texteRush": 41,
+          "top": 78,
+          "bottom": 142,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".felt",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 14,
+        "droite": 346,
+        "largeurVue": 360,
+        "textePx": 16,
+        "texteRush": 48,
+        "top": 141,
+        "bottom": 411,
+        "why": null
+      }
+    },
+    {
+      "beat": "ERREUR N°2",
+      "role": "Rang 2/3 du podium — 55 sur très connecté, carte qui connecte, face à un fish. Réflexe joué : call, coût +9.83 bb.",
+      "debut": 12.57,
+      "fin": 22.5,
+      "secondes": 9.93,
+      "mouvements": [
+        {
+          "type": "jouer",
+          "cible": null,
+          "duree": null,
+          "pourquoi": "Le réflexe (payer) est joué à l'écran : c'est lui, chiffré, qui fait l'erreur n°2."
+        },
+        {
+          "type": "pan",
+          "cible": ".verdict",
+          "duree": 0.85,
+          "pourquoi": "Le bloc verdict monte en haut du cadre pour que le titre et le coût entrent dans la bande utile."
+        },
+        {
+          "type": "zoomIn",
+          "cible": ".vh",
+          "duree": 0.5,
+          "pourquoi": "Le resserrement accompagne le chiffre qui classe cette erreur — le point de preuve du rang n°2."
+        }
+      ],
+      "cadrages": [
+        {
+          "cible": ".felt",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 14,
+          "droite": 346,
+          "largeurVue": 360,
+          "textePx": 16,
+          "texteRush": 48,
+          "top": 141,
+          "bottom": 411,
+          "why": null
+        },
+        {
+          "cible": ".vh",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 7,
+          "droite": 353,
+          "largeurVue": 360,
+          "textePx": 11.5,
+          "texteRush": 41,
+          "top": 78,
+          "bottom": 142,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".felt",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 14,
+        "droite": 346,
+        "largeurVue": 360,
+        "textePx": 16,
+        "texteRush": 48,
+        "top": 141,
+        "bottom": 411,
+        "why": null
+      }
+    },
+    {
+      "beat": "ERREUR N°1",
+      "role": "Rang 1/3 du podium — JJ sur bas et déconnecté, carte blanche, face à un nit. Réflexe joué : call, coût +16.56 bb.",
+      "debut": 22.5,
+      "fin": 34.07,
+      "secondes": 11.57,
+      "mouvements": [
+        {
+          "type": "jouer",
+          "cible": null,
+          "duree": null,
+          "pourquoi": "Le réflexe (payer) est joué à l'écran : c'est lui, chiffré, qui fait l'erreur n°1."
+        },
+        {
+          "type": "pan",
+          "cible": ".verdict",
+          "duree": 0.85,
+          "pourquoi": "Le bloc verdict monte en haut du cadre pour que le titre et le coût entrent dans la bande utile."
+        },
+        {
+          "type": "zoomIn",
+          "cible": ".vh",
+          "duree": 0.5,
+          "pourquoi": "Le resserrement accompagne le chiffre qui classe cette erreur — le point de preuve du rang n°1."
+        }
+      ],
+      "cadrages": [
+        {
+          "cible": ".felt",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 14,
+          "droite": 346,
+          "largeurVue": 360,
+          "textePx": 16,
+          "texteRush": 48,
+          "top": 141,
+          "bottom": 411,
+          "why": null
+        },
+        {
+          "cible": ".vh",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 7,
+          "droite": 353,
+          "largeurVue": 360,
+          "textePx": 11.5,
+          "texteRush": 41,
+          "top": 78,
+          "bottom": 142,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".felt",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 14,
+        "droite": 346,
+        "largeurVue": 360,
+        "textePx": 16,
+        "texteRush": 48,
+        "top": 141,
+        "bottom": 411,
+        "why": null
+      }
+    }
+  ],
+  "bornages": [],
+  "erreurs": []
+}

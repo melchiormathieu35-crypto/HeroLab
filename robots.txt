@@ -1,0 +1,16 @@
+# Hero Lab — simulateur de décisions poker cash game
+# L'application est un fichier unique (index.html) ; il n'y a pas de section
+# privée ni d'espace authentifié à protéger.
+
+User-agent: *
+Allow: /
+
+# La génération précédente est conservée dans le dépôt pour référence
+# historique mais n'est pas servie : netlify.toml répond 404 sur ce chemin.
+# La règle reste ici comme seconde barrière si la configuration changeait.
+Disallow: /archive/
+
+# Les suites de test ne sont pas du contenu.
+Disallow: /tests/
+
+Sitemap: https://herolab.eu/sitemap.xml
