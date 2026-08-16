@@ -149,20 +149,50 @@ export async function executer(page, enc, m, etat) {
       const origin = await zoomOriginFor(page, m.cible);
       if (!origin) throw new Error(`cible de zoom introuvable : ${m.cible}`);
 
-      // Garde de rognage. Agrandir une cible plus large que le cadre la coupe
-      // forcément : les blocs pleine largeur de Hero Lab font 332 px pour un
-      // cadre de 360, soit un zoom maximal de 1,02. Un premier jet zoomait à
-      // 1,45 sur l'un d'eux et tronquait montants et libellés aux deux bords.
-      // On borne donc l'agrandissement à ce que la cible supporte, et on le
-      // signale plutôt que de le corriger en silence.
+      // GARDE DE ROGNAGE — deux plafonds, et il a fallu les deux.
+      //
+      // 1. La cible elle-même. Agrandir un bloc plus large que le cadre le coupe
+      //    forcément : les blocs pleine largeur de Hero Lab font 332 px pour un
+      //    cadre de 360. Un premier jet zoomait à 1,45 sur l'un d'eux et
+      //    tronquait montants et libellés aux deux bords.
+      //
+      // 2. LA PAGE AUTOUR de la cible. Ce plafond-là manquait, et le défaut est
+      //    revenu par la fenêtre : un zoom ×1,45 cadré sur les deux cartes du
+      //    héros — larges de 64 px, donc très en dessous du premier plafond —
+      //    agrandit malgré tout toute la mise en page, et le tapis s'affichait
+      //    « 7.5 bb » au lieu de « 97.5 bb ». Un chiffre faux à l'écran, pas un
+      //    rognage esthétique. Le zoom est donc aussi borné par la colonne de
+      //    contenu, qui est ce que le spectateur lit.
+      //
+      // Un blueprint peut demander `a: "max"` pour dire « le plus près possible
+      // sans rien couper » et laisser la page fixer la valeur.
       const dim = await page.evaluate((sel) => {
         const el = document.querySelector(sel);
         const r = el.getBoundingClientRect();
-        return { w: r.width, vw: innerWidth };
+        const vue = document.getElementById("v-play") || document.body;
+        // Colonne de contenu : le plus large bloc porteur de texte de la page.
+        let contenu = 0;
+        for (const n of vue.querySelectorAll("*")) {
+          const b = n.getBoundingClientRect();
+          if (b.height < 8 || b.width < 40) continue;
+          if (![...n.childNodes].some(c => c.nodeType === 3 && c.textContent.trim())) continue;
+          if (b.width > contenu) contenu = b.width;
+        }
+        return { w: r.width, vw: innerWidth, contenu };
       }, m.cible);
-      const plafond = dim.w > 0 ? (dim.vw * 0.96) / dim.w : Infinity;
-      const vise = Math.max(1, Math.min(m.a, plafond));
-      if (vise < m.a - 0.005) etat.bornages.push({ cible: m.cible, demande: m.a, applique: Number(vise.toFixed(2)) });
+      const echelleCourante = etat.scale || 1;
+      const plafondCible = dim.w > 0 ? (dim.vw * 0.96) / dim.w : Infinity;
+      // `contenu` est mesuré à l'échelle courante : on le ramène à l'échelle 1
+      // avant d'en déduire le plafond, sinon un enchaînement de zooms se
+      // borne sur sa propre sortie.
+      const contenu1 = dim.contenu > 0 ? dim.contenu / echelleCourante : 0;
+      const plafondPage = contenu1 > 0 ? dim.vw / contenu1 : Infinity;
+      const plafond = Math.min(plafondCible, plafondPage);
+      const demande = m.a === "max" ? plafond : m.a;
+      const vise = Math.max(1, Math.min(demande, plafond));
+      if (m.a !== "max" && vise < m.a - 0.005) {
+        etat.bornages.push({ cible: m.cible, demande: m.a, applique: Number(vise.toFixed(3)) });
+      }
 
       const n = images(m.duree);
       for (let i = 1; i <= n; i++) {

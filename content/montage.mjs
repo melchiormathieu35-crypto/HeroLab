@@ -109,8 +109,14 @@ export function montageBlueprint(spot, note, { index = 1, concept = "quizz" } = 
       { type: "cadre", cible: ANCHORS.hand, at: 0.42 },
       { type: "fixe", duree: 0.6 },
       {
-        type: "zoomIn", cible: ".hero-hand .cards", de: 1, a: 1.45, duree: 0.9,
-        pourquoi: "Resserrer sur les cartes isole la seule information utile à cet instant et coupe court à la lecture du reste de l'écran.",
+        // `max` et non une valeur choisie : voir la garde de rognage dans
+        // produce.mjs. Un ×1,45 sur ces deux cartes agrandissait toute la page
+        // autour d'elles et affichait « 7.5 bb » au lieu de « 97.5 bb ». La
+        // mise en page mobile de Hero Lab occupant toute la largeur, le
+        // rapprochement maximal sans rien couper est de l'ordre de 1,08 : c'est
+        // peu, mais c'est un mouvement réel et il ne ment sur aucun chiffre.
+        type: "zoomIn", cible: ".hero-hand .cards", de: 1, a: "max", duree: 0.9,
+        pourquoi: "Resserrer sur les cartes conduit l'œil vers la seule information utile à cet instant, sans jamais rogner un montant.",
       },
       { type: "controle", cible: ".hero-hand .cards", texte: ".pc" },
       { type: "fixe", duree: 2.2 },
@@ -126,15 +132,19 @@ export function montageBlueprint(spot, note, { index = 1, concept = "quizz" } = 
     { type: "fixe", duree: preflop ? 4.5 : 2.0 },
   ];
   if (!preflop) {
+    // DÉPLACEMENT ET NON ZOOM. Un ×1,3 sur le centre de la table coupait les
+    // deux colonnes de vilains et tronquait le tapis du héros — vérifié à
+    // l'image. Le déplacement obtient le même effet narratif (dire où regarder)
+    // sans jamais rogner : c'est le cadrage qui isole, pas l'agrandissement.
     situation.push(
       {
-        type: "zoomIn", cible: ".center", de: 1, a: 1.3, duree: 0.9,
-        pourquoi: "Le board est ce qui rend la décision difficile : le rapprochement dit où regarder avant qu'on pose la question.",
+        type: "pan", cible: ".center", duree: 0.9, at: 0.42,
+        pourquoi: "Le board est ce qui rend la décision difficile : amener le centre de la table au centre du cadre dit où regarder avant qu'on pose la question.",
       },
       { type: "controle", cible: ".center", texte: ".board" },
       { type: "fixe", duree: 2.0 },
       {
-        type: "zoomOut", cible: ".center", de: 1.3, a: 1, duree: 0.7,
+        type: "pan", cible: ANCHORS.table, duree: 0.7, at: 0.22, align: "top",
         pourquoi: "Rendre le contexte après le détail : le spectateur doit relier le board aux tapis et au pot pour juger.",
       },
       { type: "fixe", duree: 1.4 },
@@ -217,7 +227,9 @@ export function montageBlueprint(spot, note, { index = 1, concept = "quizz" } = 
         pourquoi: "Le bloc verdict fait presque la hauteur de la bande utile ; on le cale en haut pour que le titre et le coût entrent dans le cadre.",
       },
       {
-        type: "zoomIn", cible: ".vh", de: 1, a: 1.12, duree: 0.5,
+        // Là aussi borné par la page : le bloc verdict occupe toute la largeur,
+        // donc le resserrement est faible par construction.
+        type: "zoomIn", cible: ".vh", de: 1, a: "max", duree: 0.5,
         pourquoi: "Le resserrement final accompagne la révélation : le coût chiffré est le point de bascule de la vidéo.",
       },
       { type: "controle", cible: ".vh", texte: ".cost" },

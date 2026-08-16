@@ -250,6 +250,36 @@ export async function checkFraming(page, selector, { minOut = 30, key = null, sc
     // le contrôle vertical passait. Rien d'essentiel ne doit sortir du cadre.
     const dansLargeur = b.left >= -2 && b.right <= innerWidth + 2;
 
+    // Contenance de TOUT le texte visible, pas seulement de la cible.
+    //
+    // Deuxième défaut de la même famille, trouvé en regardant les images et non
+    // les rapports : un zoom cadré sur une petite cible reste « contenu » au
+    // sens ci-dessus, mais agrandit toute la page autour d'elle. Le contrôle
+    // passait pendant que le tapis du héros s'affichait « 7.5 bb » au lieu de
+    // « 97.5 bb » — pas un rognage esthétique, un chiffre faux à l'écran.
+    //
+    // On mesure donc les glyphes eux-mêmes, via un Range sur chaque nœud texte :
+    // la boîte d'un bloc peut dépasser le cadre sans qu'aucune lettre ne soit
+    // coupée, l'inverse n'arrive pas. Seule la bande utile compte — ce qui est
+    // déjà hors champ verticalement n'a pas à être contenu.
+    const vue = document.getElementById("v-play") || document.body;
+    const rng = document.createRange();
+    const coupes = [];
+    for (const n of vue.querySelectorAll("*")) {
+      for (const c of n.childNodes) {
+        if (c.nodeType !== 3 || !c.textContent.trim()) continue;
+        rng.selectNodeContents(c);
+        for (const r of rng.getClientRects()) {
+          if (r.height < 6 || r.width < 4) continue;
+          if (r.bottom < band.top || r.top > band.bottom) continue;
+          if (r.left < -1 || r.right > innerWidth + 1) {
+            const t = c.textContent.trim().replace(/\s+/g, " ").slice(0, 28);
+            if (t && !coupes.includes(t)) coupes.push(t);
+          }
+        }
+      }
+    }
+
     const measure = (node) => {
       let px = 0;
       for (const n of [node, ...node.querySelectorAll("*")]) {
@@ -268,14 +298,15 @@ export async function checkFraming(page, selector, { minOut = 30, key = null, sc
     const out = Math.round(px * scaleUp * scale);
 
     return {
-      ok: inBand && dansLargeur && out >= minOut,
-      inBand, dansLargeur, tall,
+      ok: inBand && dansLargeur && !coupes.length && out >= minOut,
+      inBand, dansLargeur, tall, coupes,
       gauche: Math.round(b.left), droite: Math.round(b.right), largeurVue: innerWidth,
       textePx: Math.round(px * 10) / 10,
       texteRush: out,
       top: Math.round(b.top), bottom: Math.round(b.bottom),
       why: !inBand ? "hors bande utile"
         : !dansLargeur ? `coupé horizontalement (${Math.round(b.left)} → ${Math.round(b.right)} pour ${innerWidth}px de large)`
+        : coupes.length ? `texte coupé au bord du cadre : « ${coupes.slice(0, 3).join(" », « ")} »${coupes.length > 3 ? ` (+${coupes.length - 3})` : ""}`
         : out < minOut ? `texte trop petit (${out}px dans le rush)` : null,
     };
   }, { selector, minOut, key, band: SAFE_BAND, scaleUp: SHOT_SIZE.width / SHOT_VIEWPORT.width, scale });
