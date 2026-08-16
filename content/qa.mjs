@@ -348,10 +348,54 @@ async function coherenceCote(page, manifest) {
   return { ok: ecarts.length === 0, why: ecarts.length ? ecarts.join(" · ") : null, ecarts };
 }
 
+/**
+ * Cohérence moteur d'une vidéo LE BLUFF : le spot est rechargé, l'option
+ * exacte jouée à l'écran est rejouée par son libellé, et l'équation de fold
+ * equity est relue dans l'explication régénérée — pas recalculée.
+ */
+async function coherenceBluff(page, manifest) {
+  const b = manifest.bluff;
+  if (!b) return { ok: false, why: "manifeste de bluff incomplet" };
+
+  const built = await loadSpot(page, b.spot.spec);
+  if (!built.ok) return { ok: false, why: `spot non rechargeable : ${built.err}` };
+
+  const r = await page.evaluate((label) => {
+    const t = App.t;
+    const opts = Spot.options(t);
+    const a0 = Judge.evaluate(t, { action: opts[0].action, amount: opts[0].amount });
+    const pick = a0.options.find(o => (o.label || o.action) === label);
+    if (!pick) return { erreur: `option introuvable : ${label}` };
+    App.choose(pick.action, pick.amount);
+    const a = App.analysis;
+    return {
+      evAction: Number(pick.evBB.toFixed(2)), detail: pick.detail || "", verdict: a.verdict,
+      meilleure: { label: a.best.label || a.best.action, evBB: Number(a.best.evBB.toFixed(2)) },
+    };
+  }, b.action);
+  if (r.erreur) return { ok: false, why: r.erreur };
+
+  const ecarts = [];
+  if (Math.abs(r.evAction - b.evCible) > TOLERANCE_BB) ecarts.push(`EV cible ${b.evCible} → ${r.evAction}`);
+  const need = /demande\s+(\d+)\s*%\s+de folds/.exec(r.detail);
+  const est = /estimation est de\s+(\d+)\s*%/.exec(r.detail);
+  if (!need || !est) ecarts.push("l'équation de fold equity n'est plus dans l'explication du moteur");
+  else {
+    if (Number(need[1]) !== b.exige) ecarts.push(`exigé ${b.exige} → ${need[1]}`);
+    if (Number(est[1]) !== b.estimation) ecarts.push(`estimation ${b.estimation} → ${est[1]}`);
+  }
+  if (r.meilleure.label !== b.evMeilleure.label) ecarts.push(`meilleure « ${b.evMeilleure.label} » → « ${r.meilleure.label} »`);
+  const sensAttendu = b.sens === "brule" ? "erreur" : "correct";
+  if (r.verdict !== sensAttendu) ecarts.push(`sens « ${b.sens} » incompatible avec le verdict « ${r.verdict} »`);
+
+  return { ok: ecarts.length === 0, why: ecarts.length ? ecarts.join(" · ") : null, ecarts };
+}
+
 async function coherenceMoteur(page, manifest) {
   if (manifest.duel) return coherenceDuel(page, manifest);
   if (manifest.podium) return coherencePodium(page, manifest);
   if (manifest.cote) return coherenceCote(page, manifest);
+  if (manifest.bluff) return coherenceBluff(page, manifest);
   const e = manifest.moteur;
   if (!e) return { ok: false, why: "aucune donnée moteur dans le manifeste" };
   const built = await loadSpot(page, manifest.spot.spec);

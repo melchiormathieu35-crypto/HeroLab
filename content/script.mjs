@@ -574,6 +574,166 @@ export function construireScriptCote(m) {
   return entrees;
 }
 
+/**
+ * Script d'une vidéo LE BLUFF. Le HOOK reste neutre — ni le sens ni le
+ * verdict n'est trahi avant le REVEAL. « Fold equity » est défini en clair au
+ * premier usage (LE PARI), pour rester accessible à un public qui ne connaît
+ * pas le jargon. Même contrat que partout : chiffres de l'écran, calibrage
+ * par fenêtre, échelles de compression.
+ */
+export function construireScriptBluff(m) {
+  const b = m.bluff;
+  const s = lireSpec(b.spot.spec);
+  const beat = (nom) => m.timeline.find(x => x.beat === nom);
+  const vilain = s.vilains[0];
+  const vilainDit = `${POSITIONS[vilain.pos] || vilain.pos}, ${PROFILS[vilain.profil] || vilain.profil}`;
+  const brule = b.sens === "brule";
+  const entrees = [];
+
+  entrees.push({
+    beat: "HOOK",
+    voixNiveaux: [
+      `${cartes(s.hero.cartes)} ${EN_POSITION[s.hero.pos] || s.hero.pos}. Ce bluff… il paie, ou il brûle ?`,
+      `Ce bluff… il paie, ou il brûle ?`,
+    ],
+    sousTitres: ["Ce bluff…", "il paie, ou il brûle ?"],
+    note: "Ne rien trahir : ni le sens ni le verdict. Le hook est la question, gardée jusqu'au REVEAL.",
+  });
+
+  entrees.push({
+    beat: "SITUATION",
+    voixNiveaux: [
+      `En face : ${vilainDit}. C'est lui qui décide si ce bluff a une chance.`,
+      `En face : ${vilainDit}.`,
+    ],
+    sousTitres: [`En face : ${vilainDit}`, "C'est lui qui décide."],
+    note: "Le profil est LE facteur du bluff — insister dessus, pas sur les cartes.",
+  });
+
+  entrees.push({
+    beat: "LE PARI",
+    voixNiveaux: [
+      `${b.action}. Pour être rentable en bluff pur, il faut que ce profil passe ${b.exige} % du temps — c'est la fold equity nécessaire.`,
+      `${b.action}. Il faut ${b.exige} % de folds pour que ce pari soit rentable.`,
+      `${b.action} : il faut ${b.exige} % de folds.`,
+    ],
+    sousTitres: [`${b.action}`, `→ il faut ${b.exige} % de folds`],
+    note: "Le nombre exigé est LE sujet. Silence sur la fin du freeze : le spectateur estime ce que CE profil donne réellement.",
+  });
+
+  entrees.push({
+    beat: "REVEAL",
+    voixNiveaux: brule
+      ? [
+        `Ce profil ne donne que ${b.estimation} %. Loin des ${b.exige} exigés. Ce pari coûte ${bb(b.cout)} big blinds face à lui.`,
+        `Ce profil donne ${b.estimation} %, pas ${b.exige}. Ce pari coûte ${bb(b.cout)} big blinds.`,
+      ]
+      : [
+        `Ce profil donne ${b.estimation} %. Au-dessus des ${b.exige} exigés. Ce pari est le bon coup, à ${bb(b.evCible)} big blinds.`,
+        `Ce profil donne ${b.estimation} %, plus que les ${b.exige} exigés. Le bon coup.`,
+      ],
+    sousTitres: brule
+      ? [`Réel : ${b.estimation} % < exigé ${b.exige} %`, `Coût : ${bb(b.cout)} bb`]
+      : [`Réel : ${b.estimation} % > exigé ${b.exige} %`, `${bb(b.evCible)} bb`],
+    note: "L'équation est écrite par le moteur à l'écran, mot pour mot — la voix la lit, elle n'ajoute rien.",
+  });
+
+  entrees.push({
+    beat: "LA LEÇON",
+    voixNiveaux: [
+      `Retiens la méthode : la fold equity n'est pas un espoir, c'est un chiffre à comparer — l'exigé contre ce que CE profil donne vraiment.`,
+      `La méthode : compare toujours l'exigé à ce que ce profil donne vraiment.`,
+      `La méthode : compare l'exigé au réel.`,
+    ],
+    sousTitres: ["La fold equity : pas un espoir.", "Un chiffre à comparer."],
+    note: "La leçon transposable, sur la liste des espérances. Ne pas la recouvrir.",
+  });
+
+  for (const en of entrees) {
+    const bt = beat(en.beat);
+    if (!bt) throw new Error(`beat absent de la timeline : ${en.beat}`);
+    en.debut = bt.debut; en.fin = bt.fin; en.secondes = bt.secondes;
+    en.motsMax = Math.floor(bt.secondes * DEBIT);
+    en.voix = en.voixNiveaux.find(v => mots(v) <= en.motsMax) || en.voixNiveaux[en.voixNiveaux.length - 1];
+    en.niveauxEcartes = en.voixNiveaux.indexOf(en.voix);
+    delete en.voixNiveaux;
+    en.motsProposes = mots(en.voix);
+    if (en.motsProposes > en.motsMax) {
+      throw new Error(`script infaisable : ${en.beat} demande ${en.motsProposes} mots pour une fenêtre de ${en.motsMax} (${en.secondes} s à ${DEBIT} mots/s) — « ${en.voix} »`);
+    }
+  }
+  return entrees;
+}
+
+function scriptMarkdownBluff(m) {
+  const entrees = construireScriptBluff(m);
+  const b = m.bluff;
+
+  return `# Script — ${m.video}
+
+**Vidéo** : \`${m.fichier}\` · ${m.duree.toFixed(2)} s · **Concept** : ${m.conceptTitre || m.concept}
+**Situation** : ${m.titreInterne}
+
+> **Statut de ce texte : une proposition.** Le ton, le rythme et les mots se
+> reformulent librement — c'est ta voix. Les **chiffres**, en revanche, sont ceux
+> que le moteur affiche à l'écran au même moment : ne les change pas, ne les
+> arrondis pas autrement, n'en ajoute pas d'autres.
+>
+> Calibrage : environ ${DEBIT} mots par seconde de voix posée. Chaque beat
+> indique sa contrainte ; si tu reformules plus long, ça ne rentrera pas.
+>
+> **Le principe du Bluff** : ${b.action} demande ${b.exige} % de folds, ce
+> profil en donne ${b.estimation} % — **le bluff ${b.sens === "brule" ? "brûle" : "passe"}**.
+> L'équation est écrite par le moteur lui-même à l'écran pendant le REVEAL.
+> Aucun sens n'est trahi au HOOK — c'est volontaire, pour la rétention.
+
+---
+
+## Le script, d'une traite
+
+${entrees.map(en => en.voix).join("\n\n")}
+
+*(Les crochets de calage : ${entrees.map(en => `${en.beat} à ${tc(en.debut)}`).join(" · ")}.)*
+
+---
+
+## Le détail, beat par beat
+
+${entrees.map(en => `### ${en.beat} — \`${tc(en.debut)}\` → \`${tc(en.fin)}\` (${en.secondes.toFixed(1)} s · ${en.motsMax} mots max, proposé : ${en.motsProposes})
+
+**Voix off proposée**
+
+> ${en.voix}
+
+**Sous-titres proposés** (à caler dans la fenêtre du beat, en bas de la bande utile)
+
+${en.sousTitres.map(x => `- ${x}`).join("\n")}
+
+**Note de jeu.** ${en.note}
+`).join("\n")}
+---
+
+## Les chiffres de référence (ceux de l'écran)
+
+| donnée | valeur |
+|---|---|
+| pari jugé | ${b.action} |
+| EV du pari | ${bb(b.evCible)} bb |
+| meilleure action | ${b.evMeilleure.label} (${bb(b.evMeilleure.evBB)} bb) |
+| fold equity exigée | ${b.exige} % |
+| fold equity estimée (ce profil) | ${b.estimation} % |
+| marge | ${b.marge > 0 ? "+" : ""}${b.marge} points |
+| le bluff | ${b.sens === "brule" ? "BRÛLE" : "PASSE"} |
+| coût / gain | ${bb(b.cout)} bb |
+
+Ces valeurs viennent de \`Judge.evaluate\` — l'équation de fold equity est relue
+dans le texte que le moteur écrit lui-même, et revérifiée par le contrôle
+qualité. Comme l'indique l'application, ce sont des estimations sur la range
+adverse et les profils en jeu — un ordre de grandeur et un classement, pas une
+sortie de solveur. Le script ne doit pas les présenter autrement.
+`;
+}
+
 function scriptMarkdownCote(m) {
   const entrees = construireScriptCote(m);
   const c = m.cote;
@@ -787,6 +947,7 @@ export function scriptMarkdown(m) {
   if (m.duel) return scriptMarkdownDuel(m);
   if (m.podium) return scriptMarkdownPodium(m);
   if (m.cote) return scriptMarkdownCote(m);
+  if (m.bluff) return scriptMarkdownBluff(m);
   const entrees = construireScript(m);
   const e = m.moteur;
 

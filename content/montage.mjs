@@ -68,6 +68,22 @@ export const CONCEPTS = {
       ["PAYOFF", "la liste des espérances de la manche B — le reclassement complet"],
     ],
   },
+  "le-bluff": {
+    dossier: "Le Bluff",
+    titre: "Le Bluff",
+    principe:
+      "Une relance qui a l'air d'un bon coup — mais un bluff se juge par un calcul, pas par " +
+      "une impression. Le moteur écrit lui-même l'équation (« cette mise demande X % de folds, " +
+      "ce profil en donne Y % ») ; parfois elle valide l'instinct, parfois elle le dément. La " +
+      "série alterne les deux pour enseigner la méthode, jamais un réflexe.",
+    structure: [
+      ["HOOK", "la main et la mise — la question posée, pas encore la réponse"],
+      ["SITUATION", "la table et le profil adverse — le facteur qui décide de tout ici"],
+      ["LE PARI", "la mise isolée, freeze — le temps de deviner ce qu'elle exige"],
+      ["REVEAL", "le bluff est joué ; le moteur affiche son propre calcul et tranche"],
+      ["LA LEÇON", "l'espérance de chaque option — la preuve, et la méthode à retenir"],
+    ],
+  },
   "la-cote": {
     dossier: "La Cote",
     titre: "La Cote",
@@ -416,6 +432,7 @@ export async function produireMontage(browser, ff, spot, bp, dossier) {
     duel: bp.duel || null,
     podium: bp.podium || null,
     cote: bp.cote || null,
+    bluff: bp.bluff || null,
     timeline,
     bornages: etat.bornages,
     erreurs: fatals,

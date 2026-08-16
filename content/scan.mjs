@@ -246,7 +246,13 @@ export function noter(r, spot, contexte = {}) {
     instinct, optInstinct, coutInstinct,
     instinctPerdant, equiteTrompeuse,
     famBest, famInstinct,
-    options: evs.map(o => ({ action: o.action, label: o.label, amount: o.amount, evBB: Number(o.evBB.toFixed(2)) })),
+    // `detail` conservé : c'est le texte que le moteur écrit lui-même pour
+    // CHAQUE option (montant, cote, fold equity exigée/estimée) — sans lui, un
+    // concept qui juge une option autre que la meilleure ne peut lire aucune
+    // équation. Perdu par un premier jet de ce mapping ; retrouvé en mesurant
+    // un lot de candidats « le bluff brûle » qui sortait vide alors que la
+    // sonde manuelle en trouvait des centaines.
+    options: evs.map(o => ({ action: o.action, label: o.label, amount: o.amount, evBB: Number(o.evBB.toFixed(2)), detail: o.detail || null })),
   };
 }
 

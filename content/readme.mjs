@@ -79,6 +79,17 @@ const PLACEMENTS = {
     soustitres: "Oui — le verdict doit être lisible sans le son.",
     textes: "Le coût est déjà à l'écran : éviter de le doubler.",
   },
+  // ── Beats propres au Bluff
+  "LE PARI": {
+    voix: "Poser l'exigence de folds — c'est le sujet du beat. Silence sur la fin du freeze : laisser deviner.",
+    soustitres: "Oui : « il faut qu'il passe X % du temps ».",
+    textes: "L'emplacement naturel d'un « il faudrait qu'il passe combien de fois ? ». Ne pas masquer les options.",
+  },
+  "LA LEÇON": {
+    voix: "La méthode, calmement — pas seulement le chiffre de cette main.",
+    soustitres: "Oui.",
+    textes: "Rien par-dessus la liste des espérances : c'est la preuve, elle doit rester lisible.",
+  },
   // ── Beats propres à La Cote
   "LA COTE": {
     voix: "Poser l'exigence du prix — le nombre est le sujet du beat. Puis silence sur le freeze.",
@@ -330,7 +341,25 @@ bande droite des boutons. Garde cette contrainte pour tes ajouts.
 
 ## Ce que dit le moteur
 
-${m.cote ? `Une leçon de cote, dont les deux nombres sont écrits par le moteur lui-même dans
+${m.bluff ? `Une leçon de bluff, dont l'équation est écrite par le moteur lui-même dans son
+explication à l'écran (beat REVEAL) :
+
+| donnée | valeur |
+|---|---|
+| pari jugé | **${m.bluff.action}** |
+| EV de ce pari | **${bb(m.bluff.evCible)}** |
+| meilleure action | ${m.bluff.evMeilleure.label} (${bb(m.bluff.evMeilleure.evBB)}) |
+| fold equity **exigée** | **${m.bluff.exige} %** |
+| fold equity **estimée** (ce profil) | **${m.bluff.estimation} %** |
+| marge | ${m.bluff.marge > 0 ? "+" : ""}${m.bluff.marge} points |
+| équité une fois payé | ${m.bluff.eqCalled !== null ? m.bluff.eqCalled + " %" : "—"} |
+| le bluff | **${m.bluff.sens === "brule" ? "BRÛLE" : "PASSE"}** |
+| coût / gain | ${bb(m.bluff.cout)} |
+
+${m.bluff.sens === "brule"
+    ? "La fold equity estimée est nettement sous l'exigée : ce pari, pourtant tentant, coûte cher. La méthode s'applique à toute mise, pas qu'à celle-ci."
+    : "La fold equity estimée dépasse nettement l'exigée : ce pari est le bon coup — la série alterne les deux sens, c'est la comparaison qui s'enseigne."}
+` : m.cote ? `Une leçon de cote, dont les deux nombres sont écrits par le moteur lui-même dans
 son explication à l'écran (beat REVEAL) :
 
 | donnée | valeur |
@@ -402,8 +431,8 @@ négatif signifie donc « pire que jeter la main ».
 |---|---|
 ${e.options.map(o => `| ${o.label} | ${bb(o.evBB)} |`).join("\n")}
 
-Ces valeurs sont celles affichées à l'écran pendant le beat PAYOFF. Elles
-viennent de \`Judge.evaluate\`. Comme l'indique l'application elle-même, ce sont
+Ces valeurs sont celles affichées à l'écran pendant le beat ${m.bluff ? "LA LEÇON" : "PAYOFF"}.
+Elles viennent de \`Judge.evaluate\`. Comme l'indique l'application elle-même, ce sont
 des estimations sur la range adverse et les profils en jeu — un ordre de grandeur
 et un classement, pas une sortie de solveur. Ne les présente pas autrement.` : ""}
 
