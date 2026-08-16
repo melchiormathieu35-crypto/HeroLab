@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "spotsUtilises": [
+    "turn-deuxieme-balle_bb_jj_station_as-haut_surcarte",
+    "turn-deuxieme-balle_bb_88_station_sec-tete-moyenne_connexion",
+    "turn-deuxieme-balle_bb_a5s_station_paire_connexion",
+    "turn-deuxieme-balle_bb_q9s_station_deux-broadway_blanche",
+    "turn-apres-call_co_a3s_station_bas_connexion",
+    "turn-apres-call_co_ajo_station_sec-tete-haute_blanche",
+    "turn-apres-call_co_98s_station_bas_blanche",
+    "flop-initiative_hj_33_nit_connecte",
+    "flop-initiative_co_76s_nit_bas",
+    "flop-initiative_hj_tt_nit_monotone"
+  ],
+  "videos": [
+    {
+      "numero": 1,
+      "titre": "01 - le bluff brule JJ sur as haut une surcarte tombe face a une",
+      "spot": "turn-deuxieme-balle_bb_jj_station_as-haut_surcarte",
+      "sens": "brule"
+    },
+    {
+      "numero": 2,
+      "titre": "02 - le bluff brule 88 sur sec dame haute carte qui connecte face a",
+      "spot": "turn-deuxieme-balle_bb_88_station_sec-tete-moyenne_connexion",
+      "sens": "brule"
+    },
+    {
+      "numero": 3,
+      "titre": "03 - le bluff brule A5s sur paire carte qui connecte face a une",
+      "spot": "turn-deuxieme-balle_bb_a5s_station_paire_connexion",
+      "sens": "brule"
+    },
+    {
+      "numero": 4,
+      "titre": "04 - le bluff brule Q9s sur deux broadway carte blanche face a une",
+      "spot": "turn-deuxieme-balle_bb_q9s_station_deux-broadway_blanche",
+      "sens": "brule"
+    },
+    {
+      "numero": 5,
+      "titre": "05 - le bluff brule A3s sur bas et deconnecte carte qui connecte",
+      "spot": "turn-apres-call_co_a3s_station_bas_connexion",
+      "sens": "brule"
+    },
+    {
+      "numero": 6,
+      "titre": "06 - le bluff brule AJo sur sec tete haute carte blanche face a une",
+      "spot": "turn-apres-call_co_ajo_station_sec-tete-haute_blanche",
+      "sens": "brule"
+    },
+    {
+      "numero": 7,
+      "titre": "07 - le bluff brule 98s sur bas et deconnecte carte blanche face a",
+      "spot": "turn-apres-call_co_98s_station_bas_blanche",
+      "sens": "brule"
+    },
+    {
+      "numero": 8,
+      "titre": "08 - le bluff passe 33 sur board tres connecte face a un nit",
+      "spot": "flop-initiative_hj_33_nit_connecte",
+      "sens": "passe"
+    },
+    {
+      "numero": 9,
+      "titre": "09 - le bluff passe 76s sur board bas et deconnecte face a un nit",
+      "spot": "flop-initiative_co_76s_nit_bas",
+      "sens": "passe"
+    },
+    {
+      "numero": 10,
+      "titre": "10 - le bluff passe TT sur board monotone face a un nit",
+      "spot": "flop-initiative_hj_tt_nit_monotone",
+      "sens": "passe"
+    }
+  ]
+}

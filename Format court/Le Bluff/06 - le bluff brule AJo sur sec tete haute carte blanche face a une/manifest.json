@@ -1,0 +1,428 @@
+{
+  "video": "06 - le bluff brule AJo sur sec tete haute carte blanche face a une",
+  "concept": "le-bluff",
+  "conceptTitre": "Le Bluff",
+  "titreInterne": "Le bluff brûle : AJo sur sec, tête haute, carte blanche, face à une calling station",
+  "enonce": "Relancer 1/3 pot a l'air d'un bon coup mais demande 47 % de folds — ce profil n'en donne que 5 % : le bluff brûle, coût 10.65 bb.",
+  "fichier": "video.webm",
+  "montee": true,
+  "spot": {
+    "id": "turn-apres-call_co_ajo_station_sec-tete-haute_blanche",
+    "modele": "turn-apres-call",
+    "theme": "turn",
+    "label": "AJo sur sec, tête haute, carte blanche, face à une calling station",
+    "spec": "Hero: CO, Ac Jd, 100bb\nTable: 6-max, NL25\nVillains: BB (station, 100bb)\nPreflop: hero raise 2.5bb, BB call\nFlop: Kh 8c 3d | BB check, hero bet 3bb, BB call\nTurn: 2h | BB bet 9bb, hero to act"
+  },
+  "score": 68,
+  "scoreDetail": {
+    "paradoxe": 18,
+    "contreIntuitif": 14,
+    "differentielEV": 14.3,
+    "difficulte": 0,
+    "curiosite": 0,
+    "lisibilite": 7.2,
+    "reveal": 4.1,
+    "pedagogie": 6,
+    "debat": 0,
+    "serie": 4
+  },
+  "signature": "bluff|brule|turn-apres-call|broadway|sec-tete-haute|fold|instinct-perdant",
+  "momentReveal": "Beat REVEAL, quand le moteur affiche sa propre équation de fold equity et tranche.",
+  "objectifRetention": "Retenir par la méthode : le pari est isolé, l'exigence de folds est posée, la réponse du profil est comparée — et la leçon ferme sur une règle transposable, pas sur une seule main.",
+  "format": {
+    "largeur": 1080,
+    "hauteur": 1920,
+    "fps": 30,
+    "conteneur": "webm",
+    "codec": "vp8"
+  },
+  "duree": 33.9,
+  "images": 1017,
+  "moteur": {
+    "joue": {
+      "action": "raise",
+      "label": "Relancer 1/3 pot",
+      "evBB": -10.65
+    },
+    "instinct": "call",
+    "verdict": "erreur",
+    "lossBB": 10.65,
+    "equity": 16.9,
+    "pot": 5.135,
+    "toCall": 2.25,
+    "options": [
+      {
+        "label": "Passer",
+        "action": "fold",
+        "evBB": 0
+      },
+      {
+        "label": "Suivre 2.25 €",
+        "action": "call",
+        "evBB": -6.34
+      },
+      {
+        "label": "Relancer 1/3 pot",
+        "action": "raise",
+        "evBB": -10.65
+      },
+      {
+        "label": "Relancer Pot",
+        "action": "raise",
+        "evBB": -12.41
+      },
+      {
+        "label": "Relancer Tapis",
+        "action": "raise",
+        "evBB": -21.55
+      }
+    ],
+    "meilleure": {
+      "action": "fold",
+      "label": "Passer",
+      "evBB": 0
+    }
+  },
+  "moteurs": [
+    {
+      "beat": "REVEAL",
+      "joue": {
+        "action": "raise",
+        "label": "Relancer 1/3 pot",
+        "evBB": -10.65
+      },
+      "instinct": "call",
+      "verdict": "erreur",
+      "lossBB": 10.65,
+      "equity": 16.9,
+      "pot": 5.135,
+      "toCall": 2.25,
+      "options": [
+        {
+          "label": "Passer",
+          "action": "fold",
+          "evBB": 0
+        },
+        {
+          "label": "Suivre 2.25 €",
+          "action": "call",
+          "evBB": -6.34
+        },
+        {
+          "label": "Relancer 1/3 pot",
+          "action": "raise",
+          "evBB": -10.65
+        },
+        {
+          "label": "Relancer Pot",
+          "action": "raise",
+          "evBB": -12.41
+        },
+        {
+          "label": "Relancer Tapis",
+          "action": "raise",
+          "evBB": -21.55
+        }
+      ],
+      "meilleure": {
+        "action": "fold",
+        "label": "Passer",
+        "evBB": 0
+      }
+    }
+  ],
+  "duel": null,
+  "podium": null,
+  "cote": null,
+  "bluff": {
+    "sens": "brule",
+    "action": "Relancer 1/3 pot",
+    "evCible": -10.65,
+    "evMeilleure": {
+      "label": "Passer",
+      "evBB": 0
+    },
+    "exige": 47,
+    "estimation": 5,
+    "marge": -42,
+    "eqCalled": 12,
+    "cout": 10.65,
+    "spot": {
+      "id": "turn-apres-call_co_ajo_station_sec-tete-haute_blanche",
+      "label": "AJo sur sec, tête haute, carte blanche, face à une calling station",
+      "spec": "Hero: CO, Ac Jd, 100bb\nTable: 6-max, NL25\nVillains: BB (station, 100bb)\nPreflop: hero raise 2.5bb, BB call\nFlop: Kh 8c 3d | BB check, hero bet 3bb, BB call\nTurn: 2h | BB bet 9bb, hero to act"
+    }
+  },
+  "timeline": [
+    {
+      "beat": "HOOK",
+      "role": "La main, sans dire si le pari qui vient paie ou brûle — la question est la promesse.",
+      "debut": 0,
+      "fin": 4.1,
+      "secondes": 4.1,
+      "mouvements": [
+        {
+          "type": "zoomIn",
+          "cible": ".hero-hand .cards",
+          "duree": 0.9,
+          "pourquoi": "Ouvrir sur la main sans indice sur l'issue : le spectateur doit regarder pour savoir si le pari tient."
+        }
+      ],
+      "cadrages": [
+        {
+          "cible": ".hero-hand .cards",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 27,
+          "droite": 99,
+          "largeurVue": 360,
+          "textePx": 13,
+          "texteRush": 44,
+          "top": 212,
+          "bottom": 257,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".hero-hand .cards",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 27,
+        "droite": 99,
+        "largeurVue": 360,
+        "textePx": 13,
+        "texteRush": 44,
+        "top": 212,
+        "bottom": 257,
+        "why": null
+      }
+    },
+    {
+      "beat": "SITUATION",
+      "role": "La table et le profil adverse — c'est lui qui décide si un bluff a une chance ici.",
+      "debut": 4.1,
+      "fin": 9.1,
+      "secondes": 5,
+      "mouvements": [],
+      "cadrages": [
+        {
+          "cible": ".felt",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 14,
+          "droite": 346,
+          "largeurVue": 360,
+          "textePx": 16,
+          "texteRush": 48,
+          "top": 141,
+          "bottom": 411,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".felt",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 14,
+        "droite": 346,
+        "largeurVue": 360,
+        "textePx": 16,
+        "texteRush": 48,
+        "top": 141,
+        "bottom": 411,
+        "why": null
+      }
+    },
+    {
+      "beat": "LE PARI",
+      "role": "Isoler la mise envisagée (Relancer 1/3 pot) : c'est elle qu'il faut juger, pas la main.",
+      "debut": 9.1,
+      "fin": 17,
+      "secondes": 7.9,
+      "mouvements": [
+        {
+          "type": "pan",
+          "cible": ".actions",
+          "duree": 0.9,
+          "pourquoi": "Descendre vers les options montre le pari envisagé au milieu des autres : la comparaison est le point du beat."
+        },
+        {
+          "type": "freeze",
+          "cible": null,
+          "duree": 6.4,
+          "pourquoi": "Le temps du calcul : combien de fois l'adversaire doit-il passer pour que ce pari soit rentable ? Le silence laisse deviner avant la réponse."
+        }
+      ],
+      "cadrages": [
+        {
+          "cible": ".actions",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 14,
+          "droite": 346,
+          "largeurVue": 360,
+          "textePx": 13.5,
+          "texteRush": 41,
+          "top": 102,
+          "bottom": 428,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".actions",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 14,
+        "droite": 346,
+        "largeurVue": 360,
+        "textePx": 13.5,
+        "texteRush": 41,
+        "top": 102,
+        "bottom": 428,
+        "why": null
+      }
+    },
+    {
+      "beat": "REVEAL",
+      "role": "La mise (Relancer 1/3 pot) est jouée à l'écran ; le moteur écrit sa propre équation et tranche : le bluff brûle.",
+      "debut": 17,
+      "fin": 25.9,
+      "secondes": 8.9,
+      "mouvements": [
+        {
+          "type": "jouer",
+          "cible": null,
+          "duree": null,
+          "pourquoi": "Le pari est joué à l'écran, pas raconté : l'équation qui s'affiche est celle du moteur, vérifiable telle quelle."
+        },
+        {
+          "type": "pan",
+          "cible": ".verdict",
+          "duree": 0.9,
+          "pourquoi": "Le bloc verdict porte l'équation complète ; calé en haut pour que le titre et le calcul entrent dans la bande utile."
+        },
+        {
+          "type": "zoomIn",
+          "cible": ".vh",
+          "duree": 0.5,
+          "pourquoi": "Le resserrement accompagne le verdict — le point de bascule de la vidéo."
+        }
+      ],
+      "cadrages": [
+        {
+          "cible": ".vh",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 7,
+          "droite": 353,
+          "largeurVue": 360,
+          "textePx": 11.5,
+          "texteRush": 41,
+          "top": 75,
+          "bottom": 175,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".vh",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 7,
+        "droite": 353,
+        "largeurVue": 360,
+        "textePx": 11.5,
+        "texteRush": 41,
+        "top": 75,
+        "bottom": 175,
+        "why": null
+      }
+    },
+    {
+      "beat": "LA LEÇON",
+      "role": "L'espérance de chaque option — la preuve chiffrée, et la méthode qui s'en dégage.",
+      "debut": 25.9,
+      "fin": 33.9,
+      "secondes": 8,
+      "mouvements": [
+        {
+          "type": "fixe",
+          "cible": null,
+          "duree": 2,
+          "pourquoi": "La meilleure option se lit en premier — la réponse avant la démonstration."
+        },
+        {
+          "type": "panPx",
+          "cible": ".opt-row",
+          "duree": 1.4,
+          "pourquoi": "La descente parcourt le classement complet : c'est la preuve que le calcul, pas l'instinct, doit trancher."
+        },
+        {
+          "type": "fixe",
+          "cible": null,
+          "duree": 4.6,
+          "pourquoi": "Dernière image tenue : la vidéo se termine sur la preuve, pas sur un mouvement."
+        }
+      ],
+      "cadrages": [
+        {
+          "cible": ".opt-row.best",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 32,
+          "droite": 328,
+          "largeurVue": 360,
+          "textePx": 13,
+          "texteRush": 39,
+          "top": 166,
+          "bottom": 231,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".opt-row.best",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 32,
+        "droite": 328,
+        "largeurVue": 360,
+        "textePx": 13,
+        "texteRush": 39,
+        "top": 166,
+        "bottom": 231,
+        "why": null
+      }
+    }
+  ],
+  "bornages": [],
+  "erreurs": []
+}
