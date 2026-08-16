@@ -26,6 +26,18 @@
   <array>
     <string>__HOME__/RUSH/GENERATED</string>
   </array>
+  <!--
+    PATH explicite. Un agent launchd ne reçoit PAS le PATH du Terminal : il
+    démarre avec /usr/bin:/bin:/usr/sbin:/sbin. Un ffmpeg installé dans
+    ~/bin (ou dans /usr/local/bin, ou par Homebrew) serait donc introuvable
+    et le watcher échouerait en silence alors que la commande manuelle
+    fonctionne. On déclare les emplacements usuels.
+  -->
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>__HOME__/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+  </dict>
   <key>RunAtLoad</key>
   <true/>
   <key>ThrottleInterval</key>
