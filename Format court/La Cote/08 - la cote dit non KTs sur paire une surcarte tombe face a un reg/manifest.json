@@ -1,0 +1,410 @@
+{
+  "video": "08 - la cote dit non KTs sur paire une surcarte tombe face a un reg",
+  "concept": "la-cote",
+  "conceptTitre": "La Cote",
+  "titreInterne": "La cote dit non : KTs sur pairé, une surcarte tombe, face à un reg",
+  "enonce": "Le prix exige 31 % d'équité, le héros n'en a que 11.5 % : payer coûte 8.09 bb, la cote disait non.",
+  "fichier": "video.webm",
+  "montee": true,
+  "spot": {
+    "id": "turn-apres-call_co_kts_reg_paire_surcarte",
+    "modele": "turn-apres-call",
+    "theme": "turn",
+    "label": "KTs sur pairé, une surcarte tombe, face à un reg",
+    "spec": "Hero: CO, Kh Th, 100bb\nTable: 6-max, NL10\nVillains: BB (reg, 100bb)\nPreflop: hero raise 2.5bb, BB call\nFlop: 8h 8s 4c | BB check, hero bet 3bb, BB call\nTurn: Ac | BB bet 9bb, hero to act"
+  },
+  "score": 80,
+  "scoreDetail": {
+    "paradoxe": 18,
+    "contreIntuitif": 14,
+    "differentielEV": 18,
+    "difficulte": 2.6,
+    "curiosite": 0,
+    "lisibilite": 7.2,
+    "reveal": 5.3,
+    "pedagogie": 6,
+    "debat": 5,
+    "serie": 4
+  },
+  "signature": "cote|non|turn-apres-call|assorti-haut|paire|fold|instinct-perdant",
+  "momentReveal": "Beat REVEAL, quand le moteur affiche la comparaison exigé/réel et tranche.",
+  "objectifRetention": "Retenir par la méthode : la question est posée (que demande le prix ?), le calcul est affiché, la réponse est chiffrée. La série alterne « la cote dit non » et « la cote dit oui » — c'est la comparaison qui s'apprend, pas un réflexe.",
+  "format": {
+    "largeur": 1080,
+    "hauteur": 1920,
+    "fps": 30,
+    "conteneur": "webm",
+    "codec": "vp8"
+  },
+  "duree": 33.5,
+  "images": 1005,
+  "moteur": {
+    "joue": {
+      "action": "call",
+      "label": "Suivre 0.90 €",
+      "evBB": -8.09
+    },
+    "instinct": "call",
+    "verdict": "erreur",
+    "lossBB": 8.09,
+    "equity": 11.5,
+    "pot": 2.0500000000000003,
+    "toCall": 0.9,
+    "options": [
+      {
+        "label": "Passer",
+        "action": "fold",
+        "evBB": 0
+      },
+      {
+        "label": "Relancer 1/3 pot",
+        "action": "raise",
+        "evBB": -1.28
+      },
+      {
+        "label": "Relancer Pot",
+        "action": "raise",
+        "evBB": -1.28
+      },
+      {
+        "label": "Relancer Tapis",
+        "action": "raise",
+        "evBB": -1.28
+      },
+      {
+        "label": "Suivre 0.90 €",
+        "action": "call",
+        "evBB": -8.09
+      }
+    ],
+    "meilleure": {
+      "action": "fold",
+      "label": "Passer",
+      "evBB": 0
+    }
+  },
+  "moteurs": [
+    {
+      "beat": "REVEAL",
+      "joue": {
+        "action": "call",
+        "label": "Suivre 0.90 €",
+        "evBB": -8.09
+      },
+      "instinct": "call",
+      "verdict": "erreur",
+      "lossBB": 8.09,
+      "equity": 11.5,
+      "pot": 2.0500000000000003,
+      "toCall": 0.9,
+      "options": [
+        {
+          "label": "Passer",
+          "action": "fold",
+          "evBB": 0
+        },
+        {
+          "label": "Relancer 1/3 pot",
+          "action": "raise",
+          "evBB": -1.28
+        },
+        {
+          "label": "Relancer Pot",
+          "action": "raise",
+          "evBB": -1.28
+        },
+        {
+          "label": "Relancer Tapis",
+          "action": "raise",
+          "evBB": -1.28
+        },
+        {
+          "label": "Suivre 0.90 €",
+          "action": "call",
+          "evBB": -8.09
+        }
+      ],
+      "meilleure": {
+        "action": "fold",
+        "label": "Passer",
+        "evBB": 0
+      }
+    }
+  ],
+  "duel": null,
+  "podium": null,
+  "cote": {
+    "sens": "non",
+    "exige": 31,
+    "tuEnAs": 11.5,
+    "ecart": -19.5,
+    "toCall": 0.9,
+    "pot": 2.0500000000000003,
+    "coutInstinct": 8.09,
+    "spot": {
+      "id": "turn-apres-call_co_kts_reg_paire_surcarte",
+      "label": "KTs sur pairé, une surcarte tombe, face à un reg",
+      "spec": "Hero: CO, Kh Th, 100bb\nTable: 6-max, NL10\nVillains: BB (reg, 100bb)\nPreflop: hero raise 2.5bb, BB call\nFlop: 8h 8s 4c | BB check, hero bet 3bb, BB call\nTurn: Ac | BB bet 9bb, hero to act"
+    }
+  },
+  "timeline": [
+    {
+      "beat": "HOOK",
+      "role": "La main, et la promesse d'un calcul — pas encore les nombres.",
+      "debut": 0,
+      "fin": 4.4,
+      "secondes": 4.4,
+      "mouvements": [
+        {
+          "type": "zoomIn",
+          "cible": ".hero-hand .cards",
+          "duree": 0.9,
+          "pourquoi": "Ouvrir sur la main pose le sujet ; la promesse de la vidéo est le calcul, pas la réponse."
+        }
+      ],
+      "cadrages": [
+        {
+          "cible": ".hero-hand .cards",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 27,
+          "droite": 99,
+          "largeurVue": 360,
+          "textePx": 13,
+          "texteRush": 44,
+          "top": 212,
+          "bottom": 257,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".hero-hand .cards",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 27,
+        "droite": 99,
+        "largeurVue": 360,
+        "textePx": 13,
+        "texteRush": 44,
+        "top": 212,
+        "bottom": 257,
+        "why": null
+      }
+    },
+    {
+      "beat": "SITUATION",
+      "role": "La table, l'adversaire, la mise en face — le contexte du prix.",
+      "debut": 4.4,
+      "fin": 9.8,
+      "secondes": 5.4,
+      "mouvements": [],
+      "cadrages": [
+        {
+          "cible": ".felt",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 14,
+          "droite": 346,
+          "largeurVue": 360,
+          "textePx": 16,
+          "texteRush": 48,
+          "top": 141,
+          "bottom": 411,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".felt",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 14,
+        "droite": 346,
+        "largeurVue": 360,
+        "textePx": 16,
+        "texteRush": 48,
+        "top": 141,
+        "bottom": 411,
+        "why": null
+      }
+    },
+    {
+      "beat": "LA COTE",
+      "role": "Isoler le prix : 0.9 à payer. C'est ici que la question de la cote est posée (elle exige 31 % d'équité).",
+      "debut": 9.8,
+      "fin": 16.4,
+      "secondes": 6.6,
+      "mouvements": [
+        {
+          "type": "pan",
+          "cible": ".hero-hand",
+          "duree": 0.8,
+          "pourquoi": "Descendre sur la ligne « à payer » isole la seule donnée dont le calcul a besoin : le prix."
+        },
+        {
+          "type": "freeze",
+          "cible": null,
+          "duree": 5.2,
+          "pourquoi": "Le temps du calcul. La voix pose l'exigence de la cote pendant que le prix est seul à l'écran — sans ce temps, la vidéo affirme au lieu de démontrer."
+        }
+      ],
+      "cadrages": [
+        {
+          "cible": ".hero-hand",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 14,
+          "droite": 346,
+          "largeurVue": 360,
+          "textePx": 15,
+          "texteRush": 45,
+          "top": 170,
+          "bottom": 291,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".hero-hand",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 14,
+        "droite": 346,
+        "largeurVue": 360,
+        "textePx": 15,
+        "texteRush": 45,
+        "top": 170,
+        "bottom": 291,
+        "why": null
+      }
+    },
+    {
+      "beat": "REVEAL",
+      "role": "Le réflexe (payer) est joué ; le moteur écrit lui-même la comparaison à l'écran — exigé 31 %, réel 11.5 % — et tranche : erreur.",
+      "debut": 16.4,
+      "fin": 24.1,
+      "secondes": 7.7,
+      "mouvements": [
+        {
+          "type": "jouer",
+          "cible": null,
+          "duree": null,
+          "pourquoi": "La décision est jouée, pas racontée : la phrase de comparaison qui s'affiche vient du moteur, mot pour mot."
+        },
+        {
+          "type": "pan",
+          "cible": ".verdict",
+          "duree": 0.9,
+          "pourquoi": "Le bloc verdict porte la phrase de la cote ; calé en haut pour que le titre et le coût entrent dans la bande utile."
+        },
+        {
+          "type": "zoomIn",
+          "cible": ".vh",
+          "duree": 0.5,
+          "pourquoi": "Le resserrement accompagne le verdict — le point de bascule de la vidéo."
+        }
+      ],
+      "cadrages": [
+        {
+          "cible": ".vh",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 7,
+          "droite": 353,
+          "largeurVue": 360,
+          "textePx": 11.5,
+          "texteRush": 41,
+          "top": 78,
+          "bottom": 142,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".vh",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 7,
+        "droite": 353,
+        "largeurVue": 360,
+        "textePx": 11.5,
+        "texteRush": 41,
+        "top": 78,
+        "bottom": 142,
+        "why": null
+      }
+    },
+    {
+      "beat": "ÉQUITÉ",
+      "role": "Le panneau d'équité en grand : le nombre réel, la barre, la preuve. Dernière image de la vidéo.",
+      "debut": 24.1,
+      "fin": 33.5,
+      "secondes": 9.4,
+      "mouvements": [
+        {
+          "type": "fixe",
+          "cible": null,
+          "duree": 9.4,
+          "pourquoi": "La vidéo se termine sur le nombre qui répond à la question posée au beat LA COTE — la leçon est la comparaison, elle doit rester à l'écran le temps de s'installer."
+        }
+      ],
+      "cadrages": [
+        {
+          "cible": ".grid.c2:not(.mt) > .card:nth-of-type(2)",
+          "ok": true,
+          "inBand": true,
+          "dansLargeur": true,
+          "tall": false,
+          "coupes": [],
+          "gauche": 14,
+          "droite": 346,
+          "largeurVue": 360,
+          "textePx": 38,
+          "texteRush": 114,
+          "top": 102,
+          "bottom": 297,
+          "why": null
+        }
+      ],
+      "cadrage": {
+        "cible": ".grid.c2:not(.mt) > .card:nth-of-type(2)",
+        "ok": true,
+        "inBand": true,
+        "dansLargeur": true,
+        "tall": false,
+        "coupes": [],
+        "gauche": 14,
+        "droite": 346,
+        "largeurVue": 360,
+        "textePx": 38,
+        "texteRush": 114,
+        "top": 102,
+        "bottom": 297,
+        "why": null
+      }
+    }
+  ],
+  "bornages": [],
+  "erreurs": []
+}

@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "spotsUtilises": [
+    "turn-apres-call_co_qq_maniac_sec-tete-haute_connexion",
+    "turn-deuxieme-balle_bb_33_tag_connecte_surcarte",
+    "turn-deuxieme-balle_bb_a3s_station_sec-tete-moyenne_blanche",
+    "turn-deuxieme-balle_bb_76s_station_sec-tete-moyenne_blanche",
+    "turn-apres-call_co_55_station_as-haut_surcarte",
+    "turn-deuxieme-balle_bb_98s_maniac_sec-tete-haute_connexion",
+    "turn-apres-call_co_tt_lag_monotone_blanche",
+    "turn-apres-call_co_kts_reg_paire_surcarte",
+    "flop-face-mise_bb_q9s_station_paire",
+    "flop-face-mise_bb_a5s_tag_sec-tete-moyenne"
+  ],
+  "videos": [
+    {
+      "numero": 1,
+      "titre": "01 - la cote dit oui QQ sur sec tete haute carte qui connecte face a",
+      "spot": "turn-apres-call_co_qq_maniac_sec-tete-haute_connexion",
+      "sens": "oui"
+    },
+    {
+      "numero": 2,
+      "titre": "02 - la cote dit non 33 sur tres connecte une surcarte tombe face a",
+      "spot": "turn-deuxieme-balle_bb_33_tag_connecte_surcarte",
+      "sens": "non"
+    },
+    {
+      "numero": 3,
+      "titre": "03 - la cote dit non A3s sur sec dame haute carte blanche face a une",
+      "spot": "turn-deuxieme-balle_bb_a3s_station_sec-tete-moyenne_blanche",
+      "sens": "non"
+    },
+    {
+      "numero": 4,
+      "titre": "04 - la cote dit non 76s sur sec dame haute carte blanche face a une",
+      "spot": "turn-deuxieme-balle_bb_76s_station_sec-tete-moyenne_blanche",
+      "sens": "non"
+    },
+    {
+      "numero": 5,
+      "titre": "05 - la cote dit non 55 sur as haut une surcarte tombe face a une",
+      "spot": "turn-apres-call_co_55_station_as-haut_surcarte",
+      "sens": "non"
+    },
+    {
+      "numero": 6,
+      "titre": "06 - la cote dit oui 98s sur sec tete haute carte qui connecte face",
+      "spot": "turn-deuxieme-balle_bb_98s_maniac_sec-tete-haute_connexion",
+      "sens": "oui"
+    },
+    {
+      "numero": 7,
+      "titre": "07 - la cote dit oui TT sur monotone carte blanche face a un LAG",
+      "spot": "turn-apres-call_co_tt_lag_monotone_blanche",
+      "sens": "oui"
+    },
+    {
+      "numero": 8,
+      "titre": "08 - la cote dit non KTs sur paire une surcarte tombe face a un reg",
+      "spot": "turn-apres-call_co_kts_reg_paire_surcarte",
+      "sens": "non"
+    },
+    {
+      "numero": 9,
+      "titre": "09 - la cote dit non Q9s sur board paire face a une calling station",
+      "spot": "flop-face-mise_bb_q9s_station_paire",
+      "sens": "non"
+    },
+    {
+      "numero": 10,
+      "titre": "10 - la cote dit non A5s sur board sec dame haute face a un TAG",
+      "spot": "flop-face-mise_bb_a5s_tag_sec-tete-moyenne",
+      "sens": "non"
+    }
+  ]
+}
