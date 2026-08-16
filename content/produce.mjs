@@ -57,7 +57,7 @@ const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
  * existe, et le codec doit être nommé explicitement — sinon le flux n'est pas
  * reconnu et le processus meurt sur un tube rompu.
  */
-class Encodeur {
+export class Encodeur {
   constructor(ff, file) {
     this.file = file;
     this.frames = 0;
@@ -85,8 +85,8 @@ class Encodeur {
   }
 }
 
-const grab = (page) => page.screenshot({ type: "jpeg", quality: 92 });
-const images = (sec) => Math.max(1, Math.round(sec * FPS));
+export const grab = (page) => page.screenshot({ type: "jpeg", quality: 92 });
+export const images = (sec) => Math.max(1, Math.round(sec * FPS));
 
 /** Joue une option en prenant les montants exacts du moteur. */
 async function jouerOption(page, quoi) {
@@ -118,8 +118,20 @@ async function jouerOption(page, quoi) {
  * Exécute un mouvement de blueprint. Retourne l'état moteur si le mouvement en
  * a produit un.
  */
-async function executer(page, enc, m, etat) {
+export async function executer(page, enc, m, etat) {
   switch (m.type) {
+    case "coupe": {
+      // Coupe franche. Utile uniquement en rendu continu : quand tous les beats
+      // partagent une même page et un même encodeur, l'échelle du beat précédent
+      // survivrait au suivant et le début du plan serait un zoom résiduel. On
+      // remet donc la caméra à plat sans écrire d'image — la première image du
+      // beat suivant est déjà à sa place, ce qui donne une coupe nette et non un
+      // fondu.
+      etat.scale = 1;
+      etat.origin = null;
+      await setCamera(page, { scrollY: etat.scrollY, scale: 1, origin: null });
+      return null;
+    }
     case "cadre": {
       const y = await scrollTargetFor(page, m.cible, { at: m.at ?? 0.34, align: m.align || "center" });
       if (y === null) throw new Error(`cible introuvable : ${m.cible}`);

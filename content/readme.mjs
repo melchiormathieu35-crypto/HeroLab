@@ -196,6 +196,205 @@ ${m.spot.spec}
 `;
 }
 
+/** Timecode mm:ss,cc — la forme que lisent CapCut, Premiere et Resolve. */
+export const tc = (s) => {
+  const m = Math.floor(s / 60);
+  const r = s - m * 60;
+  return `${String(m).padStart(2, "0")}:${r.toFixed(2).padStart(5, "0")}`;
+};
+
+/**
+ * README d'une vidéo MONTÉE.
+ *
+ * Différence de fond avec le README de rushs : il n'y a plus d'ordre de plans à
+ * décider, donc la question utile n'est plus « dans quel ordre ? » mais « à
+ * quelle seconde ? ». La pièce centrale est la table de timecodes, relevée au
+ * compteur d'images de l'encodeur — pas estimée.
+ *
+ * Toujours pas de voix off, pas de sous-titres, pas de texte définitif : le
+ * document dit OÙ et SUR QUOI, jamais QUOI DIRE.
+ */
+export function readmeMontage(m, qa) {
+  const e = m.moteur;
+  const q = qa || null;
+
+  return `# ${m.video}
+
+**Concept** : ${m.conceptTitre || m.concept} · **Potentiel contenu** : ${m.score}/100
+**Titre interne** : ${m.titreInterne}
+**Spot** : \`${m.spot.id}\`
+**Fichier** : \`${m.fichier}\` — ${m.duree.toFixed(2)} s, ${m.format.largeur}×${m.format.hauteur}, ${m.format.fps} im/s
+
+> Vidéo **montée**, d'un seul tenant. Il ne reste qu'à ajouter **la voix off et
+> les sous-titres**. Aucun montage n'est nécessaire : les coupes, les mouvements
+> et les temps de pose sont déjà en place.
+
+## Ce que la vidéo démontre
+
+${m.enonce}
+
+**Objectif de rétention.** ${m.objectifRetention}
+
+**Moment du reveal.** ${m.momentReveal} — à ${tc(m.timeline.find(b => b.beat === "REVEAL")?.debut ?? 0)}.
+
+---
+
+## Timecodes
+
+| beat | début | fin | durée | ce qui est à l'écran |
+|---|---|---|---|---|
+${m.timeline.map(b => `| **${b.beat}** | \`${tc(b.debut)}\` | \`${tc(b.fin)}\` | ${b.secondes.toFixed(2)} s | ${(b.role || "").split(".")[0]}. |`).join("\n")}
+
+**Durée totale : ${m.duree.toFixed(2)} s.**
+
+Les coupes entre beats sont **franches** : aucun fondu, aucune transition. Une
+insertion de texte peut donc être calée exactement sur un timecode ci-dessus
+sans chevaucher un mouvement de caméra.
+
+### Où poser voix, sous-titres et textes
+
+| beat | de → à | voix | sous-titres | textes |
+|---|---|---|---|---|
+${m.timeline.map(b => {
+  const pl = PLACEMENTS[b.beat] || {};
+  return `| ${b.beat} | \`${tc(b.debut)}\` → \`${tc(b.fin)}\` | ${pl.voix || "—"} | ${pl.soustitres || "—"} | ${pl.textes || "—"} |`;
+}).join("\n")}
+
+**Zones à ne pas encombrer.** La vidéo est cadrée en tenant compte de l'interface
+des plateformes : rien d'essentiel dans les 10 % du haut, les 20 % du bas, ni la
+bande droite des boutons. Garde cette contrainte pour tes ajouts.
+
+---
+
+## Ce que dit le moteur
+
+${e ? `- Le héros a **${e.equity} % d'équité**.
+- L'action instinctive est **${e.joue.label}**, à **${bb(e.joue.evBB)}**.${e.joue.evBB < 0 ? `
+  Passer valant 0 par construction, ce coup coûte donc plus cher que de jeter la main.` : ""}
+- La meilleure action est **${e.meilleure.label}**, à **${bb(e.meilleure.evBB)}**.
+- **Différentiel d'EV : ${e.lossBB.toFixed(2)} bb.** Verdict de l'application : « ${e.verdict} ».
+
+### Espérance de chaque option
+
+En big blinds, à partir de la décision. Passer vaut 0 : c'est la référence
+commune, l'argent déjà investi étant ignoré pour toutes les options. Un chiffre
+négatif signifie donc « pire que jeter la main ».
+
+| option | espérance |
+|---|---|
+${e.options.map(o => `| ${o.label} | ${bb(o.evBB)} |`).join("\n")}
+
+Ces valeurs sont celles affichées à l'écran pendant le beat PAYOFF. Elles
+viennent de \`Judge.evaluate\`. Comme l'indique l'application elle-même, ce sont
+des estimations sur la range adverse et les profils en jeu — un ordre de grandeur
+et un classement, pas une sortie de solveur. Ne les présente pas autrement.` : "**NON VÉRIFIÉ** — aucune analyse moteur n'a été produite pour cette vidéo."}
+
+---
+
+## Mouvements de caméra et leur raison
+
+Aucun mouvement n'est décoratif. Chacun a été écrit pour une raison, reprise ici
+telle quelle depuis le plan de tournage.
+
+${m.timeline.filter(b => b.mouvements.length).map(b =>
+  `### ${b.beat} — \`${tc(b.debut)}\` → \`${tc(b.fin)}\`\n\n` +
+  b.mouvements.map(x => `- *${x.type}*${x.duree ? ` (${x.duree} s)` : ""} — ${x.pourquoi}`).join("\n")
+).join("\n\n")}
+
+${m.bornages && m.bornages.length ? `> **Zooms bornés automatiquement** : ${m.bornages.map(b => `\`${b.cible}\` ${b.demande} → ${b.applique}`).join(", ")}.
+> Une cible plus large que le cadre serait coupée si on l'agrandissait ; le zoom
+> est ramené à ce que la cible supporte, et le fait est signalé plutôt que corrigé
+> en silence.\n` : ""}
+---
+
+## Contrôle qualité
+
+${q ? `${q.ok ? "**Tous les contrôles sont passés.**" : "**Anomalies relevées — à vérifier avant publication.**"}
+
+| contrôle | résultat |
+|---|---|
+${q.controles.map(c => `| ${c.nom} | ${c.ok ? "ok" : `✗ ${c.why}`} |`).join("\n")}
+
+### Image, beat par beat
+
+Le remplissage mesure la part du cadre qui n'est pas sur une seule valeur : il
+détecte une image vide ou une application qui n'occuperait pas le cadre.
+
+| beat | échantillons | remplissage |
+|---|---|---|
+${q.beats.map(b => `| ${b.beat} | ${b.image.mesures.map(x => `\`${tc(x.a)}\``).join(" ")} | ${b.image.mesures.map(x => `${x.remplissage} %`).join(" · ")} |`).join("\n")}` : "Non exécuté."}
+
+---
+
+## Format
+
+WebM / VP8, ${m.format.largeur}×${m.format.hauteur}, ${m.format.fps} im/s.
+
+Le \`ffmpeg\` de l'environnement de production est compilé sans multiplexeur MP4 ;
+il ne sait écrire que du WebM. Le fichier s'importe tel quel dans CapCut,
+Premiere, DaVinci Resolve et Final Cut — c'est à l'export final que le MP4 se
+fait. Pour convertir en amont, avec un ffmpeg complet :
+
+\`\`\`sh
+ffmpeg -i ${m.fichier} -c:v libx264 -crf 18 -preset slow -pix_fmt yuv420p video.mp4
+\`\`\`
+
+---
+
+## Reproduire ce spot
+
+Ouvre l'application avec \`?admin=1\` et colle ceci dans le mode Studio :
+
+\`\`\`
+${m.spot.spec}
+\`\`\`
+`;
+}
+
+/** Index d'un dossier de concept. */
+export function readmeConcept(concept, videos) {
+  const total = videos.reduce((n, v) => n + v.duree, 0);
+  return `# Format court — ${concept.titre}
+
+Vidéos **montées**, prêtes pour la voix off et les sous-titres. Un fichier par
+vidéo, 1080×1920, 30 im/s, entre 30 s et 1 min. Aucun montage supplémentaire
+n'est nécessaire.
+
+**Principe du concept.** ${concept.principe}
+
+| vidéo | titre interne | score | durée | différentiel EV |
+|---|---|---|---|---|
+${videos.map(v => `| [${v.video}](${encodeURI(v.video)}/README.md) | ${v.titreInterne} | ${v.score}/100 | ${v.duree.toFixed(1)} s | ${v.moteur ? v.moteur.lossBB.toFixed(2) + " bb" : "—"} |`).join("\n")}
+
+**${videos.length} vidéo(s), ${total.toFixed(0)} s au total.**
+
+## Structure d'une vidéo de ce concept
+
+| beat | rôle |
+|---|---|
+| HOOK | la main seule, sans contexte — tenir les deux premières secondes |
+| SITUATION | la table, la position, l'adversaire, le board |
+| TENSION | la donnée qui rend la décision coûteuse, tenue à l'écran |
+| CHOICE | les options réelles et leurs montants — le temps de choix |
+| REVEAL | l'action instinctive est jouée, le moteur tranche |
+| PAYOFF | l'espérance de chaque option — la preuve |
+
+Les timecodes exacts de chaque beat sont dans le README de chaque vidéo.
+
+## Ce qui n'est pas fourni
+
+Voix off, sous-titres et textes incrustés définitifs. Le README de chaque vidéo
+donne les timecodes, les emplacements recommandés et les chiffres exacts du
+moteur, pour que rien de ce qui sera ajouté ne contredise l'image.
+
+## Reproduire
+
+\`\`\`sh
+node content/montage.mjs --concept quizz --count 2
+\`\`\`
+`;
+}
+
 export function readmeIndex(videos, qaGlobal) {
   const total = videos.reduce((n, v) => n + v.plans.filter(p => p.ok).reduce((m, p) => m + p.secondes, 0), 0);
   return `# Rushes avant montage — format court

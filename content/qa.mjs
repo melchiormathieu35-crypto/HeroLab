@@ -252,6 +252,110 @@ function controleOrdre(manifest) {
   return { ok: true, plans: ok.length };
 }
 
+/**
+ * QA des vidéos MONTÉES — un seul fichier par vidéo.
+ *
+ * La passe des rushs échantillonne trois instants par fichier, ce qui suffit
+ * quand un fichier = un plan. Ici, un seul fichier contient six beats : une
+ * moyenne sur toute la durée masquerait un beat noir. On échantillonne donc
+ * DANS CHAQUE BEAT, aux timecodes réels relevés à l'encodage, plus le tout
+ * dernier instant utile — une vidéo qui finit sur du vide est inexploitable et
+ * c'est précisément ce que la moyenne cacherait.
+ *
+ * S'y ajoute la contrainte de format court demandée : la vidéo doit durer entre
+ * 30 s et 1 min, et l'écart entre la durée prévue par le blueprint et la durée
+ * réellement écrite doit être négligeable — un écart signale un beat interrompu.
+ */
+export async function qaMontage({ dossiers = [], duree = { min: 30, max: 60 } } = {}) {
+  const ff = await ffmpegPath();
+  if (!ff) throw new Error("ffmpeg introuvable (attendu sous /opt/pw-browsers/ffmpeg-*)");
+
+  const browser = await launch();
+  const { ctx, page } = await openShot(browser);
+  const rapport = [];
+
+  for (const dossier of dossiers) {
+    const mf = join(dossier, "manifest.json");
+    const item = { dossier, controles: [], ok: true, beats: [] };
+    const ko = (nom, why, info = {}) => { item.controles.push({ nom, ok: false, why, ...info }); item.ok = false; };
+    const oui = (nom, info = {}) => item.controles.push({ nom, ok: true, ...info });
+
+    if (!existsSync(mf)) { ko("manifeste", "manifest.json absent"); rapport.push(item); continue; }
+    const m = JSON.parse(await readFile(mf, "utf8"));
+    item.video = m.video; item.titre = m.titreInterne; item.score = m.score; item.concept = m.concept;
+
+    const file = join(dossier, m.fichier);
+    if (!existsSync(file)) { ko("fichier", "absent du disque"); rapport.push(item); continue; }
+    const st = await stat(file);
+    if (st.size < 8192) ko("fichier", `trop petit (${st.size} octets)`); else oui("fichier", { octets: st.size });
+
+    const s = await sonder(ff, file);
+    if (s.largeur !== FORMAT.largeur || s.hauteur !== FORMAT.hauteur) {
+      ko("format", `attendu ${FORMAT.largeur}×${FORMAT.hauteur}, obtenu ${s.largeur}×${s.hauteur}`);
+    } else oui("format", { resolution: `${s.largeur}×${s.hauteur}` });
+
+    const ratio = s.largeur && s.hauteur ? s.largeur / s.hauteur : 0;
+    if (Math.abs(ratio - 9 / 16) > 0.001) ko("ratio", `attendu 9:16, obtenu ${ratio.toFixed(4)}`); else oui("ratio");
+
+    if (s.fps !== FORMAT.fps) ko("fps", `attendu ${FORMAT.fps}, obtenu ${s.fps}`); else oui("fps", { fps: s.fps });
+
+    if (s.secondes === null) ko("durée", "illisible");
+    else if (s.secondes < duree.min || s.secondes > duree.max) {
+      ko("durée", `${s.secondes.toFixed(2)} s hors de la fourchette format court ${duree.min}–${duree.max} s`);
+    } else oui("durée", { secondes: Math.round(s.secondes * 100) / 100 });
+
+    // Continuité : la somme des beats doit couvrir le fichier entier.
+    const fin = m.timeline.length ? m.timeline[m.timeline.length - 1].fin : 0;
+    if (s.secondes !== null && Math.abs(fin - s.secondes) > 0.2) {
+      ko("continuité", `la timeline s'arrête à ${fin.toFixed(2)} s pour un fichier de ${s.secondes.toFixed(2)} s`);
+    } else oui("continuité", { beats: m.timeline.length, fin });
+
+    const trous = m.timeline.filter((b, i) => i > 0 && Math.abs(b.debut - m.timeline[i - 1].fin) > 0.001);
+    if (trous.length) ko("enchaînement", `${trous.length} discontinuité(s) entre beats`); else oui("enchaînement");
+
+    // Image, beat par beat. Un seul beat noir suffit à rendre la vidéo
+    // inexploitable ; une mesure globale ne le verrait pas.
+    let imageOk = true;
+    for (const b of m.timeline) {
+      const instants = [b.debut + (b.secondes * 0.25), b.debut + (b.secondes * 0.75)];
+      const mesures = [];
+      for (const t of instants) mesures.push({ a: Math.round(t * 100) / 100, ...(await imageAt(ff, file, Math.max(0.05, t))) });
+      const mauvaise = mesures.find(x => !x.ok);
+      item.beats.push({
+        beat: b.beat, debut: b.debut, fin: b.fin, secondes: b.secondes,
+        image: { ok: !mauvaise, why: mauvaise ? `à ${mauvaise.a} s : ${mauvaise.why}` : null, mesures: mesures.map(x => ({ a: x.a, luminance: x.luminance, remplissage: x.remplissage })) },
+        cadrage: b.cadrage || null,
+      });
+      if (mauvaise) { ko("image", `${b.beat} — ${mauvaise.why} (à ${mauvaise.a} s)`); imageOk = false; }
+    }
+    // Dernière image utile : une fin sur du vide se voit seulement là.
+    if (s.secondes) {
+      const der = await imageAt(ff, file, Math.max(0.05, s.secondes - 0.15));
+      if (!der.ok) { ko("image", `dernière image : ${der.why}`); imageOk = false; }
+    }
+    if (imageOk) oui("image", { beats: item.beats.length, echantillons: item.beats.length * 2 + 1 });
+
+    // Safe area : relevé DOM fait à la prise, beat par beat.
+    const horsBande = m.timeline.filter(b => b.cadrage && !b.cadrage.ok);
+    if (horsBande.length) ko("safe area", horsBande.map(b => `${b.beat} : ${b.cadrage.why}`).join(" · "));
+    else oui("safe area", { controles: m.timeline.filter(b => b.cadrage).length });
+
+    if (m.erreurs && m.erreurs.length) ko("console", `${m.erreurs.length} erreur(s)`, { detail: m.erreurs.slice(0, 3) });
+    else oui("console");
+
+    const coherence = await coherenceMoteur(page, m);
+    if (!coherence.ok) ko("cohérence moteur", coherence.why); else oui("cohérence moteur");
+    item.coherence = coherence;
+    item.duree = s.secondes;
+
+    rapport.push(item);
+  }
+
+  await ctx.close();
+  await browser.close();
+  return rapport;
+}
+
 export async function qa({ dossiers = null } = {}) {
   const ff = await ffmpegPath();
   if (!ff) throw new Error("ffmpeg introuvable (attendu sous /opt/pw-browsers/ffmpeg-*)");
