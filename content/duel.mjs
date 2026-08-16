@@ -52,19 +52,29 @@ async function basesDuClassement() {
 }
 
 /**
- * Les frères de profil d'un spot : mêmes cartes, même board, même ligne, seul
- * le profil change. On ne fabrique pas les specs à la main : le catalogue
- * complet les contient déjà, on les y retrouve par identifiant — même
- * vocabulaire, même grammaire, zéro invention.
+ * Les frères de profil d'un spot : la MÊME spec, au mot du profil près.
+ *
+ * Première version : on retrouvait les frères dans le catalogue. Faux à
+ * l'image — le catalogue assigne la limite par une formule qui dépend du nom
+ * du profil, si bien que le « frère » de NL50 se jouait en NL10 : mêmes
+ * montants en big blinds, mais tous les euros changeaient à l'écran, et la
+ * promesse « seul l'adversaire change » devenait visiblement fausse. Constaté
+ * sur une image extraite de la manche B, pas dans un rapport.
+ *
+ * On construit donc la variante en remplaçant UNIQUEMENT le mot du profil
+ * dans la ligne Villains — profils pris dans le catalogue du produit, spec
+ * identique au reste. La promesse est alors littérale : un seul mot diffère
+ * entre les deux specs, et c'est vérifiable.
  */
 export function freresDeProfil(id, catalogue) {
   const spot = catalogue.find(s => s.id === id);
   if (!spot) return [];
-  return PROFILS_DSL
-    .map(p => catalogue.find(s => s.modele === spot.modele && s.heroPos === spot.heroPos
-      && s.heroCls === spot.heroCls && s.texture === spot.texture
-      && s.turnRole === spot.turnRole && s.profil === p))
-    .filter(Boolean);
+  return PROFILS_DSL.map(p => {
+    if (p === spot.profil) return spot;
+    const spec = spot.spec.replace(`(${spot.profil},`, `(${p},`);
+    if (spec === spot.spec) return null;                       // profil introuvable dans la spec
+    return { ...spot, profil: p, spec, id: spot.id.replace(`_${spot.profil}`, `_${p}`) };
+  }).filter(Boolean);
 }
 
 /**
