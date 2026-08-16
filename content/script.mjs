@@ -359,8 +359,9 @@ export function construireScriptDuel(m) {
       `Même main, même mise. Un seul changement : ${profilDit(d.profilB)}.`,
       `Tout pareil, sauf lui : ${profilDit(d.profilB)}.`,
     ],
-    sousTitres: [`Manche 2 — ${profilDit(d.profilB)}`, "Tout est identique, sauf lui."],
-    note: "Le pivot du concept. Le badge de profil, différent, est le seul changement visible à l'écran.",
+    sousTitres: [`Manche 2 — ${profilDit(d.profilB)}`, "Même main, même mise — nouvel adversaire."],
+    note: "Le pivot du concept. Même main, même board, mêmes montants ; le badge de l'adversaire actif est le changement. " +
+      "Les sièges couchés sont décoratifs et leur habillage peut varier d'une manche à l'autre — ne pas bâtir le texte sur eux.",
   });
 
   entrees.push({

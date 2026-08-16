@@ -313,8 +313,10 @@ ${m.duel ? `Deux manches, une seule action : **${m.duel.action}**.
 | meilleure action | ${m.duel.action} | ${m.duel.bestB.label} (${bb(m.duel.bestB.evBB)}) |
 
 **La bascule : ${m.duel.contraste.toFixed(2)} bb** pour la même action, quand seul
-le profil adverse change. C'est la démonstration de la vidéo — rien d'autre n'a
-bougé entre les deux manches, les deux specs ne diffèrent que d'un mot.
+le profil adverse change. C'est la démonstration de la vidéo : les deux specs ne
+diffèrent que d'un mot — le profil de l'adversaire actif. (Seule variation
+visuelle sans effet sur la main : l'habillage des sièges couchés, décoratif,
+est tiré par la table à chaque chargement.)
 
 ### Espérances à l'écran, manche par manche
 
