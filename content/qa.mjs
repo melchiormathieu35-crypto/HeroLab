@@ -256,8 +256,55 @@ async function coherenceDuel(page, manifest) {
   return { ok: ecarts.length === 0, why: ecarts.length ? ecarts.join(" · ") : null, ecarts };
 }
 
+/**
+ * Cohérence moteur d'un PODIUM : trois erreurs indépendantes, trois vérités à
+ * recontrôler. Chaque spec est rechargée, le réflexe instinctif rejoué
+ * (comme à la prise), et chaque coût comparé à celui du manifeste.
+ */
+async function coherencePodium(page, manifest) {
+  const rangs = manifest.podium?.rang || [];
+  const moteurs = manifest.moteurs || [];
+  if (rangs.length !== 3 || moteurs.length !== 3) {
+    return { ok: false, why: `podium incomplet dans le manifeste (${rangs.length} rang(s), ${moteurs.length} analyse(s))` };
+  }
+
+  const ecarts = [];
+  for (let i = 0; i < 3; i++) {
+    const r = rangs[i], m = moteurs[i];
+    const built = await loadSpot(page, r.spot.spec);
+    if (!built.ok) { ecarts.push(`rang ${r.rang} : spot non rechargeable (${built.err})`); continue; }
+
+    const rejoue = await page.evaluate(() => {
+      const t = App.t;
+      const opts = Spot.options(t);
+      const a0 = Judge.evaluate(t, { action: opts[0].action, amount: opts[0].amount });
+      const instinct = t.toCall(t.hero) > 0 ? "call" : "check";
+      const pick = a0.options.find(o => o.action === instinct) || a0.options[a0.options.length - 1];
+      App.choose(pick.action, pick.amount);
+      const a = App.analysis;
+      return {
+        evAction: Number(pick.evBB.toFixed(2)), verdict: a.verdict, lossBB: Number(a.lossBB.toFixed(2)),
+        meilleure: { label: a.best.label || a.best.action, evBB: Number(a.best.evBB.toFixed(2)) },
+      };
+    });
+
+    if (Math.abs(rejoue.evAction - m.joue.evBB) > TOLERANCE_BB) ecarts.push(`rang ${r.rang} EV ${m.joue.evBB} → ${rejoue.evAction}`);
+    if (rejoue.verdict !== m.verdict) ecarts.push(`rang ${r.rang} verdict « ${m.verdict} » → « ${rejoue.verdict} »`);
+    if (Math.abs(rejoue.lossBB - m.lossBB) > TOLERANCE_BB) ecarts.push(`rang ${r.rang} coût ${m.lossBB} → ${rejoue.lossBB}`);
+    if (Math.abs(r.coutInstinct - rejoue.lossBB) > TOLERANCE_BB) ecarts.push(`rang ${r.rang} coût annoncé ${r.coutInstinct} → ${rejoue.lossBB}`);
+  }
+  // Le classement lui-même : rang 3 < rang 2 < rang 1 en coût réel.
+  const parRang = Object.fromEntries(rangs.map(r => [r.rang, r.coutInstinct]));
+  if (!(parRang[3] <= parRang[2] && parRang[2] <= parRang[1])) {
+    ecarts.push(`ordre du classement incohérent (3:${parRang[3]} 2:${parRang[2]} 1:${parRang[1]})`);
+  }
+
+  return { ok: ecarts.length === 0, why: ecarts.length ? ecarts.join(" · ") : null, ecarts };
+}
+
 async function coherenceMoteur(page, manifest) {
   if (manifest.duel) return coherenceDuel(page, manifest);
+  if (manifest.podium) return coherencePodium(page, manifest);
   const e = manifest.moteur;
   if (!e) return { ok: false, why: "aucune donnée moteur dans le manifeste" };
   const built = await loadSpot(page, manifest.spot.spec);

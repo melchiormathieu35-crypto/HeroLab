@@ -68,6 +68,19 @@ export const CONCEPTS = {
       ["PAYOFF", "la liste des espérances de la manche B — le reclassement complet"],
     ],
   },
+  podium: {
+    dossier: "Podium",
+    titre: "Podium des erreurs",
+    principe:
+      "Trois erreurs réelles, classées de la moins chère à la plus chère. Le format liste : " +
+      "la rétention vient du classement lui-même, le spectateur reste pour voir le numéro un.",
+    structure: [
+      ["HOOK", "la main de la première erreur — aucun chiffre, la promesse du classement"],
+      ["ERREUR N°3", "la moins chère des trois — situation, réflexe joué, coût"],
+      ["ERREUR N°2", "situation rechargée — même mécanique, coût plus élevé"],
+      ["ERREUR N°1", "la plus chère du lot — le temps de pose final est le plus long"],
+    ],
+  },
 };
 
 /** Fourchette de durée imposée pour une vidéo montée, en secondes. */
@@ -385,6 +398,7 @@ export async function produireMontage(browser, ff, spot, bp, dossier) {
     // compatibilité des contrôles existants.
     moteurs,
     duel: bp.duel || null,
+    podium: bp.podium || null,
     timeline,
     bornages: etat.bornages,
     erreurs: fatals,

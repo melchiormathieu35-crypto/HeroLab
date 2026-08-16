@@ -79,6 +79,22 @@ const PLACEMENTS = {
     soustitres: "Oui — le verdict doit être lisible sans le son.",
     textes: "Le coût est déjà à l'écran : éviter de le doubler.",
   },
+  // ── Beats propres au podium des erreurs
+  "ERREUR N°3": {
+    voix: "La moins chère des trois. Rythme rapide : situation, réflexe, coût — sans s'attarder.",
+    soustitres: "Oui, courts : le coût suffit.",
+    textes: "Un repère « N°3 » possible en haut de bande utile.",
+  },
+  "ERREUR N°2": {
+    voix: "Même rythme, un cran au-dessus. Ne pas ralentir : le classement doit se sentir monter.",
+    soustitres: "Oui, courts.",
+    textes: "Un repère « N°2 » possible.",
+  },
+  "ERREUR N°1": {
+    voix: "La plus chère du lot — le clou de la vidéo. C'est ici que la voix peut s'attarder.",
+    soustitres: "Oui — le chiffre final doit être lisible sans le son.",
+    textes: "Un repère « N°1 » possible. Rien par-dessus le coût affiché.",
+  },
 };
 
 export function readmeVideo(m, qa) {
@@ -303,7 +319,18 @@ bande droite des boutons. Garde cette contrainte pour tes ajouts.
 
 ## Ce que dit le moteur
 
-${m.duel ? `Deux manches, une seule action : **${m.duel.action}**.
+${m.podium ? `Trois erreurs indépendantes, classées par coût réel — chacune rejouée et revérifiée au contrôle qualité.
+
+| rang | situation | réflexe joué | coût |
+|---|---|---|---|
+${m.podium.rang.slice().sort((a, b) => b.rang - a.rang).map(r =>
+  `| **N°${r.rang}** | ${r.spot.label} | ${r.instinct === "call" ? "payer" : "checker"} | **${bb(r.coutInstinct)}** |`).join("\n")}
+
+Le rang 1 est la vidéo qui se termine : c'est l'erreur la plus chère du lot,
+tenue le plus longtemps à l'écran. Les trois chiffres viennent de
+\`Judge.evaluate\`, comme partout ailleurs dans cette chaîne — rien n'est classé
+à l'œil.
+` : m.duel ? `Deux manches, une seule action : **${m.duel.action}**.
 
 | | manche A (${m.duel.profilA}) | manche B (${m.duel.profilB}) |
 |---|---|---|
@@ -337,7 +364,7 @@ ${(m.moteurs && m.moteurs.length === 2) ? m.moteurs[0].options.map(oA => {
 - La meilleure action est **${e.meilleure.label}**, à **${bb(e.meilleure.evBB)}**.
 - **Différentiel d'EV : ${e.lossBB.toFixed(2)} bb.** Verdict de l'application : « ${e.verdict} ».` : "**NON VÉRIFIÉ** — aucune analyse moteur n'a été produite pour cette vidéo."}
 
-${!m.duel && e ? `### Espérance de chaque option
+${!m.duel && !m.podium && e ? `### Espérance de chaque option
 
 En big blinds, à partir de la décision. Passer vaut 0 : c'est la référence
 commune, l'argent déjà investi étant ignoré pour toutes les options. Un chiffre
@@ -404,13 +431,15 @@ ffmpeg -i ${m.fichier} -c:v libx264 -crf 18 -preset slow -pix_fmt yuv420p video.
 
 ---
 
-## Reproduire ce spot
+## Reproduire ${m.podium ? "ces spots" : m.duel ? "ces deux manches" : "ce spot"}
 
 Ouvre l'application avec \`?admin=1\` et colle ceci dans le mode Studio :
 
-\`\`\`
-${m.spot.spec}
-\`\`\`
+${m.podium
+    ? m.podium.rang.slice().sort((a, b) => b.rang - a.rang).map(r => `**Erreur n°${r.rang}** — ${r.spot.label}\n\n\`\`\`\n${r.spot.spec}\n\`\`\``).join("\n\n")
+    : m.duel
+      ? `**Manche A** — ${m.duel.profilA}\n\n\`\`\`\n${m.duel.specA}\n\`\`\`\n\n**Manche B** — ${m.duel.profilB}\n\n\`\`\`\n${m.duel.specB}\n\`\`\``
+      : `\`\`\`\n${m.spot.spec}\n\`\`\``}
 `;
 }
 

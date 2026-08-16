@@ -410,6 +410,145 @@ export function construireScriptDuel(m) {
   return entrees;
 }
 
+/**
+ * Script d'un PODIUM DES ERREURS. Trois lignes indépendantes, une par rang,
+ * plus le HOOK. Même contrat que les autres concepts : chiffres de l'écran
+ * uniquement, calibrage strict par fenêtre de beat.
+ *
+ * Le rythme est volontairement plus sec que le quizz ou le duel — c'est un
+ * format liste, pas un temps de réflexion : chaque rang se dit en une phrase,
+ * situation puis coût, sans détailler la main carte par carte.
+ */
+export function construireScriptPodium(m) {
+  const rangs = m.podium.rang.slice().sort((a, b) => b.rang - a.rang);  // 3, 2, 1
+  const moteursParRang = Object.fromEntries(rangs.map((r, i) => [r.rang, m.moteurs[i]]));
+  const beat = (nom) => m.timeline.find(b => b.beat === nom);
+  const entrees = [];
+
+  const rangDeMoindre = rangs[rangs.length - 1];  // rang 1, le plus cher — cité au HOOK
+
+  entrees.push({
+    beat: "HOOK",
+    voixNiveaux: [
+      `Trois erreurs. De la moins chère… à la pire. Regarde jusqu'au bout.`,
+      `Trois erreurs, classées. Jusqu'à la pire.`,
+      `Trois erreurs classées.`,
+    ],
+    sousTitres: ["Trois erreurs, classées.", "De la moins chère… à la pire."],
+    note: "Aucun chiffre ici : l'accroche est la promesse du classement, pas la réponse.",
+  });
+
+  for (const r of rangs) {
+    const e = moteursParRang[r.rang];
+    const s = lireSpec(r.spot.spec);
+    const reflexeMot = r.instinct === "call" ? "Payer" : "Checker";
+    const situationCourte = `${cartes(s.hero.cartes)} ${EN_POSITION[s.hero.pos] || s.hero.pos}`;
+    const dernier = r.rang === 1;
+
+    entrees.push({
+      beat: `ERREUR N°${r.rang}`,
+      voixNiveaux: dernier
+        ? [
+          `La pire du lot. ${situationCourte}. ${reflexeMot} coûte ${e.lossBB.toFixed(2).replace(".", ",")} big blinds — le sommet du classement.`,
+          `La pire du lot : ${situationCourte}. ${reflexeMot} coûte ${e.lossBB.toFixed(2).replace(".", ",")} big blinds.`,
+          `La pire : ${reflexeMot}, ${e.lossBB.toFixed(2).replace(".", ",")} big blinds.`,
+        ]
+        : [
+          `Numéro ${r.rang} : ${situationCourte}. ${reflexeMot} coûte ${e.lossBB.toFixed(2).replace(".", ",")} big blinds.`,
+          `Numéro ${r.rang} : ${reflexeMot} coûte ${e.lossBB.toFixed(2).replace(".", ",")} big blinds.`,
+        ],
+      sousTitres: [`N°${r.rang}`, `${reflexeMot} = ${e.lossBB.toFixed(2).replace(".", ",")} bb`],
+      note: dernier
+        ? "Le clou de la vidéo : la voix peut s'attarder ici, c'est le seul rang qui le permet."
+        : "Rythme rapide : une phrase, le coût, on enchaîne — ne pas ralentir le classement.",
+    });
+  }
+
+  for (const en of entrees) {
+    const b = beat(en.beat);
+    if (!b) throw new Error(`beat absent de la timeline : ${en.beat}`);
+    en.debut = b.debut; en.fin = b.fin; en.secondes = b.secondes;
+    en.motsMax = Math.floor(b.secondes * DEBIT);
+    en.voix = en.voixNiveaux.find(v => mots(v) <= en.motsMax) || en.voixNiveaux[en.voixNiveaux.length - 1];
+    en.niveauxEcartes = en.voixNiveaux.indexOf(en.voix);
+    delete en.voixNiveaux;
+    en.motsProposes = mots(en.voix);
+    if (en.motsProposes > en.motsMax) {
+      throw new Error(`script infaisable : ${en.beat} demande ${en.motsProposes} mots pour une fenêtre de ${en.motsMax} (${en.secondes} s à ${DEBIT} mots/s) — « ${en.voix} »`);
+    }
+  }
+  return entrees;
+}
+
+function chiffresPodium(m) {
+  const rangs = m.podium.rang.slice().sort((a, b) => b.rang - a.rang);
+  const moteursParRang = Object.fromEntries(rangs.map((r, i) => [r.rang, m.moteurs[i]]));
+  return `| rang | situation | réflexe | coût | verdict |
+|---|---|---|---|---|
+${rangs.map(r => {
+    const e = moteursParRang[r.rang];
+    return `| N°${r.rang} | ${r.spot.label} | ${r.instinct === "call" ? "payer" : "checker"} | ${bb(e.lossBB)} bb | « ${e.verdict} » |`;
+  }).join("\n")}`;
+}
+
+function scriptMarkdownPodium(m) {
+  const entrees = construireScriptPodium(m);
+
+  return `# Script — ${m.video}
+
+**Vidéo** : \`${m.fichier}\` · ${m.duree.toFixed(2)} s · **Concept** : ${m.conceptTitre || m.concept}
+**Situation** : ${m.titreInterne}
+
+> **Statut de ce texte : une proposition.** Le ton, le rythme et les mots se
+> reformulent librement — c'est ta voix. Les **chiffres**, en revanche, sont ceux
+> que le moteur affiche à l'écran au même moment : ne les change pas, ne les
+> arrondis pas autrement, n'en ajoute pas d'autres.
+>
+> Calibrage : environ ${DEBIT} mots par seconde de voix posée. Chaque beat
+> indique sa contrainte ; si tu reformules plus long, ça ne rentrera pas.
+>
+> **Le principe du podium** : trois erreurs indépendantes, classées par coût
+> réel — n°3 la moins chère, n°1 la plus chère. Aucune des trois ne dépend
+> des autres ; c'est le classement, pas l'histoire, qui fait tenir la vidéo.
+
+---
+
+## Le script, d'une traite
+
+${entrees.map(en => en.voix).join("\n\n")}
+
+*(Les crochets de calage : ${entrees.map(en => `${en.beat} à ${tc(en.debut)}`).join(" · ")}.)*
+
+---
+
+## Le détail, beat par beat
+
+${entrees.map(en => `### ${en.beat} — \`${tc(en.debut)}\` → \`${tc(en.fin)}\` (${en.secondes.toFixed(1)} s · ${en.motsMax} mots max, proposé : ${en.motsProposes})
+
+**Voix off proposée**
+
+> ${en.voix}
+
+**Sous-titres proposés** (à caler dans la fenêtre du beat, en bas de la bande utile)
+
+${en.sousTitres.map(s => `- ${s}`).join("\n")}
+
+**Note de jeu.** ${en.note}
+`).join("\n")}
+---
+
+## Les chiffres de référence (ceux de l'écran)
+
+${chiffresPodium(m)}
+
+Ces valeurs viennent de \`Judge.evaluate\`, rejouées et revérifiées par le
+contrôle qualité sur les trois erreurs. Comme l'indique l'application
+elle-même, ce sont des estimations sur la range adverse et les profils en
+jeu — un ordre de grandeur et un classement, pas une sortie de solveur. Le
+script ne doit pas les présenter autrement.
+`;
+}
+
 /** Table des chiffres de référence d'un duel — les deux manches côte à côte. */
 function chiffresDuel(m) {
   const d = m.duel;
@@ -484,6 +623,7 @@ présenter autrement.
 
 export function scriptMarkdown(m) {
   if (m.duel) return scriptMarkdownDuel(m);
+  if (m.podium) return scriptMarkdownPodium(m);
   const entrees = construireScript(m);
   const e = m.moteur;
 
