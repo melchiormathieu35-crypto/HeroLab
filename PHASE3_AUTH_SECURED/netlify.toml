@@ -1,0 +1,45 @@
+## ============================================================================
+## En-têtes de sécurité servis par Netlify.
+##
+## À placer à la racine du site publié (à côté du HTML).
+##
+## Ces protections NE PEUVENT PAS être portées par une balise <meta> : elles
+## n'existent qu'en en-tête HTTP. Tant que l'application vivait en fichier
+## local, elles étaient hors de portée ; un vrai domaine les rend applicables.
+## ============================================================================
+
+[[headers]]
+  for = "/*"
+
+  [headers.values]
+
+  # Empêche l'inclusion du site dans une iframe tierce (détournement de clic).
+  # C'est LA directive ignorée dans une balise meta : elle n'a d'effet qu'ici.
+  # Elle s'ajoute à la politique déclarée dans la page sans la remplacer —
+  # deux politiques CSP se cumulent, elles ne s'écrasent pas.
+  Content-Security-Policy = "frame-ancestors 'none'"
+  X-Frame-Options = "DENY"
+
+  # Aucune adresse n'est transmise au site suivant. Décisif ici : au retour de
+  # Google, l'URL contient le code d'autorisation. La page le nettoie déjà,
+  # mais cet en-tête ferme la fenêtre pendant laquelle il pourrait fuiter.
+  Referrer-Policy = "no-referrer"
+
+  # Interdit au navigateur de deviner un type de contenu à la place du serveur.
+  X-Content-Type-Options = "nosniff"
+
+  # L'application n'utilise aucune de ces capacités : on les coupe.
+  Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()"
+
+  # HTTPS obligatoire pour deux ans, sous-domaines compris.
+  # À n'activer qu'une fois le HTTPS confirmé fonctionnel : la directive est
+  # mémorisée par le navigateur et un retour en arrière est long.
+  Strict-Transport-Security = "max-age=63072000; includeSubDomains"
+
+## Le HTML ne doit jamais être servi depuis un cache périmé : une mise à jour
+## de l'artefact doit être visible au rechargement suivant.
+[[headers]]
+  for = "/*.html"
+
+  [headers.values]
+  Cache-Control = "no-cache, must-revalidate"
