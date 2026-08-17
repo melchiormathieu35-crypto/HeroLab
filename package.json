@@ -1,0 +1,19 @@
+{
+  "name": "herolab",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Simulateur de décisions Cash Game — outillage de tests et de build",
+  "scripts": {
+    "test": "node tests/regression.js VERSION_PRODUCTION/herolab.html",
+    "test:browser": "node tests/browser.js VERSION_PRODUCTION/herolab.html",
+    "build:auth": "node PHASE3_AUTH/build.js",
+    "test:isolation": "node PHASE3_AUTH/tests/isolation.js",
+    "test:rls": "PHASE3_AUTH/supabase/run_rls_tests.sh"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.112.3"
+  }
+}

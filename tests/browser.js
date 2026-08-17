@@ -248,14 +248,22 @@ Seat 2: V1 collected ($0.03)`;
     eq(r.statut, "loaded");
   });
 
-  await t("la CSP est bien déclarée et interdit le réseau", async () => {
+  // La Phase 3 ouvre volontairement connect-src vers l'origine Supabase. Le
+  // test ne vérifie donc plus « aucun réseau » mais « réseau minimal » : pas de
+  // joker, pas d'origine de script externe. C'est cette propriété-là qui doit
+  // survivre aux évolutions, pas la valeur littérale 'none'.
+  await t("la CSP reste minimale (aucun joker, aucun script externe)", async () => {
     const c = await page.evaluate(() => {
       const m = document.querySelector('meta[http-equiv="Content-Security-Policy"]');
       return m && m.getAttribute("content");
     });
     ok(c, "aucune balise CSP");
     ok(/default-src 'none'/.test(c), "default-src 'none' attendu");
-    ok(/connect-src 'none'/.test(c), "connect-src 'none' attendu");
+    const connect = (c.match(/connect-src ([^;]*)/) || [])[1] || "";
+    ok(connect.length > 0, "connect-src doit être déclaré explicitement");
+    ok(!connect.includes("*"), `joker interdit dans connect-src : ${connect}`);
+    ok(!/script-src[^;]*https?:/.test(c), "script-src ne doit porter aucune origine externe");
+    ok(!/'unsafe-eval'/.test(c), "'unsafe-eval' interdit");
   });
 
   /* ──────────────────────────── Mobile / tactile ────────────────────────── */

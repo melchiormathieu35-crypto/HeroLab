@@ -674,8 +674,16 @@ suite("P1 · Copy / textes utilisateur");
 const fs = require("fs");
 const path = require("path");
 const source = fs.readFileSync(path.resolve(__dirname, "..", target), "utf8");
-// On ne scanne que le script applicatif (au-delà des fontes et de Chart.js).
-const appSource = source.slice(source.indexOf("<script>", source.indexOf("<script>") + 1));
+// On ne scanne que le script DU MOTEUR, repéré par son contenu : les artefacts
+// de Phase 3 embarquent aussi Chart.js et le SDK Supabase, dont le code de
+// bibliothèque n'a pas à être jugé par les règles de style de l'application.
+const appSource = (() => {
+  const re = /<script>([\s\S]*?)<\/script>/g;
+  let m;
+  while ((m = re.exec(source)) !== null)
+    if (m[1].includes('const RANKS = "23456789TJQKA"')) return m[1];
+  throw new Error("script du moteur introuvable");
+})();
 
 test("aucune auto-correction de brouillon dans les textes", () => {
   const m = appSource.match(/…\s*pardon|\.\.\.\s*pardon/gi);

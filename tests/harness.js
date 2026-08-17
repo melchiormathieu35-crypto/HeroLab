@@ -87,14 +87,22 @@ function makeStubs() {
   return { document, localStorage, window, store };
 }
 
-/** Extrait le contenu du <script> applicatif (le second, après Chart.js). */
+/**
+ * Extrait le <script> du moteur.
+ *
+ * On l'identifie par son CONTENU et non par sa position : la Phase 3 injecte
+ * des scripts avant lui (SDK, config, couche identité), ce qui décalerait tout
+ * repérage par index.
+ */
 function extractAppScript(html) {
-  const marks = [...html.matchAll(/<script>/g)].map(m => m.index);
-  if (marks.length < 2) throw new Error("script applicatif introuvable");
-  const start = marks[1] + "<script>".length;
-  const end = html.indexOf("</script>", start);
-  if (end < 0) throw new Error("</script> de fermeture introuvable");
-  return html.slice(start, end);
+  const re = /<script>([\s\S]*?)<\/script>/g;
+  let m;
+  while ((m = re.exec(html)) !== null) {
+    // Signature du moteur : ses constantes de cartes, présentes nulle part
+    // ailleurs (ni dans Chart.js, ni dans le SDK Supabase).
+    if (m[1].includes('const RANKS = "23456789TJQKA"')) return m[1];
+  }
+  throw new Error("script du moteur introuvable");
 }
 
 /** Injecte l'export des internes de l'IIFE Feutre juste avant sa fermeture. */
