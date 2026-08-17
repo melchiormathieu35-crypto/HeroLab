@@ -19,7 +19,7 @@ const MODULES = [
   "Progress", "Career", "Player", "Rating", "Journey", "App",
   "RangeModel", "HRSpot", "HRStats", "PRLab", "PRStats", "BlockerEngine",
   "BLStats", "Studio", "Calibrate", "StorageGuard", "Mentor", "MENTORS",
-  "AVATARS", "APP_VERSION"
+  "AVATARS", "APP_VERSION", "Judge", "LEAK_INFO", "TIERS", "LEVELS", "Roster", "Session"
 ];
 
 /* Modules vivant dans l'IIFE `window.Feutre = (function () { … })()` : ils ne

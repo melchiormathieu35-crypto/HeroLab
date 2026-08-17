@@ -1,0 +1,134 @@
+{
+  "360": [
+    {
+      "etape": 1,
+      "ecran": "1 · Onboarding (pseudo + 12 symboles + 3 mentors)",
+      "hauteurContenu": 1368,
+      "hauteurEcran": 800,
+      "ctaY": 927,
+      "champsObligatoires": 1,
+      "champsOptionnels": 2,
+      "scrollNecessaire": true,
+      "gestes": "1 saisie + 1 scroll + 1 tap"
+    },
+    {
+      "etape": 2,
+      "ecran": "2 · Accueil",
+      "hauteurContenu": 2048,
+      "hauteurEcran": 800,
+      "ctaTableY": 1191,
+      "autresCTA": 6,
+      "scrollNecessaire": true,
+      "gestes": "1 scroll + 1 tap"
+    },
+    {
+      "etape": 3,
+      "ecran": "3 · Interstitiel « Chaque main est nouvelle »",
+      "texte": "Chaque main est nouvelle.",
+      "mots": 63,
+      "hauteurContenu": 560,
+      "gestes": "1 tap"
+    },
+    {
+      "etape": 4,
+      "ecran": "4 · Table — première décision",
+      "hauteurContenu": 959,
+      "hauteurEcran": 800,
+      "premierBoutonActionY": 499,
+      "nbOptions": 5,
+      "niveauParDefaut": "intermediaire",
+      "modeParDefaut": "libre",
+      "hud": false,
+      "scrollNecessaire": false,
+      "gestes": "1 tap"
+    }
+  ],
+  "390": [
+    {
+      "etape": 1,
+      "ecran": "1 · Onboarding (pseudo + 12 symboles + 3 mentors)",
+      "hauteurContenu": 1329,
+      "hauteurEcran": 844,
+      "ctaY": 930,
+      "champsObligatoires": 1,
+      "champsOptionnels": 2,
+      "scrollNecessaire": true,
+      "gestes": "1 saisie + 1 scroll + 1 tap"
+    },
+    {
+      "etape": 2,
+      "ecran": "2 · Accueil",
+      "hauteurContenu": 2048,
+      "hauteurEcran": 844,
+      "ctaTableY": 1191,
+      "autresCTA": 6,
+      "scrollNecessaire": true,
+      "gestes": "1 scroll + 1 tap"
+    },
+    {
+      "etape": 3,
+      "ecran": "3 · Interstitiel « Chaque main est nouvelle »",
+      "texte": "Chaque main est nouvelle.",
+      "mots": 63,
+      "hauteurContenu": 514,
+      "gestes": "1 tap"
+    },
+    {
+      "etape": 4,
+      "ecran": "4 · Table — première décision",
+      "hauteurContenu": 918,
+      "hauteurEcran": 844,
+      "premierBoutonActionY": 499,
+      "nbOptions": 6,
+      "niveauParDefaut": "intermediaire",
+      "modeParDefaut": "libre",
+      "hud": false,
+      "scrollNecessaire": false,
+      "gestes": "1 tap"
+    }
+  ],
+  "412": [
+    {
+      "etape": 1,
+      "ecran": "1 · Onboarding (pseudo + 12 symboles + 3 mentors)",
+      "hauteurContenu": 1296,
+      "hauteurEcran": 915,
+      "ctaY": 968,
+      "champsObligatoires": 1,
+      "champsOptionnels": 2,
+      "scrollNecessaire": true,
+      "gestes": "1 saisie + 1 scroll + 1 tap"
+    },
+    {
+      "etape": 2,
+      "ecran": "2 · Accueil",
+      "hauteurContenu": 2026,
+      "hauteurEcran": 915,
+      "ctaTableY": 1169,
+      "autresCTA": 6,
+      "scrollNecessaire": true,
+      "gestes": "1 scroll + 1 tap"
+    },
+    {
+      "etape": 3,
+      "ecran": "3 · Interstitiel « Chaque main est nouvelle »",
+      "texte": "Chaque main est nouvelle.",
+      "mots": 63,
+      "hauteurContenu": 473,
+      "gestes": "1 tap"
+    },
+    {
+      "etape": 4,
+      "ecran": "4 · Table — première décision",
+      "hauteurContenu": 918,
+      "hauteurEcran": 915,
+      "premierBoutonActionY": 499,
+      "nbOptions": 4,
+      "niveauParDefaut": "intermediaire",
+      "modeParDefaut": "libre",
+      "hud": false,
+      "scrollNecessaire": false,
+      "gestes": "1 tap"
+    }
+  ]
+}
