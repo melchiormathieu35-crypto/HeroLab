@@ -18,6 +18,9 @@ l'établit. Tout ce qui figure ici peut être rejoué.
 | 10 | La range SB de référence déclenche l'alerte `sb-loose` | C | **confirmé** |
 | 11 | `reloadEngine` de la Phase 3 est un no-op | K | **confirmé en navigateur** |
 | 12 | Tracker inaccessible sur mobile | I | **confirmé, et aggravé** |
+| 13 | `level.hint` n'est lu nulle part | E | **confirmé** (0 occurrence) |
+| 14 | `level.mode:"gto"` jamais consommé | E | **confirmé** (lu 1 fois, pour `exploit` seul) |
+| 15 | Le niveau GTO promet un jugement qu'il ne rend pas | E | **confirmé** |
 
 ---
 
@@ -94,3 +97,41 @@ Le point commun : ils contrôlent des **propriétés du rendu**, jamais la
 stratégie de test de la Phase 4 — un test doit pouvoir échouer parce que
 l'utilisateur ne peut pas faire quelque chose, pas seulement parce qu'un nombre
 est hors bornes.
+
+
+## 13-15. Les niveaux de difficulté, champ par champ
+
+```
+debutant       tolerance 0.14   hint:true    mode:-        4 profils
+intermediaire  tolerance 0.10   hint:true    mode:-        6 profils
+avance         tolerance 0.07   hint:false   mode:-        5 profils
+pro            tolerance 0.05   hint:false   mode:-        4 profils
+gto            tolerance 0.04   hint:false   mode:gto      2 profils
+exploit        tolerance 0.08   hint:false   mode:exploit  6 profils
+```
+
+`level.hint` : **0 occurrence** hors déclaration. Les deux `debutant` et
+`intermediaire` annoncent une aide qui n'existe pas.
+
+`level.mode` : lu **une seule fois** (l.7729), et uniquement pour `"exploit"`.
+La valeur `"gto"` n'est donc jamais consommée. Or ce niveau se décrit ainsi :
+
+> « Jugement sur la stratégie non exploitable, sans tenir compte des tendances
+> adverses. »
+
+Il promet un **type** de jugement différent ; il ne livre qu'une tolérance de
+0,04 au lieu de 0,05 et un vivier d'adversaires réduit. Le jugement lui-même est
+identique à celui de tous les autres niveaux.
+
+C'est le même motif que les modes Pots 3Bet et Pots 4Bet : un champ déclaratif
+porte une promesse que rien ne lit.
+
+## Une mesure de l'agent E qui mérite d'être retenue
+
+Sur 1 836 spots jugés, le **mode** fait varier la difficulté réelle **1,7 fois
+plus** que le **niveau** (amplitude 0,310 contre 0,186). Le curseur présenté à
+l'utilisateur comme « la difficulté » est donc le moins puissant des deux
+leviers — le choix du thème pèse davantage que le choix du niveau.
+
+Non re-vérifié par moi : la mesure demande de rejouer le protocole complet de
+l'agent. Signalée comme telle.
