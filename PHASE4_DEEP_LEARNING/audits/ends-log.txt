@@ -1,0 +1,378 @@
+HR-SPOT {
+ "text": "Pot 3-bet\n6-max\nNL25\n150 bb effectifs\nPOT\n18.00 €\n72 bb\nSB\nAdversaire · TAG\nsa main — à toi de la lire\n2\n♥\nT\n♠\n5\n♣\n3\n♣\nTURN\nBTN\nToi\n8\n♣\nA\n♣\ntes cartes servent de bloqueurs\nDéroulé de la main\nchaque action resserre sa range\nFLOP\n2H TS 5C\nToi\nmise 2.25 € 50 % pot\nAdversaire\nsuit 2.25 €\nTURN\n2H TS 5C 3C\nToi\nmise 4.50 € 50 % pot\nAdversaire\nsuit 4.50 €\nHUD\n634 mains\nVPIP\n21\nPFR\n18\n3Bet\n7%\nFold→C\n46%\nAF\n2.8\nWTSD\n27%\nDes statistiques équilibrées : profil de reg, à lire par fréquences.\nQuel est le combo le plus probable ?\nClique une case de la grille\nAA\nAK\nAQ\nAJ\nAT\nA9\nA8\nA7\nA6\nA5\nA4\nA3\nA2\nAK\nKK\nKQ\nKJ\nKT\nK9\nK8\nK7\nK6\nK5\nK4\nK3\nK2\nAQ\nKQ\nQQ\nQJ\nQT\nQ9\nQ8\nQ7\nQ6\nQ5\nQ4\nQ3\nQ2\nAJ\nKJ\nQJ\nJJ\nJT\nJ9\nJ8\nJ7\nJ6\nJ5\nJ4\nJ3\nJ2\nAT\nKT\nQT\nJT\nTT\nT9\nT8\nT7\nT6\nT5\nT4\nT3\nT2\nA9\nK9\nQ9\nJ9\nT9\n99\n98\n97\n96\n95\n94\n93\n92\nA8\nK8\nQ8\nJ8\nT8\n98\n88\n87\n86\n85\n84\n83\n82\nA7\nK7\nQ7\nJ7\nT7\n97\n87\n77\n76\n75\n74\n73\n72\nA6\nK6\nQ6\nJ6\nT6\n96\n86\n76\n66\n65\n64\n63\n62\nA5\nK5\nQ5\nJ5\nT5\n95\n85\n75\n65\n55\n54\n53\n52\nA4\nK4\nQ4\nJ4\nT4\n94\n84\n74\n64\n54\n44\n43\n42\nA3\nK3\nQ3\nJ3\nT3\n93\n83\n73\n63\n53\n43\n33\n32\nA2\nK2\nQ2\nJ2\nT2\n92\n82\n72\n62\n52\n42\n32\n22\nChaque case est un combo type. Diagonale : les paires. Au-dessus : suited. En dessous : offsuit.\nChoisis un combo",
+ "btns": [
+  "AA",
+  "AK",
+  "AQ",
+  "AJ",
+  "AT",
+  "A9",
+  "A8",
+  "A7",
+  "A6",
+  "A5",
+  "A4",
+  "A3",
+  "A2",
+  "AK",
+  "KK",
+  "KQ",
+  "KJ",
+  "KT",
+  "K9",
+  "K8",
+  "K7",
+  "K6",
+  "K5",
+  "K4",
+  "K3",
+  "K2",
+  "AQ",
+  "KQ",
+  "QQ",
+  "QJ",
+  "QT",
+  "Q9",
+  "Q8",
+  "Q7",
+  "Q6",
+  "Q5",
+  "Q4",
+  "Q3",
+  "Q2",
+  "AJ",
+  "KJ",
+  "QJ",
+  "JJ",
+  "JT",
+  "J9",
+  "J8",
+  "J7",
+  "J6",
+  "J5",
+  "J4",
+  "J3",
+  "J2",
+  "AT",
+  "KT",
+  "QT",
+  "JT",
+  "TT",
+  "T9",
+  "T8",
+  "T7",
+  "T6",
+  "T5",
+  "T4",
+  "T3",
+  "T2",
+  "A9",
+  "K9",
+  "Q9",
+  "J9",
+  "T9",
+  "99",
+  "98",
+  "97",
+  "96",
+  "95",
+  "94",
+  "93",
+  "92",
+  "A8",
+  "K8",
+  "Q8",
+  "J8",
+  "T8",
+  "98",
+  "88",
+  "87",
+  "86",
+  "85",
+  "84",
+  "83",
+  "82",
+  "A7",
+  "K7",
+  "Q7",
+  "J7",
+  "T7",
+  "97",
+  "87",
+  "77",
+  "76",
+  "75",
+  "74",
+  "73",
+  "72",
+  "A6",
+  "K6",
+  "Q6",
+  "J6",
+  "T6",
+  "96",
+  "86",
+  "76",
+  "66",
+  "65",
+  "64",
+  "63",
+  "62",
+  "A5",
+  "K5",
+  "Q5",
+  "J5",
+  "T5",
+  "95",
+  "85",
+  "75",
+  "65",
+  "55",
+  "54",
+  "53",
+  "52",
+  "A4",
+  "K4",
+  "Q4",
+  "J4",
+  "T4",
+  "94",
+  "84",
+  "74",
+  "64",
+  "54",
+  "44",
+  "43",
+  "42",
+  "A3",
+  "K3",
+  "Q3",
+  "J3",
+  "T3",
+  "93",
+  "83",
+  "73",
+  "63",
+  "53",
+  "43",
+  "33",
+  "32",
+  "A2",
+  "K2",
+  "Q2",
+  "J2",
+  "T2",
+  "92",
+  "82",
+  "72",
+  "62",
+  "52",
+  "42",
+  "32",
+  "22",
+  "Choisis un combo"
+ ],
+ "h": 1850
+}
+HR-REVEAL {
+ "text": "Belle lecture. Voyons comment tu y es arrivé.\nBonne catégorie\n75%\nSa range, street après street\nconcentrée d'environ 57 à 23 combinaisons crédibles\nPréflop\nSa range de départ pèse l'équivalent d'environ 57 combinaisons également crédibles, compte tenu de sa position et de son profil.\n57\nFlop\ncall 2.25 €\nSon call conserve les mains moyennes et les tirages, tout en écartant le haut et le bas de sa range.\n≈ 27 −30\nTurn\ncall 4.50 €\nSon call conserve les mains moyennes et les tirages, tout en écartant le haut et le bas de sa range.\n≈ 23 −4\nLà où tous les indices convergent\n1\nJJ\n28.3%\n2\nQQ\n28.3%\n3\nTT\n14.2%\n4\nJTs\n11.3%\n5\nT9s\n11.3%\nSA MAIN, RÉVÉLÉE\nA\n♥\n5\n♥\nA5s · paire faible\nElle était plausible sans être évidente : le genre de main qu'on inclut dans la range sans la citer en premier.\n▸\nLe débrief du coach\n🧠 Réduction de range par le call\nL'INFORMATION DÉTERMINANTE\n\nSon call modéré flop est le pivot de la main. Elle fait disparaître les mains sans valeur de sa range, et la recentre sur les mains fortes. C'est cette redistribution qui doit guider toute la suite de ton raisonnement.\n\nCE QUE TU AS BIEN LU\nTu as correctement évalué la force de sa main : ta lecture visait la bonne zone de sa range.\nPOURQUOI CE SPOT ÉTAIT DIFFICILE\n\nSa vraie main n'était pas dans le haut de sa range : même une lecture juste ne pouvait pas la deviner précisément. On joue contre une range, pas contre une main — l'important était d'être dans la bonne zone.\n\nLe réflexe qui sépare les niveaux : intégrer le profil AVANT de conclure. Face à un TAG, la même ligne ne veut pas dire la même chose que face à un joueur agressif.\n\n🎯 LE RÉFLEXE À EMPORTER\n\nContre un TAG, un gros investissement représente bien plus souvent de la value qu'un bluff. Avant un hero-call, demande-toi si ce profil bluffe réellement assez pour le justifier.\n\nApprofondir cette lecture\nSpot suivant →\nTerminer",
+ "btns": [
+  "Spot suivant →",
+  "Terminer"
+ ],
+ "h": 2389
+}
+HR-APRES-TERMINER (300 car.) LE LABORATOIRE DE LECTURE
+Range Detective
+
+Retrouve la main adverse par la déduction, pas par le hasard. Chaque action filtre sa range ; à toi de la resserrer street après street jusqu'aux quelques combos qui tiennent debout.
+
+Commencer un spot
+Difficulté
+Débutant
+Profils lisibles, ranges larges, be | boutons: [
+ "Commencer un spot",
+ "Débutant\nProfils lisibles, ranges larges, beaucoup d'informations. Idéal pour apprendre la méthode.",
+ "Intermédiaire\nDes regs apparaissent, les ranges se resserrent, la river entre en jeu.",
+ "Avancé\nMajorité de regs, sizings plus subtils, HUD à interpréter finement.",
+ "Expert\nRegs équilibrés, peu d'informations, ranges polarisées. La lecture pure.",
+ "Mode Range\nChoisis le combo type (KQs, 98s, TT…). Tu raisonnes en catégories, comme un joueur.",
+ "Mode Exact PLUS DUR\nChoisis les deux cartes précises, couleurs comprises. La lecture des bloqueurs devient décisive."
+]
+HR-STATS existe ? vue hrstats: true
+BL-REVEAL btns [
+ "Exercices",
+ "Combo Calculator",
+ "Exercice suivant",
+ "Terminer"
+]
+BL-APRES-TERMINER (200 car.) Exercices
+Combo Calculator
+LE LABORATOIRE DES BLOQUEURS
+Blocker Finder
+
+Tes cartes ne servent pas qu'à faire une main : elles retirent des combos de la range adverse. Apprends à voir exactement lesque | boutons: [
+ "Exercices",
+ "Combo Calculator",
+ "Commencer un exercice",
+ "Débutant\nBloqueurs évidents, explications pas à pas.\nIdentifier les bloqueurs · Comparaison de mains",
+ "Intermédiaire\nCombos et réduction de range.\nIdentifier les bloqueurs · Comparaison de mains · Bluff avec bloqueur",
+ "Avancé\nEffets subtils sur les fréquences.\nComparaison de mains · Bluff avec bloqueur · Call ou fold",
+ "Expert\nBluff catch, 4-bet pots, ranges capées — spots GTO/exploitants.\nBluff avec bloqueur · Call ou fold · Analyse avancée"
+]
+PR-SPOT btns [
+ "+ Voir une main supplémentaire (affine ta lecture)",
+ "Nit",
+ "TAG",
+ "LAG",
+ "Fish passif",
+ "Calling station",
+ "Récréatif",
+ "Fish agressif",
+ "Maniac",
+ "Choisis un profil"
+]
+CAREER-ENTRY LIMITE ACTUELLE
+NL2
+Les fondamentaux
+BANKROLL
+40.00 €
+20.0 caves
+MAINS EN CARRIÈRE
+0
+0 en NL2
+WINRATE
+—
+0/300 mains
+Lancer une session
+NL2 · NL2
+Session courte
+50 mains
+Une cinquantaine de mains. Pour travailler un point précis.
+Session moyenne
+200 mains
+Deux cents mains. La durée d'une vraie session en ligne.
+Session longue
+500 mains
+Cinq cents mains. Assez pour que la variance commence à se lisser.
+Les mêmes adversaires reviennent d'une main à l'autre pendant la session. Ils observent ce que tu montres et ajustent leur jeu en conséquence.
+BANKROLL
+Il te manque 110.00 € pour atteindre les 30 caves de NL5.
+Parcours
+cinq paliers
+NL2
+Les fondamentaux
+En cours · 0 mains
+NL5
+Premières résistance
+CAREER-BTNS [
+ "Session courte\n50 mains\nUne cinquantaine de mains. Pour travailler un point précis.",
+ "Session moyenne\n200 mains\nDeux cents mains. La durée d'une vraie session en ligne.",
+ "Session longue\n500 mains\nCinq cents mains. Assez pour que la variance commence à se lisser.",
+ "Exporter ma carrière",
+ "Recommencer une carrière"
+]
+SESSION target 50
+SESSION-REPORT h= 1676 btns: [
+ "Retour à la carrière",
+ "Voir mes leaks"
+]
+SESSION-REPORT texte (900 car.) Session terminée
+-14.86 € · -743.0 bb
+Session perdante et taux d'erreurs élevé. Ici le résultat reflète le jeu — il y a du travail concret à faire.
+MAINS JOUÉES
+50
+objectif 50
+RÉSULTAT
+-743.0 bb
+-1486 bb/100
+DÉCISIONS CORRECTES
+43 %
+43 sur 101
+ESPÉRANCE PERDUE
+869.9 bb
+sur 58 erreurs
+Courbe de la session
+bb cumulées, main par main
+Analyse
+ce qui a coûté le plus
+1
+C'est au turn que ton jeu coûte le plus cher aujourd'hui : 10 erreurs sur 14 décisions, pour 274.5 bb d'espérance perdue.
+2
+Ta position la plus coûteuse est SB : 254.0 bb perdues sur 24 décisions. Les blindes sont les positions les plus difficiles : tu y joues hors de position avec une range large.
+3
+Tu values trop fin est revenu 13 fois. Demande-toi quelles mains plus faibles peuvent payer. Si la liste est vide, checke.
+◈
+Après 50 mains à cette table, ton image large incite les autres à te payer plus large.
+Les mains qui ont co
+LEAKS Diagnostic
+101 décisions analysées
+
+4 tendances récurrentes détectées, classées par espérance perdue. Le mode Entraînement ciblé te reproposera en priorité les situations correspondantes.
+
+Travailler mon principal leak
+01
+Tu bluffes trop
+PRIORITAIRE
+−168.1 bb
+Bluffer sans équité de repli ni bloqueur, contre des adversaires qui ne passent pas, perd de l'argent à chaque tentative.
+Correction — Garde tes bluffs pour les mains qui peuvent s'améliorer, et abandonne-les contre les profils qui paient.
+ | btns: [
+ "Travailler mon principal leak"
+]
+TRACKER VUE D'ENSEMBLE
+◆
+Tableau de bord
+◈
+Graphiques
+STATISTIQUES
+▲
+Préflop
+▼
+Postflop
+◎
+Positions
+PROGRESSION
+✦
+Analyse des leaks
+⚑
+Mains à revoir
+DONNÉES
+≡
+Mains
+0
+⇪
+Import & sessions
+0
+Importer des historiques
+fichiers .txt Winamax
+Déposez vos fichiers ici
+
+Un ou plusieurs .txt exportés par Winamax. Les mains déjà présentes sont ignorées.
+
+Choisir des fichiers
+Sessions
+aucune session
+Tout sélectionner
+Fusionner la sélection
+Supprimer la sélection
+Tout effacer
+Aucune session
+Vos imports apparaîtront  | btns: [
+ "◆\nTableau de bord",
+ "◈\nGraphiques",
+ "▲\nPréflop",
+ "▼\nPostflop",
+ "◎\nPositions",
+ "✦\nAnalyse des leaks",
+ "⚑\nMains à revoir",
+ "≡\nMains\n0",
+ "⇪\nImport & sessions\n0",
+ "☰",
+ "Choisir des fichiers",
+ "Tout sélectionner",
+ "Fusionner la sélection",
+ "Supprimer la sélection",
+ "Tout effacer"
+]
+STATS h= 763 | btns: []

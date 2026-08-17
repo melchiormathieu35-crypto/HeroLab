@@ -4,7 +4,12 @@
  */
 const path = require("path");
 const ROOT = path.resolve(__dirname, "..", "..");
-const { M } = require(path.join(ROOT, "tests", "harness"))("VERSION_PRODUCTION/herolab.html");
+const load = require(path.join(ROOT, "tests", "harness"));
+// On étend la liste des modules exportés SANS toucher au fichier harness :
+// `load.MODULES` est la même référence de tableau que celle lue par load().
+["Judge", "LEVELS", "Opponent", "STAKES", "Roster", "TIERS", "LEAK_INFO", "POS6", "Deck"]
+  .forEach(k => { if (!load.MODULES.includes(k)) load.MODULES.push(k); });
+const { M } = load("VERSION_PRODUCTION/herolab.html");
 
 const POS6 = ["UTG", "HJ", "CO", "BTN", "SB", "BB"];
 

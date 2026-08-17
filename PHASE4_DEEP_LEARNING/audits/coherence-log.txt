@@ -1,0 +1,419 @@
+TRACKER structure {
+ "kids": [
+  {
+   "tag": "DIV",
+   "cls": "scrim",
+   "h": 0,
+   "textLen": 0
+  },
+  {
+   "tag": "DIV",
+   "cls": "app",
+   "h": 1075,
+   "textLen": 504
+  }
+ ],
+ "premierTexteY": 93,
+ "hauteurTotale": 1075
+}
+BOUTONS PAR VUE {
+ "home": [
+  {
+   "t": "DÉFI DU JOUR",
+   "cls": "home-resume"
+  },
+  {
+   "t": "▤",
+   "cls": "mode-card"
+  },
+  {
+   "t": "▰",
+   "cls": "mode-card"
+  },
+  {
+   "t": "◈",
+   "cls": "mode-card"
+  },
+  {
+   "t": "◈",
+   "cls": "mode-card"
+  },
+  {
+   "t": "◈",
+   "cls": "mode-card"
+  }
+ ],
+ "play": [
+  {
+   "t": "Distribuer une main",
+   "cls": "btn pri"
+  },
+  {
+   "t": "Mode Carrière",
+   "cls": "btn"
+  }
+ ],
+ "career": [
+  {
+   "t": "Session courte",
+   "cls": "sess-pick"
+  },
+  {
+   "t": "Session moyenne",
+   "cls": "sess-pick"
+  },
+  {
+   "t": "Session longue",
+   "cls": "sess-pick"
+  },
+  {
+   "t": "Exporter ma carrière",
+   "cls": "btn"
+  },
+  {
+   "t": "Recommencer une carrière",
+   "cls": "btn gh"
+  }
+ ],
+ "stats": [],
+ "leaks": [],
+ "journey": [
+  {
+   "t": "Jouer quelques mains",
+   "cls": "btn pri lg mt"
+  }
+ ],
+ "daily": [
+  {
+   "t": "Lancer le défi",
+   "cls": "btn pri lg"
+  }
+ ],
+ "hr": [
+  {
+   "t": "Commencer un spot",
+   "cls": "btn pri lg"
+  },
+  {
+   "t": "Débutant",
+   "cls": "hr-diff-opt "
+  },
+  {
+   "t": "Intermédiaire",
+   "cls": "hr-diff-opt on"
+  },
+  {
+   "t": "Avancé",
+   "cls": "hr-diff-opt "
+  },
+  {
+   "t": "Expert",
+   "cls": "hr-diff-opt "
+  },
+  {
+   "t": "Mode Range",
+   "cls": "hr-mode-opt on"
+  },
+  {
+   "t": "Mode Exact PLUS DUR",
+   "cls": "hr-mode-opt "
+  }
+ ],
+ "pr": [
+  {
+   "t": "Analyser un joueur",
+   "cls": "btn pri lg"
+  },
+  {
+   "t": "Débutant jusqu'à 3 mains",
+   "cls": "pr-diff-opt "
+  },
+  {
+   "t": "Intermédiaire jusqu'à 5 mains",
+   "cls": "pr-diff-opt on"
+  },
+  {
+   "t": "Avancé jusqu'à 7 mains",
+   "cls": "pr-diff-opt "
+  },
+  {
+   "t": "Expert jusqu'à 10 mains",
+   "cls": "pr-diff-opt "
+  }
+ ],
+ "bl": [
+  {
+   "t": "Exercices",
+   "cls": "bl-tab on"
+  },
+  {
+   "t": "Combo Calculator",
+   "cls": "bl-tab "
+  },
+  {
+   "t": "Commencer un exercice",
+   "cls": "btn pri lg"
+  },
+  {
+   "t": "Débutant",
+   "cls": "bl-diff-opt "
+  },
+  {
+   "t": "Intermédiaire",
+   "cls": "bl-diff-opt on"
+  },
+  {
+   "t": "Avancé",
+   "cls": "bl-diff-opt "
+  },
+  {
+   "t": "Expert",
+   "cls": "bl-diff-opt "
+  }
+ ],
+ "profiles": [],
+ "theory": [],
+ "setup": [
+  {
+   "t": "Débutant",
+   "cls": "pick "
+  },
+  {
+   "t": "Intermédiaire",
+   "cls": "pick on"
+  },
+  {
+   "t": "Avancé",
+   "cls": "pick "
+  },
+  {
+   "t": "Professionnel",
+   "cls": "pick "
+  },
+  {
+   "t": "GTO",
+   "cls": "pick "
+  },
+  {
+   "t": "Exploit",
+   "cls": "pick "
+  },
+  {
+   "t": "Partie libre",
+   "cls": "pick on"
+  },
+  {
+   "t": "Préflop",
+   "cls": "pick "
+  },
+  {
+   "t": "Flop",
+   "cls": "pick "
+  },
+  {
+   "t": "Turn",
+   "cls": "pick "
+  },
+  {
+   "t": "River",
+   "cls": "pick "
+  },
+  {
+   "t": "Pots 3Bet",
+   "cls": "pick "
+  },
+  {
+   "t": "Pots 4Bet",
+   "cls": "pick "
+  },
+  {
+   "t": "Blind vs Blind",
+   "cls": "pick "
+  },
+  {
+   "t": "BTN vs BB",
+   "cls": "pick "
+  },
+  {
+   "t": "Multiway",
+   "cls": "pick "
+  },
+  {
+   "t": "Deep stack",
+   "cls": "pick "
+  },
+  {
+   "t": "Short stack",
+   "cls": "pick "
+  },
+  {
+   "t": "Entraînement ciblé",
+   "cls": "pick "
+  },
+  {
+   "t": "Nit",
+   "cls": "pick "
+  },
+  {
+   "t": "TAG",
+   "cls": "pick "
+  },
+  {
+   "t": "LAG",
+   "cls": "pick "
+  },
+  {
+   "t": "Reg compétent",
+   "cls": "pick "
+  },
+  {
+   "t": "Reg agressif",
+   "cls": "pick "
+  },
+  {
+   "t": "Fish passif",
+   "cls": "pick "
+  },
+  {
+   "t": "Calling station",
+   "cls": "pick "
+  },
+  {
+   "t": "Maniac",
+   "cls": "pick "
+  },
+  {
+   "t": "Récréatif",
+   "cls": "pick "
+  },
+  {
+   "t": "Lancer une main",
+   "cls": "btn pri"
+  },
+  {
+   "t": "Exporter mes données",
+   "cls": "btn"
+  },
+  {
+   "t": "Effacer ma progression",
+   "cls": "btn gh"
+  }
+ ]
+}
+VUES SANS AUCUN BOUTON [
+ "stats",
+ "leaks",
+ "profiles",
+ "theory"
+]
+HAUTEUR DES VUES {
+ "home": {
+  "px": 2048,
+  "ecrans": 2.4
+ },
+ "career": {
+  "px": 3081,
+  "ecrans": 3.7
+ },
+ "stats": {
+  "px": 163,
+  "ecrans": 0.2
+ },
+ "leaks": {
+  "px": 207,
+  "ecrans": 0.2
+ },
+ "journey": {
+  "px": 365,
+  "ecrans": 0.4
+ },
+ "hr": {
+  "px": 1427,
+  "ecrans": 1.7
+ },
+ "pr": {
+  "px": 1127,
+  "ecrans": 1.3
+ },
+ "bl": {
+  "px": 1195,
+  "ecrans": 1.4
+ },
+ "profiles": {
+  "px": 4437,
+  "ecrans": 5.3
+ },
+ "theory": {
+  "px": 2467,
+  "ecrans": 2.9
+ },
+ "setup": {
+  "px": 1329,
+  "ecrans": 1.6
+ },
+ "daily": {
+  "px": 276,
+  "ecrans": 0.3
+ }
+}
+CLASSES DE BOUTONS PRESENTES (vue courante) [
+ "bl-diff-opt",
+ "bl-diff-opt on",
+ "bl-tab",
+ "bl-tab on",
+ "btn",
+ "btn gh",
+ "btn pri",
+ "btn pri lg",
+ "btn pri lg mt",
+ "btn pri lg ob-start",
+ "btn primary",
+ "btn sm",
+ "btn sm danger",
+ "burger",
+ "ft-nav-item",
+ "ft-nav-item active",
+ "home-resume",
+ "hr-diff-opt",
+ "hr-diff-opt on",
+ "hr-mode-opt",
+ "hr-mode-opt on",
+ "mentor-card",
+ "mentor-card on",
+ "mode-card",
+ "ob-avatar",
+ "ob-avatar on",
+ "ob-link",
+ "pick",
+ "pick on",
+ "pr-diff-opt",
+ "pr-diff-opt on",
+ "rail-profile",
+ "sess-pick",
+ "tab",
+ "tab on",
+ "tab tab-flag",
+ "tab tab-flag2",
+ "tab tab-flag3"
+]
+CLASSES DES 3 LABS {
+ "hr": [
+  "btn pri lg",
+  "hr-diff-opt",
+  "hr-diff-opt on",
+  "hr-mode-opt on",
+  "hr-mode-opt"
+ ],
+ "pr": [
+  "btn pri lg",
+  "pr-diff-opt",
+  "pr-diff-opt on"
+ ],
+ "bl": [
+  "bl-tab on",
+  "bl-tab",
+  "btn pri lg",
+  "bl-diff-opt",
+  "bl-diff-opt on"
+ ]
+}

@@ -1,0 +1,209 @@
+{
+  "360": {
+    "collisionsTotales": 112,
+    "mainsAvecCollision": 103,
+    "exemples": [
+      {
+        "a": "K\n♥\n6\n♥\nVous\nSB · 10.02 ",
+        "b": "0.05 €",
+        "px": 557,
+        "ca": "seat hero ",
+        "cb": "bet"
+      },
+      {
+        "a": "Kevin\nSTAT\nBB · 12.11 €",
+        "b": "Pot 0.15 € · 1.5 bb",
+        "px": 699,
+        "ca": "seat  ",
+        "cb": "pot"
+      },
+      {
+        "a": "0.10 €",
+        "b": "Pot 0.15 € · 1.5 bb",
+        "px": 484,
+        "ca": "bet",
+        "cb": "pot"
+      },
+      {
+        "a": "Kevin\nSTAT\nHJ · 3.40 €\nc",
+        "b": "0.10 €",
+        "px": 1081,
+        "ca": "seat  ",
+        "cb": "bet"
+      },
+      {
+        "a": "Kevin\nSTAT\nHJ · 3.40 €\nc",
+        "b": "0.10 €",
+        "px": 262,
+        "ca": "seat  ",
+        "cb": "bet"
+      },
+      {
+        "a": "Adam\nTAG\nSB · 3.27 €",
+        "b": "Pot 0.25 € · 2.5 bb",
+        "px": 1037,
+        "ca": "seat  ",
+        "cb": "pot"
+      },
+      {
+        "a": "Milo\nTAG\nBB · 3.94 €",
+        "b": "Pot 0.25 € · 2.5 bb",
+        "px": 932,
+        "ca": "seat  ",
+        "cb": "pot"
+      },
+      {
+        "a": "Adam\nLAG\nCO · 8.68 €\ncal",
+        "b": "Pot 1.11 € · 11.1 bb",
+        "px": 1124,
+        "ca": "seat  ",
+        "cb": "pot"
+      }
+    ],
+    "review": {
+      "hMoy": 3668,
+      "hMax": 4109,
+      "charsMoy": 3407,
+      "ctaYMoy": 883,
+      "ctaSousLaLigneDeFlottaison": "9/25"
+    }
+  },
+  "390": {
+    "collisionsTotales": 84,
+    "mainsAvecCollision": 81,
+    "exemples": [
+      {
+        "a": "Chloé\nREC\nHJ · 6.58 €\nre",
+        "b": "Pot 0.40 € · 4.0 bb",
+        "px": 1642,
+        "ca": "seat  ",
+        "cb": "pot"
+      },
+      {
+        "a": "Nora\nREC\nCO · 5.74 €\npas",
+        "b": "Théo\nFISH\nD\nBTN · 5.99 €",
+        "px": 752,
+        "ca": "seat  out",
+        "cb": "seat  out"
+      },
+      {
+        "a": "2\n♦\nA\n♠\nVous\nSB · 4.97 €",
+        "b": "0.05 €",
+        "px": 513,
+        "ca": "seat hero ",
+        "cb": "bet"
+      },
+      {
+        "a": "0.25 €",
+        "b": "Pot 0.40 € · 4.0 bb",
+        "px": 420,
+        "ca": "bet",
+        "cb": "pot"
+      },
+      {
+        "a": "Chloé\nREC\nBB · 5.37 €",
+        "b": "Pot 0.15 € · 1.5 bb",
+        "px": 664,
+        "ca": "seat  ",
+        "cb": "pot"
+      },
+      {
+        "a": "0.10 €",
+        "b": "Pot 0.15 € · 1.5 bb",
+        "px": 348,
+        "ca": "bet",
+        "cb": "pot"
+      },
+      {
+        "a": "K\n♥\n5\n♠\nVous\nBB · 7.58 €",
+        "b": "0.10 €",
+        "px": 528,
+        "ca": "seat hero ",
+        "cb": "bet"
+      },
+      {
+        "a": "Lina\nTAG\nSB · 14.10 €",
+        "b": "Pot 0.15 € · 1.5 bb",
+        "px": 595,
+        "ca": "seat  ",
+        "cb": "pot"
+      }
+    ],
+    "review": {
+      "hMoy": 3453,
+      "hMax": 4001,
+      "charsMoy": 3216,
+      "ctaYMoy": 839,
+      "ctaSousLaLigneDeFlottaison": "4/25"
+    }
+  },
+  "412": {
+    "collisionsTotales": 96,
+    "mainsAvecCollision": 94,
+    "exemples": [
+      {
+        "a": "Kevin\nTAG\nCO · 13.47 €\np",
+        "b": "Pot 0.47 € · 4.7 bb",
+        "px": 694,
+        "ca": "seat  out",
+        "cb": "pot"
+      },
+      {
+        "a": "Anaïs\nSTAT\nD\nBTN · 10.27",
+        "b": "Pot 0.47 € · 4.7 bb",
+        "px": 772,
+        "ca": "seat  out",
+        "cb": "pot"
+      },
+      {
+        "a": "3\n♦\n6\n♠\nVous\nBB · 13.48 ",
+        "b": "0.10 €",
+        "px": 557,
+        "ca": "seat hero ",
+        "cb": "bet"
+      },
+      {
+        "a": "Chloé\nREC\nHJ · 13.43 €\np",
+        "b": "Pot 0.33 € · 3.3 bb",
+        "px": 713,
+        "ca": "seat  out",
+        "cb": "pot"
+      },
+      {
+        "a": "Yanis\nFISH\nCO · 15.07 €\n",
+        "b": "0.18 €",
+        "px": 854,
+        "ca": "seat  ",
+        "cb": "bet"
+      },
+      {
+        "a": "Rayan\nNIT\nBB · 11.56 €",
+        "b": "Pot 0.33 € · 3.3 bb",
+        "px": 734,
+        "ca": "seat  ",
+        "cb": "pot"
+      },
+      {
+        "a": "Chloé\nNIT\nD\nBTN · 9.40 €",
+        "b": "Pot 0.15 € · 1.5 bb",
+        "px": 664,
+        "ca": "seat  ",
+        "cb": "pot"
+      },
+      {
+        "a": "Adam\nLAG\nSB · 9.33 €",
+        "b": "0.05 €",
+        "px": 609,
+        "ca": "seat  ",
+        "cb": "bet"
+      }
+    ],
+    "review": {
+      "hMoy": 3621,
+      "hMax": 4026,
+      "charsMoy": 3406,
+      "ctaYMoy": 832,
+      "ctaSousLaLigneDeFlottaison": "4/25"
+    }
+  }
+}

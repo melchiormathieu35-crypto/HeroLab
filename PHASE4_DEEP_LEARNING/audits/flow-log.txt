@@ -1,0 +1,131 @@
+ONBOARDING {"panelH":1329,"vh":844,"ctaTop":929.640625,"ctaVisibleWithoutScroll":false}
+HOME {
+ "docH": 2048,
+ "vh": 844,
+ "btns": [
+  {
+   "t": "DÉFI DU JOUR\nTon défi quotidien t'attend",
+   "y": 260,
+   "on": "App.go('daily')"
+  },
+  {
+   "t": "▤\nTable\nCOMMENCE ICI\nLe simulateur compl",
+   "y": 1191,
+   "on": "App.go('play')"
+  },
+  {
+   "t": "▰\nCarrière\nGrimpe les limites NL2 → NL50",
+   "y": 1381,
+   "on": "App.go('career')"
+  },
+  {
+   "t": "◈\nRange Detective\nDevine la main adverse",
+   "y": 1571,
+   "on": "App.go('hr')"
+  },
+  {
+   "t": "◈\nProfiling Lab\nIdentifie le type de jou",
+   "y": 1761,
+   "on": "App.go('pr')"
+  },
+  {
+   "t": "◈\nBlocker Finder\nComprends comment tes c",
+   "y": 1951,
+   "on": "App.go('bl')"
+  }
+ ]
+}
+PLAY-IDLE >>> Chaque main est nouvelle.
+
+Les cartes, les positions, les stacks, les profils adverses et les actions précédentes sont tirés à chaque distribution. Les adversaires décident par calcul — leur range, la texture du board et leurs cotes — pas au hasard. Après chaque choix, tu vois l'espérance de chaque option et pourquoi.
+
+Distribuer une main
+Mode Carrière
+Intermédiaire · Partie libre · NL10
+DECIDE {"picked":"Relancer 4 bb","phase":"review"}
+REVIEW {
+ "verdictText": "Erreur\nVous avez choisi : Relancer 4 bb\nCoût estimé : 1.23 bb\nMiser sans équité ni fold equity revient à donner de l'argent. Cette table ne passe pas assez.\n♛\nVera Non. Regarde l'EV : tu laissais de l'argent sur la table.\nUne mise de 0.30 € demande 39 % de folds pour être rentable en bluff pur. Face à ces adversaires, l'estimation est de 6 %. Quand tu es payé, ton équité tombe à environ 23 %.\nPasser — Passer met fin à la main : plus rien n'est gagné ni perdu à partir d'ici. Toute option d'espérance positive vaut donc mieux qu'un fold.",
+ "totalChars": 3246,
+ "totalH": 3442,
+ "cards": 8,
+ "nOptions": 5,
+ "firstCtaY": 913
+}
+RESULT {
+ "phase": "result",
+ "text": "T\n♦\n8\n♠\nRayan\nFISH\nD\nBTN · 7.46 €\npasse\nJ\n♥\nA\n♦\nMilo\nTAG\nSB · 7.39 €\npasse\n7\n♦\n7\n♣\nVous\nBB · 7.69 €\nmise 1.20\n1.20 €\nPot 2.40 € · 24.0 bb\n3\n♥\n5\n♠\n7\n♥\n7\n♦\n7\n♣\nVOTRE MAIN\n77 — brelan\nPOSITION\nBB\nSTACK\n76.9 bb\nFLOP\naucune mise\nPot remporté\n+0.68 € · +6.8 bb\nTous les autres ont abandonné : le pot est à toi.\nMain suivante\nVoir mes statistiques\nDéroulement\nNL10 · 3 joueurs\nPRÉFLOP\nBTN\nrelance 0.18 €\nSB\nsuit 0.13 €\nBB\nrelance 0.40 €\nBTN\nsuit 0.22 €\nSB\nsuit 0.22 €\nFLOP\nSB\nchecke\nBB\nmise 1.20 €\nSB\npasse\n",
+ "btns": [
+  "Main suivante",
+  "Voir mes statistiques"
+ ]
+}
+DAILY-INTRO >>> ◆
+Défi du jour
+
+10 décisions à la table pour t'échauffer sur des situations variées. Un score par jour ; reviens chaque jour pour entretenir ta série.
+
+Lancer le défi
+DAILY-END view= daily
+DAILY-END >>> 5/10
+Défi du jour terminé
+
+Score correct. Regarde les décisions ratées : c'est là que se trouve la marge.
+
+Reviens demain pour lancer une série.
+Retour à l'accueil
+HR-ENTRY >>> LE LABORATOIRE DE LECTURE
+Range Detective
+
+Retrouve la main adverse par la déduction, pas par le hasard. Chaque action filtre sa range ; à toi de la resserrer street après street jusqu'aux quelques combos qui tiennent debout.
+
+Commencer un spot
+Difficulté
+Débutant
+Profils lisibles, ranges larges, beaucoup d'informations. Idéal pour apprendre la méthode.
+Intermédiaire
+Des regs apparaissent, les ranges se resserrent, la river entre en jeu.
+Avancé
+Majorité de regs, sizings plus subtils, HUD à interpréter finement.
+Expert
+Regs équilibrés, peu d'informations, ranges polarisées. La lecture pure.
+Mode de réponse
+Mode Range
+Choisis le combo type (KQs, 98s, TT…). Tu raisonnes en catégories, comme un 
+PR-ENTRY >>> LE LABORATOIRE DE LECTURE DES JOUEURS
+Profiling Lab
+
+Observe un adversaire, décode son style et nomme son profil. Une main suffit rarement — comme un vrai reg, tu construis ton read main après main jusqu'à ce que la lecture se resserre.
+
+Analyser un joueur
+Difficulté
+Débutant jusqu'à 3 mains
+Profils caricaturaux, tells évidents. Une main suffit souvent.
+Intermédiaire jusqu'à 5 mains
+Profils réalistes. Il faut souvent croiser plusieurs mains.
+Avancé jusqu'à 7 mains
+Profils proches les uns des autres. Les indices sont plus fins.
+Expert jusqu'à 10 mains
+Différences subtiles entre bons joueurs. Même un reg hésite.
+La méthode du reg
+Regarde la fréquence d'entrée — combien de mains il joue préflop
+BL-ENTRY >>> Exercices
+Combo Calculator
+LE LABORATOIRE DES BLOQUEURS
+Blocker Finder
+
+Tes cartes ne servent pas qu'à faire une main : elles retirent des combos de la range adverse. Apprends à voir exactement lesquels — et comment ça change chaque décision.
+
+Commencer un exercice
+Difficulté
+Débutant
+Bloqueurs évidents, explications pas à pas.
+Identifier les bloqueurs · Comparaison de mains
+Intermédiaire
+Combos et réduction de range.
+Identifier les bloqueurs · Comparaison de mains · Bluff avec bloqueur
+Avancé
+Effets subtils sur les fréquences.
+Comparaison de mains · Bluff avec bloqueur · Call ou fold
+Expert
+Bluff catch, 4-bet pots, ranges capées — spots GTO/exploitants.
+Bluff avec bloqueur · Call ou fold · 
