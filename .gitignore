@@ -5,3 +5,7 @@ package-lock.json
 # Captures d'audit Phase 4 : preuves de travail éphémères (~16 Mo), décrites
 # dans les rapports. Hors dépôt pour ne pas l'alourdir de façon permanente.
 PHASE4_DEEP_LEARNING/audits/screens/
+
+# Journaux d'exécution intermédiaires des simulations (les résultats JSON
+# consolidés sont commités, pas la trace de progression).
+PHASE4_DEEP_LEARNING/spec/experiments/*.log
