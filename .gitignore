@@ -1,3 +1,7 @@
 node_modules/
 package-lock.json
 *.diff
+
+# Captures d'audit Phase 4 : preuves de travail éphémères (~16 Mo), décrites
+# dans les rapports. Hors dépôt pour ne pas l'alourdir de façon permanente.
+PHASE4_DEEP_LEARNING/audits/screens/
