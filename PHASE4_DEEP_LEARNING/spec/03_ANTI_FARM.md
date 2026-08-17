@@ -203,3 +203,122 @@ AC4 est la garde issue du piège ci-dessus : c'est le critère qui empêche de
 *Contre-expérience indépendante en cours — un agent sans accès à cette
 spécification conçoit son propre protocole. Ses conclusions seront intégrées ici
 avant clôture du §3.*
+
+---
+
+# Contre-expérience indépendante — résultats
+
+L'agent n'a lu ni la spécification ni mes scripts (vérifié : `01_ARBITRAGES.md`
+et `experiments/*` exclus de son mandat, absence confirmée dans son rapport).
+Il a conçu ses propres stratégies et ses propres métriques.
+
+**Il a trouvé une faille strictement pire que la mienne, et elle invalide ma
+fonction de qualité.**
+
+## La stratégie que j'avais manquée : le fold-bot
+
+Ma stratégie B priorisait `check → call → fold`. La sienne : `fold / check`,
+sans jamais suivre. Vérifié par mes soins, 400 décisions, niveau débutant :
+
+| Stratégie | bb perdu/déc. | Verdict OK | M proposée (c=1) |
+|---|---|---|---|
+| B — la mienne | 1,862 | 77,3 % | 0,602 |
+| **fold-bot** | **0,323** | **93,8 %** | **0,821** |
+
+Suivre coûte cher quand il fallait passer ; **passer ne coûte presque jamais
+cher**. Le fold-bot fait donc beaucoup de petites erreurs bon marché au lieu de
+quelques grosses. Mon critère AC1 (« perdre plus d'1 bb/décision ») ne le voit
+pas : il ne perd que 0,32.
+
+L'agent le chiffre en conditions de carrière : **88 % de l'XP du jeu parfait**,
+badges *Précision*, *Haute précision* et *Discipline* obtenus, **1,64 fois moins
+de clics**, et un rapport de session qui lui dit « continue exactement comme ça »
+— en perdant 2 383 bb.
+
+## Pourquoi ma fonction de qualité échoue
+
+Balayage de la constante `c` sur les mêmes données :
+
+| c | compétent | fold-bot | passif |
+|---|---|---|---|
+| 1,00 | 1,000 | 0,801 | 0,591 |
+| 0,25 | 1,000 | 0,647 | 0,441 |
+| **0,05** | 1,000 | **0,564** | 0,384 |
+
+**Aucun réglage ne fonctionne.** Même à `c = 0,05`, le fold-bot garde 0,564. La
+raison est structurelle : sa distribution de pertes est **bimodale** — une
+majorité de décisions à coût nul (passer *est* souvent correct) et une minorité
+très coûteuses. Une moyenne de qualité par décision est dominée par les zéros.
+
+> **Une moyenne de qualité par décision ne peut pas punir une stratégie qui a
+> raison la plupart du temps et tort catastrophiquement de temps en temps.**
+> Or c'est exactement le profil du joueur perdant au poker.
+
+## Correction de l'arbitrage n°2
+
+La **forme** était juste (mesurer sur `lossBB`, pas sur le verdict). L'**agrégation**
+était fausse. Il ne faut pas moyenner une qualité, il faut mesurer un **taux de
+perte cumulé** — la grandeur native du poker :
+
+```
+M(compétence) = exp( − bbPerdues100 / K )      K = 20 bb/100
+```
+
+| Stratégie | bb/100 décisions | M |
+|---|---|---|
+| compétente | 0,0 | **1,000** |
+| fold-bot | 38,0 | **0,150** |
+| passive | 167,4 | 0,000 |
+| aléatoire | 619,2 | 0,000 |
+
+Repère : un gagnant en micro-limites réalise +2 à +8 bb/100. Perdre 38 bb/100
+est une hémorragie ; la formule doit le dire, et elle le dit.
+
+Cette formulation a un second mérite : elle est **directement lisible par un
+joueur de poker**, contrairement à un score abstrait entre 0 et 1.
+
+## Les 13 exploitations trouvées par l'agent
+
+Au-delà du fold-bot, et toutes chiffrées :
+
+- **L'EV affichée ne compte que les erreurs** : le fold-bot occulte **51,3 %** de
+  sa perte réelle, et obtient 91/100 sur l'axe « Discipline ».
+- **Le rating est atteignable sans jouer** : 3 axes sur 5 viennent des labs, dont
+  les résumés ignorent la difficulté. Rating agrégé accessible en cliquant la
+  première option : **1 819, palier « Avancé »**.
+- **Le filet de banqueroute annule la sanction** : le maniaque perd 21 244 bb et
+  termine avec sa bankroll de départ.
+- **La promotion NL2→NL5 exige +5 500 bb**, soit 220 bb/100 sur le volume
+  minimal — **110 fois** le winrate que le produit affiche lui-même comme cible.
+  Le seul objectif non exploitable est donc inatteignable.
+- Confirmation indépendante (3ᵉ) du blocage de la maîtrise, et corollaire
+  nouveau : **la barre de mission est un compteur d'échecs** — l'oracle affiche
+  0 mission, la rotation mécanique en affiche 4 dont une à 100 %.
+
+**Huit axes sans exploitation trouvée** sont documentés : sanctuarisation des
+spots Studio, verrous de volume des objectifs, facteur de confiance du rating,
+résistance du juge au sizing, sanction du tapis systématique, absence de voie
+d'écriture contournant le juge, absence de cache de spot, et la promotion de
+carrière — seul objectif adossé à l'argent réellement gagné.
+
+## Critères d'acceptation — révisés
+
+| # | Critère | Seuil |
+|---|---|---|
+| **AC1** | *(remplacé)* Toute stratégie perdant plus de **15 bb/100** plafonne à M < 0,50 | fold-bot : 38 bb/100 → 0,150 ✔ |
+| AC2 | Le niveau ne modifie pas M de plus de ±0,03 à jeu identique | protocole A du §2 ✔ |
+| AC3 | Couverture < 50 % de la référence → < 40 % des compétences validées | après §5 |
+| AC4 | Le joueur compétent n'est jamais pénalisé par un critère de couverture | garde anti-piège ✔ |
+| AC5 | Toute défense testée contre les 5 stratégies **et** contre le fold-bot | le fold-bot rejoint le jeu de test |
+| **AC6** | *(nouveau)* L'EV affichée à l'utilisateur doit égaler l'EV réellement perdue | écart mesuré : 51,3 % |
+
+## Ce que cette contre-expérience démontre sur la méthode
+
+J'avais conçu mes cinq stratégies **et** ma fonction de notation. Elles se sont
+révélées complices sans que je le voie : mes stratégies faibles perdaient assez
+(1,8 à 6,2 bb/décision) pour que ma formule les punisse. Le fold-bot, que je
+n'avais pas imaginé, perd dix fois moins tout en progressant presque aussi vite.
+
+C'est précisément le biais que la contre-expérience à l'aveugle devait détecter,
+et elle l'a détecté. Sans elle, j'aurais présenté une formule validée par un test
+qu'elle était construite pour réussir.
