@@ -1,0 +1,5999 @@
+Winamax Poker - CashGame - HandId: #900000-1000-2000 - Holdem no limit (0.02€/0.05€) - 2026/06/01 20:10:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [9d Kd]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [Jd 8s 2s]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Jd 8s 2s][5c]
+Hero checks
+Alice checks
+*** RIVER *** [Jd 8s 2s][5c][6h]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [Jd 8s 2s 5c 6h]
+Seat 3: Hero won 0.30€
+
+Winamax Poker - CashGame - HandId: #900000-1001-2001 - Holdem no limit (0.02€/0.05€) - 2026/06/02 20:11:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [3c Kc]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Dimitri checks
+*** FLOP *** [7h Qs Jc]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [7h Qs Jc][6d]
+Hero checks
+Dimitri checks
+*** RIVER *** [7h Qs Jc][6d][2h]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [7h Qs Jc 6d 2h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1002-2002 - Holdem no limit (0.02€/0.05€) - 2026/06/03 20:12:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [8c 5d]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Eva calls 0.10€
+*** FLOP *** [2d 9d Jc]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [2d 9d Jc][Qs]
+Hero checks
+Eva checks
+*** RIVER *** [2d 9d Jc][Qs][Qh]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [2d 9d Jc Qs Qh]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1003-2003 - Holdem no limit (0.02€/0.05€) - 2026/06/04 20:13:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [Ks Kh]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [2h 2s As]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [2h 2s As][6d]
+Hero checks
+Alice checks
+*** RIVER *** [2h 2s As][6d][Jd]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [2h 2s As 6d Jd]
+Seat 3: Hero won 0.75€
+
+Winamax Poker - CashGame - HandId: #900000-1004-2004 - Holdem no limit (0.02€/0.05€) - 2026/06/05 20:14:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [Qd Ts]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Bob calls 0.10€
+*** FLOP *** [5s Kc 5c]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [5s Kc 5c][4h]
+Hero checks
+Bob checks
+*** RIVER *** [5s Kc 5c][4h][2s]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [5s Kc 5c 4h 2s]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1005-2005 - Holdem no limit (0.02€/0.05€) - 2026/06/06 20:15:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [3h 9c]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [7h 6d 7s]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [7h 6d 7s][Jh]
+Hero checks
+Alice checks
+*** RIVER *** [7h 6d 7s][Jh][Qs]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [7h 6d 7s Jh Qs]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1006-2006 - Holdem no limit (0.02€/0.05€) - 2026/06/07 20:16:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [Td Jd]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Dimitri calls 0.10€
+*** FLOP *** [8h 5s 6d]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [8h 5s 6d][5c]
+Hero checks
+Dimitri checks
+*** RIVER *** [8h 5s 6d][5c][Qd]
+Hero checks
+Dimitri bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [8h 5s 6d 5c Qd]
+Seat 3: Hero won 1.20€
+
+Winamax Poker - CashGame - HandId: #900000-1007-2007 - Holdem no limit (0.02€/0.05€) - 2026/06/08 20:17:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [3c 9d]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Eva checks
+*** FLOP *** [3s Qd 8c]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [3s Qd 8c][Tc]
+Hero checks
+Eva checks
+*** RIVER *** [3s Qd 8c][Tc][6s]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [3s Qd 8c Tc 6s]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1008-2008 - Holdem no limit (0.02€/0.05€) - 2026/06/09 20:18:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [7s Kh]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [Jd 2s 8h]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Jd 2s 8h][As]
+Hero checks
+Alice checks
+*** RIVER *** [Jd 2s 8h][As][Ac]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [Jd 2s 8h As Ac]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1009-2009 - Holdem no limit (0.02€/0.05€) - 2026/06/10 20:19:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [9d 8h]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Bob checks
+*** FLOP *** [8s 4s 6c]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [8s 4s 6c][Ts]
+Hero checks
+Bob checks
+*** RIVER *** [8s 4s 6c][Ts][Jh]
+Hero checks
+Bob bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [8s 4s 6c Ts Jh]
+Seat 3: Hero won 0.60€
+
+Winamax Poker - CashGame - HandId: #900000-1010-2010 - Holdem no limit (0.02€/0.05€) - 2026/06/11 20:20:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [Jc 5s]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [9c Ts 4s]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [9c Ts 4s][7s]
+Hero checks
+Alice checks
+*** RIVER *** [9c Ts 4s][7s][Qh]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [9c Ts 4s 7s Qh]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1011-2011 - Holdem no limit (0.02€/0.05€) - 2026/06/12 20:21:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [2s 6s]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Dimitri checks
+*** FLOP *** [Qs Ks Js]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [Qs Ks Js][Qh]
+Hero checks
+Dimitri checks
+*** RIVER *** [Qs Ks Js][Qh][6d]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [Qs Ks Js Qh 6d]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1012-2012 - Holdem no limit (0.02€/0.05€) - 2026/06/13 20:22:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [7d Jd]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Eva calls 0.10€
+*** FLOP *** [7h 9c Kh]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [7h 9c Kh][2s]
+Hero checks
+Eva checks
+*** RIVER *** [7h 9c Kh][2s][Kd]
+Hero checks
+Eva bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [7h 9c Kh 2s Kd]
+Seat 3: Hero won 1.05€
+
+Winamax Poker - CashGame - HandId: #900000-1013-2013 - Holdem no limit (0.02€/0.05€) - 2026/06/14 20:23:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [9c Qc]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [Ks 7h 2h]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Ks 7h 2h][Td]
+Hero checks
+Alice checks
+*** RIVER *** [Ks 7h 2h][Td][Qd]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [Ks 7h 2h Td Qd]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1014-2014 - Holdem no limit (0.02€/0.05€) - 2026/06/15 20:24:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [Ts Qd]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Bob calls 0.10€
+*** FLOP *** [5s 4s 4d]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [5s 4s 4d][2s]
+Hero checks
+Bob checks
+*** RIVER *** [5s 4s 4d][2s][3c]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [5s 4s 4d 2s 3c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1015-2015 - Holdem no limit (0.02€/0.05€) - 2026/06/16 20:25:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [Jh 6d]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [Qd 7s 2s]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Qd 7s 2s][4d]
+Hero checks
+Alice checks
+*** RIVER *** [Qd 7s 2s][4d][Th]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [Qd 7s 2s 4d Th]
+Seat 3: Hero won 0.45€
+
+Winamax Poker - CashGame - HandId: #900000-1016-2016 - Holdem no limit (0.02€/0.05€) - 2026/06/17 20:26:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [3h 7d]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Dimitri calls 0.10€
+*** FLOP *** [4d Kh Ks]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [4d Kh Ks][Js]
+Hero checks
+Dimitri checks
+*** RIVER *** [4d Kh Ks][Js][Ad]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [4d Kh Ks Js Ad]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1017-2017 - Holdem no limit (0.02€/0.05€) - 2026/06/18 20:27:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [Jh 9d]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Eva checks
+*** FLOP *** [As 2d 5h]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [As 2d 5h][4d]
+Hero checks
+Eva checks
+*** RIVER *** [As 2d 5h][4d][4h]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [As 2d 5h 4d 4h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1018-2018 - Holdem no limit (0.02€/0.05€) - 2026/06/19 20:28:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [9h 5h]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [7s Td Qs]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [7s Td Qs][Kc]
+Hero checks
+Alice checks
+*** RIVER *** [7s Td Qs][Kc][Jd]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [7s Td Qs Kc Jd]
+Seat 3: Hero won 0.90€
+
+Winamax Poker - CashGame - HandId: #900000-1019-2019 - Holdem no limit (0.02€/0.05€) - 2026/06/20 20:29:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [7s Kd]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Bob checks
+*** FLOP *** [Ah Th Ac]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [Ah Th Ac][Ts]
+Hero checks
+Bob checks
+*** RIVER *** [Ah Th Ac][Ts][Tc]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [Ah Th Ac Ts Tc]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1020-2020 - Holdem no limit (0.02€/0.05€) - 2026/06/21 20:30:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [2s Ts]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [Ah Td 4s]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Ah Td 4s][Jc]
+Hero checks
+Alice checks
+*** RIVER *** [Ah Td 4s][Jc][As]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [Ah Td 4s Jc As]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1021-2021 - Holdem no limit (0.02€/0.05€) - 2026/06/22 20:31:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [As Kh]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Dimitri checks
+*** FLOP *** [5s 5d Ah]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [5s 5d Ah][6h]
+Hero checks
+Dimitri checks
+*** RIVER *** [5s 5d Ah][6h][7h]
+Hero checks
+Dimitri bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [5s 5d Ah 6h 7h]
+Seat 3: Hero won 0.30€
+
+Winamax Poker - CashGame - HandId: #900000-1022-2022 - Holdem no limit (0.02€/0.05€) - 2026/06/23 20:32:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [2h 5d]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Eva calls 0.10€
+*** FLOP *** [Jc 4h 5s]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [Jc 4h 5s][Qs]
+Hero checks
+Eva checks
+*** RIVER *** [Jc 4h 5s][Qs][5c]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [Jc 4h 5s Qs 5c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1023-2023 - Holdem no limit (0.02€/0.05€) - 2026/06/24 20:33:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [5h Kd]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [6d As Ts]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [6d As Ts][Jd]
+Hero checks
+Alice checks
+*** RIVER *** [6d As Ts][Jd][2c]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [6d As Ts Jd 2c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1024-2024 - Holdem no limit (0.02€/0.05€) - 2026/06/25 20:34:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [3s Qc]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Bob calls 0.10€
+*** FLOP *** [3c 6d 9h]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [3c 6d 9h][6h]
+Hero checks
+Bob checks
+*** RIVER *** [3c 6d 9h][6h][Qs]
+Hero checks
+Bob bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [3c 6d 9h 6h Qs]
+Seat 3: Hero won 0.75€
+
+Winamax Poker - CashGame - HandId: #900000-1025-2025 - Holdem no limit (0.02€/0.05€) - 2026/06/26 20:35:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [9h 4d]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [6d Jc Tc]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [6d Jc Tc][Ah]
+Hero checks
+Alice checks
+*** RIVER *** [6d Jc Tc][Ah][Ks]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [6d Jc Tc Ah Ks]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1026-2026 - Holdem no limit (0.02€/0.05€) - 2026/06/27 20:36:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [2h 6h]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Dimitri calls 0.10€
+*** FLOP *** [2c 8c Kc]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [2c 8c Kc][Ks]
+Hero checks
+Dimitri checks
+*** RIVER *** [2c 8c Kc][Ks][6c]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [2c 8c Kc Ks 6c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1027-2027 - Holdem no limit (0.02€/0.05€) - 2026/06/01 20:37:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [Qh Kh]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Eva checks
+*** FLOP *** [7h 2d Jh]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [7h 2d Jh][Tc]
+Hero checks
+Eva checks
+*** RIVER *** [7h 2d Jh][Tc][Ks]
+Hero checks
+Eva bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [7h 2d Jh Tc Ks]
+Seat 3: Hero won 1.20€
+
+Winamax Poker - CashGame - HandId: #900000-1028-2028 - Holdem no limit (0.02€/0.05€) - 2026/06/02 20:38:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [7d Kh]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [3c Ac Ts]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [3c Ac Ts][6h]
+Hero checks
+Alice checks
+*** RIVER *** [3c Ac Ts][6h][Kc]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [3c Ac Ts 6h Kc]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1029-2029 - Holdem no limit (0.02€/0.05€) - 2026/06/03 20:39:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [Ad 6s]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Bob checks
+*** FLOP *** [9d Ah 2c]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [9d Ah 2c][Qh]
+Hero checks
+Bob checks
+*** RIVER *** [9d Ah 2c][Qh][Ac]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [9d Ah 2c Qh Ac]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1030-2030 - Holdem no limit (0.02€/0.05€) - 2026/06/04 20:40:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [9h 8s]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [4c 5h 5c]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [4c 5h 5c][Ad]
+Hero checks
+Alice checks
+*** RIVER *** [4c 5h 5c][Ad][Th]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [4c 5h 5c Ad Th]
+Seat 3: Hero won 0.60€
+
+Winamax Poker - CashGame - HandId: #900000-1031-2031 - Holdem no limit (0.02€/0.05€) - 2026/06/05 20:41:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [8c 6s]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Dimitri checks
+*** FLOP *** [7s 8h 3s]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [7s 8h 3s][6h]
+Hero checks
+Dimitri checks
+*** RIVER *** [7s 8h 3s][6h][5s]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [7s 8h 3s 6h 5s]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1032-2032 - Holdem no limit (0.02€/0.05€) - 2026/06/06 20:42:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [4c 2s]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Eva calls 0.10€
+*** FLOP *** [Ah Qh Jc]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [Ah Qh Jc][5c]
+Hero checks
+Eva checks
+*** RIVER *** [Ah Qh Jc][5c][Qc]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [Ah Qh Jc 5c Qc]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1033-2033 - Holdem no limit (0.02€/0.05€) - 2026/06/07 20:43:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [9d 8c]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [Jc Qh 4h]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Jc Qh 4h][4c]
+Hero checks
+Alice checks
+*** RIVER *** [Jc Qh 4h][4c][As]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [Jc Qh 4h 4c As]
+Seat 3: Hero won 1.05€
+
+Winamax Poker - CashGame - HandId: #900000-1034-2034 - Holdem no limit (0.02€/0.05€) - 2026/06/08 20:44:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [9s 7s]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Bob calls 0.10€
+*** FLOP *** [Tc Jd 2s]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [Tc Jd 2s][2c]
+Hero checks
+Bob checks
+*** RIVER *** [Tc Jd 2s][2c][Jh]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [Tc Jd 2s 2c Jh]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1035-2035 - Holdem no limit (0.02€/0.05€) - 2026/06/09 20:45:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [Ac 9h]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [Ks Kc Qc]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Ks Kc Qc][8h]
+Hero checks
+Alice checks
+*** RIVER *** [Ks Kc Qc][8h][9d]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [Ks Kc Qc 8h 9d]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1036-2036 - Holdem no limit (0.02€/0.05€) - 2026/06/10 20:46:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [Tc Ac]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Dimitri calls 0.10€
+*** FLOP *** [Qc Qs Th]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [Qc Qs Th][Ad]
+Hero checks
+Dimitri checks
+*** RIVER *** [Qc Qs Th][Ad][As]
+Hero checks
+Dimitri bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [Qc Qs Th Ad As]
+Seat 3: Hero won 0.45€
+
+Winamax Poker - CashGame - HandId: #900000-1037-2037 - Holdem no limit (0.02€/0.05€) - 2026/06/11 20:47:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [6c 6d]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Eva checks
+*** FLOP *** [2s Kh Ad]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [2s Kh Ad][4h]
+Hero checks
+Eva checks
+*** RIVER *** [2s Kh Ad][4h][5h]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [2s Kh Ad 4h 5h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1038-2038 - Holdem no limit (0.02€/0.05€) - 2026/06/12 20:48:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [Qs 7s]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [3c Td Kd]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [3c Td Kd][Ks]
+Hero checks
+Alice checks
+*** RIVER *** [3c Td Kd][Ks][3d]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [3c Td Kd Ks 3d]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1039-2039 - Holdem no limit (0.02€/0.05€) - 2026/06/13 20:49:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [Jc 9d]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Bob checks
+*** FLOP *** [Qh Td 7h]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [Qh Td 7h][5d]
+Hero checks
+Bob checks
+*** RIVER *** [Qh Td 7h][5d][8h]
+Hero checks
+Bob bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [Qh Td 7h 5d 8h]
+Seat 3: Hero won 0.90€
+
+Winamax Poker - CashGame - HandId: #900000-1040-2040 - Holdem no limit (0.02€/0.05€) - 2026/06/14 20:50:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [4h 3h]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [3s Jc 8c]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [3s Jc 8c][2c]
+Hero checks
+Alice checks
+*** RIVER *** [3s Jc 8c][2c][9h]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [3s Jc 8c 2c 9h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1041-2041 - Holdem no limit (0.02€/0.05€) - 2026/06/15 20:51:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [7c 6d]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Dimitri checks
+*** FLOP *** [Kh 8d 9d]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [Kh 8d 9d][8s]
+Hero checks
+Dimitri checks
+*** RIVER *** [Kh 8d 9d][8s][4c]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [Kh 8d 9d 8s 4c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1042-2042 - Holdem no limit (0.02€/0.05€) - 2026/06/16 20:52:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [3d 8c]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Eva calls 0.10€
+*** FLOP *** [Ts 6s 9d]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [Ts 6s 9d][Kh]
+Hero checks
+Eva checks
+*** RIVER *** [Ts 6s 9d][Kh][5d]
+Hero checks
+Eva bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [Ts 6s 9d Kh 5d]
+Seat 3: Hero won 0.30€
+
+Winamax Poker - CashGame - HandId: #900000-1043-2043 - Holdem no limit (0.02€/0.05€) - 2026/06/17 20:53:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [2d Qs]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [Qc 5h Tc]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Qc 5h Tc][2s]
+Hero checks
+Alice checks
+*** RIVER *** [Qc 5h Tc][2s][Ts]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [Qc 5h Tc 2s Ts]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1044-2044 - Holdem no limit (0.02€/0.05€) - 2026/06/18 20:54:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [2d 2s]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Bob calls 0.10€
+*** FLOP *** [9h 3h Ad]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [9h 3h Ad][8c]
+Hero checks
+Bob checks
+*** RIVER *** [9h 3h Ad][8c][Qh]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [9h 3h Ad 8c Qh]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1045-2045 - Holdem no limit (0.02€/0.05€) - 2026/06/19 20:10:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [5d 8s]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [As 3s 9h]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [As 3s 9h][5c]
+Hero checks
+Alice checks
+*** RIVER *** [As 3s 9h][5c][6d]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [As 3s 9h 5c 6d]
+Seat 3: Hero won 0.75€
+
+Winamax Poker - CashGame - HandId: #900000-1046-2046 - Holdem no limit (0.02€/0.05€) - 2026/06/20 20:11:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [Kc As]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Dimitri calls 0.10€
+*** FLOP *** [Jh 7s 5d]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [Jh 7s 5d][7c]
+Hero checks
+Dimitri checks
+*** RIVER *** [Jh 7s 5d][7c][6c]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [Jh 7s 5d 7c 6c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1047-2047 - Holdem no limit (0.02€/0.05€) - 2026/06/21 20:12:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [8c 4h]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Eva checks
+*** FLOP *** [As 6s Qh]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [As 6s Qh][9d]
+Hero checks
+Eva checks
+*** RIVER *** [As 6s Qh][9d][3c]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [As 6s Qh 9d 3c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1048-2048 - Holdem no limit (0.02€/0.05€) - 2026/06/22 20:13:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [Ks 2s]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [7d 9c 6c]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [7d 9c 6c][2d]
+Hero checks
+Alice checks
+*** RIVER *** [7d 9c 6c][2d][6d]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [7d 9c 6c 2d 6d]
+Seat 3: Hero won 1.20€
+
+Winamax Poker - CashGame - HandId: #900000-1049-2049 - Holdem no limit (0.02€/0.05€) - 2026/06/23 20:14:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [2h 7c]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Bob checks
+*** FLOP *** [6c 8d 6s]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [6c 8d 6s][Qs]
+Hero checks
+Bob checks
+*** RIVER *** [6c 8d 6s][Qs][7h]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [6c 8d 6s Qs 7h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1050-2050 - Holdem no limit (0.02€/0.05€) - 2026/06/24 20:15:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [2s 8c]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [3c Qd 7d]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [3c Qd 7d][Qs]
+Hero checks
+Alice checks
+*** RIVER *** [3c Qd 7d][Qs][Jc]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [3c Qd 7d Qs Jc]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1051-2051 - Holdem no limit (0.02€/0.05€) - 2026/06/25 20:16:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [4c 2d]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Dimitri checks
+*** FLOP *** [Qc 5c Jh]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [Qc 5c Jh][Ac]
+Hero checks
+Dimitri checks
+*** RIVER *** [Qc 5c Jh][Ac][Th]
+Hero checks
+Dimitri bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [Qc 5c Jh Ac Th]
+Seat 3: Hero won 0.60€
+
+Winamax Poker - CashGame - HandId: #900000-1052-2052 - Holdem no limit (0.02€/0.05€) - 2026/06/26 20:17:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [9h Td]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Eva calls 0.10€
+*** FLOP *** [Qh 3c 5s]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [Qh 3c 5s][5d]
+Hero checks
+Eva checks
+*** RIVER *** [Qh 3c 5s][5d][Kd]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [Qh 3c 5s 5d Kd]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1053-2053 - Holdem no limit (0.02€/0.05€) - 2026/06/27 20:18:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [8s 2h]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [Qs Ks 4d]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Qs Ks 4d][7s]
+Hero checks
+Alice checks
+*** RIVER *** [Qs Ks 4d][7s][7c]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [Qs Ks 4d 7s 7c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1054-2054 - Holdem no limit (0.02€/0.05€) - 2026/06/01 20:19:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [2d 3h]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Bob calls 0.10€
+*** FLOP *** [Ac 9c 8s]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [Ac 9c 8s][8c]
+Hero checks
+Bob checks
+*** RIVER *** [Ac 9c 8s][8c][Qc]
+Hero checks
+Bob bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [Ac 9c 8s 8c Qc]
+Seat 3: Hero won 1.05€
+
+Winamax Poker - CashGame - HandId: #900000-1055-2055 - Holdem no limit (0.02€/0.05€) - 2026/06/02 20:20:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [9c As]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [Qh Ac 6h]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Qh Ac 6h][2c]
+Hero checks
+Alice checks
+*** RIVER *** [Qh Ac 6h][2c][2h]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [Qh Ac 6h 2c 2h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1056-2056 - Holdem no limit (0.02€/0.05€) - 2026/06/03 20:21:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [4h Kc]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Dimitri calls 0.10€
+*** FLOP *** [Qc 9d 4c]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [Qc 9d 4c][Ac]
+Hero checks
+Dimitri checks
+*** RIVER *** [Qc 9d 4c][Ac][9c]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [Qc 9d 4c Ac 9c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1057-2057 - Holdem no limit (0.02€/0.05€) - 2026/06/04 20:22:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [Qd Ac]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Eva checks
+*** FLOP *** [2c 8s 6c]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [2c 8s 6c][Td]
+Hero checks
+Eva checks
+*** RIVER *** [2c 8s 6c][Td][7s]
+Hero checks
+Eva bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [2c 8s 6c Td 7s]
+Seat 3: Hero won 0.45€
+
+Winamax Poker - CashGame - HandId: #900000-1058-2058 - Holdem no limit (0.02€/0.05€) - 2026/06/05 20:23:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [5c Ts]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [Js 2h 4h]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Js 2h 4h][7s]
+Hero checks
+Alice checks
+*** RIVER *** [Js 2h 4h][7s][9c]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [Js 2h 4h 7s 9c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1059-2059 - Holdem no limit (0.02€/0.05€) - 2026/06/06 20:24:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [2s 3s]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Bob checks
+*** FLOP *** [8h 7s 5c]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [8h 7s 5c][4s]
+Hero checks
+Bob checks
+*** RIVER *** [8h 7s 5c][4s][3h]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [8h 7s 5c 4s 3h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1060-2060 - Holdem no limit (0.02€/0.05€) - 2026/06/07 20:25:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [4c 3d]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [2h 5h 6s]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [2h 5h 6s][Td]
+Hero checks
+Alice checks
+*** RIVER *** [2h 5h 6s][Td][4h]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [2h 5h 6s Td 4h]
+Seat 3: Hero won 0.90€
+
+Winamax Poker - CashGame - HandId: #900000-1061-2061 - Holdem no limit (0.02€/0.05€) - 2026/06/08 20:26:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [Kd 3h]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Dimitri checks
+*** FLOP *** [2d 3c Ah]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [2d 3c Ah][Js]
+Hero checks
+Dimitri checks
+*** RIVER *** [2d 3c Ah][Js][Qc]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [2d 3c Ah Js Qc]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1062-2062 - Holdem no limit (0.02€/0.05€) - 2026/06/09 20:27:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [3d 3h]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Eva calls 0.10€
+*** FLOP *** [Qs 2c Kc]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [Qs 2c Kc][6s]
+Hero checks
+Eva checks
+*** RIVER *** [Qs 2c Kc][6s][4s]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [Qs 2c Kc 6s 4s]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1063-2063 - Holdem no limit (0.02€/0.05€) - 2026/06/10 20:28:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [4s Qh]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [4d 6c 3c]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [4d 6c 3c][9c]
+Hero checks
+Alice checks
+*** RIVER *** [4d 6c 3c][9c][5h]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [4d 6c 3c 9c 5h]
+Seat 3: Hero won 0.30€
+
+Winamax Poker - CashGame - HandId: #900000-1064-2064 - Holdem no limit (0.02€/0.05€) - 2026/06/11 20:29:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [Qs Kc]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Bob calls 0.10€
+*** FLOP *** [5h Jd 2c]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [5h Jd 2c][3d]
+Hero checks
+Bob checks
+*** RIVER *** [5h Jd 2c][3d][2s]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [5h Jd 2c 3d 2s]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1065-2065 - Holdem no limit (0.02€/0.05€) - 2026/06/12 20:30:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [7s 5d]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [Qh 9h 7h]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Qh 9h 7h][8h]
+Hero checks
+Alice checks
+*** RIVER *** [Qh 9h 7h][8h][4d]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [Qh 9h 7h 8h 4d]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1066-2066 - Holdem no limit (0.02€/0.05€) - 2026/06/13 20:31:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [Ad 5d]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Dimitri calls 0.10€
+*** FLOP *** [9s 2d 4h]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [9s 2d 4h][As]
+Hero checks
+Dimitri checks
+*** RIVER *** [9s 2d 4h][As][6d]
+Hero checks
+Dimitri bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [9s 2d 4h As 6d]
+Seat 3: Hero won 0.75€
+
+Winamax Poker - CashGame - HandId: #900000-1067-2067 - Holdem no limit (0.02€/0.05€) - 2026/06/14 20:32:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [Ad Jc]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Eva checks
+*** FLOP *** [2s 3d 3h]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [2s 3d 3h][3c]
+Hero checks
+Eva checks
+*** RIVER *** [2s 3d 3h][3c][2d]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [2s 3d 3h 3c 2d]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1068-2068 - Holdem no limit (0.02€/0.05€) - 2026/06/15 20:33:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [Td Jd]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [Th 8s 6s]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Th 8s 6s][4d]
+Hero checks
+Alice checks
+*** RIVER *** [Th 8s 6s][4d][3c]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [Th 8s 6s 4d 3c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1069-2069 - Holdem no limit (0.02€/0.05€) - 2026/06/16 20:34:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [Kh Ah]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Bob checks
+*** FLOP *** [7c Ad Qs]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [7c Ad Qs][6h]
+Hero checks
+Bob checks
+*** RIVER *** [7c Ad Qs][6h][2c]
+Hero checks
+Bob bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [7c Ad Qs 6h 2c]
+Seat 3: Hero won 1.20€
+
+Winamax Poker - CashGame - HandId: #900000-1070-2070 - Holdem no limit (0.02€/0.05€) - 2026/06/17 20:35:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [4d Td]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [6c 3c 7s]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [6c 3c 7s][6h]
+Hero checks
+Alice checks
+*** RIVER *** [6c 3c 7s][6h][Jh]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [6c 3c 7s 6h Jh]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1071-2071 - Holdem no limit (0.02€/0.05€) - 2026/06/18 20:36:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [7d Qs]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Dimitri checks
+*** FLOP *** [Ad 7s Ks]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [Ad 7s Ks][Tc]
+Hero checks
+Dimitri checks
+*** RIVER *** [Ad 7s Ks][Tc][3h]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [Ad 7s Ks Tc 3h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1072-2072 - Holdem no limit (0.02€/0.05€) - 2026/06/19 20:37:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [Td 2s]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Eva calls 0.10€
+*** FLOP *** [6d 3c Qd]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [6d 3c Qd][Qh]
+Hero checks
+Eva checks
+*** RIVER *** [6d 3c Qd][Qh][Th]
+Hero checks
+Eva bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [6d 3c Qd Qh Th]
+Seat 3: Hero won 0.60€
+
+Winamax Poker - CashGame - HandId: #900000-1073-2073 - Holdem no limit (0.02€/0.05€) - 2026/06/20 20:38:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [2h Kh]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [Qc 9s 6d]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Qc 9s 6d][3s]
+Hero checks
+Alice checks
+*** RIVER *** [Qc 9s 6d][3s][Qs]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [Qc 9s 6d 3s Qs]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1074-2074 - Holdem no limit (0.02€/0.05€) - 2026/06/21 20:39:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [8d 4d]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Bob calls 0.10€
+*** FLOP *** [3s 2c 7d]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [3s 2c 7d][5c]
+Hero checks
+Bob checks
+*** RIVER *** [3s 2c 7d][5c][5h]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [3s 2c 7d 5c 5h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1075-2075 - Holdem no limit (0.02€/0.05€) - 2026/06/22 20:40:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [8c 6c]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [4s Ts 6h]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [4s Ts 6h][7d]
+Hero checks
+Alice checks
+*** RIVER *** [4s Ts 6h][7d][Qc]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [4s Ts 6h 7d Qc]
+Seat 3: Hero won 1.05€
+
+Winamax Poker - CashGame - HandId: #900000-1076-2076 - Holdem no limit (0.02€/0.05€) - 2026/06/23 20:41:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [As 7c]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Dimitri calls 0.10€
+*** FLOP *** [Ad Kd 4s]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [Ad Kd 4s][7h]
+Hero checks
+Dimitri checks
+*** RIVER *** [Ad Kd 4s][7h][2s]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [Ad Kd 4s 7h 2s]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1077-2077 - Holdem no limit (0.02€/0.05€) - 2026/06/24 20:42:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [9h 2d]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Eva checks
+*** FLOP *** [5h As 4h]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [5h As 4h][Jh]
+Hero checks
+Eva checks
+*** RIVER *** [5h As 4h][Jh][5c]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [5h As 4h Jh 5c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1078-2078 - Holdem no limit (0.02€/0.05€) - 2026/06/25 20:43:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [Qc Ks]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [Js 5c Kd]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Js 5c Kd][3h]
+Hero checks
+Alice checks
+*** RIVER *** [Js 5c Kd][3h][4d]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [Js 5c Kd 3h 4d]
+Seat 3: Hero won 0.45€
+
+Winamax Poker - CashGame - HandId: #900000-1079-2079 - Holdem no limit (0.02€/0.05€) - 2026/06/26 20:44:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [4c 9c]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Bob checks
+*** FLOP *** [Ad Ks Qh]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [Ad Ks Qh][4d]
+Hero checks
+Bob checks
+*** RIVER *** [Ad Ks Qh][4d][As]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [Ad Ks Qh 4d As]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1080-2080 - Holdem no limit (0.02€/0.05€) - 2026/06/27 20:45:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [2h 8d]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [7d 7c 4s]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [7d 7c 4s][Qc]
+Hero checks
+Alice checks
+*** RIVER *** [7d 7c 4s][Qc][Kh]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [7d 7c 4s Qc Kh]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1081-2081 - Holdem no limit (0.02€/0.05€) - 2026/06/01 20:46:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [Th 2s]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Dimitri checks
+*** FLOP *** [5h 6s Ac]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [5h 6s Ac][7c]
+Hero checks
+Dimitri checks
+*** RIVER *** [5h 6s Ac][7c][9s]
+Hero checks
+Dimitri bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [5h 6s Ac 7c 9s]
+Seat 3: Hero won 0.90€
+
+Winamax Poker - CashGame - HandId: #900000-1082-2082 - Holdem no limit (0.02€/0.05€) - 2026/06/02 20:47:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [9s Tc]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Eva calls 0.10€
+*** FLOP *** [4c 5s 2d]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [4c 5s 2d][2c]
+Hero checks
+Eva checks
+*** RIVER *** [4c 5s 2d][2c][6s]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [4c 5s 2d 2c 6s]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1083-2083 - Holdem no limit (0.02€/0.05€) - 2026/06/03 20:48:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [3h 3s]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [9d Qc Ts]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [9d Qc Ts][2s]
+Hero checks
+Alice checks
+*** RIVER *** [9d Qc Ts][2s][7c]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [9d Qc Ts 2s 7c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1084-2084 - Holdem no limit (0.02€/0.05€) - 2026/06/04 20:49:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [Th 6h]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Bob calls 0.10€
+*** FLOP *** [2d Ts Ac]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [2d Ts Ac][Qc]
+Hero checks
+Bob checks
+*** RIVER *** [2d Ts Ac][Qc][Js]
+Hero checks
+Bob bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [2d Ts Ac Qc Js]
+Seat 3: Hero won 0.30€
+
+Winamax Poker - CashGame - HandId: #900000-1085-2085 - Holdem no limit (0.02€/0.05€) - 2026/06/05 20:50:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [3d 5d]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [Th Kh Qc]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Th Kh Qc][5s]
+Hero checks
+Alice checks
+*** RIVER *** [Th Kh Qc][5s][Jh]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [Th Kh Qc 5s Jh]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1086-2086 - Holdem no limit (0.02€/0.05€) - 2026/06/06 20:51:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [6s 2s]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Dimitri calls 0.10€
+*** FLOP *** [Kc 7h Ts]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [Kc 7h Ts][7d]
+Hero checks
+Dimitri checks
+*** RIVER *** [Kc 7h Ts][7d][Js]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [Kc 7h Ts 7d Js]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1087-2087 - Holdem no limit (0.02€/0.05€) - 2026/06/07 20:52:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [Th Js]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Eva checks
+*** FLOP *** [5h Ts 3s]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [5h Ts 3s][Qd]
+Hero checks
+Eva checks
+*** RIVER *** [5h Ts 3s][Qd][8c]
+Hero checks
+Eva bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [5h Ts 3s Qd 8c]
+Seat 3: Hero won 0.75€
+
+Winamax Poker - CashGame - HandId: #900000-1088-2088 - Holdem no limit (0.02€/0.05€) - 2026/06/08 20:53:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [Ks 4s]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [Ac 4d 7h]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Ac 4d 7h][Jh]
+Hero checks
+Alice checks
+*** RIVER *** [Ac 4d 7h][Jh][7d]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [Ac 4d 7h Jh 7d]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1089-2089 - Holdem no limit (0.02€/0.05€) - 2026/06/09 20:54:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [7s 6h]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Bob checks
+*** FLOP *** [Ac 6c Ad]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [Ac 6c Ad][4d]
+Hero checks
+Bob checks
+*** RIVER *** [Ac 6c Ad][4d][Qd]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [Ac 6c Ad 4d Qd]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1090-2090 - Holdem no limit (0.02€/0.05€) - 2026/06/10 20:10:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [Kd Jc]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [9d 4s As]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [9d 4s As][8c]
+Hero checks
+Alice checks
+*** RIVER *** [9d 4s As][8c][6s]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [9d 4s As 8c 6s]
+Seat 3: Hero won 1.20€
+
+Winamax Poker - CashGame - HandId: #900000-1091-2091 - Holdem no limit (0.02€/0.05€) - 2026/06/11 20:11:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [8s 2h]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Dimitri checks
+*** FLOP *** [7h 3d Jc]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [7h 3d Jc][9c]
+Hero checks
+Dimitri checks
+*** RIVER *** [7h 3d Jc][9c][Ts]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [7h 3d Jc 9c Ts]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1092-2092 - Holdem no limit (0.02€/0.05€) - 2026/06/12 20:12:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [8h 8d]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Eva calls 0.10€
+*** FLOP *** [2h 6h Ts]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [2h 6h Ts][9c]
+Hero checks
+Eva checks
+*** RIVER *** [2h 6h Ts][9c][8c]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [2h 6h Ts 9c 8c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1093-2093 - Holdem no limit (0.02€/0.05€) - 2026/06/13 20:13:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [6c 6h]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [6d 4h Tc]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [6d 4h Tc][8d]
+Hero checks
+Alice checks
+*** RIVER *** [6d 4h Tc][8d][5h]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [6d 4h Tc 8d 5h]
+Seat 3: Hero won 0.60€
+
+Winamax Poker - CashGame - HandId: #900000-1094-2094 - Holdem no limit (0.02€/0.05€) - 2026/06/14 20:14:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [Jc 5d]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Bob calls 0.10€
+*** FLOP *** [9s Ks 2c]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [9s Ks 2c][9d]
+Hero checks
+Bob checks
+*** RIVER *** [9s Ks 2c][9d][Kh]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [9s Ks 2c 9d Kh]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1095-2095 - Holdem no limit (0.02€/0.05€) - 2026/06/15 20:15:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [As 2c]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [4s 7s Tc]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [4s 7s Tc][Th]
+Hero checks
+Alice checks
+*** RIVER *** [4s 7s Tc][Th][Kc]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [4s 7s Tc Th Kc]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1096-2096 - Holdem no limit (0.02€/0.05€) - 2026/06/16 20:16:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [3h Qc]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Dimitri calls 0.10€
+*** FLOP *** [6s 8d Jh]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [6s 8d Jh][4c]
+Hero checks
+Dimitri checks
+*** RIVER *** [6s 8d Jh][4c][5h]
+Hero checks
+Dimitri bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [6s 8d Jh 4c 5h]
+Seat 3: Hero won 1.05€
+
+Winamax Poker - CashGame - HandId: #900000-1097-2097 - Holdem no limit (0.02€/0.05€) - 2026/06/17 20:17:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [9c 2h]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Eva checks
+*** FLOP *** [8c Qd Kh]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [8c Qd Kh][7s]
+Hero checks
+Eva checks
+*** RIVER *** [8c Qd Kh][7s][Ks]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [8c Qd Kh 7s Ks]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1098-2098 - Holdem no limit (0.02€/0.05€) - 2026/06/18 20:18:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [Qd Qc]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [6c Ts Jh]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [6c Ts Jh][5c]
+Hero checks
+Alice checks
+*** RIVER *** [6c Ts Jh][5c][3h]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [6c Ts Jh 5c 3h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1099-2099 - Holdem no limit (0.02€/0.05€) - 2026/06/19 20:19:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [7s 7h]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Bob checks
+*** FLOP *** [5d Js Qh]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [5d Js Qh][4d]
+Hero checks
+Bob checks
+*** RIVER *** [5d Js Qh][4d][4c]
+Hero checks
+Bob bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [5d Js Qh 4d 4c]
+Seat 3: Hero won 0.45€
+
+Winamax Poker - CashGame - HandId: #900000-1100-2100 - Holdem no limit (0.02€/0.05€) - 2026/06/20 20:20:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [6d Tc]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [2h Ah 3d]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [2h Ah 3d][2c]
+Hero checks
+Alice checks
+*** RIVER *** [2h Ah 3d][2c][Qc]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [2h Ah 3d 2c Qc]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1101-2101 - Holdem no limit (0.02€/0.05€) - 2026/06/21 20:21:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [Qs 2d]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Dimitri checks
+*** FLOP *** [6h 5d 6d]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [6h 5d 6d][Ah]
+Hero checks
+Dimitri checks
+*** RIVER *** [6h 5d 6d][Ah][8c]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [6h 5d 6d Ah 8c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1102-2102 - Holdem no limit (0.02€/0.05€) - 2026/06/22 20:22:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [8h Th]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Eva calls 0.10€
+*** FLOP *** [Jd 3c 5c]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [Jd 3c 5c][7s]
+Hero checks
+Eva checks
+*** RIVER *** [Jd 3c 5c][7s][4c]
+Hero checks
+Eva bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [Jd 3c 5c 7s 4c]
+Seat 3: Hero won 0.90€
+
+Winamax Poker - CashGame - HandId: #900000-1103-2103 - Holdem no limit (0.02€/0.05€) - 2026/06/23 20:23:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [5s Js]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [Qh 6h Kd]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Qh 6h Kd][7c]
+Hero checks
+Alice checks
+*** RIVER *** [Qh 6h Kd][7c][7d]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [Qh 6h Kd 7c 7d]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1104-2104 - Holdem no limit (0.02€/0.05€) - 2026/06/24 20:24:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [5d Qh]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Bob calls 0.10€
+*** FLOP *** [Kd 5s Ad]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [Kd 5s Ad][3d]
+Hero checks
+Bob checks
+*** RIVER *** [Kd 5s Ad][3d][6d]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [Kd 5s Ad 3d 6d]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1105-2105 - Holdem no limit (0.02€/0.05€) - 2026/06/25 20:25:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [Td Qc]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [3h 3s 2c]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [3h 3s 2c][8s]
+Hero checks
+Alice checks
+*** RIVER *** [3h 3s 2c][8s][6s]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [3h 3s 2c 8s 6s]
+Seat 3: Hero won 0.30€
+
+Winamax Poker - CashGame - HandId: #900000-1106-2106 - Holdem no limit (0.02€/0.05€) - 2026/06/26 20:26:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [5s 9s]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Dimitri calls 0.10€
+*** FLOP *** [9c 7d 6h]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [9c 7d 6h][Tc]
+Hero checks
+Dimitri checks
+*** RIVER *** [9c 7d 6h][Tc][Ts]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [9c 7d 6h Tc Ts]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1107-2107 - Holdem no limit (0.02€/0.05€) - 2026/06/27 20:27:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [4c 4h]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Eva checks
+*** FLOP *** [8d 6c 2h]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [8d 6c 2h][Qd]
+Hero checks
+Eva checks
+*** RIVER *** [8d 6c 2h][Qd][5h]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [8d 6c 2h Qd 5h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1108-2108 - Holdem no limit (0.02€/0.05€) - 2026/06/01 20:28:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [9c Jc]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [Jh Kd Th]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Jh Kd Th][7s]
+Hero checks
+Alice checks
+*** RIVER *** [Jh Kd Th][7s][Kh]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [Jh Kd Th 7s Kh]
+Seat 3: Hero won 0.75€
+
+Winamax Poker - CashGame - HandId: #900000-1109-2109 - Holdem no limit (0.02€/0.05€) - 2026/06/02 20:29:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [2h Ts]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Bob checks
+*** FLOP *** [9d 5c Jc]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [9d 5c Jc][3h]
+Hero checks
+Bob checks
+*** RIVER *** [9d 5c Jc][3h][Jd]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [9d 5c Jc 3h Jd]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1110-2110 - Holdem no limit (0.02€/0.05€) - 2026/06/03 20:30:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [4s 5s]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [7s Js Ks]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [7s Js Ks][2d]
+Hero checks
+Alice checks
+*** RIVER *** [7s Js Ks][2d][Td]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [7s Js Ks 2d Td]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1111-2111 - Holdem no limit (0.02€/0.05€) - 2026/06/04 20:31:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [Tc 3h]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Dimitri checks
+*** FLOP *** [6c 9h Jh]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [6c 9h Jh][7s]
+Hero checks
+Dimitri checks
+*** RIVER *** [6c 9h Jh][7s][Kh]
+Hero checks
+Dimitri bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [6c 9h Jh 7s Kh]
+Seat 3: Hero won 1.20€
+
+Winamax Poker - CashGame - HandId: #900000-1112-2112 - Holdem no limit (0.02€/0.05€) - 2026/06/05 20:32:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [4c 8h]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Eva calls 0.10€
+*** FLOP *** [6h 7h 3d]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [6h 7h 3d][3s]
+Hero checks
+Eva checks
+*** RIVER *** [6h 7h 3d][3s][5h]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [6h 7h 3d 3s 5h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1113-2113 - Holdem no limit (0.02€/0.05€) - 2026/06/06 20:33:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [2s Kh]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [Kc Jh Kd]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Kc Jh Kd][Th]
+Hero checks
+Alice checks
+*** RIVER *** [Kc Jh Kd][Th][9s]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [Kc Jh Kd Th 9s]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1114-2114 - Holdem no limit (0.02€/0.05€) - 2026/06/07 20:34:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [4h 3d]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Bob calls 0.10€
+*** FLOP *** [6s As Qh]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [6s As Qh][8s]
+Hero checks
+Bob checks
+*** RIVER *** [6s As Qh][8s][Jd]
+Hero checks
+Bob bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [6s As Qh 8s Jd]
+Seat 3: Hero won 0.60€
+
+Winamax Poker - CashGame - HandId: #900000-1115-2115 - Holdem no limit (0.02€/0.05€) - 2026/06/08 20:35:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [5h 6d]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [Qs 8d 3s]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Qs 8d 3s][8s]
+Hero checks
+Alice checks
+*** RIVER *** [Qs 8d 3s][8s][2d]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [Qs 8d 3s 8s 2d]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1116-2116 - Holdem no limit (0.02€/0.05€) - 2026/06/09 20:36:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [5h As]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Dimitri calls 0.10€
+*** FLOP *** [3d 8c 4c]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [3d 8c 4c][3c]
+Hero checks
+Dimitri checks
+*** RIVER *** [3d 8c 4c][3c][6c]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [3d 8c 4c 3c 6c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1117-2117 - Holdem no limit (0.02€/0.05€) - 2026/06/10 20:37:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [Ad 2h]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Eva checks
+*** FLOP *** [Kd 7s 4h]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [Kd 7s 4h][6s]
+Hero checks
+Eva checks
+*** RIVER *** [Kd 7s 4h][6s][2s]
+Hero checks
+Eva bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [Kd 7s 4h 6s 2s]
+Seat 3: Hero won 1.05€
+
+Winamax Poker - CashGame - HandId: #900000-1118-2118 - Holdem no limit (0.02€/0.05€) - 2026/06/11 20:38:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [6s 8c]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [Qs 9s 6h]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Qs 9s 6h][Jc]
+Hero checks
+Alice checks
+*** RIVER *** [Qs 9s 6h][Jc][2c]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [Qs 9s 6h Jc 2c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1119-2119 - Holdem no limit (0.02€/0.05€) - 2026/06/12 20:39:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [9s 2s]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Bob checks
+*** FLOP *** [Ac 3c Th]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [Ac 3c Th][Ah]
+Hero checks
+Bob checks
+*** RIVER *** [Ac 3c Th][Ah][As]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [Ac 3c Th Ah As]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1120-2120 - Holdem no limit (0.02€/0.05€) - 2026/06/13 20:40:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [Qc 7s]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [7d Jh 5h]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [7d Jh 5h][9h]
+Hero checks
+Alice checks
+*** RIVER *** [7d Jh 5h][9h][3c]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [7d Jh 5h 9h 3c]
+Seat 3: Hero won 0.45€
+
+Winamax Poker - CashGame - HandId: #900000-1121-2121 - Holdem no limit (0.02€/0.05€) - 2026/06/14 20:41:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [5s 7d]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Dimitri checks
+*** FLOP *** [Jc 5d Jh]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [Jc 5d Jh][2h]
+Hero checks
+Dimitri checks
+*** RIVER *** [Jc 5d Jh][2h][7s]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [Jc 5d Jh 2h 7s]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1122-2122 - Holdem no limit (0.02€/0.05€) - 2026/06/15 20:42:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [8s Tc]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Eva calls 0.10€
+*** FLOP *** [2c 9s 2d]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [2c 9s 2d][3d]
+Hero checks
+Eva checks
+*** RIVER *** [2c 9s 2d][3d][6s]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [2c 9s 2d 3d 6s]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1123-2123 - Holdem no limit (0.02€/0.05€) - 2026/06/16 20:43:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [Ad 4d]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [As Jc 3h]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [As Jc 3h][Ts]
+Hero checks
+Alice checks
+*** RIVER *** [As Jc 3h][Ts][2d]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [As Jc 3h Ts 2d]
+Seat 3: Hero won 0.90€
+
+Winamax Poker - CashGame - HandId: #900000-1124-2124 - Holdem no limit (0.02€/0.05€) - 2026/06/17 20:44:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [6h 3d]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Bob calls 0.10€
+*** FLOP *** [Th 4s 5c]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [Th 4s 5c][2d]
+Hero checks
+Bob checks
+*** RIVER *** [Th 4s 5c][2d][6c]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [Th 4s 5c 2d 6c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1125-2125 - Holdem no limit (0.02€/0.05€) - 2026/06/18 20:45:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [4d 3c]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [Qc Qh 7s]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Qc Qh 7s][Jd]
+Hero checks
+Alice checks
+*** RIVER *** [Qc Qh 7s][Jd][5c]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [Qc Qh 7s Jd 5c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1126-2126 - Holdem no limit (0.02€/0.05€) - 2026/06/19 20:46:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [7s Js]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Dimitri calls 0.10€
+*** FLOP *** [Kh Qc 3c]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [Kh Qc 3c][6h]
+Hero checks
+Dimitri checks
+*** RIVER *** [Kh Qc 3c][6h][Ah]
+Hero checks
+Dimitri bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [Kh Qc 3c 6h Ah]
+Seat 3: Hero won 0.30€
+
+Winamax Poker - CashGame - HandId: #900000-1127-2127 - Holdem no limit (0.02€/0.05€) - 2026/06/20 20:47:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [8s 7h]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Eva checks
+*** FLOP *** [8h 8c 7d]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [8h 8c 7d][Qc]
+Hero checks
+Eva checks
+*** RIVER *** [8h 8c 7d][Qc][As]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [8h 8c 7d Qc As]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1128-2128 - Holdem no limit (0.02€/0.05€) - 2026/06/21 20:48:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [8s 3s]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [5d Js 5c]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [5d Js 5c][7s]
+Hero checks
+Alice checks
+*** RIVER *** [5d Js 5c][7s][9h]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [5d Js 5c 7s 9h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1129-2129 - Holdem no limit (0.02€/0.05€) - 2026/06/22 20:49:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [6d 8s]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Bob checks
+*** FLOP *** [Kd 8h 6s]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [Kd 8h 6s][6c]
+Hero checks
+Bob checks
+*** RIVER *** [Kd 8h 6s][6c][7h]
+Hero checks
+Bob bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [Kd 8h 6s 6c 7h]
+Seat 3: Hero won 0.75€
+
+Winamax Poker - CashGame - HandId: #900000-1130-2130 - Holdem no limit (0.02€/0.05€) - 2026/06/23 20:50:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [9d Qh]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [9s 7c 8d]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [9s 7c 8d][Kc]
+Hero checks
+Alice checks
+*** RIVER *** [9s 7c 8d][Kc][Jd]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [9s 7c 8d Kc Jd]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1131-2131 - Holdem no limit (0.02€/0.05€) - 2026/06/24 20:51:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [4s 4c]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Dimitri checks
+*** FLOP *** [Qh Jc Ac]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [Qh Jc Ac][Ks]
+Hero checks
+Dimitri checks
+*** RIVER *** [Qh Jc Ac][Ks][5h]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [Qh Jc Ac Ks 5h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1132-2132 - Holdem no limit (0.02€/0.05€) - 2026/06/25 20:52:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [3h Td]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Eva calls 0.10€
+*** FLOP *** [8h Kc Tc]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [8h Kc Tc][3s]
+Hero checks
+Eva checks
+*** RIVER *** [8h Kc Tc][3s][Jd]
+Hero checks
+Eva bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [8h Kc Tc 3s Jd]
+Seat 3: Hero won 1.20€
+
+Winamax Poker - CashGame - HandId: #900000-1133-2133 - Holdem no limit (0.02€/0.05€) - 2026/06/26 20:53:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [Ts Tc]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [Ac 9s Kc]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Ac 9s Kc][Qd]
+Hero checks
+Alice checks
+*** RIVER *** [Ac 9s Kc][Qd][5s]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [Ac 9s Kc Qd 5s]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1134-2134 - Holdem no limit (0.02€/0.05€) - 2026/06/27 20:54:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [5c 5s]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Bob calls 0.10€
+*** FLOP *** [Ah Qd 3d]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [Ah Qd 3d][Ts]
+Hero checks
+Bob checks
+*** RIVER *** [Ah Qd 3d][Ts][Ks]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [Ah Qd 3d Ts Ks]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1135-2135 - Holdem no limit (0.02€/0.05€) - 2026/06/01 20:10:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [6s Kc]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [8s 3h As]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [8s 3h As][2h]
+Hero checks
+Alice checks
+*** RIVER *** [8s 3h As][2h][Th]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [8s 3h As 2h Th]
+Seat 3: Hero won 0.60€
+
+Winamax Poker - CashGame - HandId: #900000-1136-2136 - Holdem no limit (0.02€/0.05€) - 2026/06/02 20:11:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [7s Qd]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Dimitri calls 0.10€
+*** FLOP *** [9h Kh 4d]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [9h Kh 4d][9d]
+Hero checks
+Dimitri checks
+*** RIVER *** [9h Kh 4d][9d][3d]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [9h Kh 4d 9d 3d]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1137-2137 - Holdem no limit (0.02€/0.05€) - 2026/06/03 20:12:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [3s 6h]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Eva checks
+*** FLOP *** [4s 3d Td]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [4s 3d Td][9s]
+Hero checks
+Eva checks
+*** RIVER *** [4s 3d Td][9s][5h]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [4s 3d Td 9s 5h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1138-2138 - Holdem no limit (0.02€/0.05€) - 2026/06/04 20:13:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [Qh 3c]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [4h As 8s]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [4h As 8s][Kd]
+Hero checks
+Alice checks
+*** RIVER *** [4h As 8s][Kd][9c]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [4h As 8s Kd 9c]
+Seat 3: Hero won 1.05€
+
+Winamax Poker - CashGame - HandId: #900000-1139-2139 - Holdem no limit (0.02€/0.05€) - 2026/06/05 20:14:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [4s 6s]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Bob checks
+*** FLOP *** [Qh 5d Jc]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [Qh 5d Jc][Kh]
+Hero checks
+Bob checks
+*** RIVER *** [Qh 5d Jc][Kh][Ts]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [Qh 5d Jc Kh Ts]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1140-2140 - Holdem no limit (0.02€/0.05€) - 2026/06/06 20:15:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [Kc Qd]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [Js 2s 6s]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Js 2s 6s][7d]
+Hero checks
+Alice checks
+*** RIVER *** [Js 2s 6s][7d][4c]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [Js 2s 6s 7d 4c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1141-2141 - Holdem no limit (0.02€/0.05€) - 2026/06/07 20:16:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [Kc Jc]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Dimitri checks
+*** FLOP *** [Jh Jd 8c]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [Jh Jd 8c][Ac]
+Hero checks
+Dimitri checks
+*** RIVER *** [Jh Jd 8c][Ac][Th]
+Hero checks
+Dimitri bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [Jh Jd 8c Ac Th]
+Seat 3: Hero won 0.45€
+
+Winamax Poker - CashGame - HandId: #900000-1142-2142 - Holdem no limit (0.02€/0.05€) - 2026/06/08 20:17:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [5s 5d]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Eva calls 0.10€
+*** FLOP *** [2s 6c Ad]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [2s 6c Ad][5h]
+Hero checks
+Eva checks
+*** RIVER *** [2s 6c Ad][5h][7s]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [2s 6c Ad 5h 7s]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1143-2143 - Holdem no limit (0.02€/0.05€) - 2026/06/09 20:18:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [5h Kc]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [5d Tc 5c]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [5d Tc 5c][Kh]
+Hero checks
+Alice checks
+*** RIVER *** [5d Tc 5c][Kh][7s]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [5d Tc 5c Kh 7s]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1144-2144 - Holdem no limit (0.02€/0.05€) - 2026/06/10 20:19:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [Th 9h]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Bob calls 0.10€
+*** FLOP *** [7d 6h 2s]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [7d 6h 2s][8h]
+Hero checks
+Bob checks
+*** RIVER *** [7d 6h 2s][8h][7c]
+Hero checks
+Bob bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [7d 6h 2s 8h 7c]
+Seat 3: Hero won 0.90€
+
+Winamax Poker - CashGame - HandId: #900000-1145-2145 - Holdem no limit (0.02€/0.05€) - 2026/06/11 20:20:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [4s Kc]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [4c 7d Js]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [4c 7d Js][8d]
+Hero checks
+Alice checks
+*** RIVER *** [4c 7d Js][8d][Ad]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [4c 7d Js 8d Ad]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1146-2146 - Holdem no limit (0.02€/0.05€) - 2026/06/12 20:21:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [As Qs]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Dimitri calls 0.10€
+*** FLOP *** [Ac Jc 7s]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [Ac Jc 7s][6d]
+Hero checks
+Dimitri checks
+*** RIVER *** [Ac Jc 7s][6d][2d]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [Ac Jc 7s 6d 2d]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1147-2147 - Holdem no limit (0.02€/0.05€) - 2026/06/13 20:22:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [Qd Qc]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Eva checks
+*** FLOP *** [3s 7c 4h]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [3s 7c 4h][Ad]
+Hero checks
+Eva checks
+*** RIVER *** [3s 7c 4h][Ad][7s]
+Hero checks
+Eva bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [3s 7c 4h Ad 7s]
+Seat 3: Hero won 0.30€
+
+Winamax Poker - CashGame - HandId: #900000-1148-2148 - Holdem no limit (0.02€/0.05€) - 2026/06/14 20:23:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [8c Kc]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [3h 6d Tc]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [3h 6d Tc][Kh]
+Hero checks
+Alice checks
+*** RIVER *** [3h 6d Tc][Kh][8h]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [3h 6d Tc Kh 8h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1149-2149 - Holdem no limit (0.02€/0.05€) - 2026/06/15 20:24:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [3s 9h]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Bob checks
+*** FLOP *** [5s 8c 9s]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [5s 8c 9s][2s]
+Hero checks
+Bob checks
+*** RIVER *** [5s 8c 9s][2s][Tc]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [5s 8c 9s 2s Tc]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1150-2150 - Holdem no limit (0.02€/0.05€) - 2026/06/16 20:25:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [8h 2s]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [Th 9s 4s]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Th 9s 4s][Ks]
+Hero checks
+Alice checks
+*** RIVER *** [Th 9s 4s][Ks][Td]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [Th 9s 4s Ks Td]
+Seat 3: Hero won 0.75€
+
+Winamax Poker - CashGame - HandId: #900000-1151-2151 - Holdem no limit (0.02€/0.05€) - 2026/06/17 20:26:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [2c 7d]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Dimitri checks
+*** FLOP *** [7h Ts Td]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [7h Ts Td][9c]
+Hero checks
+Dimitri checks
+*** RIVER *** [7h Ts Td][9c][5c]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [7h Ts Td 9c 5c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1152-2152 - Holdem no limit (0.02€/0.05€) - 2026/06/18 20:27:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [As 9s]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Eva calls 0.10€
+*** FLOP *** [6h Ad Jc]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [6h Ad Jc][Qc]
+Hero checks
+Eva checks
+*** RIVER *** [6h Ad Jc][Qc][5d]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [6h Ad Jc Qc 5d]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1153-2153 - Holdem no limit (0.02€/0.05€) - 2026/06/19 20:28:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [8d 9d]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [4h Kh 3h]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [4h Kh 3h][6h]
+Hero checks
+Alice checks
+*** RIVER *** [4h Kh 3h][6h][3s]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [4h Kh 3h 6h 3s]
+Seat 3: Hero won 1.20€
+
+Winamax Poker - CashGame - HandId: #900000-1154-2154 - Holdem no limit (0.02€/0.05€) - 2026/06/20 20:29:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [5h Ts]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Bob calls 0.10€
+*** FLOP *** [As 9h 8d]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [As 9h 8d][2h]
+Hero checks
+Bob checks
+*** RIVER *** [As 9h 8d][2h][Qd]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [As 9h 8d 2h Qd]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1155-2155 - Holdem no limit (0.02€/0.05€) - 2026/06/21 20:30:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [4c 7d]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [5d As Td]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [5d As Td][Qc]
+Hero checks
+Alice checks
+*** RIVER *** [5d As Td][Qc][4h]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [5d As Td Qc 4h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1156-2156 - Holdem no limit (0.02€/0.05€) - 2026/06/22 20:31:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [Ah 2c]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Dimitri calls 0.10€
+*** FLOP *** [Qh 5h 9h]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [Qh 5h 9h][7d]
+Hero checks
+Dimitri checks
+*** RIVER *** [Qh 5h 9h][7d][2d]
+Hero checks
+Dimitri bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [Qh 5h 9h 7d 2d]
+Seat 3: Hero won 0.60€
+
+Winamax Poker - CashGame - HandId: #900000-1157-2157 - Holdem no limit (0.02€/0.05€) - 2026/06/23 20:32:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [3h Td]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Eva checks
+*** FLOP *** [Kc 8s Jc]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [Kc 8s Jc][Kd]
+Hero checks
+Eva checks
+*** RIVER *** [Kc 8s Jc][Kd][7s]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [Kc 8s Jc Kd 7s]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1158-2158 - Holdem no limit (0.02€/0.05€) - 2026/06/24 20:33:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [5s 7c]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [7s Kc 5h]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [7s Kc 5h][3d]
+Hero checks
+Alice checks
+*** RIVER *** [7s Kc 5h][3d][3h]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [7s Kc 5h 3d 3h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1159-2159 - Holdem no limit (0.02€/0.05€) - 2026/06/25 20:34:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [As Qd]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Bob checks
+*** FLOP *** [Tc Qh 4c]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [Tc Qh 4c][Ks]
+Hero checks
+Bob checks
+*** RIVER *** [Tc Qh 4c][Ks][Jc]
+Hero checks
+Bob bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [Tc Qh 4c Ks Jc]
+Seat 3: Hero won 1.05€
+
+Winamax Poker - CashGame - HandId: #900000-1160-2160 - Holdem no limit (0.02€/0.05€) - 2026/06/26 20:35:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [9s 8h]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [7h 8c Jd]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [7h 8c Jd][6d]
+Hero checks
+Alice checks
+*** RIVER *** [7h 8c Jd][6d][5c]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [7h 8c Jd 6d 5c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1161-2161 - Holdem no limit (0.02€/0.05€) - 2026/06/27 20:36:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [2d 7s]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Dimitri checks
+*** FLOP *** [Tc Ks 4d]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [Tc Ks 4d][5s]
+Hero checks
+Dimitri checks
+*** RIVER *** [Tc Ks 4d][5s][5h]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [Tc Ks 4d 5s 5h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1162-2162 - Holdem no limit (0.02€/0.05€) - 2026/06/01 20:37:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [2s Qh]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Eva calls 0.10€
+*** FLOP *** [2d Td 3s]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [2d Td 3s][6h]
+Hero checks
+Eva checks
+*** RIVER *** [2d Td 3s][6h][Ts]
+Hero checks
+Eva bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [2d Td 3s 6h Ts]
+Seat 3: Hero won 0.45€
+
+Winamax Poker - CashGame - HandId: #900000-1163-2163 - Holdem no limit (0.02€/0.05€) - 2026/06/02 20:38:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [Qd Jc]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [3c 5c Jh]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [3c 5c Jh][Tc]
+Hero checks
+Alice checks
+*** RIVER *** [3c 5c Jh][Tc][6d]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [3c 5c Jh Tc 6d]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1164-2164 - Holdem no limit (0.02€/0.05€) - 2026/06/03 20:39:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [4h 9c]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Bob calls 0.10€
+*** FLOP *** [6c 2d Ac]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [6c 2d Ac][5h]
+Hero checks
+Bob checks
+*** RIVER *** [6c 2d Ac][5h][7s]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [6c 2d Ac 5h 7s]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1165-2165 - Holdem no limit (0.02€/0.05€) - 2026/06/04 20:40:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [6h 4s]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [Tc 9d 3s]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Tc 9d 3s][9s]
+Hero checks
+Alice checks
+*** RIVER *** [Tc 9d 3s][9s][Kh]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [Tc 9d 3s 9s Kh]
+Seat 3: Hero won 0.90€
+
+Winamax Poker - CashGame - HandId: #900000-1166-2166 - Holdem no limit (0.02€/0.05€) - 2026/06/05 20:41:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [7s Qc]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Dimitri calls 0.10€
+*** FLOP *** [7h Qd 9h]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [7h Qd 9h][9s]
+Hero checks
+Dimitri checks
+*** RIVER *** [7h Qd 9h][9s][Kd]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [7h Qd 9h 9s Kd]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1167-2167 - Holdem no limit (0.02€/0.05€) - 2026/06/06 20:42:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [Ac 6h]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Eva checks
+*** FLOP *** [Ah Js 7d]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [Ah Js 7d][Th]
+Hero checks
+Eva checks
+*** RIVER *** [Ah Js 7d][Th][3s]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [Ah Js 7d Th 3s]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1168-2168 - Holdem no limit (0.02€/0.05€) - 2026/06/07 20:43:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [2s 3d]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [5h Qs 2h]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [5h Qs 2h][6s]
+Hero checks
+Alice checks
+*** RIVER *** [5h Qs 2h][6s][9h]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [5h Qs 2h 6s 9h]
+Seat 3: Hero won 0.30€
+
+Winamax Poker - CashGame - HandId: #900000-1169-2169 - Holdem no limit (0.02€/0.05€) - 2026/06/08 20:44:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [Qd 7s]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Bob checks
+*** FLOP *** [3s Kh Kd]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [3s Kh Kd][9c]
+Hero checks
+Bob checks
+*** RIVER *** [3s Kh Kd][9c][9d]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [3s Kh Kd 9c 9d]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1170-2170 - Holdem no limit (0.02€/0.05€) - 2026/06/09 20:45:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [2c 6h]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [Ac 4d 6d]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Ac 4d 6d][Td]
+Hero checks
+Alice checks
+*** RIVER *** [Ac 4d 6d][Td][Qd]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [Ac 4d 6d Td Qd]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1171-2171 - Holdem no limit (0.02€/0.05€) - 2026/06/10 20:46:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [7d 6d]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Dimitri checks
+*** FLOP *** [2d 2h Ah]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [2d 2h Ah][Jh]
+Hero checks
+Dimitri checks
+*** RIVER *** [2d 2h Ah][Jh][4s]
+Hero checks
+Dimitri bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [2d 2h Ah Jh 4s]
+Seat 3: Hero won 0.75€
+
+Winamax Poker - CashGame - HandId: #900000-1172-2172 - Holdem no limit (0.02€/0.05€) - 2026/06/11 20:47:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [3d 8s]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Eva calls 0.10€
+*** FLOP *** [Kh 4s 7h]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [Kh 4s 7h][5h]
+Hero checks
+Eva checks
+*** RIVER *** [Kh 4s 7h][5h][Ts]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [Kh 4s 7h 5h Ts]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1173-2173 - Holdem no limit (0.02€/0.05€) - 2026/06/12 20:48:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [2h Td]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [4h 7d Qh]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [4h 7d Qh][As]
+Hero checks
+Alice checks
+*** RIVER *** [4h 7d Qh][As][3s]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [4h 7d Qh As 3s]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1174-2174 - Holdem no limit (0.02€/0.05€) - 2026/06/13 20:49:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [5h 9c]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Bob calls 0.10€
+*** FLOP *** [7s Qd 4h]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [7s Qd 4h][Jd]
+Hero checks
+Bob checks
+*** RIVER *** [7s Qd 4h][Jd][5c]
+Hero checks
+Bob bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [7s Qd 4h Jd 5c]
+Seat 3: Hero won 1.20€
+
+Winamax Poker - CashGame - HandId: #900000-1175-2175 - Holdem no limit (0.02€/0.05€) - 2026/06/14 20:50:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [9c 6d]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [As Js 9s]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [As Js 9s][Qs]
+Hero checks
+Alice checks
+*** RIVER *** [As Js 9s][Qs][3s]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [As Js 9s Qs 3s]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1176-2176 - Holdem no limit (0.02€/0.05€) - 2026/06/15 20:51:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [Ts 4c]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Dimitri calls 0.10€
+*** FLOP *** [5h 2d Jc]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [5h 2d Jc][As]
+Hero checks
+Dimitri checks
+*** RIVER *** [5h 2d Jc][As][8d]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [5h 2d Jc As 8d]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1177-2177 - Holdem no limit (0.02€/0.05€) - 2026/06/16 20:52:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [6s 6c]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Eva checks
+*** FLOP *** [9d 2h Ts]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [9d 2h Ts][4s]
+Hero checks
+Eva checks
+*** RIVER *** [9d 2h Ts][4s][3h]
+Hero checks
+Eva bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [9d 2h Ts 4s 3h]
+Seat 3: Hero won 0.60€
+
+Winamax Poker - CashGame - HandId: #900000-1178-2178 - Holdem no limit (0.02€/0.05€) - 2026/06/17 20:53:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [3h 7s]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [Ah 9s 9h]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Ah 9s 9h][2d]
+Hero checks
+Alice checks
+*** RIVER *** [Ah 9s 9h][2d][Kd]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [Ah 9s 9h 2d Kd]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1179-2179 - Holdem no limit (0.02€/0.05€) - 2026/06/18 20:54:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [Qd Ts]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Bob checks
+*** FLOP *** [Tc Jc Th]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [Tc Jc Th][Ks]
+Hero checks
+Bob checks
+*** RIVER *** [Tc Jc Th][Ks][4s]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [Tc Jc Th Ks 4s]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1180-2180 - Holdem no limit (0.02€/0.05€) - 2026/06/19 20:10:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [5c 7c]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [Jc 2s Jh]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Jc 2s Jh][3s]
+Hero checks
+Alice checks
+*** RIVER *** [Jc 2s Jh][3s][Qs]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [Jc 2s Jh 3s Qs]
+Seat 3: Hero won 1.05€
+
+Winamax Poker - CashGame - HandId: #900000-1181-2181 - Holdem no limit (0.02€/0.05€) - 2026/06/20 20:11:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [5h Ks]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Dimitri checks
+*** FLOP *** [Jc Ah 5d]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [Jc Ah 5d][9c]
+Hero checks
+Dimitri checks
+*** RIVER *** [Jc Ah 5d][9c][As]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [Jc Ah 5d 9c As]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1182-2182 - Holdem no limit (0.02€/0.05€) - 2026/06/21 20:12:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [As 3d]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Eva calls 0.10€
+*** FLOP *** [8c 2s 5d]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [8c 2s 5d][6d]
+Hero checks
+Eva checks
+*** RIVER *** [8c 2s 5d][6d][3c]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [8c 2s 5d 6d 3c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1183-2183 - Holdem no limit (0.02€/0.05€) - 2026/06/22 20:13:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [8d Qc]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [8c Js 4d]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [8c Js 4d][Jc]
+Hero checks
+Alice checks
+*** RIVER *** [8c Js 4d][Jc][2h]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [8c Js 4d Jc 2h]
+Seat 3: Hero won 0.45€
+
+Winamax Poker - CashGame - HandId: #900000-1184-2184 - Holdem no limit (0.02€/0.05€) - 2026/06/23 20:14:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [Ts 2h]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Bob calls 0.10€
+*** FLOP *** [4h Kd 9h]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [4h Kd 9h][6s]
+Hero checks
+Bob checks
+*** RIVER *** [4h Kd 9h][6s][8c]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [4h Kd 9h 6s 8c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1185-2185 - Holdem no limit (0.02€/0.05€) - 2026/06/24 20:15:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [Ah 7s]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [8h Jh 8d]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [8h Jh 8d][7h]
+Hero checks
+Alice checks
+*** RIVER *** [8h Jh 8d][7h][6c]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [8h Jh 8d 7h 6c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1186-2186 - Holdem no limit (0.02€/0.05€) - 2026/06/25 20:16:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [4c 7h]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Dimitri calls 0.10€
+*** FLOP *** [5s 8c 3s]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [5s 8c 3s][9s]
+Hero checks
+Dimitri checks
+*** RIVER *** [5s 8c 3s][9s][5h]
+Hero checks
+Dimitri bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [5s 8c 3s 9s 5h]
+Seat 3: Hero won 0.90€
+
+Winamax Poker - CashGame - HandId: #900000-1187-2187 - Holdem no limit (0.02€/0.05€) - 2026/06/26 20:17:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [Js 2c]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Eva checks
+*** FLOP *** [3s 8c Kd]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [3s 8c Kd][3h]
+Hero checks
+Eva checks
+*** RIVER *** [3s 8c Kd][3h][Qs]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [3s 8c Kd 3h Qs]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1188-2188 - Holdem no limit (0.02€/0.05€) - 2026/06/27 20:18:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [Ad 3c]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [5c Ts As]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [5c Ts As][Jc]
+Hero checks
+Alice checks
+*** RIVER *** [5c Ts As][Jc][2h]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [5c Ts As Jc 2h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1189-2189 - Holdem no limit (0.02€/0.05€) - 2026/06/01 20:19:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [8c As]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Bob checks
+*** FLOP *** [6c 3h Ts]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [6c 3h Ts][4d]
+Hero checks
+Bob checks
+*** RIVER *** [6c 3h Ts][4d][2s]
+Hero checks
+Bob bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [6c 3h Ts 4d 2s]
+Seat 3: Hero won 0.30€
+
+Winamax Poker - CashGame - HandId: #900000-1190-2190 - Holdem no limit (0.02€/0.05€) - 2026/06/02 20:20:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [2d Js]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [9d Jh Th]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [9d Jh Th][2c]
+Hero checks
+Alice checks
+*** RIVER *** [9d Jh Th][2c][7h]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [9d Jh Th 2c 7h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1191-2191 - Holdem no limit (0.02€/0.05€) - 2026/06/03 20:21:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [8s 5s]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Dimitri checks
+*** FLOP *** [Tc 5c Jc]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [Tc 5c Jc][Ts]
+Hero checks
+Dimitri checks
+*** RIVER *** [Tc 5c Jc][Ts][4h]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [Tc 5c Jc Ts 4h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1192-2192 - Holdem no limit (0.02€/0.05€) - 2026/06/04 20:22:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [5d 4d]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Eva calls 0.10€
+*** FLOP *** [5c 7h Qh]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [5c 7h Qh][Qd]
+Hero checks
+Eva checks
+*** RIVER *** [5c 7h Qh][Qd][2c]
+Hero checks
+Eva bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [5c 7h Qh Qd 2c]
+Seat 3: Hero won 0.75€
+
+Winamax Poker - CashGame - HandId: #900000-1193-2193 - Holdem no limit (0.02€/0.05€) - 2026/06/05 20:23:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [3d Qc]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [5h 4h Js]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [5h 4h Js][As]
+Hero checks
+Alice checks
+*** RIVER *** [5h 4h Js][As][6c]
+Hero checks
+Alice bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.90€ | No rake
+Board: [5h 4h Js As 6c]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1194-2194 - Holdem no limit (0.02€/0.05€) - 2026/06/06 20:24:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [3d 2h]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Bob calls 0.10€
+*** FLOP *** [9c 7d Js]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [9c 7d Js][6s]
+Hero checks
+Bob checks
+*** RIVER *** [9c 7d Js][6s][2d]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.05€ | No rake
+Board: [9c 7d Js 6s 2d]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1195-2195 - Holdem no limit (0.02€/0.05€) - 2026/06/07 20:25:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #1 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Bob posts small blind 0.02€
+Hero posts big blind 0.05€
+Dealt to Hero [Jh Jd]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Alice checks
+*** FLOP *** [Tc 4h 6d]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Tc 4h 6d][8h]
+Hero checks
+Alice checks
+*** RIVER *** [Tc 4h 6d][8h][8c]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 1.20€ | No rake
+Board: [Tc 4h 6d 8h 8c]
+Seat 3: Hero won 1.20€
+
+Winamax Poker - CashGame - HandId: #900000-1196-2196 - Holdem no limit (0.02€/0.05€) - 2026/06/08 20:26:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #2 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.02€
+Dimitri posts big blind 0.05€
+Dealt to Hero [Qs 4s]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Dimitri calls 0.10€
+*** FLOP *** [4h 2d Th]
+Hero bets 0.20€
+Dimitri calls 0.20€
+*** TURN *** [4h 2d Th][5d]
+Hero checks
+Dimitri checks
+*** RIVER *** [4h 2d Th][5d][6h]
+Hero checks
+Dimitri bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.30€ | No rake
+Board: [4h 2d Th 5d 6h]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1197-2197 - Holdem no limit (0.02€/0.05€) - 2026/06/09 20:27:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #3 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Dimitri posts small blind 0.02€
+Eva posts big blind 0.05€
+Dealt to Hero [4d Qs]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Eva checks
+*** FLOP *** [5c Kc Ac]
+Hero bets 0.20€
+Eva calls 0.20€
+*** TURN *** [5c Kc Ac][Ks]
+Hero checks
+Eva checks
+*** RIVER *** [5c Kc Ac][Ks][Ah]
+Hero checks
+Eva bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.45€ | No rake
+Board: [5c Kc Ac Ks Ah]
+Seat 3: Hero lost
+
+Winamax Poker - CashGame - HandId: #900000-1198-2198 - Holdem no limit (0.02€/0.05€) - 2026/06/10 20:28:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #4 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Eva posts small blind 0.02€
+Alice posts big blind 0.05€
+Dealt to Hero [2c 7d]
+*** PRE-FLOP ***
+Hero raises 0.10€ to 0.15€
+Alice calls 0.10€
+*** FLOP *** [Ks Jc 7s]
+Hero bets 0.20€
+Alice calls 0.20€
+*** TURN *** [Ks Jc 7s][9d]
+Hero checks
+Alice checks
+*** RIVER *** [Ks Jc 7s][9d][8d]
+Hero checks
+Alice bets 0.30€
+Hero calls 0.30€
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.60€ | No rake
+Board: [Ks Jc 7s 9d 8d]
+Seat 3: Hero won 0.60€
+
+Winamax Poker - CashGame - HandId: #900000-1199-2199 - Holdem no limit (0.02€/0.05€) - 2026/06/11 20:29:33 UTC
+Table: 'Wichita 05' 5-max (real money) Seat #5 is the button
+Seat 1: Alice (5€)
+Seat 2: Bob (5€)
+Seat 3: Hero (5€)
+Seat 4: Dimitri (5€)
+Seat 5: Eva (5€)
+*** ANTE/BLINDS ***
+Alice posts small blind 0.02€
+Bob posts big blind 0.05€
+Dealt to Hero [Td 8c]
+*** PRE-FLOP ***
+Hero calls 0.05€
+Bob checks
+*** FLOP *** [4h 4c Qc]
+Hero bets 0.20€
+Bob calls 0.20€
+*** TURN *** [4h 4c Qc][Ac]
+Hero checks
+Bob checks
+*** RIVER *** [4h 4c Qc][Ac][7d]
+Hero checks
+Bob bets 0.30€
+Hero folds
+*** SHOW DOWN ***
+*** SUMMARY ***
+Total pot 0.75€ | No rake
+Board: [4h 4c Qc Ac 7d]
+Seat 3: Hero lost

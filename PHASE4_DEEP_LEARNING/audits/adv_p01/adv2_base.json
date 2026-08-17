@@ -1,0 +1,59 @@
+{
+  "viewport": "360x800",
+  "cible": "VERSION_PRODUCTION/herolab.html",
+  "ongletImportCliquable": false,
+  "nbInputsFichier": 1,
+  "import": {
+    "log": "Import terminé\n200 mains ajoutées\nFICHIER\tMAINS LUES\tAJOUTÉES\tDOUBLONS\nhisto_test.txt\t200\t200\t0",
+    "navHands": "200"
+  },
+  "vues": [
+    {
+      "v": "dashboard",
+      "err": "clic impossible"
+    },
+    {
+      "v": "graphs",
+      "err": "clic impossible"
+    },
+    {
+      "v": "preflop",
+      "err": "clic impossible"
+    },
+    {
+      "v": "postflop",
+      "err": "clic impossible"
+    },
+    {
+      "v": "positions",
+      "err": "clic impossible"
+    },
+    {
+      "v": "analyse",
+      "err": "clic impossible"
+    },
+    {
+      "v": "review",
+      "err": "clic impossible"
+    },
+    {
+      "v": "hands",
+      "err": "clic impossible"
+    },
+    {
+      "v": "import",
+      "id": "v-import",
+      "chars": 440,
+      "hauteur": 725,
+      "debordement": false,
+      "scrollW": 409,
+      "ok": true
+    }
+  ],
+  "analyseAtteinte": false,
+  "leaks": {
+    "nbLeaks": 0,
+    "nbDrill": 0
+  },
+  "jsErrors": []
+}

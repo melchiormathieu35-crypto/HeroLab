@@ -95,22 +95,45 @@ const eq = (a, b, m) => { if (a !== b) throw new Error(`${m || ""} attendu ${b},
         `onglets non cliquables (${echecs.length}/9) : ${echecs.join(", ")}`);
     });
 
-    // ── Chaque vue affiche réellement du contenu après le clic utilisateur
-    await t(`${vp.nom} · chaque vue affiche du contenu après clic`, async () => {
+    // ── Le clic doit AMENER À LA VUE DEMANDÉE, avec du contenu exploitable.
+    //    Version durcie après revue adversariale : trois mutants passaient la
+    //    version précédente — navigation morte, barre à opacité nulle, contenu
+    //    remplacé par un message d'erreur. On compare donc la vue active à
+    //    l'onglet cliqué, on contrôle l'opacité effective, et on refuse les
+    //    contenus d'erreur (un seuil de caractères ne les distingue pas d'un
+    //    état vide légitime, mesuré à 69-76 caractères).
+    await t(`${vp.nom} · chaque clic ouvre BIEN la vue demandée`, async () => {
       const echecs = [];
       for (const v of vues) {
         try {
           await page.click(`.ft-nav-item[data-view="${v}"]`, { timeout: 1500 });
-        } catch (e) { echecs.push(v + " (inatteignable)"); continue; }
+        } catch (e) { echecs.push(`${v} (inatteignable)`); continue; }
         await page.waitForTimeout(120);
-        const n = await page.evaluate(() => {
-          const p = document.querySelector("#v-tracker .ft-view.active");
-          return p ? (p.innerText || "").trim().length : -1;
-        });
-        // -1 = aucune vue active (défaut de navigation) ; 0 = vue vide.
-        if (n < 20) echecs.push(`${v} (contenu ${n} car.)`);
+        const r = await page.evaluate(vAttendue => {
+          const active = document.querySelector("#v-tracker .ft-view.active");
+          const onglet = document.querySelector(`.ft-nav-item[data-view="${vAttendue}"]`);
+          // opacité effective : le produit des opacités de la chaîne d'ancêtres
+          let op = 1, n = onglet;
+          while (n && n !== document.body) { op *= parseFloat(getComputedStyle(n).opacity || "1"); n = n.parentElement; }
+          const txt = active ? (active.innerText || "").trim() : "";
+          return { id: active ? active.id : null, opacite: op, n: txt.length,
+                   erreur: /erreur|error|impossible de charger/i.test(txt) };
+        }, v);
+        if (r.id !== "v-" + v) echecs.push(`${v} → vue active « ${r.id} »`);
+        else if (r.opacite < 0.1) echecs.push(`${v} (opacité ${r.opacite.toFixed(2)})`);
+        else if (r.erreur) echecs.push(`${v} (contenu d'erreur)`);
+        else if (r.n < 20) echecs.push(`${v} (contenu ${r.n} car.)`);
       }
       ok(echecs.length === 0, `vues défaillantes : ${echecs.join(", ")}`);
+    });
+
+    // ── Confort tactile : le produit s'impose 44 px, le rail le respecte.
+    await t(`${vp.nom} · les onglets du Tracker respectent 44 px`, async () => {
+      const petits = await page.evaluate(() => [...document.querySelectorAll(".ft-nav-item")]
+        .map(e => ({ v: e.dataset.view, h: Math.round(e.getBoundingClientRect().height) }))
+        .filter(x => x.h > 0 && x.h < 44));
+      ok(petits.length === 0,
+        `${petits.length}/9 sous 44 px : ${petits.slice(0, 3).map(x => x.v + " " + x.h + "px").join(", ")}`);
     });
 
     // ── Retour à l'accueil

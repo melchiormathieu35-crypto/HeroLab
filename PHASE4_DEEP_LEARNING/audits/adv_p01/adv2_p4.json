@@ -1,0 +1,102 @@
+{
+  "viewport": "360x800",
+  "cible": "PHASE4_DEEP_LEARNING/herolab-p4.html",
+  "nbInputsFichier": 1,
+  "import": {
+    "log": "Import terminé\n200 mains ajoutées\nFICHIER\tMAINS LUES\tAJOUTÉES\tDOUBLONS\nhisto_test.txt\t200\t200\t0",
+    "navHands": "200"
+  },
+  "vues": [
+    {
+      "v": "dashboard",
+      "id": "v-dashboard",
+      "chars": 630,
+      "hauteur": 2047,
+      "debordement": false,
+      "scrollW": 360,
+      "ok": true
+    },
+    {
+      "v": "graphs",
+      "id": "v-graphs",
+      "chars": 322,
+      "hauteur": 2750,
+      "debordement": false,
+      "scrollW": 360,
+      "ok": true
+    },
+    {
+      "v": "preflop",
+      "id": "v-preflop",
+      "chars": 837,
+      "hauteur": 1740,
+      "debordement": false,
+      "scrollW": 360,
+      "ok": true
+    },
+    {
+      "v": "postflop",
+      "id": "v-postflop",
+      "chars": 477,
+      "hauteur": 1103,
+      "debordement": false,
+      "scrollW": 372,
+      "ok": true
+    },
+    {
+      "v": "positions",
+      "id": "v-positions",
+      "chars": 505,
+      "hauteur": 2250,
+      "debordement": false,
+      "scrollW": 360,
+      "ok": true
+    },
+    {
+      "v": "analyse",
+      "id": "v-analyse",
+      "chars": 5276,
+      "hauteur": 4183,
+      "debordement": false,
+      "scrollW": 360,
+      "ok": true
+    },
+    {
+      "v": "review",
+      "id": "v-review",
+      "chars": 1337,
+      "hauteur": 2199,
+      "debordement": false,
+      "scrollW": 360,
+      "ok": true
+    },
+    {
+      "v": "hands",
+      "id": "v-hands",
+      "chars": 10502,
+      "hauteur": 25347,
+      "debordement": false,
+      "scrollW": 360,
+      "ok": true
+    },
+    {
+      "v": "import",
+      "id": "v-import",
+      "chars": 440,
+      "hauteur": 725,
+      "debordement": false,
+      "scrollW": 409,
+      "ok": true
+    }
+  ],
+  "leaks": {
+    "nbLeaks": 11,
+    "nbDrill": 10
+  },
+  "drill": {
+    "view": "play",
+    "phase": "decide",
+    "drill": true
+  },
+  "jsErrors": []
+}

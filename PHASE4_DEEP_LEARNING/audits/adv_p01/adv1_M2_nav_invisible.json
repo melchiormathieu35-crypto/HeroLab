@@ -1,0 +1,762 @@
+{
+  "360x800": {
+    "viewport": "360x800",
+    "burgerVisible": true,
+    "sidebar": {
+      "x": 14,
+      "y": 81,
+      "w": 332,
+      "h": 451,
+      "transform": "none",
+      "position": "static",
+      "zIndex": "auto"
+    },
+    "nbOnglets": 9,
+    "onglets": [
+      {
+        "vue": "dashboard",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-dashboard",
+        "correspond": true,
+        "chars": 72,
+        "geo": {
+          "x": 14,
+          "y": 567,
+          "w": 332,
+          "h": 175
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "graphs",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-graphs",
+        "correspond": true,
+        "chars": 76,
+        "geo": {
+          "x": 14,
+          "y": 567,
+          "w": 332,
+          "h": 175
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "preflop",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-preflop",
+        "correspond": true,
+        "chars": 75,
+        "geo": {
+          "x": 14,
+          "y": 567,
+          "w": 332,
+          "h": 175
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "postflop",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-postflop",
+        "correspond": true,
+        "chars": 76,
+        "geo": {
+          "x": 14,
+          "y": 567,
+          "w": 332,
+          "h": 175
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "positions",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-positions",
+        "correspond": true,
+        "chars": 75,
+        "geo": {
+          "x": 14,
+          "y": 567,
+          "w": 332,
+          "h": 175
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "analyse",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-analyse",
+        "correspond": true,
+        "chars": 71,
+        "geo": {
+          "x": 14,
+          "y": 567,
+          "w": 332,
+          "h": 175
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "review",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-review",
+        "correspond": true,
+        "chars": 69,
+        "geo": {
+          "x": 14,
+          "y": 567,
+          "w": 332,
+          "h": 175
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "hands",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-hands",
+        "correspond": true,
+        "chars": 69,
+        "geo": {
+          "x": 14,
+          "y": 567,
+          "w": 332,
+          "h": 175
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "import",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-import",
+        "correspond": true,
+        "chars": 323,
+        "geo": {
+          "x": 14,
+          "y": 567,
+          "w": 332,
+          "h": 682
+        },
+        "dansViewport": true
+      }
+    ],
+    "jsErrors": []
+  },
+  "390x844": {
+    "viewport": "390x844",
+    "burgerVisible": true,
+    "sidebar": {
+      "x": 14,
+      "y": 81,
+      "w": 362,
+      "h": 375,
+      "transform": "none",
+      "position": "static",
+      "zIndex": "auto"
+    },
+    "nbOnglets": 9,
+    "onglets": [
+      {
+        "vue": "dashboard",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-dashboard",
+        "correspond": true,
+        "chars": 72,
+        "geo": {
+          "x": 14,
+          "y": 491,
+          "w": 362,
+          "h": 175
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "graphs",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-graphs",
+        "correspond": true,
+        "chars": 76,
+        "geo": {
+          "x": 14,
+          "y": 491,
+          "w": 362,
+          "h": 175
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "preflop",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-preflop",
+        "correspond": true,
+        "chars": 75,
+        "geo": {
+          "x": 14,
+          "y": 491,
+          "w": 362,
+          "h": 175
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "postflop",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-postflop",
+        "correspond": true,
+        "chars": 76,
+        "geo": {
+          "x": 14,
+          "y": 491,
+          "w": 362,
+          "h": 175
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "positions",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-positions",
+        "correspond": true,
+        "chars": 75,
+        "geo": {
+          "x": 14,
+          "y": 491,
+          "w": 362,
+          "h": 175
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "analyse",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-analyse",
+        "correspond": true,
+        "chars": 71,
+        "geo": {
+          "x": 14,
+          "y": 491,
+          "w": 362,
+          "h": 175
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "review",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-review",
+        "correspond": true,
+        "chars": 69,
+        "geo": {
+          "x": 14,
+          "y": 491,
+          "w": 362,
+          "h": 175
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "hands",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-hands",
+        "correspond": true,
+        "chars": 69,
+        "geo": {
+          "x": 14,
+          "y": 491,
+          "w": 362,
+          "h": 175
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "import",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-import",
+        "correspond": true,
+        "chars": 323,
+        "geo": {
+          "x": 14,
+          "y": 491,
+          "w": 362,
+          "h": 662
+        },
+        "dansViewport": true
+      }
+    ],
+    "jsErrors": []
+  },
+  "412x915": {
+    "viewport": "412x915",
+    "burgerVisible": true,
+    "sidebar": {
+      "x": 14,
+      "y": 81,
+      "w": 384,
+      "h": 375,
+      "transform": "none",
+      "position": "static",
+      "zIndex": "auto"
+    },
+    "nbOnglets": 9,
+    "onglets": [
+      {
+        "vue": "dashboard",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-dashboard",
+        "correspond": true,
+        "chars": 72,
+        "geo": {
+          "x": 14,
+          "y": 491,
+          "w": 384,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "graphs",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-graphs",
+        "correspond": true,
+        "chars": 76,
+        "geo": {
+          "x": 14,
+          "y": 491,
+          "w": 384,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "preflop",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-preflop",
+        "correspond": true,
+        "chars": 75,
+        "geo": {
+          "x": 14,
+          "y": 491,
+          "w": 384,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "postflop",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-postflop",
+        "correspond": true,
+        "chars": 76,
+        "geo": {
+          "x": 14,
+          "y": 491,
+          "w": 384,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "positions",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-positions",
+        "correspond": true,
+        "chars": 75,
+        "geo": {
+          "x": 14,
+          "y": 491,
+          "w": 384,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "analyse",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-analyse",
+        "correspond": true,
+        "chars": 71,
+        "geo": {
+          "x": 14,
+          "y": 491,
+          "w": 384,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "review",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-review",
+        "correspond": true,
+        "chars": 69,
+        "geo": {
+          "x": 14,
+          "y": 491,
+          "w": 384,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "hands",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-hands",
+        "correspond": true,
+        "chars": 69,
+        "geo": {
+          "x": 14,
+          "y": 491,
+          "w": 384,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "import",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-import",
+        "correspond": true,
+        "chars": 323,
+        "geo": {
+          "x": 14,
+          "y": 491,
+          "w": 384,
+          "h": 662
+        },
+        "dansViewport": true
+      }
+    ],
+    "jsErrors": []
+  },
+  "768x1024": {
+    "viewport": "768x1024",
+    "burgerVisible": true,
+    "sidebar": {
+      "x": 14,
+      "y": 81,
+      "w": 740,
+      "h": 375,
+      "transform": "none",
+      "position": "static",
+      "zIndex": "auto"
+    },
+    "nbOnglets": 9,
+    "onglets": [
+      {
+        "vue": "dashboard",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-dashboard",
+        "correspond": true,
+        "chars": 72,
+        "geo": {
+          "x": 14,
+          "y": 518,
+          "w": 740,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "graphs",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-graphs",
+        "correspond": true,
+        "chars": 76,
+        "geo": {
+          "x": 14,
+          "y": 518,
+          "w": 740,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "preflop",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-preflop",
+        "correspond": true,
+        "chars": 75,
+        "geo": {
+          "x": 14,
+          "y": 518,
+          "w": 740,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "postflop",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-postflop",
+        "correspond": true,
+        "chars": 76,
+        "geo": {
+          "x": 14,
+          "y": 518,
+          "w": 740,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "positions",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-positions",
+        "correspond": true,
+        "chars": 75,
+        "geo": {
+          "x": 14,
+          "y": 518,
+          "w": 740,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "analyse",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-analyse",
+        "correspond": true,
+        "chars": 71,
+        "geo": {
+          "x": 14,
+          "y": 518,
+          "w": 740,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "review",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-review",
+        "correspond": true,
+        "chars": 69,
+        "geo": {
+          "x": 14,
+          "y": 518,
+          "w": 740,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "hands",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-hands",
+        "correspond": true,
+        "chars": 69,
+        "geo": {
+          "x": 14,
+          "y": 518,
+          "w": 740,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "import",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-import",
+        "correspond": true,
+        "chars": 323,
+        "geo": {
+          "x": 14,
+          "y": 518,
+          "w": 740,
+          "h": 590
+        },
+        "dansViewport": true
+      }
+    ],
+    "jsErrors": []
+  },
+  "1280x800": {
+    "viewport": "1280x800",
+    "burgerVisible": false,
+    "sidebar": {
+      "x": 234,
+      "y": 79,
+      "w": 1024,
+      "h": 375,
+      "transform": "none",
+      "position": "static",
+      "zIndex": "auto"
+    },
+    "nbOnglets": 9,
+    "onglets": [
+      {
+        "vue": "dashboard",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-dashboard",
+        "correspond": true,
+        "chars": 72,
+        "geo": {
+          "x": 234,
+          "y": 516,
+          "w": 1024,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "graphs",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-graphs",
+        "correspond": true,
+        "chars": 76,
+        "geo": {
+          "x": 234,
+          "y": 516,
+          "w": 1024,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "preflop",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-preflop",
+        "correspond": true,
+        "chars": 75,
+        "geo": {
+          "x": 234,
+          "y": 516,
+          "w": 1024,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "postflop",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-postflop",
+        "correspond": true,
+        "chars": 76,
+        "geo": {
+          "x": 234,
+          "y": 516,
+          "w": 1024,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "positions",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-positions",
+        "correspond": true,
+        "chars": 75,
+        "geo": {
+          "x": 234,
+          "y": 516,
+          "w": 1024,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "analyse",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-analyse",
+        "correspond": true,
+        "chars": 71,
+        "geo": {
+          "x": 234,
+          "y": 516,
+          "w": 1024,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "review",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-review",
+        "correspond": true,
+        "chars": 69,
+        "geo": {
+          "x": 234,
+          "y": 516,
+          "w": 1024,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "hands",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-hands",
+        "correspond": true,
+        "chars": 69,
+        "geo": {
+          "x": 234,
+          "y": 516,
+          "w": 1024,
+          "h": 154
+        },
+        "dansViewport": true
+      },
+      {
+        "vue": "import",
+        "hitTest": "ok",
+        "clic": "ok",
+        "vueActive": "v-import",
+        "correspond": true,
+        "chars": 323,
+        "geo": {
+          "x": 234,
+          "y": 516,
+          "w": 1024,
+          "h": 564
+        },
+        "dansViewport": true
+      }
+    ],
+    "jsErrors": []
+  }
+}

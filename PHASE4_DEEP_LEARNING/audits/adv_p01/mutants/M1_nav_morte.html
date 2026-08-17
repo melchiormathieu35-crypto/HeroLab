@@ -1727,10 +1727,6 @@ input:focus-visible,select:focus-visible,
 #v-tracker .sidebar .nav-group:first-child{margin-top:0}
 #v-tracker .ft-nav-item{
   width:auto!important;display:inline-flex!important;align-items:center;gap:7px;
-  /* 44 px : le seuil de confort tactile que l'application s'impose déjà pour
-     le rail et les boutons. Ces onglets étaient à 32 px — atteignables depuis
-     la correction du tiroir, mais toujours pénibles à viser au pouce. */
-  min-height:44px!important;
   padding:7px 13px!important;border-radius:20px!important;font-size:13px;
   background:var(--felt-700)!important;border:1px solid var(--line)!important;
 }
@@ -16284,7 +16280,7 @@ const FT = {
   go(v) {
     FT.view = v;
     FT_ROOT().querySelectorAll(".ft-nav-item").forEach(b => b.classList.toggle("active", b.dataset.view === v));
-    FT_ROOT().querySelectorAll(".ft-view").forEach(s => s.classList.toggle("active", s.id === "v-" + v));
+    /*MUTANT M1*/ void 0;
     document.getElementById("viewTitle").textContent = FT.TITLES[v] || v;
     FT.render();
     FT.closeMenu();

@@ -1,0 +1,874 @@
+{
+  "320x568": {
+    "signatures": {
+      "home": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "daily": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "play": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "career": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "hr": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "pr": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "bl": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "tracker": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "journey": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "leaks": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "stats": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "profiles": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "theory": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "setup": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ]
+    },
+    "secondNiveau": {
+      "play": [
+        {
+          "t": "Distribuer une main",
+          "etat": "recouvert par .toast",
+          "transform": "none"
+        }
+      ]
+    }
+  },
+  "360x800": {
+    "signatures": {
+      "home": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "daily": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "play": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "career": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "hr": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "pr": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "bl": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "tracker": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "journey": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "leaks": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "stats": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "profiles": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "theory": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "setup": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ]
+    },
+    "secondNiveau": {}
+  },
+  "412x915": {
+    "signatures": {
+      "home": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "daily": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "play": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "career": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "hr": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "pr": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "bl": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "tracker": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "journey": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "leaks": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "stats": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "profiles": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "theory": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "setup": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ]
+    },
+    "secondNiveau": {}
+  },
+  "760x900": {
+    "signatures": {
+      "home": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "daily": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "play": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "career": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "hr": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "pr": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "bl": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "tracker": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "journey": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "leaks": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "stats": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "profiles": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "theory": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "setup": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ]
+    },
+    "secondNiveau": {}
+  },
+  "1280x800": {
+    "signatures": {},
+    "secondNiveau": {}
+  }
+}

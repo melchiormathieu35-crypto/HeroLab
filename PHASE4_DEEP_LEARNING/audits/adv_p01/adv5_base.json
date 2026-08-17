@@ -1,0 +1,1117 @@
+{
+  "320x568": {
+    "signatures": {
+      "home": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "daily": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "play": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "career": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "hr": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "pr": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "bl": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "tracker": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        },
+        {
+          "sel": "aside#sidebar.sidebar",
+          "x": -278,
+          "w": 292,
+          "transform": "matrix(1, 0, 0, 1, -292, 0)",
+          "position": "static",
+          "nbFocusables": 9,
+          "exemples": [
+            "◆Tableau de bord",
+            "◈Graphiques",
+            "▲Préflop"
+          ]
+        }
+      ],
+      "journey": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "leaks": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "stats": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "profiles": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "theory": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "setup": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ]
+    },
+    "secondNiveau": {
+      "play": [
+        {
+          "t": "Distribuer une main",
+          "etat": "recouvert par .toast",
+          "transform": "none"
+        }
+      ],
+      "tracker": [
+        {
+          "t": "◆Tableau de bord",
+          "etat": "hors champ horizontal (x=-268)",
+          "transform": "none"
+        },
+        {
+          "t": "◈Graphiques",
+          "etat": "hors champ horizontal (x=-268)",
+          "transform": "none"
+        },
+        {
+          "t": "▲Préflop",
+          "etat": "hors champ horizontal (x=-268)",
+          "transform": "none"
+        },
+        {
+          "t": "▼Postflop",
+          "etat": "hors champ horizontal (x=-161)",
+          "transform": "none"
+        },
+        {
+          "t": "◎Positions",
+          "etat": "hors champ horizontal (x=-268)",
+          "transform": "none"
+        },
+        {
+          "t": "✦Analyse des leaks",
+          "etat": "hors champ horizontal (x=-268)",
+          "transform": "none"
+        },
+        {
+          "t": "⚑Mains à revoir",
+          "etat": "hors champ horizontal (x=-268)",
+          "transform": "none"
+        },
+        {
+          "t": "≡Mains0",
+          "etat": "hors champ horizontal (x=-268)",
+          "transform": "none"
+        },
+        {
+          "t": "⇪Import & sessions0",
+          "etat": "hors champ horizontal (x=-268)",
+          "transform": "none"
+        }
+      ]
+    }
+  },
+  "360x800": {
+    "signatures": {
+      "home": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "daily": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "play": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "career": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "hr": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "pr": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "bl": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "tracker": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        },
+        {
+          "sel": "aside#sidebar.sidebar",
+          "x": -318,
+          "w": 332,
+          "transform": "matrix(1, 0, 0, 1, -332, 0)",
+          "position": "static",
+          "nbFocusables": 9,
+          "exemples": [
+            "◆Tableau de bord",
+            "◈Graphiques",
+            "▲Préflop"
+          ]
+        }
+      ],
+      "journey": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "leaks": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "stats": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "profiles": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "theory": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "setup": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ]
+    },
+    "secondNiveau": {
+      "tracker": [
+        {
+          "t": "◆Tableau de bord",
+          "etat": "hors champ horizontal (x=-308)",
+          "transform": "none"
+        },
+        {
+          "t": "◈Graphiques",
+          "etat": "hors champ horizontal (x=-144)",
+          "transform": "none"
+        },
+        {
+          "t": "▲Préflop",
+          "etat": "hors champ horizontal (x=-308)",
+          "transform": "none"
+        },
+        {
+          "t": "▼Postflop",
+          "etat": "hors champ horizontal (x=-201)",
+          "transform": "none"
+        },
+        {
+          "t": "◎Positions",
+          "etat": "hors champ horizontal (x=-308)",
+          "transform": "none"
+        },
+        {
+          "t": "✦Analyse des leaks",
+          "etat": "hors champ horizontal (x=-308)",
+          "transform": "none"
+        },
+        {
+          "t": "⚑Mains à revoir",
+          "etat": "hors champ horizontal (x=-308)",
+          "transform": "none"
+        },
+        {
+          "t": "≡Mains0",
+          "etat": "hors champ horizontal (x=-308)",
+          "transform": "none"
+        },
+        {
+          "t": "⇪Import & sessions0",
+          "etat": "hors champ horizontal (x=-193)",
+          "transform": "none"
+        }
+      ]
+    }
+  },
+  "412x915": {
+    "signatures": {
+      "home": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "daily": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "play": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "career": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "hr": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "pr": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "bl": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "tracker": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        },
+        {
+          "sel": "aside#sidebar.sidebar",
+          "x": -370,
+          "w": 384,
+          "transform": "matrix(1, 0, 0, 1, -384, 0)",
+          "position": "static",
+          "nbFocusables": 9,
+          "exemples": [
+            "◆Tableau de bord",
+            "◈Graphiques",
+            "▲Préflop"
+          ]
+        }
+      ],
+      "journey": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "leaks": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "stats": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "profiles": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "theory": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "setup": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ]
+    },
+    "secondNiveau": {
+      "tracker": [
+        {
+          "t": "◆Tableau de bord",
+          "etat": "hors champ horizontal (x=-360)",
+          "transform": "none"
+        },
+        {
+          "t": "◈Graphiques",
+          "etat": "hors champ horizontal (x=-196)",
+          "transform": "none"
+        },
+        {
+          "t": "▲Préflop",
+          "etat": "hors champ horizontal (x=-360)",
+          "transform": "none"
+        },
+        {
+          "t": "▼Postflop",
+          "etat": "hors champ horizontal (x=-253)",
+          "transform": "none"
+        },
+        {
+          "t": "◎Positions",
+          "etat": "hors champ horizontal (x=-140)",
+          "transform": "none"
+        },
+        {
+          "t": "✦Analyse des leaks",
+          "etat": "hors champ horizontal (x=-360)",
+          "transform": "none"
+        },
+        {
+          "t": "⚑Mains à revoir",
+          "etat": "hors champ horizontal (x=-183)",
+          "transform": "none"
+        },
+        {
+          "t": "≡Mains0",
+          "etat": "hors champ horizontal (x=-360)",
+          "transform": "none"
+        },
+        {
+          "t": "⇪Import & sessions0",
+          "etat": "hors champ horizontal (x=-245)",
+          "transform": "none"
+        }
+      ]
+    }
+  },
+  "760x900": {
+    "signatures": {
+      "home": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "daily": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "play": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "career": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "hr": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "pr": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "bl": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "tracker": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        },
+        {
+          "sel": "aside#sidebar.sidebar",
+          "x": -718,
+          "w": 732,
+          "transform": "matrix(1, 0, 0, 1, -732, 0)",
+          "position": "static",
+          "nbFocusables": 9,
+          "exemples": [
+            "◆Tableau de bord",
+            "◈Graphiques",
+            "▲Préflop"
+          ]
+        }
+      ],
+      "journey": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "leaks": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "stats": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "profiles": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "theory": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ],
+      "setup": [
+        {
+          "sel": "aside#rail.rail",
+          "x": -212,
+          "w": 212,
+          "transform": "matrix(1, 0, 0, 1, -212, 0)",
+          "position": "fixed",
+          "nbFocusables": 16,
+          "exemples": [
+            "♠\n      Testeur\n      ⚙",
+            "◇Accueil",
+            "◆Défi du jour"
+          ]
+        }
+      ]
+    },
+    "secondNiveau": {
+      "tracker": [
+        {
+          "t": "◆Tableau de bord",
+          "etat": "hors champ horizontal (x=-708)",
+          "transform": "none"
+        },
+        {
+          "t": "◈Graphiques",
+          "etat": "hors champ horizontal (x=-544)",
+          "transform": "none"
+        },
+        {
+          "t": "▲Préflop",
+          "etat": "hors champ horizontal (x=-708)",
+          "transform": "none"
+        },
+        {
+          "t": "▼Postflop",
+          "etat": "hors champ horizontal (x=-601)",
+          "transform": "none"
+        },
+        {
+          "t": "◎Positions",
+          "etat": "hors champ horizontal (x=-488)",
+          "transform": "none"
+        },
+        {
+          "t": "✦Analyse des leaks",
+          "etat": "hors champ horizontal (x=-708)",
+          "transform": "none"
+        },
+        {
+          "t": "⚑Mains à revoir",
+          "etat": "hors champ horizontal (x=-531)",
+          "transform": "none"
+        },
+        {
+          "t": "≡Mains0",
+          "etat": "hors champ horizontal (x=-708)",
+          "transform": "none"
+        },
+        {
+          "t": "⇪Import & sessions0",
+          "etat": "hors champ horizontal (x=-593)",
+          "transform": "none"
+        }
+      ]
+    }
+  },
+  "1280x800": {
+    "signatures": {},
+    "secondNiveau": {}
+  }
+}
