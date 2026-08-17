@@ -1,9 +1,12 @@
 # PHASE 4 — Synthèse de l'audit multi-agent
 
+**Version 2 — révisée après revue adversariale.** L'agent L a produit
+2 objections fatales et 8 sérieuses, dont j'ai vérifié moi-même les deux plus
+structurantes : **elles sont fondées**. Les corrections sont intégrées ci-dessous
+et récapitulées au §Corrections. Aucun fichier applicatif modifié.
+
 Onze agents, mandats disjoints. Quinze affirmations re-mesurées indépendamment
-par l'orchestrateur (`audits/VERIFICATIONS_ORCHESTRATEUR.md`) : quinze
-confirmées, dont une après une erreur de ma part. Aucun fichier applicatif
-modifié.
+par l'orchestrateur (`audits/VERIFICATIONS_ORCHESTRATEUR.md`).
 
 ---
 
@@ -22,7 +25,7 @@ une promesse que rien ne lit.**
 | `stopAt` (mode Préflop) | à la génération seulement | 71 % de décisions **postflop** |
 | `level.hint` | non | 2 niveaux annoncent une aide inexistante |
 | `level.mode: "gto"` | non | le niveau GTO ne change que la tolérance |
-| `opt.facing` | non | 48 % du drill « défendre ta BB » hors sujet |
+| `opt.facing` | non | 17-24 % du drill « défendre ta BB » hors sujet |
 | `BB_DEF` (339 mains) | Range Lab seulement | en jeu, la BB reçoit la range du CO |
 | `daily.target`, `daily.best` | non | — |
 | `Progress.data.streak` | calculé, jamais affiché | — |
@@ -51,20 +54,39 @@ créer**, et le risque est incomparablement plus faible.
 
 ## B. Faiblesses actuelles
 
-**B1 — Le produit n'enregistre que l'échec.** `Progress.tags()` sort avant
-d'émettre le moindre tag quand la décision est juste. Conséquences en cascade,
-toutes mesurées :
+**B1 — Les compétences fines ne comptent que les échecs.** *(énoncé corrigé
+après revue adversariale — la version 1 sur-généralisait)*
+
+Ce qui est **faux** : dire que le produit n'enregistre que l'échec. Mesuré sur
+400 décisions, les tags `street:*` et `pos:*` sont émis sur **255 décisions
+justes sur 255**, avec un vrai dénominateur (`street:preflop = {n:400, err:145}`),
+et `Career.skills()` en tire déjà 6 taux.
+
+Ce qui est **vrai**, et suffisant : seuls les tags `leak:*` sont conditionnés à
+l'erreur (`Progress.tags()` sort avant de les émettre si la décision est juste).
+Conséquences, toutes mesurées :
 - `mastery.ok` vaut 0 à vie → paliers « Familier / Solide / Maîtrisé » morts ;
-- `tagStats` a `n === err` → **aucun taux**, donc aucune comparaison possible ;
-- `tagStats.loss` est monotone → **une fuite ne peut mathématiquement pas
-  reculer** → trois fonctionnalités écrites sont mortes (détection
-  d'amélioration, titre « Tu progresses vraiment », badge « Correcteur ») ;
-- sans dénominateur, la seule grandeur mesurable est un décompte → **tout le
-  système de progression converge vers le volume**. Un joueur toujours faux
-  atteint le niveau 8.
+- `tagStats["leak:*"]` a `n === err` → aucun **taux par fuite** ;
+- `tagStats.loss` est monotone → **une fuite ne peut pas reculer** → trois
+  fonctionnalités écrites sont mortes (détection d'amélioration, titre « Tu
+  progresses vraiment », badge « Correcteur ») ;
+- la granularité utile — la fuite — est donc la seule sans dénominateur, et
+  c'est celle sur laquelle repose tout le ciblage.
+
+Un joueur toujours faux atteint tout de même le niveau 8 : le système de
+progression reste dominé par le volume.
 
 **B2 — Le Tracker est inaccessible sur mobile.** 0 onglet sur 9 à 360, 390 et
-412 px ; 9 sur 9 dès 768. Le bouton menu est visible mais son clic ne fait rien.
+412 px ; 9 sur 9 dès 768. Le tracker n'a aucun bouton menu — le sien est masqué
+par `display:none!important` (l.1706). *(Correction : le bouton que j'avais
+observé était celui de l'application hôte, pas celui du tracker.)*
+
+**Cause racine identifiée** : le bloc de surcharge l.1707 neutralise `position`,
+`width`, `flex`, `height`, `background`, `border-right` et `z-index` — mais
+**oublie `transform`**. La media query mobile applique `translateX(-100%)` pour
+le tiroir, et rien ne l'annule. Correctif vérifié : **une propriété CSS**,
+`transform:none!important`, fait passer de 0/9 à **9/9** aux trois largeurs.
+
 8 vues, 59 indicateurs, 29 détections et l'exercice ciblé sont hors d'atteinte
 pour la cible principale du produit.
 
@@ -94,8 +116,8 @@ décisions ratées », l'écran n'offre que « retour à l'accueil ». Sortie de
 aucun bilan alors que tout est enregistré. Import terminé : aucun lien vers le
 diagnostic. Note produit sur les 6 questions d'orientation : **3,1/5**.
 
-**B8 — Les 4 boutons de relance sont un seul enseignement.** Préflop, 100 % des
-spots ont 2.5/3/4 bb dans la tolérance du verdict. Zéro overbet possible ni joué
+**B8 — Les 4 boutons de relance sont presque un seul enseignement.** Préflop,
+**77,9 %** des spots ont 2.5/3/4 bb dans la tolérance du verdict. Zéro overbet possible ni joué
 (0 sur 2 110 mises adverses).
 
 **B9 — Biais de génération non intentionnels.** UTG 6,3 % contre SB 27,3 %
@@ -132,10 +154,14 @@ examen plutôt que par bankroll) · série quotidienne (gels au lieu de remise �
    Décroissance qui réduit la **confiance** sans réduire la **maîtrise** :
    on ne devient pas mauvais, on redevient incertain.
 4. **Sélecteur adaptatif** — sous contrainte dure : `Judge.evaluate` coûte
-   **74,5 ms** contre **0,48 ms** pour générer un spot. Toute sélection doit se
-   faire sur des caractéristiques calculables **sans** juger.
-5. **Filtre de nœud** dans la génération (`role`, `facing`, `street`, `players`) —
-   c'est le verrou unique qui répare les 13 drills défaillants.
+   **≈ 43 ms** contre **≈ 0,44 ms** pour générer un spot (facteur ≈ 100 ;
+   ma mesure initiale de 74,5 ms était faussée par la charge de la machine).
+   Toute sélection doit se faire sur des caractéristiques calculables **sans**
+   juger.
+5. **Filtre de nœud** dans la génération (`role`, `facing`, `street`, `players`).
+   Répare la majorité des drills défaillants — mais **pas tous** : le nœud de
+   check-raise n'existe pas dans la distribution (0 succès sur 8 000 tirages),
+   il doit être **construit**, pas filtré.
 6. **Preuve** : relier chaque fuite détectée aux mains qui la démontrent.
 7. **Écran de fin unique**, généralisé depuis le bilan de drill.
 
@@ -177,13 +203,21 @@ référence postflop.
 
 Aucun contenu nouveau. Rien que du câblage, donc aucune décision de poker.
 
-| # | Action | Débloque | Contrôle |
-|---|---|---|---|
-| P0.1 | **Instrumenter l'occasion** : émettre le contexte sur *chaque* décision, pas seulement sur les erreurs | maîtrise, taux, fenêtres, 4 écrans qui affichent du faux | 30 décisions correctes → `ok > 0` |
-| P0.2 | **Fenêtrer les agrégats** (14 j / N dernières) au lieu du cumul à vie | « une fuite peut reculer », détection d'amélioration, badge, missions | une fuite corrigée doit décroître |
-| P0.3 | **Filtre de nœud** dans la génération (`facing`, `street`, `role`, `players`) | 13 drills défaillants, `opt.facing`, les 3 modes fantômes | drills défensifs : 10-13 % → ~100 % |
-| P0.4 | **Rebrancher le Tracker sur mobile** | 8 vues, 59 KPI, 29 fuites, le drill | 9 onglets atteignables à 360 px |
-| P0.5 | **Écran de fin unique** généralisé depuis le bilan de drill | fin du Défi, sortie des labs, écrans orphelins | aucun parcours sans « et ensuite » |
+*Ordre revu après revue adversariale : le correctif le moins cher et le plus
+rentable passait en quatrième position.*
+
+| # | Action | Coût | Débloque | Contrôle |
+|---|---|---|---|---|
+| **P0.1** | **Rebrancher le Tracker sur mobile** (`transform:none!important`) | **1 ligne CSS** | 8 vues, 59 KPI, 29 fuites, le drill — pour la cible principale | 9 onglets à 360 px ✔ *vérifié* |
+| P0.2 | **Fenêtrer les agrégats** (N dernières) au lieu du cumul à vie | faible | « une fuite peut reculer », détection d'amélioration, badge, missions | une fuite corrigée doit décroître |
+| P0.3 | **Instrumenter l'occasion** pour les tags `leak:*` | moyen | maîtrise, taux par fuite, 4 écrans qui affichent du faux | 30 décisions correctes → `ok > 0` |
+| P0.4 | **Filtre de nœud** dans la génération | moyen | la majorité des drills, `opt.facing`, les 3 modes fantômes | drills défensifs : 10-13 % → ~100 % |
+| P0.5 | **Écran de fin unique** généralisé depuis le bilan de drill | moyen | fin du Défi, sortie des labs, écrans orphelins | aucun parcours sans « et ensuite » |
+
+**P0.3 n'est pas du pur câblage.** Définir « l'occasion » d'une fuite est une
+décision pédagogique : deux définitions également défendables donnent **26 points
+d'écart** de maîtrise sur une même série de 519 décisions. À arbitrer
+explicitement, pas à trancher dans le code.
 
 ### P1 — Rendre le produit adaptatif
 Modèle de compétences unifié · score de maîtrise · sélecteur adaptatif
@@ -202,20 +236,27 @@ promotion par examen · série saine avec gels · Daily Session composée.
 
 ## Risques et points ouverts
 
-1. **`Judge` est la vérité terrain, et c'est un modèle.** Le score de maîtrise
-   mesurera l'**accord avec `Judge`**, jamais la justesse. `Judge` étant
-   déterministe, un biais systématique ne sera pas moyenné par le bruit : il sera
-   certifié comme maîtrise. **C'est le risque le plus grave de la Phase 4**, et il
-   argumente pour traiter B5 (justesse des ranges) avant d'afficher toute
-   promesse de maîtrise.
-2. **Le contrôleur adaptatif ne tient pas encore sa cible.** Il supprime l'ennui
+1. **La maîtrise n'est pas comparable d'un niveau à l'autre.** *(risque n°1
+   corrigé après revue : celui-ci prime sur le suivant.)* Sur les **mêmes spots
+   et les mêmes décisions**, le taux de non-erreur va de **87,7 % à 32,1 %**
+   selon le niveau choisi dans un menu. Un score de maîtrise s'effondre ou
+   double d'un clic, et le critère d'acceptation de P0.1 se contourne de la même
+   façon. Toute maîtrise doit donc être **normalisée par la tolérance** du niveau,
+   ou stockée par niveau. Non résolu : à trancher avant d'écrire le score.
+
+2. **`Judge` est la vérité terrain, et c'est un modèle.** Le score mesurera
+   l'**accord avec `Judge`**, jamais la justesse. `Judge` étant déterministe, un
+   biais systématique ne sera pas moyenné par le bruit : il sera certifié comme
+   maîtrise. Argumente pour traiter B5 (justesse des ranges) avant d'afficher
+   toute promesse de maîtrise.
+3. **Le contrôleur adaptatif ne tient pas encore sa cible.** Il supprime l'ennui
    et le décrochage (démontré), mais se cale à 88-91 % là où la bande vise
    70-85 %. À ne pas annoncer avant mesure.
-3. **Constantes non calibrées** (fenêtres, seuils, intervalles) : aucune donnée
+4. **Constantes non calibrées** (fenêtres, seuils, intervalles) : aucune donnée
    utilisateur réelle. Livrer conservateur et instrumenter.
-4. **Changer la partition des compétences invalide l'historique.** Prévoir un
+5. **Changer la partition des compétences invalide l'historique.** Prévoir un
    champ de version dès le premier jour.
-5. **Mes propres suites de test ont un angle mort** : elles vérifient des
+6. **Mes propres suites de test ont un angle mort** : elles vérifient des
    propriétés du rendu, jamais qu'un parcours soit accomplissable. Deux défauts
    majeurs (Tracker mobile, `reloadEngine`) sont passés au travers. La Phase 4
    doit ajouter des tests de **parcours**.
@@ -232,3 +273,41 @@ décision → mesure (avec dénominateur) → maîtrise → sélection adaptée
 
 Aujourd'hui, la première flèche est cassée : la mesure n'enregistre que l'échec.
 Tant que P0.1 n'est pas fait, tout le reste est cosmétique.
+
+
+---
+
+## Corrections apportées après revue adversariale
+
+L'agent L a produit 2 objections fatales et 8 sérieuses. J'ai re-mesuré moi-même
+les deux plus structurantes : **fondées**. Ce qui a changé :
+
+| # | Ce que disait la v1 | Réalité mesurée |
+|---|---|---|
+| F1 | « Le produit n'enregistre que l'échec » | Faux : 255/255 décisions justes portent des tags avec dénominateur. Seuls les tags `leak:*` sont conditionnés à l'erreur. `Career.skills()` sort déjà 6 taux. |
+| F2 | « P0 = rien que du câblage, aucune décision de poker » | Faux : définir « l'occasion » vaut 26 points d'écart de maîtrise. |
+| S1 | 48 % du drill BB hors sujet | 17,6 à 24 % selon la mesure. Le chiffre de 48 % était le mien et ne figure dans aucun rapport. |
+| S2 | `Judge` 74,5 ms / génération 0,48 ms | ≈ 43 ms / 0,44 ms. Ma mesure était faussée par la charge machine. Le facteur ≈ 100 tient, la conclusion aussi. |
+| S3 | Le filtre de nœud est « le verrou unique » | Le nœud de check-raise doit être construit, pas filtré (0/8 000). |
+| S6 | Risque n°1 = déterminisme de `Judge` | Risque n°1 = la maîtrise n'est pas comparable entre niveaux (87,7 % → 32,1 % sur les mêmes décisions). |
+| S8 | Tracker mobile en P0.4 | Passe en **P0.1** : une propriété CSS, 0/9 → 9/9 vérifié. |
+| M3 | « Le bouton menu du tracker est visible » | C'était celui de l'application hôte ; celui du tracker est masqué. |
+
+**Objections retenues mais non traitées ici**, car elles portent sur la
+conception à venir plutôt que sur le diagnostic : la classe B ne voit pas les
+internes du tracker (`Parser`, `Store`, `LEAK_DRILL` sont dans une IIFE) ; la
+« preuve par les mains » coûterait ≈ 1 866 Ko contre les 5 Ko budgétés ; sur
+48 cellules de compétence, seules 28 atteindraient un effectif suffisant.
+
+**Ce qui a résisté à l'attaque** : le motif du champ déclaratif mort (re-vérifié
+sur 7 champs), l'injection de classe B pour le moteur de jeu, la contrainte
+« sélectionner sans juger », le fenêtrage des agrégats — que l'agent L renforce
+en observant que `decisions[]` est déjà borné à 3 000 alors que `tagStats` est
+cumulé à vie — les biais de génération, et le déterminisme de `Judge`.
+
+**Ce que onze agents avaient collectivement raté** : personne n'avait lu
+`Career.skills()`, personne n'avait chiffré le coût de ce qu'il proposait,
+personne n'avait testé la *frontière* de la classe B, et une contradiction entre
+deux agents sur le coût de `Judge` était passée au travers.
+
+**Verdict de l'agent L : exploitable après modifications.** Elles sont faites.
