@@ -9,7 +9,12 @@ function boot() {
   // `Opponent` est une classe de haut niveau : elle n'est pas globale dans le
   // contexte vm et n'est donc pas exportée par le harness. On la récupère.
   const vm = require("vm");
-  try { out.M.Opponent = vm.runInContext("Opponent", out.sandbox); } catch (e) {}
+  for (const n of ["Opponent", "Bankroll", "Goals", "SESSION_LENGTHS", "STAKES",
+                   "HR_DIFFICULTY", "PR_DIFFICULTY", "BL_DIFFICULTY",
+                   "HRLab", "HRScore", "PRLab", "PRScore", "BLScore", "BLSpot",
+                   "MODES", "POS6", "STREETS", "ALL_PROFILES", "PROFILE_FAMILY"]) {
+    try { out.M[n] = vm.runInContext(n, out.sandbox); } catch (e) {}
+  }
   return out;
 }
 

@@ -1,1 +1,9 @@
 debutant oracle: 500 déc / 283 mains · xp=6000 niv=9 rating=1421 evReel=0 (17s)
+debutant heuristique: 500 déc / 320 mains · xp=4824 niv=8 rating=844 evReel=621.35 (17s)
+debutant fold: 500 déc / 436 mains · xp=5298 niv=8 rating=1209 evReel=173.88 (18s)
+debutant station: 500 déc / 109 mains · xp=4218 niv=7 rating=481 evReel=1020.32 (13s)
+debutant allin: 500 déc / 500 mains · xp=1026 niv=4 rating=0 evReel=5531.95 (20s)
+debutant aleatoire: 500 déc / 217 mains · xp=3204 niv=6 rating=303 evReel=3331.61 (15s)
+debutant rotation: 500 déc / 226 mains · xp=3314 niv=7 rating=328 evReel=2977.89 (17s)
+debutant minbet: 500 déc / 137 mains · xp=2926 niv=6 rating=253 evReel=3442.65 (14s)
+écrit exp1_debutant.json

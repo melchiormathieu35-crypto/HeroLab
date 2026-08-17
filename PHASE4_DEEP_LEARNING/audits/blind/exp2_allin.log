@@ -1,0 +1,6 @@
+allin s1 NL2 mains=500 déc=500 acc=1.4% bb100=-631.7 br=40 promo=false
+allin s2 NL2 mains=1000 déc=1000 acc=1.4% bb100=-502.6 br=40 promo=false
+allin s3 NL2 mains=1500 déc=1500 acc=2.0% bb100=-576.6 br=40 promo=false
+allin s4 NL2 mains=2000 déc=2000 acc=1.8% bb100=-1241.9 br=40 promo=false
+allin s5 NL2 mains=2500 déc=2500 acc=3.0% bb100=-1296.0 br=40 promo=false
+écrit exp2_allin.json

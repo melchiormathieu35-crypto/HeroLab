@@ -1,0 +1,2697 @@
+[
+ {
+  "strat": "oracle",
+  "name": "Oracle (EV max)",
+  "levelKey": "debutant",
+  "modeKey": "libre",
+  "seed": 20260817,
+  "decisions": 500,
+  "hands": 283,
+  "handsFinished": 283,
+  "netBB": 88.69999999999997,
+  "evLossTrue": 0,
+  "verdicts": {
+   "correct": 500,
+   "acceptable": 0,
+   "erreur": 0
+  },
+  "chosenActs": {
+   "fold": 191,
+   "raise": 97,
+   "check": 143,
+   "bet": 66,
+   "call": 3
+  },
+  "snaps": [
+   {
+    "at": 50,
+    "hands": 26,
+    "handsFinished": 25,
+    "netBB": 134.1,
+    "evLossTrue": 0,
+    "verdicts": {
+     "correct": 50,
+     "acceptable": 0,
+     "erreur": 0
+    },
+    "xp": 600,
+    "niveau": 3,
+    "nextLevelXp": 810,
+    "accuracyPct": 100,
+    "correctPct": 100,
+    "evLossCompte": 0,
+    "evLossReelle": 0,
+    "rating": 611,
+    "ratingTier": "Apprenti",
+    "ratingSkills": {
+     "table": 43,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 43
+    },
+    "disciplineScore": 43,
+    "careerSkills": {
+     "Sélection préflop": 100,
+     "Jeu au flop": null,
+     "Jeu au turn": null,
+     "Décisions river": null,
+     "Jeu en position": 100,
+     "Défense des blindes": 100
+    },
+    "leaks": [],
+    "mastery": {}
+   },
+   {
+    "at": 200,
+    "hands": 109,
+    "handsFinished": 108,
+    "netBB": 190.9,
+    "evLossTrue": 0,
+    "verdicts": {
+     "correct": 200,
+     "acceptable": 0,
+     "erreur": 0
+    },
+    "xp": 2400,
+    "niveau": 6,
+    "nextLevelXp": 3240,
+    "accuracyPct": 100,
+    "correctPct": 100,
+    "evLossCompte": 0,
+    "evLossReelle": 0,
+    "rating": 966,
+    "ratingTier": "Initié",
+    "ratingSkills": {
+     "table": 68,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 68
+    },
+    "disciplineScore": 68,
+    "careerSkills": {
+     "Sélection préflop": 100,
+     "Jeu au flop": 100,
+     "Jeu au turn": 100,
+     "Décisions river": 100,
+     "Jeu en position": 100,
+     "Défense des blindes": 100
+    },
+    "leaks": [],
+    "mastery": {}
+   },
+   {
+    "at": 500,
+    "hands": 283,
+    "handsFinished": 283,
+    "netBB": 88.69999999999997,
+    "evLossTrue": 0,
+    "verdicts": {
+     "correct": 500,
+     "acceptable": 0,
+     "erreur": 0
+    },
+    "xp": 6000,
+    "niveau": 9,
+    "nextLevelXp": 7290,
+    "accuracyPct": 100,
+    "correctPct": 100,
+    "evLossCompte": 0,
+    "evLossReelle": 0,
+    "rating": 1421,
+    "ratingTier": "Compétent",
+    "ratingSkills": {
+     "table": 100,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 100
+    },
+    "disciplineScore": 100,
+    "careerSkills": {
+     "Sélection préflop": 100,
+     "Jeu au flop": 100,
+     "Jeu au turn": 100,
+     "Décisions river": 100,
+     "Jeu en position": 100,
+     "Défense des blindes": 100
+    },
+    "leaks": [],
+    "mastery": {}
+   }
+  ],
+  "final": {
+   "at": 500,
+   "hands": 283,
+   "handsFinished": 283,
+   "netBB": 88.69999999999997,
+   "evLossTrue": 0,
+   "verdicts": {
+    "correct": 500,
+    "acceptable": 0,
+    "erreur": 0
+   },
+   "xp": 6000,
+   "niveau": 9,
+   "nextLevelXp": 7290,
+   "accuracyPct": 100,
+   "correctPct": 100,
+   "evLossCompte": 0,
+   "evLossReelle": 0,
+   "rating": 1421,
+   "ratingTier": "Compétent",
+   "ratingSkills": {
+    "table": 100,
+    "range": 0,
+    "profiling": 0,
+    "blockers": 0,
+    "discipline": 100
+   },
+   "disciplineScore": 100,
+   "careerSkills": {
+    "Sélection préflop": 100,
+    "Jeu au flop": 100,
+    "Jeu au turn": 100,
+    "Décisions river": 100,
+    "Jeu en position": 100,
+    "Défense des blindes": 100
+   },
+   "leaks": [],
+   "mastery": {}
+  },
+  "ms": 16656
+ },
+ {
+  "strat": "heuristique",
+  "name": "Compétent heuristique",
+  "levelKey": "debutant",
+  "modeKey": "libre",
+  "seed": 20260817,
+  "decisions": 500,
+  "hands": 320,
+  "handsFinished": 320,
+  "netBB": -62.899999999999984,
+  "evLossTrue": 621.349780129839,
+  "verdicts": {
+   "correct": 348,
+   "acceptable": 86,
+   "erreur": 66
+  },
+  "chosenActs": {
+   "fold": 253,
+   "bet": 74,
+   "call": 61,
+   "check": 94,
+   "raise": 18
+  },
+  "snaps": [
+   {
+    "at": 50,
+    "hands": 31,
+    "handsFinished": 31,
+    "netBB": -0.9999999999999949,
+    "evLossTrue": 26.85343292862385,
+    "verdicts": {
+     "correct": 39,
+     "acceptable": 8,
+     "erreur": 3
+    },
+    "xp": 522,
+    "niveau": 3,
+    "nextLevelXp": 810,
+    "accuracyPct": 94,
+    "correctPct": 78,
+    "evLossCompte": 14.65,
+    "evLossReelle": 26.85,
+    "rating": 495,
+    "ratingTier": "Apprenti",
+    "ratingSkills": {
+     "table": 34,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 36
+    },
+    "disciplineScore": 36,
+    "careerSkills": {
+     "Sélection préflop": 100,
+     "Jeu au flop": null,
+     "Jeu au turn": null,
+     "Décisions river": null,
+     "Jeu en position": 95,
+     "Défense des blindes": 90.9
+    },
+    "leaks": [],
+    "mastery": {}
+   },
+   {
+    "at": 200,
+    "hands": 123,
+    "handsFinished": 123,
+    "netBB": 66.5,
+    "evLossTrue": 336.4258579599757,
+    "verdicts": {
+     "correct": 133,
+     "acceptable": 32,
+     "erreur": 35
+    },
+    "xp": 1858,
+    "niveau": 5,
+    "nextLevelXp": 2250,
+    "accuracyPct": 82.5,
+    "correctPct": 66.5,
+    "evLossCompte": 294.42,
+    "evLossReelle": 336.43,
+    "rating": 454,
+    "ratingTier": "Apprenti",
+    "ratingSkills": {
+     "table": 45,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 13
+    },
+    "disciplineScore": 13,
+    "careerSkills": {
+     "Sélection préflop": 96.9,
+     "Jeu au flop": 62.5,
+     "Jeu au turn": 52,
+     "Décisions river": 54.5,
+     "Jeu en position": 92.9,
+     "Défense des blindes": 84.8
+    },
+    "leaks": [
+     {
+      "k": "missed-value",
+      "n": 7,
+      "err": 7,
+      "loss": 36.6
+     },
+     {
+      "k": "too-passive",
+      "n": 2,
+      "err": 2,
+      "loss": 12.3
+     },
+     {
+      "k": "underbluff",
+      "n": 2,
+      "err": 2,
+      "loss": 9.3
+     },
+     {
+      "k": "bb-underdefend",
+      "n": 1,
+      "err": 1,
+      "loss": 2
+     },
+     {
+      "k": "thin-value",
+      "n": 1,
+      "err": 1,
+      "loss": 1.9
+     }
+    ],
+    "mastery": {
+     "missed-value": {
+      "seen": 7,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "thin-value": {
+      "seen": 1,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "underbluff": {
+      "seen": 2,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "bb-underdefend": {
+      "seen": 1,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "too-passive": {
+      "seen": 2,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     }
+    }
+   },
+   {
+    "at": 500,
+    "hands": 320,
+    "handsFinished": 320,
+    "netBB": -62.899999999999984,
+    "evLossTrue": 621.349780129839,
+    "verdicts": {
+     "correct": 348,
+     "acceptable": 86,
+     "erreur": 66
+    },
+    "xp": 4824,
+    "niveau": 8,
+    "nextLevelXp": 5760,
+    "accuracyPct": 86.8,
+    "correctPct": 69.6,
+    "evLossCompte": 513.16,
+    "evLossReelle": 621.35,
+    "rating": 844,
+    "ratingTier": "Apprenti",
+    "ratingSkills": {
+     "table": 70,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 44
+    },
+    "disciplineScore": 44,
+    "careerSkills": {
+     "Sélection préflop": 97.3,
+     "Jeu au flop": 65.5,
+     "Jeu au turn": 59.6,
+     "Décisions river": 72,
+     "Jeu en position": 91.4,
+     "Défense des blindes": 87.5
+    },
+    "leaks": [
+     {
+      "k": "missed-value",
+      "n": 15,
+      "err": 15,
+      "loss": 69.7
+     },
+     {
+      "k": "too-passive",
+      "n": 5,
+      "err": 5,
+      "loss": 29.9
+     },
+     {
+      "k": "thin-value",
+      "n": 8,
+      "err": 8,
+      "loss": 27.9
+     },
+     {
+      "k": "underbluff",
+      "n": 2,
+      "err": 2,
+      "loss": 9.3
+     },
+     {
+      "k": "bb-underdefend",
+      "n": 2,
+      "err": 2,
+      "loss": 3.9
+     }
+    ],
+    "mastery": {
+     "missed-value": {
+      "seen": 15,
+      "ok": 0,
+      "tier": 1,
+      "name": "En apprentissage",
+      "rate": 0
+     },
+     "thin-value": {
+      "seen": 8,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "underbluff": {
+      "seen": 2,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "bb-underdefend": {
+      "seen": 2,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "too-passive": {
+      "seen": 5,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     }
+    }
+   }
+  ],
+  "final": {
+   "at": 500,
+   "hands": 320,
+   "handsFinished": 320,
+   "netBB": -62.899999999999984,
+   "evLossTrue": 621.349780129839,
+   "verdicts": {
+    "correct": 348,
+    "acceptable": 86,
+    "erreur": 66
+   },
+   "xp": 4824,
+   "niveau": 8,
+   "nextLevelXp": 5760,
+   "accuracyPct": 86.8,
+   "correctPct": 69.6,
+   "evLossCompte": 513.16,
+   "evLossReelle": 621.35,
+   "rating": 844,
+   "ratingTier": "Apprenti",
+   "ratingSkills": {
+    "table": 70,
+    "range": 0,
+    "profiling": 0,
+    "blockers": 0,
+    "discipline": 44
+   },
+   "disciplineScore": 44,
+   "careerSkills": {
+    "Sélection préflop": 97.3,
+    "Jeu au flop": 65.5,
+    "Jeu au turn": 59.6,
+    "Décisions river": 72,
+    "Jeu en position": 91.4,
+    "Défense des blindes": 87.5
+   },
+   "leaks": [
+    {
+     "k": "missed-value",
+     "n": 15,
+     "err": 15,
+     "loss": 69.7
+    },
+    {
+     "k": "too-passive",
+     "n": 5,
+     "err": 5,
+     "loss": 29.9
+    },
+    {
+     "k": "thin-value",
+     "n": 8,
+     "err": 8,
+     "loss": 27.9
+    },
+    {
+     "k": "underbluff",
+     "n": 2,
+     "err": 2,
+     "loss": 9.3
+    },
+    {
+     "k": "bb-underdefend",
+     "n": 2,
+     "err": 2,
+     "loss": 3.9
+    }
+   ],
+   "mastery": {
+    "missed-value": {
+     "seen": 15,
+     "ok": 0,
+     "tier": 1,
+     "name": "En apprentissage",
+     "rate": 0
+    },
+    "thin-value": {
+     "seen": 8,
+     "ok": 0,
+     "tier": 0,
+     "name": "Découverte",
+     "rate": 0
+    },
+    "underbluff": {
+     "seen": 2,
+     "ok": 0,
+     "tier": 0,
+     "name": "Découverte",
+     "rate": 0
+    },
+    "bb-underdefend": {
+     "seen": 2,
+     "ok": 0,
+     "tier": 0,
+     "name": "Découverte",
+     "rate": 0
+    },
+    "too-passive": {
+     "seen": 5,
+     "ok": 0,
+     "tier": 0,
+     "name": "Découverte",
+     "rate": 0
+    }
+   }
+  },
+  "ms": 17398
+ },
+ {
+  "strat": "fold",
+  "name": "Fold-bot (passe toujours)",
+  "levelKey": "debutant",
+  "modeKey": "libre",
+  "seed": 20260817,
+  "decisions": 500,
+  "hands": 436,
+  "handsFinished": 436,
+  "netBB": -133.39999999999998,
+  "evLossTrue": 173.8824727400313,
+  "verdicts": {
+   "correct": 403,
+   "acceptable": 67,
+   "erreur": 30
+  },
+  "chosenActs": {
+   "fold": 417,
+   "check": 83
+  },
+  "snaps": [
+   {
+    "at": 50,
+    "hands": 44,
+    "handsFinished": 44,
+    "netBB": -11.1,
+    "evLossTrue": 14.785482378455558,
+    "verdicts": {
+     "correct": 41,
+     "acceptable": 7,
+     "erreur": 2
+    },
+    "xp": 538,
+    "niveau": 3,
+    "nextLevelXp": 810,
+    "accuracyPct": 96,
+    "correctPct": 82,
+    "evLossCompte": 4.89,
+    "evLossReelle": 14.79,
+    "rating": 532,
+    "ratingTier": "Apprenti",
+    "ratingSkills": {
+     "table": 35,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 41
+    },
+    "disciplineScore": 41,
+    "careerSkills": {
+     "Sélection préflop": 97.7,
+     "Jeu au flop": null,
+     "Jeu au turn": null,
+     "Décisions river": null,
+     "Jeu en position": 94.7,
+     "Défense des blindes": 95.8
+    },
+    "leaks": [
+     {
+      "k": "river-fold",
+      "n": 1,
+      "err": 1,
+      "loss": 3.3
+     }
+    ],
+    "mastery": {
+     "river-fold": {
+      "seen": 1,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     }
+    }
+   },
+   {
+    "at": 200,
+    "hands": 174,
+    "handsFinished": 174,
+    "netBB": -62.7,
+    "evLossTrue": 57.95868692226368,
+    "verdicts": {
+     "correct": 165,
+     "acceptable": 25,
+     "erreur": 10
+    },
+    "xp": 2150,
+    "niveau": 5,
+    "nextLevelXp": 2250,
+    "accuracyPct": 95,
+    "correctPct": 82.5,
+    "evLossCompte": 21.58,
+    "evLossReelle": 57.96,
+    "rating": 836,
+    "ratingTier": "Apprenti",
+    "ratingSkills": {
+     "table": 56,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 63
+    },
+    "disciplineScore": 63,
+    "careerSkills": {
+     "Sélection préflop": 96.6,
+     "Jeu au flop": null,
+     "Jeu au turn": null,
+     "Décisions river": null,
+     "Jeu en position": 94.6,
+     "Défense des blindes": 94
+    },
+    "leaks": [
+     {
+      "k": "missed-value",
+      "n": 3,
+      "err": 3,
+      "loss": 5.2
+     },
+     {
+      "k": "river-fold",
+      "n": 1,
+      "err": 1,
+      "loss": 3.3
+     },
+     {
+      "k": "bb-underdefend",
+      "n": 1,
+      "err": 1,
+      "loss": 2.3
+     }
+    ],
+    "mastery": {
+     "river-fold": {
+      "seen": 1,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "bb-underdefend": {
+      "seen": 1,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "missed-value": {
+      "seen": 3,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     }
+    }
+   },
+   {
+    "at": 500,
+    "hands": 436,
+    "handsFinished": 436,
+    "netBB": -133.39999999999998,
+    "evLossTrue": 173.8824727400313,
+    "verdicts": {
+     "correct": 403,
+     "acceptable": 67,
+     "erreur": 30
+    },
+    "xp": 5298,
+    "niveau": 8,
+    "nextLevelXp": 5760,
+    "accuracyPct": 94,
+    "correctPct": 80.6,
+    "evLossCompte": 84.64,
+    "evLossReelle": 173.88,
+    "rating": 1209,
+    "ratingTier": "Initié",
+    "ratingSkills": {
+     "table": 81,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 91
+    },
+    "disciplineScore": 91,
+    "careerSkills": {
+     "Sélection préflop": 95.2,
+     "Jeu au flop": 83.3,
+     "Jeu au turn": 90,
+     "Décisions river": 85,
+     "Jeu en position": 94,
+     "Défense des blindes": 93.5
+    },
+    "leaks": [
+     {
+      "k": "bb-underdefend",
+      "n": 5,
+      "err": 5,
+      "loss": 17.2
+     },
+     {
+      "k": "missed-value",
+      "n": 7,
+      "err": 7,
+      "loss": 14.2
+     },
+     {
+      "k": "river-fold",
+      "n": 1,
+      "err": 1,
+      "loss": 3.3
+     }
+    ],
+    "mastery": {
+     "river-fold": {
+      "seen": 1,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "bb-underdefend": {
+      "seen": 5,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "missed-value": {
+      "seen": 7,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     }
+    }
+   }
+  ],
+  "final": {
+   "at": 500,
+   "hands": 436,
+   "handsFinished": 436,
+   "netBB": -133.39999999999998,
+   "evLossTrue": 173.8824727400313,
+   "verdicts": {
+    "correct": 403,
+    "acceptable": 67,
+    "erreur": 30
+   },
+   "xp": 5298,
+   "niveau": 8,
+   "nextLevelXp": 5760,
+   "accuracyPct": 94,
+   "correctPct": 80.6,
+   "evLossCompte": 84.64,
+   "evLossReelle": 173.88,
+   "rating": 1209,
+   "ratingTier": "Initié",
+   "ratingSkills": {
+    "table": 81,
+    "range": 0,
+    "profiling": 0,
+    "blockers": 0,
+    "discipline": 91
+   },
+   "disciplineScore": 91,
+   "careerSkills": {
+    "Sélection préflop": 95.2,
+    "Jeu au flop": 83.3,
+    "Jeu au turn": 90,
+    "Décisions river": 85,
+    "Jeu en position": 94,
+    "Défense des blindes": 93.5
+   },
+   "leaks": [
+    {
+     "k": "bb-underdefend",
+     "n": 5,
+     "err": 5,
+     "loss": 17.2
+    },
+    {
+     "k": "missed-value",
+     "n": 7,
+     "err": 7,
+     "loss": 14.2
+    },
+    {
+     "k": "river-fold",
+     "n": 1,
+     "err": 1,
+     "loss": 3.3
+    }
+   ],
+   "mastery": {
+    "river-fold": {
+     "seen": 1,
+     "ok": 0,
+     "tier": 0,
+     "name": "Découverte",
+     "rate": 0
+    },
+    "bb-underdefend": {
+     "seen": 5,
+     "ok": 0,
+     "tier": 0,
+     "name": "Découverte",
+     "rate": 0
+    },
+    "missed-value": {
+     "seen": 7,
+     "ok": 0,
+     "tier": 0,
+     "name": "Découverte",
+     "rate": 0
+    }
+   }
+  },
+  "ms": 18287
+ },
+ {
+  "strat": "station",
+  "name": "Station (suit toujours)",
+  "levelKey": "debutant",
+  "modeKey": "libre",
+  "seed": 20260817,
+  "decisions": 500,
+  "hands": 109,
+  "handsFinished": 108,
+  "netBB": -266.49999999999983,
+  "evLossTrue": 1020.3152989790647,
+  "verdicts": {
+   "correct": 275,
+   "acceptable": 117,
+   "erreur": 108
+  },
+  "chosenActs": {
+   "call": 195,
+   "check": 305
+  },
+  "snaps": [
+   {
+    "at": 50,
+    "hands": 10,
+    "handsFinished": 9,
+    "netBB": -52.49999999999999,
+    "evLossTrue": 100.14935375555366,
+    "verdicts": {
+     "correct": 30,
+     "acceptable": 8,
+     "erreur": 12
+    },
+    "xp": 432,
+    "niveau": 3,
+    "nextLevelXp": 810,
+    "accuracyPct": 76,
+    "correctPct": 60,
+    "evLossCompte": 89.32,
+    "evLossReelle": 100.15,
+    "rating": 225,
+    "ratingTier": "Débutant",
+    "ratingSkills": {
+     "table": 26,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 1
+    },
+    "disciplineScore": 1,
+    "careerSkills": {
+     "Sélection préflop": 86.7,
+     "Jeu au flop": 69.2,
+     "Jeu au turn": null,
+     "Décisions river": null,
+     "Jeu en position": 92.9,
+     "Défense des blindes": 62.5
+    },
+    "leaks": [
+     {
+      "k": "river-call",
+      "n": 3,
+      "err": 3,
+      "loss": 42.7
+     },
+     {
+      "k": "missed-value",
+      "n": 2,
+      "err": 2,
+      "loss": 17.4
+     },
+     {
+      "k": "too-passive",
+      "n": 1,
+      "err": 1,
+      "loss": 10.5
+     },
+     {
+      "k": "bb-overdefend",
+      "n": 1,
+      "err": 1,
+      "loss": 1.7
+     }
+    ],
+    "mastery": {
+     "river-call": {
+      "seen": 3,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "bb-overdefend": {
+      "seen": 1,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "missed-value": {
+      "seen": 2,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "too-passive": {
+      "seen": 1,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     }
+    }
+   },
+   {
+    "at": 200,
+    "hands": 42,
+    "handsFinished": 41,
+    "netBB": -154.39999999999995,
+    "evLossTrue": 476.41080184876506,
+    "verdicts": {
+     "correct": 115,
+     "acceptable": 40,
+     "erreur": 45
+    },
+    "xp": 1710,
+    "niveau": 5,
+    "nextLevelXp": 2250,
+    "accuracyPct": 77.5,
+    "correctPct": 57.5,
+    "evLossCompte": 425.35,
+    "evLossReelle": 476.41,
+    "rating": 328,
+    "ratingTier": "Débutant",
+    "ratingSkills": {
+     "table": 39,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 0
+    },
+    "disciplineScore": 0,
+    "careerSkills": {
+     "Sélection préflop": 91.5,
+     "Jeu au flop": 69.4,
+     "Jeu au turn": 73.9,
+     "Décisions river": 71.7,
+     "Jeu en position": 78.5,
+     "Défense des blindes": 75
+    },
+    "leaks": [
+     {
+      "k": "missed-value",
+      "n": 17,
+      "err": 17,
+      "loss": 233.6
+     },
+     {
+      "k": "river-call",
+      "n": 6,
+      "err": 6,
+      "loss": 74.6
+     },
+     {
+      "k": "too-passive",
+      "n": 6,
+      "err": 6,
+      "loss": 68.2
+     },
+     {
+      "k": "bb-overdefend",
+      "n": 2,
+      "err": 2,
+      "loss": 3.5
+     }
+    ],
+    "mastery": {
+     "river-call": {
+      "seen": 6,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "bb-overdefend": {
+      "seen": 2,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "missed-value": {
+      "seen": 17,
+      "ok": 0,
+      "tier": 1,
+      "name": "En apprentissage",
+      "rate": 0
+     },
+     "too-passive": {
+      "seen": 6,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     }
+    }
+   },
+   {
+    "at": 500,
+    "hands": 109,
+    "handsFinished": 108,
+    "netBB": -266.49999999999983,
+    "evLossTrue": 1020.3152989790647,
+    "verdicts": {
+     "correct": 275,
+     "acceptable": 117,
+     "erreur": 108
+    },
+    "xp": 4218,
+    "niveau": 7,
+    "nextLevelXp": 4410,
+    "accuracyPct": 78.4,
+    "correctPct": 55,
+    "evLossCompte": 877.64,
+    "evLossReelle": 1020.32,
+    "rating": 481,
+    "ratingTier": "Apprenti",
+    "ratingSkills": {
+     "table": 55,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 3
+    },
+    "disciplineScore": 3,
+    "careerSkills": {
+     "Sélection préflop": 87.2,
+     "Jeu au flop": 71.3,
+     "Jeu au turn": 74.8,
+     "Décisions river": 78.1,
+     "Jeu en position": 78,
+     "Défense des blindes": 79.1
+    },
+    "leaks": [
+     {
+      "k": "missed-value",
+      "n": 46,
+      "err": 46,
+      "loss": 494.3
+     },
+     {
+      "k": "river-call",
+      "n": 8,
+      "err": 8,
+      "loss": 138.9
+     },
+     {
+      "k": "too-passive",
+      "n": 15,
+      "err": 15,
+      "loss": 114.5
+     },
+     {
+      "k": "bb-overdefend",
+      "n": 6,
+      "err": 6,
+      "loss": 12.6
+     }
+    ],
+    "mastery": {
+     "river-call": {
+      "seen": 8,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "bb-overdefend": {
+      "seen": 6,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "missed-value": {
+      "seen": 46,
+      "ok": 0,
+      "tier": 1,
+      "name": "En apprentissage",
+      "rate": 0
+     },
+     "too-passive": {
+      "seen": 15,
+      "ok": 0,
+      "tier": 1,
+      "name": "En apprentissage",
+      "rate": 0
+     }
+    }
+   }
+  ],
+  "final": {
+   "at": 500,
+   "hands": 109,
+   "handsFinished": 108,
+   "netBB": -266.49999999999983,
+   "evLossTrue": 1020.3152989790647,
+   "verdicts": {
+    "correct": 275,
+    "acceptable": 117,
+    "erreur": 108
+   },
+   "xp": 4218,
+   "niveau": 7,
+   "nextLevelXp": 4410,
+   "accuracyPct": 78.4,
+   "correctPct": 55,
+   "evLossCompte": 877.64,
+   "evLossReelle": 1020.32,
+   "rating": 481,
+   "ratingTier": "Apprenti",
+   "ratingSkills": {
+    "table": 55,
+    "range": 0,
+    "profiling": 0,
+    "blockers": 0,
+    "discipline": 3
+   },
+   "disciplineScore": 3,
+   "careerSkills": {
+    "Sélection préflop": 87.2,
+    "Jeu au flop": 71.3,
+    "Jeu au turn": 74.8,
+    "Décisions river": 78.1,
+    "Jeu en position": 78,
+    "Défense des blindes": 79.1
+   },
+   "leaks": [
+    {
+     "k": "missed-value",
+     "n": 46,
+     "err": 46,
+     "loss": 494.3
+    },
+    {
+     "k": "river-call",
+     "n": 8,
+     "err": 8,
+     "loss": 138.9
+    },
+    {
+     "k": "too-passive",
+     "n": 15,
+     "err": 15,
+     "loss": 114.5
+    },
+    {
+     "k": "bb-overdefend",
+     "n": 6,
+     "err": 6,
+     "loss": 12.6
+    }
+   ],
+   "mastery": {
+    "river-call": {
+     "seen": 8,
+     "ok": 0,
+     "tier": 0,
+     "name": "Découverte",
+     "rate": 0
+    },
+    "bb-overdefend": {
+     "seen": 6,
+     "ok": 0,
+     "tier": 0,
+     "name": "Découverte",
+     "rate": 0
+    },
+    "missed-value": {
+     "seen": 46,
+     "ok": 0,
+     "tier": 1,
+     "name": "En apprentissage",
+     "rate": 0
+    },
+    "too-passive": {
+     "seen": 15,
+     "ok": 0,
+     "tier": 1,
+     "name": "En apprentissage",
+     "rate": 0
+    }
+   }
+  },
+  "ms": 13268
+ },
+ {
+  "strat": "allin",
+  "name": "Maniaque (tapis systématique)",
+  "levelKey": "debutant",
+  "modeKey": "libre",
+  "seed": 20260817,
+  "decisions": 500,
+  "hands": 500,
+  "handsFinished": 500,
+  "netBB": -2482.6000000000004,
+  "evLossTrue": 5531.951723222301,
+  "verdicts": {
+   "correct": 1,
+   "acceptable": 4,
+   "erreur": 495
+  },
+  "chosenActs": {
+   "raise": 478,
+   "bet": 22
+  },
+  "snaps": [
+   {
+    "at": 50,
+    "hands": 50,
+    "handsFinished": 50,
+    "netBB": -385.6,
+    "evLossTrue": 551.4577272889813,
+    "verdicts": {
+     "correct": 0,
+     "acceptable": 0,
+     "erreur": 50
+    },
+    "xp": 100,
+    "niveau": 2,
+    "nextLevelXp": 360,
+    "accuracyPct": 0,
+    "correctPct": 0,
+    "evLossCompte": 551.45,
+    "evLossReelle": 551.46,
+    "rating": 0,
+    "ratingTier": "Débutant",
+    "ratingSkills": {
+     "table": 0,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 0
+    },
+    "disciplineScore": 0,
+    "careerSkills": {
+     "Sélection préflop": 0,
+     "Jeu au flop": null,
+     "Jeu au turn": null,
+     "Décisions river": null,
+     "Jeu en position": 0,
+     "Défense des blindes": 0
+    },
+    "leaks": [],
+    "mastery": {}
+   },
+   {
+    "at": 200,
+    "hands": 200,
+    "handsFinished": 200,
+    "netBB": -1971.7,
+    "evLossTrue": 2281.4364978195845,
+    "verdicts": {
+     "correct": 0,
+     "acceptable": 2,
+     "erreur": 198
+    },
+    "xp": 408,
+    "niveau": 3,
+    "nextLevelXp": 810,
+    "accuracyPct": 1,
+    "correctPct": 0,
+    "evLossCompte": 2278.73,
+    "evLossReelle": 2281.44,
+    "rating": 0,
+    "ratingTier": "Débutant",
+    "ratingSkills": {
+     "table": 0,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 0
+    },
+    "disciplineScore": 0,
+    "careerSkills": {
+     "Sélection préflop": 1,
+     "Jeu au flop": null,
+     "Jeu au turn": null,
+     "Décisions river": null,
+     "Jeu en position": 0,
+     "Défense des blindes": 2
+    },
+    "leaks": [],
+    "mastery": {}
+   },
+   {
+    "at": 500,
+    "hands": 500,
+    "handsFinished": 500,
+    "netBB": -2482.6000000000004,
+    "evLossTrue": 5531.951723222301,
+    "verdicts": {
+     "correct": 1,
+     "acceptable": 4,
+     "erreur": 495
+    },
+    "xp": 1026,
+    "niveau": 4,
+    "nextLevelXp": 1440,
+    "accuracyPct": 1,
+    "correctPct": 0.2,
+    "evLossCompte": 5526.98,
+    "evLossReelle": 5531.95,
+    "rating": 0,
+    "ratingTier": "Débutant",
+    "ratingSkills": {
+     "table": 0,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 0
+    },
+    "disciplineScore": 0,
+    "careerSkills": {
+     "Sélection préflop": 1,
+     "Jeu au flop": null,
+     "Jeu au turn": null,
+     "Décisions river": null,
+     "Jeu en position": 0,
+     "Défense des blindes": 1.6
+    },
+    "leaks": [],
+    "mastery": {}
+   }
+  ],
+  "final": {
+   "at": 500,
+   "hands": 500,
+   "handsFinished": 500,
+   "netBB": -2482.6000000000004,
+   "evLossTrue": 5531.951723222301,
+   "verdicts": {
+    "correct": 1,
+    "acceptable": 4,
+    "erreur": 495
+   },
+   "xp": 1026,
+   "niveau": 4,
+   "nextLevelXp": 1440,
+   "accuracyPct": 1,
+   "correctPct": 0.2,
+   "evLossCompte": 5526.98,
+   "evLossReelle": 5531.95,
+   "rating": 0,
+   "ratingTier": "Débutant",
+   "ratingSkills": {
+    "table": 0,
+    "range": 0,
+    "profiling": 0,
+    "blockers": 0,
+    "discipline": 0
+   },
+   "disciplineScore": 0,
+   "careerSkills": {
+    "Sélection préflop": 1,
+    "Jeu au flop": null,
+    "Jeu au turn": null,
+    "Décisions river": null,
+    "Jeu en position": 0,
+    "Défense des blindes": 1.6
+   },
+   "leaks": [],
+   "mastery": {}
+  },
+  "ms": 19651
+ },
+ {
+  "strat": "aleatoire",
+  "name": "Aléatoire uniforme",
+  "levelKey": "debutant",
+  "modeKey": "libre",
+  "seed": 20260817,
+  "decisions": 500,
+  "hands": 217,
+  "handsFinished": 217,
+  "netBB": -998.9000000000004,
+  "evLossTrue": 3331.613751240789,
+  "verdicts": {
+   "correct": 180,
+   "acceptable": 101,
+   "erreur": 219
+  },
+  "chosenActs": {
+   "raise": 145,
+   "bet": 195,
+   "fold": 50,
+   "call": 60,
+   "check": 50
+  },
+  "snaps": [
+   {
+    "at": 50,
+    "hands": 23,
+    "handsFinished": 23,
+    "netBB": -150.3,
+    "evLossTrue": 277.9857903098061,
+    "verdicts": {
+     "correct": 24,
+     "acceptable": 7,
+     "erreur": 19
+    },
+    "xp": 368,
+    "niveau": 3,
+    "nextLevelXp": 810,
+    "accuracyPct": 62,
+    "correctPct": 48,
+    "evLossCompte": 269.35,
+    "evLossReelle": 277.99,
+    "rating": 177,
+    "ratingTier": "Débutant",
+    "ratingSkills": {
+     "table": 21,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 0
+    },
+    "disciplineScore": 0,
+    "careerSkills": {
+     "Sélection préflop": 59.3,
+     "Jeu au flop": null,
+     "Jeu au turn": null,
+     "Décisions river": null,
+     "Jeu en position": null,
+     "Défense des blindes": 71.4
+    },
+    "leaks": [
+     {
+      "k": "overbluff",
+      "n": 5,
+      "err": 5,
+      "loss": 75.3
+     },
+     {
+      "k": "thin-value",
+      "n": 1,
+      "err": 1,
+      "loss": 41
+     },
+     {
+      "k": "too-passive",
+      "n": 1,
+      "err": 1,
+      "loss": 6.5
+     }
+    ],
+    "mastery": {
+     "thin-value": {
+      "seen": 1,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "overbluff": {
+      "seen": 5,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "too-passive": {
+      "seen": 1,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     }
+    }
+   },
+   {
+    "at": 200,
+    "hands": 87,
+    "handsFinished": 87,
+    "netBB": -1280.1,
+    "evLossTrue": 1622.2266471271773,
+    "verdicts": {
+     "correct": 70,
+     "acceptable": 36,
+     "erreur": 94
+    },
+    "xp": 1244,
+    "niveau": 4,
+    "nextLevelXp": 1440,
+    "accuracyPct": 53,
+    "correctPct": 35,
+    "evLossCompte": 1579.59,
+    "evLossReelle": 1622.23,
+    "rating": 202,
+    "ratingTier": "Débutant",
+    "ratingSkills": {
+     "table": 24,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 0
+    },
+    "disciplineScore": 0,
+    "careerSkills": {
+     "Sélection préflop": 66.3,
+     "Jeu au flop": 39.6,
+     "Jeu au turn": 43.3,
+     "Décisions river": 37.5,
+     "Jeu en position": 51.7,
+     "Défense des blindes": 55
+    },
+    "leaks": [
+     {
+      "k": "overbluff",
+      "n": 24,
+      "err": 24,
+      "loss": 345.6
+     },
+     {
+      "k": "thin-value",
+      "n": 11,
+      "err": 11,
+      "loss": 176.5
+     },
+     {
+      "k": "missed-value",
+      "n": 4,
+      "err": 4,
+      "loss": 122.6
+     },
+     {
+      "k": "too-passive",
+      "n": 2,
+      "err": 2,
+      "loss": 118.7
+     },
+     {
+      "k": "river-call",
+      "n": 1,
+      "err": 1,
+      "loss": 44.7
+     }
+    ],
+    "mastery": {
+     "thin-value": {
+      "seen": 11,
+      "ok": 0,
+      "tier": 1,
+      "name": "En apprentissage",
+      "rate": 0
+     },
+     "overbluff": {
+      "seen": 24,
+      "ok": 0,
+      "tier": 1,
+      "name": "En apprentissage",
+      "rate": 0
+     },
+     "too-passive": {
+      "seen": 2,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "missed-value": {
+      "seen": 4,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "river-call": {
+      "seen": 1,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     }
+    }
+   },
+   {
+    "at": 500,
+    "hands": 217,
+    "handsFinished": 217,
+    "netBB": -998.9000000000004,
+    "evLossTrue": 3331.613751240789,
+    "verdicts": {
+     "correct": 180,
+     "acceptable": 101,
+     "erreur": 219
+    },
+    "xp": 3204,
+    "niveau": 6,
+    "nextLevelXp": 3240,
+    "accuracyPct": 56.2,
+    "correctPct": 36,
+    "evLossCompte": 3181.43,
+    "evLossReelle": 3331.61,
+    "rating": 303,
+    "ratingTier": "Débutant",
+    "ratingSkills": {
+     "table": 36,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 0
+    },
+    "disciplineScore": 0,
+    "careerSkills": {
+     "Sélection préflop": 69,
+     "Jeu au flop": 47.9,
+     "Jeu au turn": 43.9,
+     "Décisions river": 38.3,
+     "Jeu en position": 54.6,
+     "Défense des blindes": 56.5
+    },
+    "leaks": [
+     {
+      "k": "thin-value",
+      "n": 41,
+      "err": 41,
+      "loss": 766.5
+     },
+     {
+      "k": "overbluff",
+      "n": 40,
+      "err": 40,
+      "loss": 493.2
+     },
+     {
+      "k": "missed-value",
+      "n": 10,
+      "err": 10,
+      "loss": 175.7
+     },
+     {
+      "k": "too-passive",
+      "n": 4,
+      "err": 4,
+      "loss": 155.5
+     },
+     {
+      "k": "river-call",
+      "n": 1,
+      "err": 1,
+      "loss": 44.7
+     },
+     {
+      "k": "bb-overdefend",
+      "n": 1,
+      "err": 1,
+      "loss": 1.6
+     }
+    ],
+    "mastery": {
+     "thin-value": {
+      "seen": 41,
+      "ok": 0,
+      "tier": 1,
+      "name": "En apprentissage",
+      "rate": 0
+     },
+     "overbluff": {
+      "seen": 40,
+      "ok": 0,
+      "tier": 1,
+      "name": "En apprentissage",
+      "rate": 0
+     },
+     "too-passive": {
+      "seen": 4,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "missed-value": {
+      "seen": 10,
+      "ok": 0,
+      "tier": 1,
+      "name": "En apprentissage",
+      "rate": 0
+     },
+     "river-call": {
+      "seen": 1,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "bb-overdefend": {
+      "seen": 1,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     }
+    }
+   }
+  ],
+  "final": {
+   "at": 500,
+   "hands": 217,
+   "handsFinished": 217,
+   "netBB": -998.9000000000004,
+   "evLossTrue": 3331.613751240789,
+   "verdicts": {
+    "correct": 180,
+    "acceptable": 101,
+    "erreur": 219
+   },
+   "xp": 3204,
+   "niveau": 6,
+   "nextLevelXp": 3240,
+   "accuracyPct": 56.2,
+   "correctPct": 36,
+   "evLossCompte": 3181.43,
+   "evLossReelle": 3331.61,
+   "rating": 303,
+   "ratingTier": "Débutant",
+   "ratingSkills": {
+    "table": 36,
+    "range": 0,
+    "profiling": 0,
+    "blockers": 0,
+    "discipline": 0
+   },
+   "disciplineScore": 0,
+   "careerSkills": {
+    "Sélection préflop": 69,
+    "Jeu au flop": 47.9,
+    "Jeu au turn": 43.9,
+    "Décisions river": 38.3,
+    "Jeu en position": 54.6,
+    "Défense des blindes": 56.5
+   },
+   "leaks": [
+    {
+     "k": "thin-value",
+     "n": 41,
+     "err": 41,
+     "loss": 766.5
+    },
+    {
+     "k": "overbluff",
+     "n": 40,
+     "err": 40,
+     "loss": 493.2
+    },
+    {
+     "k": "missed-value",
+     "n": 10,
+     "err": 10,
+     "loss": 175.7
+    },
+    {
+     "k": "too-passive",
+     "n": 4,
+     "err": 4,
+     "loss": 155.5
+    },
+    {
+     "k": "river-call",
+     "n": 1,
+     "err": 1,
+     "loss": 44.7
+    },
+    {
+     "k": "bb-overdefend",
+     "n": 1,
+     "err": 1,
+     "loss": 1.6
+    }
+   ],
+   "mastery": {
+    "thin-value": {
+     "seen": 41,
+     "ok": 0,
+     "tier": 1,
+     "name": "En apprentissage",
+     "rate": 0
+    },
+    "overbluff": {
+     "seen": 40,
+     "ok": 0,
+     "tier": 1,
+     "name": "En apprentissage",
+     "rate": 0
+    },
+    "too-passive": {
+     "seen": 4,
+     "ok": 0,
+     "tier": 0,
+     "name": "Découverte",
+     "rate": 0
+    },
+    "missed-value": {
+     "seen": 10,
+     "ok": 0,
+     "tier": 1,
+     "name": "En apprentissage",
+     "rate": 0
+    },
+    "river-call": {
+     "seen": 1,
+     "ok": 0,
+     "tier": 0,
+     "name": "Découverte",
+     "rate": 0
+    },
+    "bb-overdefend": {
+     "seen": 1,
+     "ok": 0,
+     "tier": 0,
+     "name": "Découverte",
+     "rate": 0
+    }
+   }
+  },
+  "ms": 15438
+ },
+ {
+  "strat": "rotation",
+  "name": "Rotation mécanique (i % n)",
+  "levelKey": "debutant",
+  "modeKey": "libre",
+  "seed": 20260817,
+  "decisions": 500,
+  "hands": 226,
+  "handsFinished": 226,
+  "netBB": -1941.8999999999999,
+  "evLossTrue": 2977.894774489802,
+  "verdicts": {
+   "correct": 193,
+   "acceptable": 96,
+   "erreur": 211
+  },
+  "chosenActs": {
+   "call": 77,
+   "bet": 228,
+   "raise": 105,
+   "check": 20,
+   "fold": 70
+  },
+  "snaps": [
+   {
+    "at": 50,
+    "hands": 20,
+    "handsFinished": 19,
+    "netBB": -448.4,
+    "evLossTrue": 244.67136427248028,
+    "verdicts": {
+     "correct": 20,
+     "acceptable": 6,
+     "erreur": 24
+    },
+    "xp": 324,
+    "niveau": 2,
+    "nextLevelXp": 360,
+    "accuracyPct": 52,
+    "correctPct": 40,
+    "evLossCompte": 235.65,
+    "evLossReelle": 244.67,
+    "rating": 143,
+    "ratingTier": "Débutant",
+    "ratingSkills": {
+     "table": 17,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 0
+    },
+    "disciplineScore": 0,
+    "careerSkills": {
+     "Sélection préflop": 69.6,
+     "Jeu au flop": 41.7,
+     "Jeu au turn": null,
+     "Décisions river": null,
+     "Jeu en position": 46.7,
+     "Défense des blindes": 53.6
+    },
+    "leaks": [
+     {
+      "k": "thin-value",
+      "n": 6,
+      "err": 6,
+      "loss": 139.3
+     },
+     {
+      "k": "overbluff",
+      "n": 4,
+      "err": 4,
+      "loss": 17.6
+     },
+     {
+      "k": "missed-value",
+      "n": 2,
+      "err": 2,
+      "loss": 15.4
+     },
+     {
+      "k": "too-passive",
+      "n": 1,
+      "err": 1,
+      "loss": 1.7
+     }
+    ],
+    "mastery": {
+     "overbluff": {
+      "seen": 4,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "missed-value": {
+      "seen": 2,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "thin-value": {
+      "seen": 6,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "too-passive": {
+      "seen": 1,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     }
+    }
+   },
+   {
+    "at": 200,
+    "hands": 83,
+    "handsFinished": 83,
+    "netBB": -1281.8999999999999,
+    "evLossTrue": 1056.7476433115473,
+    "verdicts": {
+     "correct": 78,
+     "acceptable": 35,
+     "erreur": 87
+    },
+    "xp": 1320,
+    "niveau": 4,
+    "nextLevelXp": 1440,
+    "accuracyPct": 56.5,
+    "correctPct": 39,
+    "evLossCompte": 1006.15,
+    "evLossReelle": 1056.75,
+    "rating": 219,
+    "ratingTier": "Débutant",
+    "ratingSkills": {
+     "table": 26,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 0
+    },
+    "disciplineScore": 0,
+    "careerSkills": {
+     "Sélection préflop": 71.7,
+     "Jeu au flop": 53.2,
+     "Jeu au turn": 33.3,
+     "Décisions river": 39.3,
+     "Jeu en position": 57.7,
+     "Défense des blindes": 56.6
+    },
+    "leaks": [
+     {
+      "k": "thin-value",
+      "n": 22,
+      "err": 22,
+      "loss": 334
+     },
+     {
+      "k": "overbluff",
+      "n": 16,
+      "err": 16,
+      "loss": 168.4
+     },
+     {
+      "k": "missed-value",
+      "n": 2,
+      "err": 2,
+      "loss": 15.4
+     },
+     {
+      "k": "bb-overdefend",
+      "n": 1,
+      "err": 1,
+      "loss": 2
+     },
+     {
+      "k": "too-passive",
+      "n": 1,
+      "err": 1,
+      "loss": 1.7
+     }
+    ],
+    "mastery": {
+     "overbluff": {
+      "seen": 16,
+      "ok": 0,
+      "tier": 1,
+      "name": "En apprentissage",
+      "rate": 0
+     },
+     "missed-value": {
+      "seen": 2,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "thin-value": {
+      "seen": 22,
+      "ok": 0,
+      "tier": 1,
+      "name": "En apprentissage",
+      "rate": 0
+     },
+     "too-passive": {
+      "seen": 1,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "bb-overdefend": {
+      "seen": 1,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     }
+    }
+   },
+   {
+    "at": 500,
+    "hands": 226,
+    "handsFinished": 226,
+    "netBB": -1941.8999999999999,
+    "evLossTrue": 2977.894774489802,
+    "verdicts": {
+     "correct": 193,
+     "acceptable": 96,
+     "erreur": 211
+    },
+    "xp": 3314,
+    "niveau": 7,
+    "nextLevelXp": 4410,
+    "accuracyPct": 57.8,
+    "correctPct": 38.6,
+    "evLossCompte": 2835.15,
+    "evLossReelle": 2977.89,
+    "rating": 328,
+    "ratingTier": "Débutant",
+    "ratingSkills": {
+     "table": 39,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 0
+    },
+    "disciplineScore": 0,
+    "careerSkills": {
+     "Sélection préflop": 75.2,
+     "Jeu au flop": 51.9,
+     "Jeu au turn": 31.7,
+     "Décisions river": 28.6,
+     "Jeu en position": 56.1,
+     "Défense des blindes": 58.7
+    },
+    "leaks": [
+     {
+      "k": "thin-value",
+      "n": 57,
+      "err": 57,
+      "loss": 876
+     },
+     {
+      "k": "overbluff",
+      "n": 49,
+      "err": 49,
+      "loss": 716.5
+     },
+     {
+      "k": "missed-value",
+      "n": 2,
+      "err": 2,
+      "loss": 15.4
+     },
+     {
+      "k": "bb-overdefend",
+      "n": 1,
+      "err": 1,
+      "loss": 2
+     },
+     {
+      "k": "too-passive",
+      "n": 1,
+      "err": 1,
+      "loss": 1.7
+     }
+    ],
+    "mastery": {
+     "overbluff": {
+      "seen": 49,
+      "ok": 0,
+      "tier": 1,
+      "name": "En apprentissage",
+      "rate": 0
+     },
+     "missed-value": {
+      "seen": 2,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "thin-value": {
+      "seen": 57,
+      "ok": 0,
+      "tier": 1,
+      "name": "En apprentissage",
+      "rate": 0
+     },
+     "too-passive": {
+      "seen": 1,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "bb-overdefend": {
+      "seen": 1,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     }
+    }
+   }
+  ],
+  "final": {
+   "at": 500,
+   "hands": 226,
+   "handsFinished": 226,
+   "netBB": -1941.8999999999999,
+   "evLossTrue": 2977.894774489802,
+   "verdicts": {
+    "correct": 193,
+    "acceptable": 96,
+    "erreur": 211
+   },
+   "xp": 3314,
+   "niveau": 7,
+   "nextLevelXp": 4410,
+   "accuracyPct": 57.8,
+   "correctPct": 38.6,
+   "evLossCompte": 2835.15,
+   "evLossReelle": 2977.89,
+   "rating": 328,
+   "ratingTier": "Débutant",
+   "ratingSkills": {
+    "table": 39,
+    "range": 0,
+    "profiling": 0,
+    "blockers": 0,
+    "discipline": 0
+   },
+   "disciplineScore": 0,
+   "careerSkills": {
+    "Sélection préflop": 75.2,
+    "Jeu au flop": 51.9,
+    "Jeu au turn": 31.7,
+    "Décisions river": 28.6,
+    "Jeu en position": 56.1,
+    "Défense des blindes": 58.7
+   },
+   "leaks": [
+    {
+     "k": "thin-value",
+     "n": 57,
+     "err": 57,
+     "loss": 876
+    },
+    {
+     "k": "overbluff",
+     "n": 49,
+     "err": 49,
+     "loss": 716.5
+    },
+    {
+     "k": "missed-value",
+     "n": 2,
+     "err": 2,
+     "loss": 15.4
+    },
+    {
+     "k": "bb-overdefend",
+     "n": 1,
+     "err": 1,
+     "loss": 2
+    },
+    {
+     "k": "too-passive",
+     "n": 1,
+     "err": 1,
+     "loss": 1.7
+    }
+   ],
+   "mastery": {
+    "overbluff": {
+     "seen": 49,
+     "ok": 0,
+     "tier": 1,
+     "name": "En apprentissage",
+     "rate": 0
+    },
+    "missed-value": {
+     "seen": 2,
+     "ok": 0,
+     "tier": 0,
+     "name": "Découverte",
+     "rate": 0
+    },
+    "thin-value": {
+     "seen": 57,
+     "ok": 0,
+     "tier": 1,
+     "name": "En apprentissage",
+     "rate": 0
+    },
+    "too-passive": {
+     "seen": 1,
+     "ok": 0,
+     "tier": 0,
+     "name": "Découverte",
+     "rate": 0
+    },
+    "bb-overdefend": {
+     "seen": 1,
+     "ok": 0,
+     "tier": 0,
+     "name": "Découverte",
+     "rate": 0
+    }
+   }
+  },
+  "ms": 17267
+ },
+ {
+  "strat": "minbet",
+  "name": "Mini-mise systématique",
+  "levelKey": "debutant",
+  "modeKey": "libre",
+  "seed": 20260817,
+  "decisions": 500,
+  "hands": 137,
+  "handsFinished": 136,
+  "netBB": -1677.7000000000005,
+  "evLossTrue": 3442.6473290774675,
+  "verdicts": {
+   "correct": 151,
+   "acceptable": 104,
+   "erreur": 245
+  },
+  "chosenActs": {
+   "raise": 169,
+   "bet": 329,
+   "call": 2
+  },
+  "snaps": [
+   {
+    "at": 50,
+    "hands": 17,
+    "handsFinished": 16,
+    "netBB": -108.09999999999997,
+    "evLossTrue": 569.2930702432001,
+    "verdicts": {
+     "correct": 13,
+     "acceptable": 9,
+     "erreur": 28
+    },
+    "xp": 266,
+    "niveau": 2,
+    "nextLevelXp": 360,
+    "accuracyPct": 44,
+    "correctPct": 26,
+    "evLossCompte": 558.49,
+    "evLossReelle": 569.29,
+    "rating": 93,
+    "ratingTier": "Débutant",
+    "ratingSkills": {
+     "table": 11,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 0
+    },
+    "disciplineScore": 0,
+    "careerSkills": {
+     "Sélection préflop": 82.4,
+     "Jeu au flop": 50,
+     "Jeu au turn": null,
+     "Décisions river": null,
+     "Jeu en position": 40.9,
+     "Défense des blindes": 43.5
+    },
+    "leaks": [
+     {
+      "k": "overbluff",
+      "n": 6,
+      "err": 6,
+      "loss": 168.5
+     },
+     {
+      "k": "thin-value",
+      "n": 12,
+      "err": 12,
+      "loss": 97.3
+     },
+     {
+      "k": "river-call",
+      "n": 1,
+      "err": 1,
+      "loss": 10.4
+     }
+    ],
+    "mastery": {
+     "overbluff": {
+      "seen": 6,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     },
+     "thin-value": {
+      "seen": 12,
+      "ok": 0,
+      "tier": 1,
+      "name": "En apprentissage",
+      "rate": 0
+     },
+     "river-call": {
+      "seen": 1,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     }
+    }
+   },
+   {
+    "at": 200,
+    "hands": 55,
+    "handsFinished": 54,
+    "netBB": -256.5,
+    "evLossTrue": 1467.2823232869027,
+    "verdicts": {
+     "correct": 63,
+     "acceptable": 42,
+     "erreur": 95
+    },
+    "xp": 1198,
+    "niveau": 4,
+    "nextLevelXp": 1440,
+    "accuracyPct": 52.5,
+    "correctPct": 31.5,
+    "evLossCompte": 1408.06,
+    "evLossReelle": 1467.28,
+    "rating": 177,
+    "ratingTier": "Débutant",
+    "ratingSkills": {
+     "table": 21,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 0
+    },
+    "disciplineScore": 0,
+    "careerSkills": {
+     "Sélection préflop": 82.5,
+     "Jeu au flop": 64.8,
+     "Jeu au turn": 29.4,
+     "Décisions river": 21.1,
+     "Jeu en position": 46.3,
+     "Défense des blindes": 59.1
+    },
+    "leaks": [
+     {
+      "k": "overbluff",
+      "n": 25,
+      "err": 25,
+      "loss": 382.5
+     },
+     {
+      "k": "thin-value",
+      "n": 30,
+      "err": 30,
+      "loss": 265.4
+     },
+     {
+      "k": "river-call",
+      "n": 1,
+      "err": 1,
+      "loss": 10.4
+     }
+    ],
+    "mastery": {
+     "overbluff": {
+      "seen": 25,
+      "ok": 0,
+      "tier": 1,
+      "name": "En apprentissage",
+      "rate": 0
+     },
+     "thin-value": {
+      "seen": 30,
+      "ok": 0,
+      "tier": 1,
+      "name": "En apprentissage",
+      "rate": 0
+     },
+     "river-call": {
+      "seen": 1,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     }
+    }
+   },
+   {
+    "at": 500,
+    "hands": 137,
+    "handsFinished": 136,
+    "netBB": -1677.7000000000005,
+    "evLossTrue": 3442.6473290774675,
+    "verdicts": {
+     "correct": 151,
+     "acceptable": 104,
+     "erreur": 245
+    },
+    "xp": 2926,
+    "niveau": 6,
+    "nextLevelXp": 3240,
+    "accuracyPct": 51,
+    "correctPct": 30.2,
+    "evLossCompte": 3286.99,
+    "evLossReelle": 3442.65,
+    "rating": 253,
+    "ratingTier": "Débutant",
+    "ratingSkills": {
+     "table": 30,
+     "range": 0,
+     "profiling": 0,
+     "blockers": 0,
+     "discipline": 0
+    },
+    "disciplineScore": 0,
+    "careerSkills": {
+     "Sélection préflop": 86.4,
+     "Jeu au flop": 56.9,
+     "Jeu au turn": 32.5,
+     "Décisions river": 15.5,
+     "Jeu en position": 49.1,
+     "Défense des blindes": 54
+    },
+    "leaks": [
+     {
+      "k": "overbluff",
+      "n": 74,
+      "err": 74,
+      "loss": 968.2
+     },
+     {
+      "k": "thin-value",
+      "n": 69,
+      "err": 69,
+      "loss": 704
+     },
+     {
+      "k": "river-call",
+      "n": 2,
+      "err": 2,
+      "loss": 35.3
+     }
+    ],
+    "mastery": {
+     "overbluff": {
+      "seen": 74,
+      "ok": 0,
+      "tier": 1,
+      "name": "En apprentissage",
+      "rate": 0
+     },
+     "thin-value": {
+      "seen": 69,
+      "ok": 0,
+      "tier": 1,
+      "name": "En apprentissage",
+      "rate": 0
+     },
+     "river-call": {
+      "seen": 2,
+      "ok": 0,
+      "tier": 0,
+      "name": "Découverte",
+      "rate": 0
+     }
+    }
+   }
+  ],
+  "final": {
+   "at": 500,
+   "hands": 137,
+   "handsFinished": 136,
+   "netBB": -1677.7000000000005,
+   "evLossTrue": 3442.6473290774675,
+   "verdicts": {
+    "correct": 151,
+    "acceptable": 104,
+    "erreur": 245
+   },
+   "xp": 2926,
+   "niveau": 6,
+   "nextLevelXp": 3240,
+   "accuracyPct": 51,
+   "correctPct": 30.2,
+   "evLossCompte": 3286.99,
+   "evLossReelle": 3442.65,
+   "rating": 253,
+   "ratingTier": "Débutant",
+   "ratingSkills": {
+    "table": 30,
+    "range": 0,
+    "profiling": 0,
+    "blockers": 0,
+    "discipline": 0
+   },
+   "disciplineScore": 0,
+   "careerSkills": {
+    "Sélection préflop": 86.4,
+    "Jeu au flop": 56.9,
+    "Jeu au turn": 32.5,
+    "Décisions river": 15.5,
+    "Jeu en position": 49.1,
+    "Défense des blindes": 54
+   },
+   "leaks": [
+    {
+     "k": "overbluff",
+     "n": 74,
+     "err": 74,
+     "loss": 968.2
+    },
+    {
+     "k": "thin-value",
+     "n": 69,
+     "err": 69,
+     "loss": 704
+    },
+    {
+     "k": "river-call",
+     "n": 2,
+     "err": 2,
+     "loss": 35.3
+    }
+   ],
+   "mastery": {
+    "overbluff": {
+     "seen": 74,
+     "ok": 0,
+     "tier": 1,
+     "name": "En apprentissage",
+     "rate": 0
+    },
+    "thin-value": {
+     "seen": 69,
+     "ok": 0,
+     "tier": 1,
+     "name": "En apprentissage",
+     "rate": 0
+    },
+    "river-call": {
+     "seen": 2,
+     "ok": 0,
+     "tier": 0,
+     "name": "Découverte",
+     "rate": 0
+    }
+   }
+  },
+  "ms": 13768
+ }
+]

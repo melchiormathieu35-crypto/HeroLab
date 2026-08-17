@@ -1,1 +1,9 @@
 intermediaire oracle: 500 déc / 281 mains · xp=6000 niv=9 rating=1421 evReel=0 (16s)
+intermediaire heuristique: 500 déc / 340 mains · xp=4954 niv=8 rating=922 evReel=497.43 (17s)
+intermediaire fold: 500 déc / 447 mains · xp=5224 niv=8 rating=1189 evReel=136.97 (18s)
+intermediaire station: 500 déc / 106 mains · xp=3980 niv=7 rating=421 evReel=1317.46 (13s)
+intermediaire allin: 500 déc / 500 mains · xp=1042 niv=4 rating=8 evReel=4940.24 (20s)
+intermediaire aleatoire: 500 déc / 236 mains · xp=3014 niv=6 rating=278 evReel=2905.14 (15s)
+intermediaire rotation: 500 déc / 243 mains · xp=3164 niv=6 rating=303 evReel=3221.06 (16s)
+intermediaire minbet: 500 déc / 156 mains · xp=2718 niv=6 rating=227 evReel=2312.04 (14s)
+écrit exp1_intermediaire.json

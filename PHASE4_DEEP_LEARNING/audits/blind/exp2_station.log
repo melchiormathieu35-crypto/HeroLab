@@ -1,0 +1,6 @@
+station s1 NL2 mains=500 déc=1741 acc=77.6% bb100=-245.3 br=15.47 promo=false
+station s2 NL2 mains=1000 déc=3475 acc=80.9% bb100=-219.0 br=40 promo=false
+station s3 NL2 mains=1500 déc=5123 acc=77.8% bb100=-328.4 br=7.16 promo=false
+station s4 NL2 mains=2000 déc=6867 acc=76.1% bb100=-251.5 br=40 promo=false
+station s5 NL2 mains=2500 déc=8540 acc=75.4% bb100=-221.5 br=17.85 promo=false
+écrit exp2_station.json

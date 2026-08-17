@@ -1,1 +1,9 @@
 gto oracle: 500 déc / 368 mains · xp=6000 niv=9 rating=1421 evReel=0 (17s)
+gto heuristique: 500 déc / 355 mains · xp=4516 niv=8 rating=982 evReel=229.15 (17s)
+gto fold: 500 déc / 500 mains · xp=4610 niv=8 rating=1077 evReel=94.15 (18s)
+gto station: 500 déc / 106 mains · xp=3374 niv=7 rating=376 evReel=910.17 (11s)
+gto allin: 500 déc / 500 mains · xp=1048 niv=4 rating=8 evReel=4453.14 (19s)
+gto aleatoire: 500 déc / 274 mains · xp=2764 niv=6 rating=269 evReel=1380.14 (15s)
+gto rotation: 500 déc / 291 mains · xp=2890 niv=6 rating=269 evReel=1166.63 (17s)
+gto minbet: 500 déc / 219 mains · xp=2570 niv=6 rating=219 evReel=1471.02 (16s)
+écrit exp1_gto.json

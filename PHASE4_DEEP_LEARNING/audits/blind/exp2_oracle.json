@@ -1,0 +1,348 @@
+{
+ "strat": "oracle",
+ "sessionLength": "long",
+ "handsMax": 2500,
+ "totalHands": 2500,
+ "totalDecisions": 4473,
+ "sessions": 5,
+ "promoted": {
+  "session": 5,
+  "totalDecisions": 4473,
+  "totalHands": 2500
+ },
+ "guardChecks": 2569,
+ "handsPerDecision": 0.559,
+ "finalCareer": {
+  "tierIndex": 1,
+  "bankroll": 188.11,
+  "totalHands": 2500,
+  "badges": [
+   "first_session",
+   "acc_80",
+   "acc_90",
+   "winner",
+   "big_win",
+   "vol_1000",
+   "tier_NL5"
+  ],
+  "tierStats": {
+   "NL2": {
+    "hands": 2500,
+    "decisions": 4473,
+    "accurate": 4473,
+    "errors": 0,
+    "bb": 7405.5,
+    "net": 148.10999999999993,
+    "evLoss": 0,
+    "sessions": 5,
+    "leakBaseline": {},
+    "leakRecent": {}
+   },
+   "NL5": {
+    "hands": 0,
+    "decisions": 0,
+    "accurate": 0,
+    "errors": 0,
+    "bb": 0,
+    "net": 0,
+    "evLoss": 0,
+    "sessions": 0,
+    "leakBaseline": {},
+    "leakRecent": {}
+   }
+  }
+ },
+ "finalMeasure": {
+  "at": 4473,
+  "hands": 2500,
+  "evLossTrue": 0,
+  "xp": 53676,
+  "niveau": 25,
+  "nextLevelXp": 56250,
+  "accuracyPct": 100,
+  "correctPct": 100,
+  "evLossCompte": 0,
+  "evLossReelle": 0,
+  "rating": 1421,
+  "ratingTier": "Compétent",
+  "ratingSkills": {
+   "table": 100,
+   "range": 0,
+   "profiling": 0,
+   "blockers": 0,
+   "discipline": 100
+  },
+  "disciplineScore": 100,
+  "careerSkills": {
+   "Sélection préflop": 100,
+   "Jeu au flop": 100,
+   "Jeu au turn": 100,
+   "Décisions river": 100,
+   "Jeu en position": 100,
+   "Défense des blindes": 100
+  },
+  "leaks": [],
+  "mastery": {}
+ },
+ "trace": [
+  {
+   "session": 1,
+   "tier": "NL2",
+   "totalHands": 500,
+   "totalDecisions": 903,
+   "handsPerDecision": 0.554,
+   "accuracy": 100,
+   "bb100": 150.5,
+   "netBB": 752.5,
+   "bankroll": 55.05,
+   "buyinsNext": 11.01,
+   "tierIndex": 0,
+   "badges": [
+    "first_session",
+    "acc_80",
+    "acc_90",
+    "winner",
+    "big_win"
+   ],
+   "canPromote": false,
+   "reason": "bankroll",
+   "goals": {
+    "volume": {
+     "cur": 500,
+     "target": 2500,
+     "pct": 20,
+     "locked": false
+    },
+    "winrate": {
+     "cur": 150.5,
+     "target": 2,
+     "pct": 100,
+     "locked": false
+    },
+    "accuracy": {
+     "cur": 100,
+     "target": 68,
+     "pct": 100,
+     "locked": false
+    },
+    "bankroll": {
+     "cur": 11.01,
+     "target": 30,
+     "pct": 36.7,
+     "locked": false
+    }
+   },
+   "xp": 10836,
+   "niveau": 11,
+   "rating": 1421
+  },
+  {
+   "session": 2,
+   "tier": "NL2",
+   "totalHands": 1000,
+   "totalDecisions": 1782,
+   "handsPerDecision": 0.561,
+   "accuracy": 100,
+   "bb100": 123,
+   "netBB": 615,
+   "bankroll": 67.35,
+   "buyinsNext": 13.47,
+   "tierIndex": 0,
+   "badges": [
+    "first_session",
+    "acc_80",
+    "acc_90",
+    "winner",
+    "big_win",
+    "vol_1000"
+   ],
+   "canPromote": false,
+   "reason": "bankroll",
+   "goals": {
+    "volume": {
+     "cur": 1000,
+     "target": 2500,
+     "pct": 40,
+     "locked": false
+    },
+    "winrate": {
+     "cur": 136.75,
+     "target": 2,
+     "pct": 100,
+     "locked": false
+    },
+    "accuracy": {
+     "cur": 100,
+     "target": 68,
+     "pct": 100,
+     "locked": false
+    },
+    "bankroll": {
+     "cur": 13.47,
+     "target": 30,
+     "pct": 44.9,
+     "locked": false
+    }
+   },
+   "xp": 21384,
+   "niveau": 16,
+   "rating": 1421
+  },
+  {
+   "session": 3,
+   "tier": "NL2",
+   "totalHands": 1500,
+   "totalDecisions": 2663,
+   "handsPerDecision": 0.563,
+   "accuracy": 100,
+   "bb100": 406.1,
+   "netBB": 2030.5,
+   "bankroll": 107.96,
+   "buyinsNext": 21.59,
+   "tierIndex": 0,
+   "badges": [
+    "first_session",
+    "acc_80",
+    "acc_90",
+    "winner",
+    "big_win",
+    "vol_1000"
+   ],
+   "canPromote": false,
+   "reason": "bankroll",
+   "goals": {
+    "volume": {
+     "cur": 1500,
+     "target": 2500,
+     "pct": 60,
+     "locked": false
+    },
+    "winrate": {
+     "cur": 226.53,
+     "target": 2,
+     "pct": 100,
+     "locked": false
+    },
+    "accuracy": {
+     "cur": 100,
+     "target": 68,
+     "pct": 100,
+     "locked": false
+    },
+    "bankroll": {
+     "cur": 21.59,
+     "target": 30,
+     "pct": 72,
+     "locked": false
+    }
+   },
+   "xp": 31956,
+   "niveau": 19,
+   "rating": 1421
+  },
+  {
+   "session": 4,
+   "tier": "NL2",
+   "totalHands": 2000,
+   "totalDecisions": 3627,
+   "handsPerDecision": 0.551,
+   "accuracy": 100,
+   "bb100": 623.9,
+   "netBB": 3119.5,
+   "bankroll": 170.35,
+   "buyinsNext": 34.07,
+   "tierIndex": 0,
+   "badges": [
+    "first_session",
+    "acc_80",
+    "acc_90",
+    "winner",
+    "big_win",
+    "vol_1000"
+   ],
+   "canPromote": false,
+   "reason": "objectifs",
+   "goals": {
+    "volume": {
+     "cur": 2000,
+     "target": 2500,
+     "pct": 80,
+     "locked": false
+    },
+    "winrate": {
+     "cur": 325.88,
+     "target": 2,
+     "pct": 100,
+     "locked": false
+    },
+    "accuracy": {
+     "cur": 100,
+     "target": 68,
+     "pct": 100,
+     "locked": false
+    },
+    "bankroll": {
+     "cur": 34.07,
+     "target": 30,
+     "pct": 100,
+     "locked": false
+    }
+   },
+   "xp": 43524,
+   "niveau": 22,
+   "rating": 1421
+  },
+  {
+   "session": 5,
+   "tier": "NL2",
+   "totalHands": 2500,
+   "totalDecisions": 4473,
+   "handsPerDecision": 0.559,
+   "accuracy": 100,
+   "bb100": 177.6,
+   "netBB": 888,
+   "bankroll": 188.11,
+   "buyinsNext": 37.62,
+   "tierIndex": 0,
+   "badges": [
+    "first_session",
+    "acc_80",
+    "acc_90",
+    "winner",
+    "big_win",
+    "vol_1000"
+   ],
+   "canPromote": true,
+   "reason": "ok",
+   "goals": {
+    "volume": {
+     "cur": 2500,
+     "target": 2500,
+     "pct": 100,
+     "locked": false
+    },
+    "winrate": {
+     "cur": 296.22,
+     "target": 2,
+     "pct": 100,
+     "locked": false
+    },
+    "accuracy": {
+     "cur": 100,
+     "target": 68,
+     "pct": 100,
+     "locked": false
+    },
+    "bankroll": {
+     "cur": 37.62,
+     "target": 30,
+     "pct": 100,
+     "locked": false
+    }
+   },
+   "xp": 53676,
+   "niveau": 25,
+   "rating": 1421
+  }
+ ]
+}

@@ -1,0 +1,267 @@
+{
+ "A_seuil_par_niveau": {
+  "n": 220,
+  "note": "mêmes décisions, mêmes pertes d'EV, seul le seuil change",
+  "verdicts": {
+   "debutant": {
+    "tolerance": 0.14,
+    "mult": 1.4,
+    "justessePct": 95.9,
+    "correctPct": 81.8,
+    "xp": 2364,
+    "evLossReelle": 55.5,
+    "evLossCompte": 21.1,
+    "occultePct": 61.9
+   },
+   "intermediaire": {
+    "tolerance": 0.1,
+    "mult": 1,
+    "justessePct": 94.5,
+    "correctPct": 76.8,
+    "xp": 2286,
+    "evLossReelle": 55.5,
+    "evLossCompte": 25,
+    "occultePct": 54.9
+   },
+   "avance": {
+    "tolerance": 0.07,
+    "mult": 0.7,
+    "justessePct": 90.5,
+    "correctPct": 74.1,
+    "xp": 2214,
+    "evLossReelle": 55.5,
+    "evLossCompte": 33.3,
+    "occultePct": 40
+   },
+   "pro": {
+    "tolerance": 0.05,
+    "mult": 0.5,
+    "justessePct": 82.7,
+    "correctPct": 70.9,
+    "xp": 2104,
+    "evLossReelle": 55.5,
+    "evLossCompte": 44,
+    "occultePct": 20.6
+   },
+   "gto": {
+    "tolerance": 0.04,
+    "mult": 0.4,
+    "justessePct": 77.7,
+    "correctPct": 69.1,
+    "xp": 2036,
+    "evLossReelle": 55.5,
+    "evLossCompte": 49.4,
+    "occultePct": 10.9
+   },
+   "exploit": {
+    "tolerance": 0.08,
+    "mult": 0.8,
+    "justessePct": 92.7,
+    "correctPct": 75,
+    "xp": 2246,
+    "evLossReelle": 55.5,
+    "evLossCompte": 29.3,
+    "occultePct": 47.2
+   }
+  }
+ },
+ "B_maitrise_et_missions": {
+  "note": "recordMastery n'est appelable qu'avec ok=false : Progress.tags (l.4686) ne produit de tag leak: que sur verdict==='erreur'",
+  "res": {
+   "oracle": {
+    "decisions": 300,
+    "justessePct": 100,
+    "masteryTotalSeen": 0,
+    "masteryTotalOk": 0,
+    "palierMaxAtteint": 0,
+    "missions": []
+   },
+   "fold": {
+    "decisions": 300,
+    "justessePct": 95.33,
+    "masteryTotalSeen": 2,
+    "masteryTotalOk": 0,
+    "palierMaxAtteint": 0,
+    "missions": []
+   },
+   "rotation": {
+    "decisions": 300,
+    "justessePct": 52.33,
+    "masteryTotalSeen": 67,
+    "masteryTotalOk": 0,
+    "palierMaxAtteint": 1,
+    "missions": [
+     {
+      "titre": "Value bet plus juste",
+      "fait": 20,
+      "cible": 20,
+      "pctBarre": 100,
+      "tauxReussite": 0,
+      "complete": false,
+      "palierMaitrise": "En apprentissage",
+      "tier": 1
+     },
+     {
+      "titre": "Doser tes bluffs",
+      "fait": 17,
+      "cible": 20,
+      "pctBarre": 85,
+      "tauxReussite": 0,
+      "complete": false,
+      "palierMaitrise": "En apprentissage",
+      "tier": 1
+     },
+     {
+      "titre": "Resserrer ta défense de BB",
+      "fait": 5,
+      "cible": 20,
+      "pctBarre": 25,
+      "tauxReussite": 0,
+      "complete": false,
+      "palierMaitrise": "Découverte",
+      "tier": 0
+     },
+     {
+      "titre": "Extraire toute ta valeur",
+      "fait": 3,
+      "cible": 20,
+      "pctBarre": 15,
+      "tauxReussite": 0,
+      "complete": false,
+      "palierMaitrise": "Découverte",
+      "tier": 0
+     }
+    ]
+   },
+   "station": {
+    "decisions": 300,
+    "justessePct": 69,
+    "masteryTotalSeen": 52,
+    "masteryTotalOk": 0,
+    "palierMaxAtteint": 1,
+    "missions": [
+     {
+      "titre": "Prendre l'initiative",
+      "fait": 18,
+      "cible": 20,
+      "pctBarre": 90,
+      "tauxReussite": 0,
+      "complete": false,
+      "palierMaitrise": "En apprentissage",
+      "tier": 1
+     },
+     {
+      "titre": "Discipliner tes calls river",
+      "fait": 9,
+      "cible": 20,
+      "pctBarre": 45,
+      "tauxReussite": 0,
+      "complete": false,
+      "palierMaitrise": "Découverte",
+      "tier": 0
+     },
+     {
+      "titre": "Extraire toute ta valeur",
+      "fait": 18,
+      "cible": 20,
+      "pctBarre": 90,
+      "tauxReussite": 0,
+      "complete": false,
+      "palierMaitrise": "En apprentissage",
+      "tier": 1
+     },
+     {
+      "titre": "Resserrer ta défense de BB",
+      "fait": 6,
+      "cible": 20,
+      "pctBarre": 30,
+      "tauxReussite": 0,
+      "complete": false,
+      "palierMaitrise": "Découverte",
+      "tier": 0
+     }
+    ]
+   }
+  }
+ },
+ "D_recit_amelioration": {
+  "note": "Journey.story l.6446 : (nowLoss < beforeLoss*0.85) OU (mastery.seen >= 15). mastery.seen ne compte QUE des échecs.",
+  "leakSuivi": "thin-value",
+  "perteAvant": 217.5,
+  "perteApres": 217.5,
+  "masterySeen": 17,
+  "masteryOk": 0,
+  "ameliorationDeclaree": true,
+  "dropPctAffiche": 0
+ },
+ "E_arithmetique_promotion": {
+  "note": "Goals.allMet exige les 4 objectifs à 100 % ; promotionStatus exige EN PLUS Bankroll.canMoveUp",
+  "bankrollDepart": 40,
+  "bankrollExigee": 150,
+  "gainEuros": 110,
+  "gainEnBB_NL2": 5500,
+  "mainsMin": 2500,
+  "winrateExigeParObjectif": 2,
+  "winrateImpliqueParBankroll_bb100": 220,
+  "facteurEcart": 110,
+  "mainsNecessairesAuWinrateExige": 275000,
+  "filetBanqueroute": "bankroll < 6 € -> remise à 40 € (Career.closeSession l.5692)"
+ },
+ "F_plancher_xp": {
+  "note": "Progress.record l.4741-4743 : gain XP fonction du seul verdict. Aucun terme de niveau, mode, limite ou volume de pot.",
+  "rows": {
+   "50": {
+    "parfait": {
+     "xp": 600,
+     "niveau": 3
+    },
+    "pire": {
+     "xp": 100,
+     "niveau": 2
+    },
+    "ratioXP": 0.167,
+    "ratioNiveau": 0.667,
+    "decisionsPourEgalerLeParfait": 300
+   },
+   "200": {
+    "parfait": {
+     "xp": 2400,
+     "niveau": 6
+    },
+    "pire": {
+     "xp": 400,
+     "niveau": 3
+    },
+    "ratioXP": 0.167,
+    "ratioNiveau": 0.5,
+    "decisionsPourEgalerLeParfait": 1200
+   },
+   "500": {
+    "parfait": {
+     "xp": 6000,
+     "niveau": 9
+    },
+    "pire": {
+     "xp": 1000,
+     "niveau": 4
+    },
+    "ratioXP": 0.167,
+    "ratioNiveau": 0.444,
+    "decisionsPourEgalerLeParfait": 3000
+   },
+   "2000": {
+    "parfait": {
+     "xp": 24000,
+     "niveau": 17
+    },
+    "pire": {
+     "xp": 4000,
+     "niveau": 7
+    },
+    "ratioXP": 0.167,
+    "ratioNiveau": 0.412,
+    "decisionsPourEgalerLeParfait": 12000
+   }
+  }
+ }
+}

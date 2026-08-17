@@ -1,0 +1,467 @@
+{
+ "strat": "heuristique",
+ "sessionLength": "long",
+ "handsMax": 2500,
+ "totalHands": 2500,
+ "totalDecisions": 3568,
+ "sessions": 5,
+ "promoted": null,
+ "guardChecks": 2588,
+ "handsPerDecision": 0.701,
+ "finalCareer": {
+  "tierIndex": 0,
+  "bankroll": 23.58,
+  "totalHands": 2500,
+  "badges": [
+   "first_session",
+   "acc_80",
+   "discipline",
+   "vol_1000",
+   "fixer",
+   "winner",
+   "big_win"
+  ],
+  "tierStats": {
+   "NL2": {
+    "hands": 2500,
+    "decisions": 3568,
+    "accurate": 2982,
+    "errors": 586,
+    "bb": -821,
+    "net": -16.41999999999988,
+    "evLoss": 5909.239029421184,
+    "sessions": 5,
+    "leakBaseline": {
+     "thin-value": 0.008119079837618403,
+     "missed-value": 0.02706359945872801,
+     "too-passive": 0.012178619756427604,
+     "river-call": 0.0040595399188092015,
+     "river-fold": 0.0013531799729364006,
+     "underbluff": 0.001379310344827586,
+     "bb-underdefend": 0.001379310344827586
+    },
+    "leakRecent": {
+     "missed-value": 0.023480662983425413,
+     "river-call": 0.012430939226519336,
+     "thin-value": 0.006906077348066298,
+     "too-passive": 0.006906077348066298,
+     "bb-underdefend": 0.0013812154696132596,
+     "underbluff": 0.0013812154696132596
+    }
+   }
+  }
+ },
+ "finalMeasure": {
+  "at": 3568,
+  "hands": 2500,
+  "evLossTrue": 0,
+  "xp": 33620,
+  "niveau": 20,
+  "nextLevelXp": 36000,
+  "accuracyPct": 83.33,
+  "correctPct": 67.63,
+  "evLossCompte": 5011.67,
+  "evLossReelle": 0,
+  "rating": 619,
+  "ratingTier": "Apprenti",
+  "ratingSkills": {
+   "table": 68,
+   "range": 0,
+   "profiling": 0,
+   "blockers": 0,
+   "discipline": 8
+  },
+  "disciplineScore": 8,
+  "careerSkills": {
+   "Sélection préflop": 96.7,
+   "Jeu au flop": 72.8,
+   "Jeu au turn": 63.5,
+   "Décisions river": 72.7,
+   "Jeu en position": 83,
+   "Défense des blindes": 85.3
+  },
+  "leaks": [
+   {
+    "k": "missed-value",
+    "n": 93,
+    "err": 93,
+    "loss": 426.3
+   },
+   {
+    "k": "river-call",
+    "n": 34,
+    "err": 34,
+    "loss": 380.7
+   },
+   {
+    "k": "too-passive",
+    "n": 35,
+    "err": 35,
+    "loss": 242.1
+   },
+   {
+    "k": "thin-value",
+    "n": 28,
+    "err": 28,
+    "loss": 109.2
+   },
+   {
+    "k": "underbluff",
+    "n": 2,
+    "err": 2,
+    "loss": 7.9
+   },
+   {
+    "k": "river-fold",
+    "n": 1,
+    "err": 1,
+    "loss": 5.8
+   },
+   {
+    "k": "bb-underdefend",
+    "n": 2,
+    "err": 2,
+    "loss": 4
+   }
+  ],
+  "mastery": {
+   "thin-value": {
+    "seen": 28,
+    "ok": 0,
+    "tier": 1,
+    "name": "En apprentissage",
+    "rate": 0
+   },
+   "missed-value": {
+    "seen": 93,
+    "ok": 0,
+    "tier": 1,
+    "name": "En apprentissage",
+    "rate": 0
+   },
+   "too-passive": {
+    "seen": 35,
+    "ok": 0,
+    "tier": 1,
+    "name": "En apprentissage",
+    "rate": 0
+   },
+   "river-call": {
+    "seen": 34,
+    "ok": 0,
+    "tier": 1,
+    "name": "En apprentissage",
+    "rate": 0
+   },
+   "river-fold": {
+    "seen": 1,
+    "ok": 0,
+    "tier": 0,
+    "name": "Découverte",
+    "rate": 0
+   },
+   "underbluff": {
+    "seen": 2,
+    "ok": 0,
+    "tier": 0,
+    "name": "Découverte",
+    "rate": 0
+   },
+   "bb-underdefend": {
+    "seen": 2,
+    "ok": 0,
+    "tier": 0,
+    "name": "Découverte",
+    "rate": 0
+   }
+  }
+ },
+ "trace": [
+  {
+   "session": 1,
+   "tier": "NL2",
+   "totalHands": 500,
+   "totalDecisions": 739,
+   "handsPerDecision": 0.677,
+   "accuracy": 83.76,
+   "bb100": -70.5,
+   "netBB": -352.5,
+   "bankroll": 32.95,
+   "buyinsNext": 6.59,
+   "tierIndex": 0,
+   "badges": [
+    "first_session",
+    "acc_80",
+    "discipline"
+   ],
+   "canPromote": false,
+   "reason": "bankroll",
+   "goals": {
+    "volume": {
+     "cur": 500,
+     "target": 2500,
+     "pct": 20,
+     "locked": false
+    },
+    "winrate": {
+     "cur": -70.5,
+     "target": 2,
+     "pct": 0,
+     "locked": false
+    },
+    "accuracy": {
+     "cur": 83.76,
+     "target": 68,
+     "pct": 100,
+     "locked": false
+    },
+    "bankroll": {
+     "cur": 6.59,
+     "target": 30,
+     "pct": 22,
+     "locked": false
+    },
+    "leak": {
+     "cur": 0,
+     "target": 30,
+     "pct": 0,
+     "locked": false
+    }
+   },
+   "xp": 6990,
+   "niveau": 9,
+   "rating": 607
+  },
+  {
+   "session": 2,
+   "tier": "NL2",
+   "totalHands": 1000,
+   "totalDecisions": 1422,
+   "handsPerDecision": 0.703,
+   "accuracy": 81.84,
+   "bb100": -131.4,
+   "netBB": -657,
+   "bankroll": 19.81,
+   "buyinsNext": 3.96,
+   "tierIndex": 0,
+   "badges": [
+    "first_session",
+    "acc_80",
+    "discipline",
+    "vol_1000"
+   ],
+   "canPromote": false,
+   "reason": "bankroll",
+   "goals": {
+    "volume": {
+     "cur": 1000,
+     "target": 2500,
+     "pct": 40,
+     "locked": false
+    },
+    "winrate": {
+     "cur": -100.95,
+     "target": 2,
+     "pct": 0,
+     "locked": false
+    },
+    "accuracy": {
+     "cur": 82.84,
+     "target": 68,
+     "pct": 100,
+     "locked": false
+    },
+    "bankroll": {
+     "cur": 3.96,
+     "target": 30,
+     "pct": 13.2,
+     "locked": false
+    },
+    "leak": {
+     "cur": 0,
+     "target": 30,
+     "pct": 0,
+     "locked": false
+    }
+   },
+   "xp": 13250,
+   "niveau": 13,
+   "rating": 593
+  },
+  {
+   "session": 3,
+   "tier": "NL2",
+   "totalHands": 1500,
+   "totalDecisions": 2119,
+   "handsPerDecision": 0.708,
+   "accuracy": 84.51,
+   "bb100": -56.4,
+   "netBB": -282,
+   "bankroll": 14.17,
+   "buyinsNext": 2.83,
+   "tierIndex": 0,
+   "badges": [
+    "first_session",
+    "acc_80",
+    "discipline",
+    "vol_1000",
+    "fixer"
+   ],
+   "canPromote": false,
+   "reason": "bankroll",
+   "goals": {
+    "volume": {
+     "cur": 1500,
+     "target": 2500,
+     "pct": 60,
+     "locked": false
+    },
+    "winrate": {
+     "cur": -86.1,
+     "target": 2,
+     "pct": 0,
+     "locked": false
+    },
+    "accuracy": {
+     "cur": 83.39,
+     "target": 68,
+     "pct": 100,
+     "locked": false
+    },
+    "bankroll": {
+     "cur": 2.83,
+     "target": 30,
+     "pct": 9.4,
+     "locked": false
+    },
+    "leak": {
+     "cur": 36.38,
+     "target": 30,
+     "pct": 100,
+     "locked": false
+    }
+   },
+   "xp": 19856,
+   "niveau": 15,
+   "rating": 611
+  },
+  {
+   "session": 4,
+   "tier": "NL2",
+   "totalHands": 2000,
+   "totalDecisions": 2844,
+   "handsPerDecision": 0.703,
+   "accuracy": 84.69,
+   "bb100": 83.2,
+   "netBB": 416,
+   "bankroll": 22.49,
+   "buyinsNext": 4.5,
+   "tierIndex": 0,
+   "badges": [
+    "first_session",
+    "acc_80",
+    "discipline",
+    "vol_1000",
+    "fixer",
+    "winner",
+    "big_win"
+   ],
+   "canPromote": false,
+   "reason": "bankroll",
+   "goals": {
+    "volume": {
+     "cur": 2000,
+     "target": 2500,
+     "pct": 80,
+     "locked": false
+    },
+    "winrate": {
+     "cur": -43.77,
+     "target": 2,
+     "pct": 0,
+     "locked": false
+    },
+    "accuracy": {
+     "cur": 83.72,
+     "target": 68,
+     "pct": 100,
+     "locked": false
+    },
+    "bankroll": {
+     "cur": 4.5,
+     "target": 30,
+     "pct": 15,
+     "locked": false
+    },
+    "leak": {
+     "cur": 43.94,
+     "target": 30,
+     "pct": 100,
+     "locked": false
+    }
+   },
+   "xp": 26810,
+   "niveau": 18,
+   "rating": 631
+  },
+  {
+   "session": 5,
+   "tier": "NL2",
+   "totalHands": 2500,
+   "totalDecisions": 3568,
+   "handsPerDecision": 0.701,
+   "accuracy": 83.01,
+   "bb100": 10.9,
+   "netBB": 54.5,
+   "bankroll": 23.58,
+   "buyinsNext": 4.72,
+   "tierIndex": 0,
+   "badges": [
+    "first_session",
+    "acc_80",
+    "discipline",
+    "vol_1000",
+    "fixer",
+    "winner",
+    "big_win"
+   ],
+   "canPromote": false,
+   "reason": "bankroll",
+   "goals": {
+    "volume": {
+     "cur": 2500,
+     "target": 2500,
+     "pct": 100,
+     "locked": false
+    },
+    "winrate": {
+     "cur": -32.84,
+     "target": 2,
+     "pct": 0,
+     "locked": false
+    },
+    "accuracy": {
+     "cur": 83.58,
+     "target": 68,
+     "pct": 100,
+     "locked": false
+    },
+    "bankroll": {
+     "cur": 4.72,
+     "target": 30,
+     "pct": 15.7,
+     "locked": false
+    },
+    "leak": {
+     "cur": 13.24,
+     "target": 30,
+     "pct": 44.1,
+     "locked": false
+    }
+   },
+   "xp": 33620,
+   "niveau": 20,
+   "rating": 619
+  }
+ ]
+}

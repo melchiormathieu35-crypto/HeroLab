@@ -1,0 +1,6 @@
+fold s1 NL2 mains=500 déc=549 acc=94.9% bb100=-30.2 br=36.98 promo=false
+fold s2 NL2 mains=1000 déc=1110 acc=90.4% bb100=-125.1 br=24.47 promo=false
+fold s3 NL2 mains=1500 déc=1635 acc=91.6% bb100=-100.9 br=14.38 promo=false
+fold s4 NL2 mains=2000 déc=2179 acc=86.0% bb100=-127.5 br=40 promo=false
+fold s5 NL2 mains=2500 déc=2735 acc=92.8% bb100=-92.8 br=30.72 promo=false
+écrit exp2_fold.json

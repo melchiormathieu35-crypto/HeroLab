@@ -1,0 +1,6 @@
+heuristique s1 NL2 mains=500 déc=739 acc=83.8% bb100=-70.5 br=32.95 promo=false
+heuristique s2 NL2 mains=1000 déc=1422 acc=81.8% bb100=-131.4 br=19.81 promo=false
+heuristique s3 NL2 mains=1500 déc=2119 acc=84.5% bb100=-56.4 br=14.17 promo=false
+heuristique s4 NL2 mains=2000 déc=2844 acc=84.7% bb100=83.2 br=22.49 promo=false
+heuristique s5 NL2 mains=2500 déc=3568 acc=83.0% bb100=10.9 br=23.58 promo=false
+écrit exp2_heuristique.json

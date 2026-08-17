@@ -1,0 +1,6 @@
+oracle s1 NL2 mains=500 déc=903 acc=100.0% bb100=150.5 br=55.05 promo=false
+oracle s2 NL2 mains=1000 déc=1782 acc=100.0% bb100=123.0 br=67.35 promo=false
+oracle s3 NL2 mains=1500 déc=2663 acc=100.0% bb100=406.1 br=107.96 promo=false
+oracle s4 NL2 mains=2000 déc=3627 acc=100.0% bb100=623.9 br=170.35 promo=false
+oracle s5 NL2 mains=2500 déc=4473 acc=100.0% bb100=177.6 br=188.11 promo=true
+écrit exp2_oracle.json

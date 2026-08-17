@@ -1,0 +1,160 @@
+{
+ "HR": [
+  {
+   "diff": "debutant",
+   "policy": "top",
+   "spots": 120,
+   "avgPct": 62.8,
+   "axeRange": 63
+  },
+  {
+   "diff": "debutant",
+   "policy": "fixe",
+   "spots": 120,
+   "avgPct": 26.3,
+   "axeRange": 26
+  },
+  {
+   "diff": "debutant",
+   "policy": "aleatoire",
+   "spots": 120,
+   "avgPct": 48.6,
+   "axeRange": 49
+  },
+  {
+   "diff": "expert",
+   "policy": "top",
+   "spots": 120,
+   "avgPct": 68,
+   "axeRange": 68
+  },
+  {
+   "diff": "expert",
+   "policy": "fixe",
+   "spots": 120,
+   "avgPct": 41.1,
+   "axeRange": 41
+  },
+  {
+   "diff": "expert",
+   "policy": "aleatoire",
+   "spots": 120,
+   "avgPct": 51.3,
+   "axeRange": 51
+  }
+ ],
+ "BL": [
+  {
+   "diff": "expert",
+   "policy": "premier",
+   "spots": 120,
+   "avgPct": 48.3,
+   "types": {
+    "callfold": 40,
+    "advanced": 42,
+    "bluff": 38
+   },
+   "axeBlockers": 48
+  },
+  {
+   "diff": "expert",
+   "policy": "aleatoire",
+   "spots": 120,
+   "avgPct": 43.3,
+   "types": {
+    "callfold": 40,
+    "advanced": 42,
+    "bluff": 38
+   },
+   "axeBlockers": 43
+  },
+  {
+   "diff": "debutant",
+   "policy": "premier",
+   "spots": 120,
+   "avgPct": 20.8,
+   "types": {
+    "compare": 58,
+    "identify": 62
+   },
+   "axeBlockers": 21
+  },
+  {
+   "diff": "debutant",
+   "policy": "aleatoire",
+   "spots": 120,
+   "avgPct": 18.3,
+   "types": {
+    "compare": 58,
+    "identify": 62
+   },
+   "axeBlockers": 18
+  }
+ ],
+ "PR_calibration": {
+  "table": {
+   "0": {
+    "exact": 90,
+    "memeFamille": 70,
+    "plausible": 45,
+    "faux": 10
+   },
+   "25": {
+    "exact": 95,
+    "memeFamille": 65,
+    "plausible": 40,
+    "faux": 5
+   },
+   "50": {
+    "exact": 100,
+    "memeFamille": 60,
+    "plausible": 35,
+    "faux": 0
+   },
+   "75": {
+    "exact": 100,
+    "memeFamille": 55,
+    "plausible": 30,
+    "faux": 0
+   },
+   "100": {
+    "exact": 100,
+    "memeFamille": 50,
+    "plausible": 25,
+    "faux": 0
+   }
+  },
+  "verificationReelle_reponseFausse": {
+   "0": {
+    "score": 10,
+    "base": 0,
+    "calib": 10,
+    "tier": "faux"
+   },
+   "50": {
+    "score": 0,
+    "base": 0,
+    "calib": 0,
+    "tier": "faux"
+   },
+   "100": {
+    "score": 0,
+    "base": 0,
+    "calib": -10,
+    "tier": "faux"
+   }
+  }
+ },
+ "rating_simule": {
+  "note": "axes table/discipline = fold-bot mesuré (exp1 débutant 500 déc.) ; range/blockers = meilleures politiques triviales mesurées ici ; profiling laissé à 0",
+  "axes": {
+   "table": 81,
+   "range": 68,
+   "profiling": 0,
+   "blockers": 48,
+   "discipline": 91
+  },
+  "rating": 1819,
+  "palier": "Avancé"
+ }
+}

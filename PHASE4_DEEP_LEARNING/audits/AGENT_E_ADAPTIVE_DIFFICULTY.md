@@ -10,8 +10,12 @@ Les scripts de mesure sont décrits en §4.6 et sont réexécutables.
 **Lecture rapide** — les trois résultats à retenir : la difficulté est
 intégralement statique (§1.1) ; le *mode* fait 1,7 fois plus varier la difficulté
 que le *niveau* affiché au joueur (§1.5) ; le contrôleur proposé supprime l'ennui
-et le décrochage de façon démontrée, mais ne tient pas encore la bande 70-85 %
-sur le moteur réel — limite du générateur, correctif identifié (§5.1-5.2).
+et le décrochage de façon démontrée, mais se cale ~0.06 sous la bande 70-85 % —
+**défaut de réglage local et corrigeable, pas une limite de contenu** (§5, point 1).
+
+Deux hypothèses que j'ai formulées puis **invalidées par la mesure**, et qu'il ne
+faut donc pas re-proposer : le *dithering* de la consigne (§3.6) et la garde de
+confiance à z = 1.0 (§4.4). Le reset d'EWMA s'est révélé inerte (§4.5).
 
 ---
 
@@ -518,66 +522,59 @@ l'application. Le sweep du §4.4 montre que le temps de sauvetage p90 (sortir d'
 `G_dn = 2.0` et `2.5`). Le coût est de 5,7 points de temps en bande
 (83,1 % → 77,4 %). 1.6 est le coude de la courbe.
 
-### 3.6 Dithering — servir une distribution, pas un point
+### 3.6 Dithering — hypothèse testée puis ÉCARTÉE pour la commande
 
-La mesure du §4.2 montre que le générateur n'est pas un actionneur linéaire : il
-présente une **falaise** entre D = 0.30 (≈ 83 % de réussite) et D = 0.38 (≈ 60 %).
-Un contrôleur qui sert **tous** ses spots à un D unique se retrouve à osciller
-d'un bord à l'autre de la falaise — comportement mesuré au §4.3 (12 inversions
-sur 1 100 décisions, moyenne temporelle rabattue sur le bord facile).
+J'avais proposé de **ditherer** la consigne — servir `D_i ~ U(D−δ, D+δ)` au lieu
+de `D` — pour linéariser la falaise observée au §4.2 et rendre la bande
+atteignable. **La mesure invalide cette proposition.** Je la conserve ici avec son
+résultat, parce qu'un correctif écarté par les données est un résultat, et parce
+qu'il ne faut pas qu'on la re-propose plus tard.
 
-Le remède est classique en commande d'actionneur discontinu, et gratuit ici : on
-**dithere** la consigne. Au lieu de servir chaque spot à `D`, on tire
+**Mesure** (θ = 0.45, 220 spots par cellule, moteur réel, δ = 0.09) :
 
-```
-D_i ~ Uniforme(D − δ, D + δ),   δ = 0.09
-```
-
-et on passe `D_i` à `generateAt`. Le joueur rencontre alors un mélange de spots
-faciles et durs autour de la consigne ; le taux de réussite observé devient la
-**moyenne** de la réponse sur la fenêtre, ce qui la **linéarise** et rend la bande
-[70 %, 85 %] atteignable en régime.
-
-**Mesure** (θ = 0.45, 220 spots par cellule, moteur réel) :
-
-| D consigne | sans dithering | avec dithering δ = 0.09 |
+| D consigne | sans dithering | avec dithering |
 |---|---|---|
 | 0.22 | 98.6 % | 96.4 % |
 | 0.26 | 89.5 % | 88.2 % |
 | 0.30 | 80.5 % | 75.0 % |
 | 0.34 | 77.7 % | 76.4 % |
 | 0.38 | 68.6 % | 74.1 % |
+| 0.42 | **59.1 %** | **70.0 %** |
 
-**Ce que la mesure dit exactement — et ce qu'elle ne dit pas.** Le dithering
-**comprime la réponse** : l'amplitude passe de 30,0 points (98.6 → 68.6) à
-22,3 points (96.4 → 74.1), soit une pente réduite de 26 %. Il **lisse** donc bien
-la falaise, ce qui est l'effet recherché pour la stabilité. En revanche il
-**n'abaisse pas** le plateau : on ne peut pas moyenner son chemin vers un taux de
-réussite qu'aucun D ne produit. Le dithering est un correctif de **stabilité**,
-pas de **plage**.
+**Verdict : le dithering coûte de l'autorité de commande sans rien apporter.**
 
-Cette même mesure apporte un résultat plus important : **sans dithering, la
-réponse est ici monotone et traverse bien la bande cible** — 80.5 % à D = 0.30,
-77.7 % à D = 0.34, 68.6 % à D = 0.38. **La bande [70 %, 85 %] correspond donc à
-D ∈ [0.30, 0.36] environ.** Or le contrôleur se stabilise à D ≈ 0.25 (§4.3),
-soit **environ 0.06 trop bas** — un pas de commande. Ce biais est la conséquence
-directe et attendue de `G_dn = 1.6 · G_up` (§3.5), amplifiée par la pente locale
-élevée. Le réglage correctif est donc connu et local : réduire l'asymétrie vers
-`G_dn = 1.3 · G_up` en acceptant un sauvetage p90 de 86 au lieu de 76 (§4.4),
-ou décaler la bande de détection de +0.03. **À valider par une nouvelle passe du
-§4.3 avant déploiement** — je ne l'ai pas mesuré et ne le présente donc pas comme
-acquis.
+- Il **comprime** la réponse : l'amplitude tombe de **39,5 points**
+  (98.6 → 59.1) à **26,4 points** (96.4 → 70.0), soit **−33 % de pente**. Moins de
+  pente signifie moins d'autorité : le contrôleur doit bouger plus pour le même
+  effet.
+- Il **relève le bas de plage** : 59.1 % → 70.0 % à D = 0.42. Autrement dit il
+  **supprime la capacité à servir des spots réellement difficiles**, en les
+  moyennant avec des faciles. C'est l'inverse du besoin.
+- Et surtout, **il n'y avait pas de falaise à corriger dans cette zone** : la
+  colonne « sans dithering » est **monotone** de 98.6 % à 59.1 %, et traverse
+  proprement la bande. La non-monotonie du §4.2 apparaît au-delà de D ≈ 0.38 et
+  pour d'autres θ ; dans la zone où le contrôleur opère réellement, l'actionneur
+  se comporte bien.
 
-Deux bénéfices non techniques du dithering, indépendants de ce qui précède :
+**Conclusion : ne pas ditherer la consigne de difficulté.** Le mécanisme est
+retiré de la spécification et des constantes du §6.
 
-- **La variété intra-session est pédagogiquement supérieure** à une difficulté
-  uniforme (effet d'entrelacement), et elle évite au joueur de constater qu'on lui
-  sert dix fois le même type de situation.
-- **Le joueur rencontre encore des spots faciles ET des spots durs**, ce qui
-  maintient à la fois le sentiment de compétence et l'exposition au difficile.
+**Le résultat utile de cette mesure est ailleurs.** Elle donne l'étalonnage précis
+que la boucle fermée n'avait pas : **la bande [70 %, 85 %] correspond à
+D ∈ [0.29, 0.37]** (80.5 % à D = 0.30, 77.7 % à D = 0.34, 68.6 % à D = 0.38). Or
+le contrôleur se stabilise à **D ≈ 0.25** (§4.3), soit **~0.06 trop bas**, un pas
+de commande. Ce biais est la conséquence directe et attendue de
+`G_dn = 1.6 · G_up` (§3.5), amplifiée par la pente locale. Le correctif est donc
+connu et local : ramener l'asymétrie à `G_dn = 1.3 · G_up` (coût mesuré au §4.4 :
+sauvetage p90 de 86 au lieu de 76), ou décaler de +0.03 les seuils de détection.
+**Non mesuré — à valider par une nouvelle passe du §4.3 avant déploiement.**
 
-`δ = 0.09` couvre la largeur de la falaise (0.08). Coût nul : `generateAt` est
-déjà appelé une fois par spot.
+*Note pédagogique distincte de la commande :* varier la difficulté à l'intérieur
+d'une session reste souhaitable (effet d'entrelacement, et le joueur ne doit pas
+avoir l'impression qu'on lui sert dix fois la même situation). Mais cette variété
+existe déjà **gratuitement** : la dispersion intra-D mesurée au §4.3 est de 0.24
+d'écart-type sur `1 − F` à consigne fixe. Le générateur produit déjà de la
+variété ; inutile d'en ajouter au prix de l'autorité de commande.
 
 ### 3.7 Plafond et plancher
 
@@ -793,10 +790,20 @@ par point :
 **Bilan honnête de ce niveau de test.** Le contrôleur atteint son objectif
 premier — **supprimer les deux extrêmes** — de façon robuste et depuis n'importe
 quel point de départ : 100 % et 58 % sont ramenés à 84-88 %. Il **n'atteint pas**
-l'objectif secondaire de maintenir 70-85 %, parce que le générateur gelé n'offre
-aucun D qui produise durablement moins de ~82 % pour ce joueur (tableau de
-dispersion ci-dessus). Cette seconde promesse ne doit pas être affichée tant que
-le §3.6 n'a pas été validé par la mesure.
+l'objectif secondaire de maintenir 70-85 % : il se stabilise à 88-91 %.
+
+**Attention à la cause.** Le tableau de dispersion ci-dessus (D = 0.36 → 82.3 %)
+suggérait que le générateur ne savait pas descendre sous ~82 %. **Une mesure
+ultérieure, plus fine, contredit cette lecture** (§3.6) : à D = 0.38 le taux tombe
+à 68.6 %, et à D = 0.42 à 59.1 %. Les deux mesures sont à n = 220, soit
+± 2,7 points d'erreur-type, et portent sur des tirages différents — l'écart est
+réel mais la première était trop optimiste.
+
+> **Diagnostic corrigé : le générateur *sait* produire la bande 70-85 %
+> (à D ≈ 0.29-0.37). C'est le contrôleur qui se cale ~0.06 trop bas.** Il s'agit
+> donc d'un **défaut de réglage**, local et corrigeable (§3.6), et non d'une
+> limite de contenu. C'est une bien meilleure nouvelle que ce que ce tableau
+> laissait croire.
 
 ### 4.4 Niveau 3 — réglage des constantes par balayage
 
@@ -882,7 +889,7 @@ Les quatre scripts, à placer dans `tests/` :
 | `adaptive-converge.js` | utilisateur analytique, 200 réplicats × 5 θ × 3 D₀, vérifie `|D̄ − D*| < 0.05` | ~40 s |
 | `adaptive-engine.js` | courbe de réponse `P(succès | D, θ)` sur le vrai moteur, en déduit `g` | ~15 min |
 | `adaptive-ablation.js` | table d'ablation §4.5 | ~60 s |
-| `adaptive-dither.js` | réponse avec et sans dithering, valide le §3.6 | ~8 min |
+| `adaptive-dither.js` | réponse fine `P(succès|D)` par pas de 0.04, avec/sans dithering — c'est cette passe qui étalonne la position de la bande en D (§3.6) | ~8 min |
 
 **Assertions de non-régression proposées :**
 
@@ -904,28 +911,32 @@ qui déplace l'échelle de difficulté.
 
 ## 5. LIMITES MESURÉES ET DÉPENDANCES
 
-1. **Limite dominante : plage utile étroite et réponse non linéaire.** C'est le
-   résultat le plus important de cet audit. La réponse `P(succès | D)` du
-   générateur gelé n'est exploitable que sur **D ∈ [0.22, 0.38]** : au-delà, elle
-   cesse de décroître (§4.2). Sur cette fenêtre elle est très raide — 30 points
-   de réussite pour 0.16 unité de D — de sorte que **la bande [70 %, 85 %]
-   n'occupe qu'environ D ∈ [0.30, 0.36]**, soit une fenêtre de l'ordre du pas de
-   commande lui-même. Réguler y est possible mais serré ; il n'y a aucune marge
-   d'erreur sur le gain.
-2. **Biais résiduel mesuré : le contrôleur se cale ~0.06 trop bas.** Il converge
-   de façon stable et reproductible à D ≈ 0.25 (88-91 % de réussite) là où la
-   bande demande D ≈ 0.33 (§4.3, §3.6). Le comportement dynamique est sain
-   (0,7 à 1,1 % d'inversions, point fixe atteint dès la 200ᵉ décision, insensible
-   à D₀) ; c'est le **point de consigne** qui est décalé, par l'asymétrie
-   `G_dn = 1.6 · G_up`. Correctif identifié et local (§3.6), **non mesuré** :
-   à valider avant déploiement.
+1. **Limite dominante — un biais de consigne de −0.06, corrigeable.** C'est le
+   seul point bloquant, et c'est un défaut de **réglage**, pas de contenu. Le
+   contrôleur converge de façon stable, reproductible et insensible à D₀
+   (0,7-1,1 % d'inversions, point fixe atteint dès la 200ᵉ décision), mais il se
+   cale à **D ≈ 0.25** (88-91 % de réussite) là où la bande demande
+   **D ≈ 0.29-0.37** (§3.6, §4.3). Cause : l'asymétrie `G_dn = 1.6 · G_up`
+   (§3.5), amplifiée par la pente locale élevée. Correctif local identifié —
+   `G_dn = 1.3 · G_up`, ou +0.03 sur les seuils de détection — **non mesuré, à
+   valider par une nouvelle passe du §4.3 avant déploiement.**
 
-   En l'état, la promesse démontrée du système est **« supprimer l'ennui et le
-   décrochage »** — 100 % et 58 % ramenés à 84-88 % depuis n'importe quel point
-   de départ (§4.3). La promesse **« maintenir 70-85 % »** est démontrée contre un
-   actionneur linéaire (§4.1 : 77-79 %, biais ≤ 0.022) mais **pas encore sur le
-   moteur réel**. Ne pas l'afficher avant d'avoir refait la passe §4.3 avec le
-   gain corrigé.
+   En l'état, la promesse démontrée est **« supprimer l'ennui et le décrochage »**
+   (100 % et 58 % ramenés à 84-88 %, depuis n'importe quel D₀, §4.3). La promesse
+   **« maintenir 70-85 % »** est démontrée contre un actionneur linéaire
+   (§4.1 : 77-79 %, biais ≤ 0.022) mais **pas encore sur le moteur réel**. Ne pas
+   l'afficher avant la passe de validation.
+2. **Plage utile étroite et réponse raide.** La réponse `P(succès | D)` est
+   monotone et exploitable sur **D ∈ [0.22, 0.42]** — 98.6 % à D = 0.22, 59.1 % à
+   D = 0.42 — mais cesse de décroître au-delà (§4.2). Sur cette fenêtre elle est
+   raide (≈ 40 points de réussite pour 0.20 unité de D), de sorte que la bande
+   [70 %, 85 %] n'occupe qu'environ **D ∈ [0.29, 0.37]**, une fenêtre de l'ordre
+   du pas de commande. Réguler y est possible — c'est mesuré — mais sans marge
+   d'erreur sur le gain, d'où le point 1.
+
+   *Correctif écarté :* le dithering de la consigne, que j'avais proposé pour
+   élargir cette fenêtre, la **rétrécit** en réalité (−33 % de pente, bas de plage
+   remonté de 59.1 % à 70.0 %). Mesure et verdict complets au §3.6.
 3. **Le levier « profil adverse » est faible** (r = 0.095, §2.2). Élargir la plage
    de difficulté passe par la rue, le pot et le nombre d'adversaires, pas par les
    profils. Cela contredit frontalement la conception actuelle de `LEVELS`, dont
@@ -966,8 +977,9 @@ ESTIMATION     λ = 0.96       N_eff = 49     w_i = clamp(1 − F_i, 0.25, 1)
 PORTES         N_min = 25     N_rev = 38     z = 0.5
 GAINS          G_up = 1.4     G_dn = 2.24    G_rev = 0.7    ΔP_max = 0.21
 CONVERSION     Δ = clamp(G·e/g, ±ΔP_max/g)   g = 2.6  (à re-mesurer par §4.2)
-DITHERING      D_i ~ U(D − δ, D + δ)          δ = 0.09
-BORNES         D_min = 0.12   D_max = 0.68   (monotone : 0.22 – 0.38 ; bande ≈ 0.30 – 0.36)
+DITHERING      écarté par la mesure (§3.6) — ne pas ditherer la consigne
+BORNES         D_min = 0.12   D_max = 0.68   (monotone : 0.22 – 0.42 ; bande 70-85 % ≈ 0.29 – 0.37)
+À CORRIGER     G_dn = 1.3·G_up  (biais de consigne −0.06 mesuré, §3.6) — non validé
 POIDS D        pos .057  street .069  pot .121  spr .096  opp .103
                tex .099  act .153  rng .116  brd .185
 ```
